@@ -7,7 +7,7 @@ import numpy as np
 #cv2.imshow('P201302280779501',gray_img)
 
 #nactu obrazek
-img = cv2.imread('P201302280779501.jpg') 
+img = cv2.imread('../../Data/image_labelling_datasets/iaprtc12/images/00/25.jpg') 
 
 
 print "calc-hist"

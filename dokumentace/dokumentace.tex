@@ -29,7 +29,7 @@
 %
 \abstracttexten{The text of the abstract (in English). It contains the English translation of the thesis title and a short description of the thesis.}
 
-\abstracttextcz{Text abstraktu (česky). Obsahuje krátkou anotaci (cca 10 řádek) v češtině. Budete ji potřebovat i při vyplňování údajů o bakalářské práci ve STAGu. Český i anglický abstrakt by měly být na stejné stránce a měly by si obsahem co možná nejvíce odpovídat (samozřejmě není možný doslovný překlad!).
+\abstracttextcz{V této bakalářské práci se zabíváme automatickou anotací obrázků..
 }
 
 % Na titulní stranu a do textu prohlášení se automaticky vkládá 
@@ -60,6 +60,8 @@
 % Umožňuje vkládání obrázků
 \usepackage[pdftex]{graphicx}
 
+%matematicke znaky
+
 % Odkazy v PDF jsou aktivní; navíc se automaticky vkládá
 % balíček 'url', který umožňuje např. dělení slov
 % uvnitř URL
@@ -87,8 +89,7 @@
 \tableofcontents
 
 \chapter{Úvod}
-
-V dnešní době je k dispozici stále více a více obrázků. Avšak vyhledání požadovaného obrázku pro běžné použití je nadlidský úkol. Prostřednictvím klíčových slov přiřazený k obrázku se dá tento problém zjednodušit. Přiřazení klíčových slov probíhá pomocí procesu automatické anotace obrázku, kdy za pomocí trénovací množiny, ze které se program natrénuje, je k obrázku přiřazen jeden nebo více slov které vyjadřují jeho obsah. (Automatická anotace obrázku je proces, ve kterém jsou k obrázku automaticky přiřazena metadata, která obsahují klíčová slova, například (příklady)) Výběr trénovací množiny je v této problematice zásadní. 
+V dnešní době je k dispozici nespočet obrázků, avšak vyhledat mezi nimi konkrétní je nadlidský úkol. Prostřednictvím klíčových slov, přířazených k obrázkům se dá ten to problém zjednodušít. Přiřazení klíčových slov probíhá pomocí procesu automatická anotace obrázků, kdy za pomocí trénovací množiny, ze které program natrénujeme, je k obrázku přiřazen jeden nebo více slov které vyjadřují jeho obsah. V dnešní době je k dispozici stále více a více obrázků. Avšak vyhledání požadovaného obrázku pro běžné použití je nadlidský úkol. Automatická anotace obrázku je tedy proces, ve kterém jsou k obrázku automaticky přiřazena metadata, která obsahují klíčová slova, například (příklady)) Výběr trénovací množiny je v této problematice zásadní. 
 
 Cílem práce je navrhnout a implementovat software umožňující automatickou anotaci obrázků. Popsat konktréní metodu.
 
@@ -103,21 +104,41 @@ Cílem práce je navrhnout a implementovat software umožňující automatickou 
 }
 
 \chapter{JEC}
-\section{Příznaky}
 Existuje skupina základních metod pro obrázkovou anotaci, která je postavena na hypotéze, že na základě podobnosti vzhledu obrázku jsou podílově přiřazena klíčová slova. K obrázkové anotaci se přistupuje jako k procesu přenášení klíčových slov od nejbližších sousedů. Struktura sousedů je konstruovaná použitím jednoduchých low-level obrázkových příznaků.
-
+\section{Příznaky}
 Barva a textura jsou považovány za dva nejdůležitější nizko-úrovňové příznaky pro obrázkovou reprezentaci. Nejběžnější barevné deskriptory jsou základem hrubého histogram, který je často využíván s obrázkovým srovnáním a indexovým schématem, primárně z důvodu jejich efektivnosti a snádného výpočtu. Obrázková textura je běžně zachycena s Wavelet vlastností. V části Gabor a Haar wavelets bylo prokázáno, že je velmi efektivní při vytváření rozptýlených diskriminačních obrázkových rysů. Omezení vlivu a sklon k individuálním funkcí, a maximalizování množství obsažených informací vybereme pro prácí pár jednoduchých a snadno vypočítatelných funkcí. 
 \section{Vzdálenosti}
-asdasd
-\section{Přenesení}
-asdasd
+asda
+\section{Přenesení klíčových slov}
+Pro přenesení klíčových slov používáme metodu, kdy přeneseme n klíčových slov k dotazovanému obrázku $\tilde{I}$ od K nejbližších sousedů v trénovací sadě. Mějme $I_{i}, i = 1, ..., K$ ,tyto K nejbližší sousedy seřadíme podle vzrůstající vzdálenosti (tzn. že $I_{1} $ je nejvíce podobný obrázek). Počet klíčových slov k danému $I_{i}$ je označen jako $|I_{i}|$. Dále jsou popsány jednotlivé kroky alogoritmu na přenesení klíčových slov.
+\begin{enumerate}
+	\item Seřadíme klíčová slova z $I_{1}$ podle jejich frekvence v trénovacích datech.
+	\item Z $|I_{1}|$ klíčových slov z $I_{1}$ přeneseme n nejvýše umístěná klíčová slova do dotazovaného $\tilde{I}$. Když $|I_{1}| < n$ pokračujte na krok 3. 
+	\item Seřaď klíčová slova sousedů od $I_{2}$ do $I_{K}$ podle dvou faktorů
+	\begin{enumerate}
+		\item Co výskyt v trénovacích datech s klíčovými slovy přenesených v kroku 2 a
+		\item místní frekvence (tj. jak často se vyskytují jako klíčová slova u obrázků $I_{2}$ až $I_{K}$). Vyber nejvyšší rankink $n-|I_{1}|$ klíčových slov převedených do $\tilde{I}$.
+	\end{enumerate}
+\end{enumerate}
+
+Tento algoritmus pro přenos klíčových slov je poněkud odlišný od algoritmů které se běžně používají. Jeden z běžně užívaných funguje na principu, že klíčová slova jsou vybrána od všech sousedů (se všemi sousedy je zacházeno stejně bez ohledu na to jak jsou danému obrázku podobní), jiný užívaný algoritmus k sousedům přistupuje váženě (každý soused má jinou váhu)a to na základě jejich vzdálenosti od testovaného obrázku. Při testování se ovšem ukázalo, že tyto přímé přístupy přináší horší výsledky v porovnání s námi použitým dvoufaktorovým algoritmem pro přenos klíčových slov. \\
+V souhrnu námi použitá metoda je složenina ze svou složeniny obrázkové vzdálenosti měřítku (JEC nebo Lasso) pro nejbližší ranking, kombinuje se s výše popsaným algoritmem na přenášení klíčových slov.
 \section{Vyhodnocení}
-asdas
+
 \chapter{Testovací databáze}
+Pro natrénování a následné testování byly data z databází ČTK,ESP a IAPRC.
 \chapter{Návrh systému}
-\chapter{OpenCV}
-OpenCV (Open source computer vision) je knihovna vydávána pod licencí BSD a je volně k dispozici jak pro akademické účely, tak pro komerční použití. Je vhodná pro použití v C++, C, Python a Javě, dále podporuje operační systémy Windows, Linux, Mac OS, iOS a Android.\\
-Knihovna byla navrhnuta pro výpočetní efektivitu v oblasti počítačového vidění a zpracování obrazu se zaměřením na zpracování obrazu v reálném čase. Z důvodu optimalizace byla napsána v C/C++.
+\chapter{Použité programové prostředky / Požadavky na software}
+Program byl navržen na operační systému Linux. Jako programovací jazyk byl zvolen Python a to z důvodu jeho jednoduchého použití, což je na prototyp, jako je tento velice výhodné na časovou náročnost. Program využívá knihovnu OpenCV 3.1.   
+\section{OpenCV}
+OpenCV (Open source computer vision) je knihovna vydávána pod licencí BSD a je volně k dispozici jak pro akademické účely, tak pro komerční použití. Je vhodná pro použití v C++, C, Python a Javě. Podporuje operační systémy Windows, Linux, Mac OS, iOS a Android.
+\\
+Knihovna byla navrhnuta pro výpočetní efektivitu v oblasti počítačového vidění a zpracování obrazu se zaměřením na zpracování obrazu v reálném čase. Z důvodu optimalizace byla napsána v C/C++. 
+\\
+Knihovnu OpenCV je možné stáhnout na adrese: http://opencv.org/
+\\
+Návod na nainstalování najdete zde: http://docs.opencv.org/3.0-last-rst/doc/tutorials/introduction/linux_install/linux_install.html
+
 \chapter{Výsledek}
 
 \end{document}

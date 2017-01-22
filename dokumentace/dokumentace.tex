@@ -89,9 +89,13 @@
 \tableofcontents
 
 \chapter{Úvod}
-V dnešní době je k dispozici nespočet obrázků, avšak vyhledat mezi nimi konkrétní je nadlidský úkol. Prostřednictvím klíčových slov, přířazených k obrázkům se dá ten to problém zjednodušít. Přiřazení klíčových slov probíhá pomocí procesu automatická anotace obrázků, kdy za pomocí trénovací množiny, ze které program natrénujeme, je k obrázku přiřazen jeden nebo více slov které vyjadřují jeho obsah. V dnešní době je k dispozici stále více a více obrázků. Avšak vyhledání požadovaného obrázku pro běžné použití je nadlidský úkol. Automatická anotace obrázku je tedy proces, ve kterém jsou k obrázku automaticky přiřazena metadata, která obsahují klíčová slova, například (příklady)) Výběr trénovací množiny je v této problematice zásadní. 
+V dnešní době, kdy je svět přesycen obrázky v digitální podobě, není vůbec snadné nalést obrázek zobrazující požadovaný obsah. Naneštěstí počítače nedokáží vnímat obraz jako lidé, vnímají totiž obrazy jako sérii binárních informací. Přitom počítače a jejich práce s obrazy by se dala využít v mnoha oborech jako je lékařství nebo doprava. Na základě toho vyplouvá na povrch problém jak spravovat digitální obrázky a efektivně mezi nimi vyhledávat. Prostřednictvím klíčových slov přiřazených k obrázkům se dá problém vyhledávání zjednodušit. Přiřezení klíčových slov probíhá pomocí procesu automatická anotace obrázků, kdy za pomoci trénovací množiny, ze které program natrénujeme, je k obrázku přiřazen jeden nebo více slov které vyjadřují jeho obsah. Automatická anotace obrázku je tedy proces, ve kterém jsou k obrázku automaticky přiřazena metadata, která obsahují klíčová slova (například les, strom). \\
 
-Cílem práce je navrhnout a implementovat software umožňující automatickou anotaci obrázků. Popsat konktréní metodu.
+Problematika porovnávání obrázků, po které následuje anotace, se dá rozložit na dva menší problémy. První je získaní informace z trénovací množiny a druhý je jak rozhodovat jestli jsou si obrázky skutečně podobné a nakolik. \\
+
+Cílem práce je navrhnout a implementovat software umožňující automatickou anotaci obrázků. 
+
+POPSAT KONKRÉTNÍ METODU
 
  
 % 
@@ -103,8 +107,8 @@ Cílem práce je navrhnout a implementovat software umožňující automatickou 
 \bibliography{literatura}
 }
 
-\chapter{JEC}
-Existuje skupina základních metod pro obrázkovou anotaci, která je postavena na hypotéze, že na základě podobnosti vzhledu obrázku jsou podílově přiřazena klíčová slova. K obrázkové anotaci se přistupuje jako k procesu přenášení klíčových slov od nejbližších sousedů. Struktura sousedů je konstruovaná použitím jednoduchých low-level obrázkových příznaků.
+\chapter{Joint Equal Contribution JEC}
+Existuje skupina základních metod pro anotaci obrázků, která je postavena na hypotéze, že obrázky jsou si podobné s několika obrázky (tzv. sousedy). Přičemž klíčová slova od jednodlivých sousedů jsou posuzována odlišně a to na základě toho o kolik se s testovaným obrázkem liší. 
 \section{Příznaky}
 Barva a textura jsou považovány za dva nejdůležitější nizko-úrovňové příznaky pro obrázkovou reprezentaci. Nejběžnější barevné deskriptory jsou základem hrubého histogram, který je často využíván s obrázkovým srovnáním a indexovým schématem, primárně z důvodu jejich efektivnosti a snádného výpočtu. Obrázková textura je běžně zachycena s Wavelet vlastností. V části Gabor a Haar wavelets bylo prokázáno, že je velmi efektivní při vytváření rozptýlených diskriminačních obrázkových rysů. Omezení vlivu a sklon k individuálním funkcí, a maximalizování množství obsažených informací vybereme pro prácí pár jednoduchých a snadno vypočítatelných funkcí. 
 \section{Vzdálenosti}
@@ -137,7 +141,6 @@ Knihovna byla navrhnuta pro výpočetní efektivitu v oblasti počítačového v
 \\
 Knihovnu OpenCV je možné stáhnout na adrese: http://opencv.org/
 \\
-Návod na nainstalování najdete zde: http://docs.opencv.org/3.0-last-rst/doc/tutorials/introduction/linux_install/linux_install.html
 
 \chapter{Výsledek}
 

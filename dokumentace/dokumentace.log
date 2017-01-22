@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.7)  21 JAN 2017 16:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.7)  22 JAN 2017 21:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -746,6 +746,16 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 ]
 Kapitola 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
+
+ []
+
 No file dokumentace.bbl.
 [6
 
@@ -763,21 +773,26 @@ Kapitola 4.
 
 ]
 Kapitola 5.
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--142
+
+ []
+
 [11
 
 ]
 Kapitola 6.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 142.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 145.
 [12
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 142.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 145.
  (./dokumentace.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 142.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 142.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 145.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 145.
 Package rerunfilecheck Info: File `dokumentace.out' has not changed.
 (rerunfilecheck)             Checksum: 900B99F0B97F29AD21EFE713A7613FEE;1404.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 142.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 145.
  ) 
 Here is how much of TeX's memory you used:
  10307 strings out of 493029
@@ -786,7 +801,7 @@ Here is how much of TeX's memory you used:
  13704 multiletter control sequences out of 15000+600000
  48783 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 31i,5n,28p,861b,507s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 31i,5n,28p,1043b,507s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
 c/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
 hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm
@@ -794,7 +809,7 @@ hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm
 f/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12
 .pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/
 type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb>
-Output written on dokumentace.pdf (12 pages, 132836 bytes).
+Output written on dokumentace.pdf (12 pages, 133204 bytes).
 PDF statistics:
  165 PDF objects out of 1000 (max. 8388607)
  142 compressed objects within 2 object streams

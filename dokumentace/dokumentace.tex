@@ -89,14 +89,11 @@
 \tableofcontents
 
 \chapter{Úvod}
-V dnešní době, kdy je svět přesycen obrázky v digitální podobě, není vůbec snadné nalést obrázek zobrazující požadovaný obsah. Naneštěstí počítače nedokáží vnímat obraz jako lidé, vnímají totiž obrazy jako sérii binárních informací. Přitom počítače a jejich práce s obrazy by se dala využít v mnoha oborech jako je lékařství nebo doprava. Na základě toho vyplouvá na povrch problém jak spravovat digitální obrázky a efektivně mezi nimi vyhledávat. Prostřednictvím klíčových slov přiřazených k obrázkům se dá problém vyhledávání zjednodušit. Přiřezení klíčových slov probíhá pomocí procesu automatická anotace obrázků, kdy za pomoci trénovací množiny, ze které program natrénujeme, je k obrázku přiřazen jeden nebo více slov které vyjadřují jeho obsah. Automatická anotace obrázku je tedy proces, ve kterém jsou k obrázku automaticky přiřazena metadata, která obsahují klíčová slova (například les, strom). \\
-
-Problematika porovnávání obrázků, po které následuje anotace, se dá rozložit na dva menší problémy. První je získaní informace z trénovací množiny a druhý je jak rozhodovat jestli jsou si obrázky skutečně podobné a nakolik. \\
-
-Cílem práce je navrhnout a implementovat software umožňující automatickou anotaci obrázků. 
-
-POPSAT KONKRÉTNÍ METODU
-
+V dnešní době, kdy je svět přesycen obrázky v digitální podobě, není vůbec snadné nalézt obrázek zobrazující požadovaný obsah. Naneštěstí počítače nedokáží vnímat obraz jako lidé, vnímají totiž obrazy jako sérii binárních informací. Přitom počítače a jejich práce s obrazy by se dala využít v mnoha oborech jako je lékařství nebo doprava. Na základě toho vyplouvá na povrch problém jak spravovat digitální obrázky a efektivně mezi nimi vyhledávat. Prostřednictvím klíčových slov přiřazených k obrázkům se dá problém vyhledávání zjednodušit. Přiřazení klíčových slov probíhá pomocí procesu automatické anotace obrázků. Klíčová slova přiřazená k obrázku by měli vyjadřovat jeho obsah (například les, strom). Při reálném použití můžeme ovšem narazit na problém při zadávání subjektivních slov, například šťastná rodina.  
+\\
+Automatickou anotaci obrázků můžeme rozdělit na dvě části. V první části získáme klíčové příznaky ve druhé už je samotná anotace, tedy přidelění klíčových slov. Abychom tento postup mohli provést v praxi musíme nejdřív klasifikátor natrénovat pomocí trénovací množiny. Trénovací množina je množina obrázků, která již má ke každému obrázku přidána metadata s klíčovými slovy připravenými od lidí. Vybrané obrázky v trénovací množině musí být různorodé, aby anotace probíhala správně. Pojem automatická anotace obrázků je jednoduše řečeno proces, při kterém jsou k obrázku automaticky přiřazena metada, která obsahují klíčová slova. 
+\\
+Cílem práce je navrhnout a implementovat software umožňující automatickou anotaci obrázků. Konkrétně se bude zabývat metodou JEC. Práce bude využívat nízkoúrovňové příznaky konkrétně barvu a textůru. Metodu budeme zkoušet na standardních datech od ČTK, následně se budeme snažit výsledky vylepšít, a porovnat s další metodou a literaturou.
  
 % 
 % PRO ANGLICKOU SAZBU JE NUTNÉ ZMĚNIT
@@ -107,12 +104,27 @@ POPSAT KONKRÉTNÍ METODU
 \bibliography{literatura}
 }
 
-\chapter{Joint Equal Contribution JEC}
-Existuje skupina základních metod pro anotaci obrázků, která je postavena na hypotéze, že obrázky jsou si podobné s několika obrázky (tzv. sousedy). Přičemž klíčová slova od jednodlivých sousedů jsou posuzována odlišně a to na základě toho o kolik se s testovaným obrázkem liší. 
+\chapter{JEC Joint Equal Contribution}
+Tento algoritmus je založen na hypotéze, že podobné obrázky mají podobná klíčová slova. Pomocí metody hledání nejbližších sousedů najdeme K nejpodobnějších obrázků. Přičemž klíčová slova od jednotlivých sousedů jsou posuzována odlišně a to právě na základě toho o kolik se s testovaným obrázkem liší. Metoda je postavena na dvou typech příznaků - barevných a textůrových. 
+
+
 \section{Příznaky}
-Barva a textura jsou považovány za dva nejdůležitější nizko-úrovňové příznaky pro obrázkovou reprezentaci. Nejběžnější barevné deskriptory jsou základem hrubého histogram, který je často využíván s obrázkovým srovnáním a indexovým schématem, primárně z důvodu jejich efektivnosti a snádného výpočtu. Obrázková textura je běžně zachycena s Wavelet vlastností. V části Gabor a Haar wavelets bylo prokázáno, že je velmi efektivní při vytváření rozptýlených diskriminačních obrázkových rysů. Omezení vlivu a sklon k individuálním funkcí, a maximalizování množství obsažených informací vybereme pro prácí pár jednoduchých a snadno vypočítatelných funkcí. 
+Barva a textura jsou považovány za dva nejdůležitější nizkoúrovňové příznaky pro obrázkovou reprezentaci. Nejběžnější barevné deskriptory jsou základem histogramu, který je často využíván s obrázkovým srovnáním a indexovým schématem, primárně z důvodu jejich efektivnosti a snádného výpočtu. K vytvoření texturových příznaků se používají Haarovy a Gaborovy wavelety a to především z důvodu že jsou efektivní při vytváření rozptýlených diskriminačních obrázkových rysů.  
+\\
+\subsection{Barva}
+U digitálního obrazu je barva reprezentovaná n-rozměrným vektorem. Jeho velikost a význam jednotlivých složek (tzv. barevných kanálů) zavisí na příslušném barevném prostoru. Počet bitů použitých k uložení buď celého vektoru nebo jeho jednotlivých složek se nazývá barevná hloubka (totožně bitová hloubka). Obvykle se můžeme setkat s hodnotami 8, 12, 14 a 16 bitů na kanál. 
+\\
+V použitém algoritmu získáme vlastnosti z obrázků ve třech rozdílných barevných prostorech: RGB, HSV a LAB. RGB (Red, Green, Blue) je nejobvykleji používaný pro zachcení obrázu nebo jeho zobrazení. Oproti tomu HSV (Hue, Saturation and Value) se snaží zachytit barevný model tak jak ho vnímá lidské oko, ale zároveň se snaží zůstat jednoduchý na výpočet. Hue znamená odstín barvy, saturation systost barvy a value je hodnota jasu nebo také množství bílého světla. RGB je závyslí na konkrétním zařízení, nemůže dosáhnout celého rozsahu barev, které vidí lidské oko, zatímco barevný model LAB je shopen obsáhnout celé viditelné spektrum a navíc je nezávislý na zařízení. L (ve zkratce LAB) značí Luminanci (jas dosahuje hodnot 0 - 100, kde 0 je černá a 100 je bílá). Zbylé A a B jsou dvě barvonosné složky, kdy A je ve směru červeno/zeleném a B se pohybuje ve směru modro/žlutém. 
+\\
+
+Pro RGB, HSV i LAB použijeme barevnou hloubku 16 bitů na kanál histogramu v jejich příslušném barevném prostoru. K určení příslušné vzdálenosti se můžeme setkat se čtyřmi měřítky pro histogramy a rozdělení (K L-divergence, $\chi^2$ statistika, L1 - vzdálenost a L2 - vzdálenost). Na RGB a HSV je nejlépší použít L1 zatímco pro LAB je nejvhodnější K L-divergence.  
+
+Jako reprezentace textur budou použity Gabor a Haar wavelety. Každý obrázek bude filtrován s Gabor wavelet na třech škálách a čtyřech orientacích. 
+
 \section{Vzdálenosti}
-asda
+TODO Dohledat Haar a Gabor wavelety, přidat vzorečky a zase klidně i obrázky
+
+
 \section{Přenesení klíčových slov}
 Pro přenesení klíčových slov používáme metodu, kdy přeneseme n klíčových slov k dotazovanému obrázku $\tilde{I}$ od K nejbližších sousedů v trénovací sadě. Mějme $I_{i}, i = 1, ..., K$ ,tyto K nejbližší sousedy seřadíme podle vzrůstající vzdálenosti (tzn. že $I_{1} $ je nejvíce podobný obrázek). Počet klíčových slov k danému $I_{i}$ je označen jako $|I_{i}|$. Dále jsou popsány jednotlivé kroky alogoritmu na přenesení klíčových slov.
 \begin{enumerate}
@@ -125,14 +137,15 @@ Pro přenesení klíčových slov používáme metodu, kdy přeneseme n klíčov
 	\end{enumerate}
 \end{enumerate}
 
-Tento algoritmus pro přenos klíčových slov je poněkud odlišný od algoritmů které se běžně používají. Jeden z běžně užívaných funguje na principu, že klíčová slova jsou vybrána od všech sousedů (se všemi sousedy je zacházeno stejně bez ohledu na to jak jsou danému obrázku podobní), jiný užívaný algoritmus k sousedům přistupuje váženě (každý soused má jinou váhu)a to na základě jejich vzdálenosti od testovaného obrázku. Při testování se ovšem ukázalo, že tyto přímé přístupy přináší horší výsledky v porovnání s námi použitým dvoufaktorovým algoritmem pro přenos klíčových slov. \\
-V souhrnu námi použitá metoda je složenina ze svou složeniny obrázkové vzdálenosti měřítku (JEC nebo Lasso) pro nejbližší ranking, kombinuje se s výše popsaným algoritmem na přenášení klíčových slov.
-\section{Vyhodnocení}
+Tento algoritmus pro přenos klíčových slov je poněkud odlišný od algoritmů které se běžně používají. Jeden z běžně užívaných funguje na principu, že klíčová slova jsou vybrána od všech sousedů (se všemi sousedy je zacházeno stejně bez ohledu na to jak jsou danému obrázku podobní), jiný užívaný algoritmus k sousedům přistupuje váženě (každý soused má jinou váhu)a to na základě jejich vzdálenosti od testovaného obrázku. Při testování se ovšem ukázalo, že tyto přímé přístupy přináší horší výsledky v porovnání s použitým dvoufaktorovým algoritmem pro přenos klíčových slov. \\
+V souhrnu použitá metoda je složenina ze svou složeniny obrázkové vzdálenosti měřítku (JEC nebo Lasso) pro nejbližší ranking, kombinuje se s výše popsaným algoritmem na přenášení klíčových slov.
 
 \chapter{Testovací databáze}
-Pro natrénování a následné testování byly data z databází ČTK,ESP a IAPRC.
+Pro natrénování a následné testování byly použity data z databází ČTK,ESP a IAPRC.
 \chapter{Návrh systému}
-\chapter{Použité programové prostředky / Požadavky na software}
+Systém byl navržen jako modulový a to z důvodu snadné obměny některé z častí.
+
+\chapter{Použité programové prostředky}
 Program byl navržen na operační systému Linux. Jako programovací jazyk byl zvolen Python a to z důvodu jeho jednoduchého použití, což je na prototyp, jako je tento velice výhodné na časovou náročnost. Program využívá knihovnu OpenCV 3.1.   
 \section{OpenCV}
 OpenCV (Open source computer vision) je knihovna vydávána pod licencí BSD a je volně k dispozici jak pro akademické účely, tak pro komerční použití. Je vhodná pro použití v C++, C, Python a Javě. Podporuje operační systémy Windows, Linux, Mac OS, iOS a Android.
@@ -142,6 +155,10 @@ Knihovna byla navrhnuta pro výpočetní efektivitu v oblasti počítačového v
 Knihovnu OpenCV je možné stáhnout na adrese: http://opencv.org/
 \\
 
-\chapter{Výsledek}
+\chapter{Zpracování výsledků}
+
+
+\chapter{Závěr}
+V teoretické části byly popsány nízkoúrovňové příznaky barva a textura. Byla rozebrána metoda JEC, která bude v bakalářské práci implementována.  
 
 \end{document}

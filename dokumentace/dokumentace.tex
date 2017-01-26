@@ -156,6 +156,19 @@ Knihovnu OpenCV je možné stáhnout na adrese: http://opencv.org/
 \\
 
 \chapter{Zpracování výsledků}
+Zpracování výsledků probíhá 
+
+ne-anotovade obrázky J 
+automaticky anotované obrázky $w_auto$
+
+Výsledky automatické anotace jsou následně porovnávany s anotacemi $w_J$
+$r_J$ - set of image regions
+
+$P(w|r_J)$ podmiňovací rozdělení
+vezmeme 5 top slov z distribuce a zavoláne na ně automatickou 
+
+následně spočteme annotation recall a přesnos na všechny slova v testovaném setu. Recall je číslo obrázků správně anotovancýh 
+Recall is the nummber of images correctly annotated with a given word in the testing set.
 
 
 \chapter{Závěr}

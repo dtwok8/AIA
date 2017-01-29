@@ -11,8 +11,11 @@
 \contentsline {section}{\numberline {2.2}Vzd\IeC {\'a}lenosti}{8}{section.2.2}
 \contentsline {section}{\numberline {2.3}P\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov}{8}{section.2.3}
 \contentsline {chapter}{\numberline {3}Testovac\IeC {\'\i } datab\IeC {\'a}ze}{10}{chapter.3}
-\contentsline {chapter}{\numberline {4}N\IeC {\'a}vrh syst\IeC {\'e}mu}{11}{chapter.4}
-\contentsline {chapter}{\numberline {5}Pou\IeC {\v z}it\IeC {\'e} programov\IeC {\'e} prost\IeC {\v r}edky}{12}{chapter.5}
-\contentsline {section}{\numberline {5.1}OpenCV}{12}{section.5.1}
-\contentsline {chapter}{\numberline {6}Zpracov\IeC {\'a}n\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{13}{chapter.6}
-\contentsline {chapter}{\numberline {7}Z\IeC {\'a}v\IeC {\v e}r}{14}{chapter.7}
+\contentsline {section}{\numberline {3.1}\IeC {\v C}TK}{10}{section.3.1}
+\contentsline {section}{\numberline {3.2}ESP}{10}{section.3.2}
+\contentsline {section}{\numberline {3.3}iaprtc12}{10}{section.3.3}
+\contentsline {chapter}{\numberline {4}N\IeC {\'a}vrh syst\IeC {\'e}mu}{12}{chapter.4}
+\contentsline {chapter}{\numberline {5}Pou\IeC {\v z}it\IeC {\'e} programov\IeC {\'e} prost\IeC {\v r}edky}{13}{chapter.5}
+\contentsline {section}{\numberline {5.1}OpenCV}{13}{section.5.1}
+\contentsline {chapter}{\numberline {6}Vyhodnocen\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{14}{chapter.6}
+\contentsline {chapter}{\numberline {7}Z\IeC {\'a}v\IeC {\v e}r}{15}{chapter.7}

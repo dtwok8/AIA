@@ -60,7 +60,11 @@
 % Umožňuje vkládání obrázků
 \usepackage[pdftex]{graphicx}
 
-%matematicke znaky
+%Umožnuje vkládání zdrojových kódu%
+\usepackage{listings}
+
+%Umožňuje barvy - kvuli kodum%
+\usepackage{color}
 
 % Odkazy v PDF jsou aktivní; navíc se automaticky vkládá
 % balíček 'url', který umožňuje např. dělení slov
@@ -105,23 +109,25 @@ Cílem práce je navrhnout a implementovat software umožňující automatickou 
 }
 
 \chapter{JEC Joint Equal Contribution}
-Tento algoritmus je založen na hypotéze, že podobné obrázky mají podobná klíčová slova. Pomocí metody hledání nejbližších sousedů najdeme K nejpodobnějších obrázků. Přičemž klíčová slova od jednotlivých sousedů jsou posuzována odlišně a to právě na základě toho o kolik se s testovaným obrázkem liší. Metoda je postavena na dvou typech příznaků - barevných a textůrových. 
+Tato metoda je založena na hypotéze, že podobné obrázky mají podobná klíčová slova. Pomocí metody hledání nejbližších sousedů (dále jen KNN) najdeme K nejpodobnějších obrázků. Přičemž klíčová slova od jednotlivých sousedů jsou posuzována odlišně a to právě na základě toho o kolik se s testovaným obrázkem liší. Metoda je postavena na dvou typech příznaků - barevných a textůrových. 
 
 
 \section{Příznaky}
-Barva a textura jsou považovány za dva nejdůležitější nizkoúrovňové příznaky pro obrázkovou reprezentaci. Nejběžnější barevné deskriptory jsou základem histogramu, který je často využíván s obrázkovým srovnáním a indexovým schématem, primárně z důvodu jejich efektivnosti a snádného výpočtu. K vytvoření texturových příznaků se používají Haarovy a Gaborovy wavelety a to především z důvodu že jsou efektivní při vytváření rozptýlených diskriminačních obrázkových rysů.  
+Barva a textura jsou považovány za dva nejdůležitější nizkoúrovňové příznaky pro obrázkovou reprezentaci. Nejběžnější barevné deskriptory jsou barevné histogramy, které jsou často využívány pro porovnávání a indexování obrázků, zejména z důvodu jejich efektivnosti a snádného výpočtu. K vytvoření texturových příznaků se používají Haarovy a Gaborovy wavelety a to především z důvodu že jsou efektivní při vytváření rozptýlených diskriminačních obrázkových rysů.  
 \\
 \subsection{Barva}
 U digitálního obrazu je barva reprezentovaná n-rozměrným vektorem. Jeho velikost a význam jednotlivých složek (tzv. barevných kanálů) zavisí na příslušném barevném prostoru. Počet bitů použitých k uložení buď celého vektoru nebo jeho jednotlivých složek se nazývá barevná hloubka (totožně bitová hloubka). Obvykle se můžeme setkat s hodnotami 8, 12, 14 a 16 bitů na kanál. 
 \\
-V použitém algoritmu získáme vlastnosti z obrázků ve třech rozdílných barevných prostorech: RGB, HSV a LAB. RGB (Red, Green, Blue) je nejobvykleji používaný pro zachcení obrázu nebo jeho zobrazení. Oproti tomu HSV (Hue, Saturation and Value) se snaží zachytit barevný model tak jak ho vnímá lidské oko, ale zároveň se snaží zůstat jednoduchý na výpočet. Hue znamená odstín barvy, saturation systost barvy a value je hodnota jasu nebo také množství bílého světla. RGB je závyslí na konkrétním zařízení, nemůže dosáhnout celého rozsahu barev, které vidí lidské oko, zatímco barevný model LAB je shopen obsáhnout celé viditelné spektrum a navíc je nezávislý na zařízení. L (ve zkratce LAB) značí Luminanci (jas dosahuje hodnot 0 - 100, kde 0 je černá a 100 je bílá). Zbylé A a B jsou dvě barvonosné složky, kdy A je ve směru červeno/zeleném a B se pohybuje ve směru modro/žlutém. 
+V použité metodě získáme vlastnosti z obrázků ve třech rozdílných barevných prostorech: RGB, HSV a LAB. RGB (Red, Green, Blue) je nejobvykleji používaný pro zachycení obrázu nebo jeho zobrazení. Oproti tomu HSV (Hue, Saturation and Value) se snaží zachytit barevný model tak jak ho vnímá lidské oko, ale zároveň se snaží zůstat jednoduchý na výpočet. Hue znamená odstín barvy, saturation systost barvy a value je hodnota jasu nebo také množství bílého světla. RGB je závislý na konkrétním zařízení, nemůže dosáhnout celého rozsahu barev, které vidí lidské oko, zatímco barevný model LAB je shopen obsáhnout celé viditelné spektrum a navíc je nezávislý na zařízení. L (ve zkratce LAB) značí Luminanci (jas dosahuje hodnot 0 - 100, kde 0 je černá a 100 je bílá). Zbylé A a B jsou dvě barvonosné složky, kdy A je ve směru červeno/zeleném a B se pohybuje ve směru modro/žlutém. 
 \\
 
-Pro RGB, HSV i LAB použijeme barevnou hloubku 16 bitů na kanál histogramu v jejich příslušném barevném prostoru. K určení příslušné vzdálenosti se můžeme setkat se čtyřmi měřítky pro histogramy a rozdělení (K L-divergence, $\chi^2$ statistika, L1 - vzdálenost a L2 - vzdálenost). Na RGB a HSV je nejlépší použít L1 zatímco pro LAB je nejvhodnější K L-divergence.  
+Pro RGB, HSV i LAB použijeme barevnou hloubku 16 bitů na kanál histogramu v jejich příslušném barevném prostoru. K určení příslušné vzdálenosti se můžeme setkat se čtyřmi měřítky vzdálenosti pro histogramy a rozdělení (K L-divergence, $\chi^2$ statistika, L1 - vzdálenost a L2 - vzdálenost). Na RGB a HSV je nejlépší použít L1 zatímco pro LAB je nejvhodnější K L-divergence.  
 
 Jako reprezentace textur budou použity Gabor a Haar wavelety. Každý obrázek bude filtrován s Gabor wavelet na třech škálách a čtyřech orientacích. 
 
 \section{Vzdálenosti}
+Gabor filter je lineární filter používaný pro detekci hran. Frekvence a orientace reprezentující Gabor filter je podobná lidskému vnímání a jsou zvláště vhodné pro reprezentaci textury a rozlišování. 
+
 TODO Dohledat Haar a Gabor wavelety, přidat vzorečky a zase klidně i obrázky
 
 
@@ -141,12 +147,38 @@ Tento algoritmus pro přenos klíčových slov je poněkud odlišný od algoritm
 V souhrnu použitá metoda je složenina ze svou složeniny obrázkové vzdálenosti měřítku (JEC nebo Lasso) pro nejbližší ranking, kombinuje se s výše popsaným algoritmem na přenášení klíčových slov.
 
 \chapter{Testovací databáze}
-Pro natrénování a následné testování byly použity data z databází ČTK,ESP a IAPRC.
+Pro natrénování a následné testování byly použity data z databází ČTK, ESP a IAPRC.
+
+\section{ČTK}
+Data od ČTK obsahují 3 383 obrázků. Ke každému obrázku jsou přidána metadata ve formátu XML, která obsahují klíčová slova a další informace o obrázku. 
+
+\section{ESP}
+Data od ESP obsahují 67 796 obrázků ve formátu jpg. Ke každému obrázku je přiřazen soubor ve formátu desc, který obsahuje anglické anotace.
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=140px]{./img/ESP.jpg}	
+		\caption{Ukázka obrázku s klíčovými slovy: tower, france, high, gold, paris, yellow, night, light, black, eiffel, dark}
+\end{figure}
+
+\section{iaprtc12}
+Data iaprtc12 obsahují 13 031 obrázků ve formátu jpg. Ke každému obrázku jsou přiložena metadata ve formátu XML, která obsahují 
+infromace o obrázku v různých jazycích. Kromě angličtiny je tam i například španělština nebo němčina. V metadatatech ovšem nenajdeme klíčová slova tak jak by jsme si je představovali, ale v různých tagách nalezneme například titulek obrázku, který může vypadat například The Plaza de Armas, a v tagu description je například  a woman and a child are walking over the square.
+
+
 \chapter{Návrh systému}
-Systém byl navržen jako modulový a to z důvodu snadné obměny některé z častí.
+Systém byl navržen jako modulový a to z důvodu snadné obměny některé z častí, což je výhodné zejména pokud by jsme potřebovali například spočítat vzdálenosti vektorů podle jiného algoritmu. 
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=253px]{./img/graf.png}	
+		\caption{Návrh systému}
+\end{figure}
+
 
 \chapter{Použité programové prostředky}
-Program byl navržen na operační systému Linux. Jako programovací jazyk byl zvolen Python a to z důvodu jeho jednoduchého použití, což je na prototyp, jako je tento velice výhodné na časovou náročnost. Program využívá knihovnu OpenCV 3.1.   
+Program byl navržen na operační systému Linux. Jako programovací jazyk byl zvolen Python a to z důvodu jeho jednoduchého použití, což je na prototyp, jako je tento velice výhodné na časovou náročnost. Program využívá knihovnu OpenCV 3.1. 
+  
 \section{OpenCV}
 OpenCV (Open source computer vision) je knihovna vydávána pod licencí BSD a je volně k dispozici jak pro akademické účely, tak pro komerční použití. Je vhodná pro použití v C++, C, Python a Javě. Podporuje operační systémy Windows, Linux, Mac OS, iOS a Android.
 \\
@@ -155,23 +187,11 @@ Knihovna byla navrhnuta pro výpočetní efektivitu v oblasti počítačového v
 Knihovnu OpenCV je možné stáhnout na adrese: http://opencv.org/
 \\
 
-\chapter{Zpracování výsledků}
-Zpracování výsledků probíhá 
-
-ne-anotovade obrázky J 
-automaticky anotované obrázky $w_auto$
-
-Výsledky automatické anotace jsou následně porovnávany s anotacemi $w_J$
-$r_J$ - set of image regions
-
-$P(w|r_J)$ podmiňovací rozdělení
-vezmeme 5 top slov z distribuce a zavoláne na ně automatickou 
-
-následně spočteme annotation recall a přesnos na všechny slova v testovaném setu. Recall je číslo obrázků správně anotovancýh 
-Recall is the nummber of images correctly annotated with a given word in the testing set.
+\chapter{Vyhodnocení výsledků}
+Zpracování výsledků probíhá jako porovnání anotací přidělených člověkem s anotacemi přiděleny klasifikátorem. Máme sadu obrázků $r_J$ porovnáme ji tak aby se dospělo k podmiňovacímu rozdělení $P(w|r_J)$. Vezmeme top 5 slov z tohoto rozdělení a zavoláme na ně automatickou anotaci obrázku v dotazu. Pak následující mi spočítáme anotaci recall a precision pro každé slovo v  testovacím sadě.  Recall je počet správně anotovaných obrázků v testovací sadě děleno počtem snímků, které mají toto slovo v anotaci přidělené člověkem. Precision je počet správně anotovaných obrázků děleno celkovým počtem anotovaných obrázků. 
 
 
 \chapter{Závěr}
-V teoretické části byly popsány nízkoúrovňové příznaky barva a textura. Byla rozebrána metoda JEC, která bude v bakalářské práci implementována.  
+V teoretické části byly popsány nízkoúrovňové příznaky barva a textura. Byla rozebrána metoda JEC, která bude v bakalářské práci implementována. Seznámili jsme se s knihovnou OpenCV, prostudovali obrázky a přiložená metadata od ČTK, ESP a iaprtc12. 
 
 \end{document}

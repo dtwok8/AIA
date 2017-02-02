@@ -66,6 +66,9 @@
 %Umožňuje barvy - kvuli kodum%
 \usepackage{color}
 
+% matematicke rovnice %
+\usepackage{amsmath}
+
 % Odkazy v PDF jsou aktivní; navíc se automaticky vkládá
 % balíček 'url', který umožňuje např. dělení slov
 % uvnitř URL
@@ -93,12 +96,12 @@
 \tableofcontents
 
 \chapter{Úvod}
-V dnešní době, kdy je svět přesycen obrázky v digitální podobě, není vůbec snadné nalézt obrázek zobrazující požadovaný obsah. Naneštěstí počítače nedokáží vnímat obraz jako lidé, vnímají totiž obrazy jako sérii binárních informací. Přitom počítače a jejich práce s obrazy by se dala využít v mnoha oborech jako je lékařství nebo doprava. Na základě toho vyplouvá na povrch problém jak spravovat digitální obrázky a efektivně mezi nimi vyhledávat. Prostřednictvím klíčových slov přiřazených k obrázkům se dá problém vyhledávání zjednodušit. Přiřazení klíčových slov probíhá pomocí procesu automatické anotace obrázků. Klíčová slova přiřazená k obrázku by měli vyjadřovat jeho obsah (například les, strom). Při reálném použití můžeme ovšem narazit na problém při zadávání subjektivních slov, například šťastná rodina.  
+V dnešní době, kdy je svět přesycen obrázky v digitální podobě, není vůbec snadné nalézt obrázek zobrazující požadovaný obsah. Naneštěstí počítače nedokáží vnímat obraz jako lidé, vnímají totiž obrazy jako sérii binárních informací. Přitom počítače a jejich práce s obrazy by se dala využít v mnoha oborech jako je lékařství nebo doprava. Na základě toho vyplouvá na povrch problém jak spravovat digitální obrázky a efektivně mezi nimi vyhledávat. Prostřednictvím klíčových slov přiřazených k obrázkům se dá problém vyhledávání zjednodušit. Přiřazení klíčových slov probíhá pomocí procesu automatické anotace obrázků. Klíčová slova přiřazená k obrázku by měla vyjadřovat jeho obsah (například les, strom). Při reálném použití můžeme ovšem narazit na problém při zadávání abstraktních slov, například šťastná rodina.  
 \\
-Automatickou anotaci obrázků můžeme rozdělit na dvě části. V první části získáme klíčové příznaky ve druhé už je samotná anotace, tedy přidelění klíčových slov. Abychom tento postup mohli provést v praxi musíme nejdřív klasifikátor natrénovat pomocí trénovací množiny. Trénovací množina je množina obrázků, která již má ke každému obrázku přidána metadata s klíčovými slovy připravenými od lidí. Vybrané obrázky v trénovací množině musí být různorodé, aby anotace probíhala správně. Pojem automatická anotace obrázků je jednoduše řečeno proces, při kterém jsou k obrázku automaticky přiřazena metada, která obsahují klíčová slova. 
+Pro automatickou anotaci obrázků se používá strojové učení. Můžeme ji rozdělit na dvě části. V první části získáme klíčové příznaky ve druhé už je samotná anotace, tedy přidělení klíčových slov. Abychom tento postup mohli provést v praxi, musíme nejdřív klasifikátor natrénovat pomocí trénovací množiny. Trénovací množina je množina obrázků, která již má ke každému obrázku přidána metadata s klíčovými slovy připravenými od lidí. Vybrané obrázky v trénovací množině musí být různorodé, aby anotace probíhala správně. Pojem automatická anotace obrázků je jednoduše řečeno proces, při kterém jsou k obrázku automaticky přiřazena metada, která obsahují klíčová slova. 
 \\
-Cílem práce je navrhnout a implementovat software umožňující automatickou anotaci obrázků. Konkrétně se bude zabývat metodou JEC. Práce bude využívat nízkoúrovňové příznaky konkrétně barvu a textůru. Metodu budeme zkoušet na standardních datech od ČTK, následně se budeme snažit výsledky vylepšít, a porovnat s další metodou a literaturou.
- 
+Cílem práce je navrhnout a implementovat software umožňující automatickou anotaci obrázků. Konkrétně se bude zabývat metodou JEC. Práce bude využívat nízkoúrovňové příznaky, konkrétně barvu a texturu. Metodu budeme zkoušet na standardních datech, následně se budeme snažit výsledky vylepšít, a porovnat s další metodou a literaturou.
+
 % 
 % PRO ANGLICKOU SAZBU JE NUTNÉ ZMĚNIT
 % CITAČNÍ STYL!
@@ -109,11 +112,11 @@ Cílem práce je navrhnout a implementovat software umožňující automatickou 
 }
 
 \chapter{JEC Joint Equal Contribution}
-Tato metoda je založena na hypotéze, že podobné obrázky mají podobná klíčová slova. Pomocí metody hledání nejbližších sousedů (dále jen KNN) najdeme K nejpodobnějších obrázků. Přičemž klíčová slova od jednotlivých sousedů jsou posuzována odlišně a to právě na základě toho o kolik se s testovaným obrázkem liší. Metoda je postavena na dvou typech příznaků - barevných a textůrových. 
+Tato metoda je založena na hypotéze, že podobné obrázky mají podobná klíčová slova. Pomocí metody hledání nejbližších sousedů (dále jen KNN) najdeme K nejpodobnějších obrázků. Přičemž klíčová slova od jednotlivých sousedů jsou posuzována odlišně a to právě na základě toho o kolik se s testovaným obrázkem liší. Metoda je postavena na dvou typech příznaků - barevných a texturových. 
 
 
 \section{Příznaky}
-Barva a textura jsou považovány za dva nejdůležitější nizkoúrovňové příznaky pro obrázkovou reprezentaci. Nejběžnější barevné deskriptory jsou barevné histogramy, které jsou často využívány pro porovnávání a indexování obrázků, zejména z důvodu jejich efektivnosti a snádného výpočtu. K vytvoření texturových příznaků se používají Haarovy a Gaborovy wavelety a to především z důvodu že jsou efektivní při vytváření rozptýlených diskriminačních obrázkových rysů.  
+Barva a textura jsou považovány za dva nejdůležitější nizkoúrovňové příznaky pro obrázkovou reprezentaci. Nejběžnější barevné deskriptory jsou barevné histogramy, které jsou často využívány pro porovnávání a indexování obrázků, zejména z důvodu jejich efektivnosti a snadného výpočtu. K vytvoření texturových příznaků se používají Haarovy a Gaborovy wavelety a to především z důvodu že jsou efektivní při vytváření rozptýlených diskriminativních obrázkových rysů.  
 \\
 \subsection{Barva}
 U digitálního obrazu je barva reprezentovaná n-rozměrným vektorem. Jeho velikost a význam jednotlivých složek (tzv. barevných kanálů) zavisí na příslušném barevném prostoru. Počet bitů použitých k uložení buď celého vektoru nebo jeho jednotlivých složek se nazývá barevná hloubka (totožně bitová hloubka). Obvykle se můžeme setkat s hodnotami 8, 12, 14 a 16 bitů na kanál. 
@@ -121,11 +124,14 @@ U digitálního obrazu je barva reprezentovaná n-rozměrným vektorem. Jeho vel
 V použité metodě získáme vlastnosti z obrázků ve třech rozdílných barevných prostorech: RGB, HSV a LAB. RGB (Red, Green, Blue) je nejobvykleji používaný pro zachycení obrázu nebo jeho zobrazení. Oproti tomu HSV (Hue, Saturation and Value) se snaží zachytit barevný model tak jak ho vnímá lidské oko, ale zároveň se snaží zůstat jednoduchý na výpočet. Hue znamená odstín barvy, saturation systost barvy a value je hodnota jasu nebo také množství bílého světla. RGB je závislý na konkrétním zařízení, nemůže dosáhnout celého rozsahu barev, které vidí lidské oko, zatímco barevný model LAB je shopen obsáhnout celé viditelné spektrum a navíc je nezávislý na zařízení. L (ve zkratce LAB) značí Luminanci (jas dosahuje hodnot 0 - 100, kde 0 je černá a 100 je bílá). Zbylé A a B jsou dvě barvonosné složky, kdy A je ve směru červeno/zeleném a B se pohybuje ve směru modro/žlutém. 
 \\
 
-Pro RGB, HSV i LAB použijeme barevnou hloubku 16 bitů na kanál histogramu v jejich příslušném barevném prostoru. K určení příslušné vzdálenosti se můžeme setkat se čtyřmi měřítky vzdálenosti pro histogramy a rozdělení (K L-divergence, $\chi^2$ statistika, L1 - vzdálenost a L2 - vzdálenost). Na RGB a HSV je nejlépší použít L1 zatímco pro LAB je nejvhodnější K L-divergence.  
+Pro RGB, HSV i LAB použijeme barevnou hloubku 16 bitů na kanál histogramu v jejich příslušném barevném prostoru. 
 
 Jako reprezentace textur budou použity Gabor a Haar wavelety. Každý obrázek bude filtrován s Gabor wavelet na třech škálách a čtyřech orientacích. 
 
 \section{Vzdálenosti}
+ K určení příslušné vzdálenosti se můžeme setkat se čtyřmi měřítky vzdálenosti pro histogramy a rozdělení (K L-divergence, $\chi^2$ statistika, L1 - vzdálenost a L2 - vzdálenost). Na RGB a HSV je nejlépší použít L1 zatímco pro LAB je nejvhodnější K L-divergence. 
+ 
+\section{Textura}
 Gabor filter je lineární filter používaný pro detekci hran. Frekvence a orientace reprezentující Gabor filter je podobná lidskému vnímání a jsou zvláště vhodné pro reprezentaci textury a rozlišování. 
 
 TODO Dohledat Haar a Gabor wavelety, přidat vzorečky a zase klidně i obrázky
@@ -147,7 +153,7 @@ Tento algoritmus pro přenos klíčových slov je poněkud odlišný od algoritm
 V souhrnu použitá metoda je složenina ze svou složeniny obrázkové vzdálenosti měřítku (JEC nebo Lasso) pro nejbližší ranking, kombinuje se s výše popsaným algoritmem na přenášení klíčových slov.
 
 \chapter{Testovací databáze}
-Pro natrénování a následné testování byly použity data z databází ČTK, ESP a IAPRC.
+Pro natrénování a následné testování byla použita data z databází ČTK, ESP a IAPRC.
 
 \section{ČTK}
 Data od ČTK obsahují 3 383 obrázků. Ke každému obrázku jsou přidána metadata ve formátu XML, která obsahují klíčová slova a další informace o obrázku. 
@@ -167,7 +173,7 @@ infromace o obrázku v různých jazycích. Kromě angličtiny je tam i napřík
 
 
 \chapter{Návrh systému}
-Systém byl navržen jako modulový a to z důvodu snadné obměny některé z častí, což je výhodné zejména pokud by jsme potřebovali například spočítat vzdálenosti vektorů podle jiného algoritmu. 
+Systém byl navržen jako modulový a to z důvodu snadné obměny některé z častí, což je výhodné zejména pokud bychom potřebovali například spočítat vzdálenosti vektorů podle jiného algoritmu. 
 
 \begin{figure}[h]
 		\centering
@@ -188,7 +194,13 @@ Knihovnu OpenCV je možné stáhnout na adrese: http://opencv.org/
 \\
 
 \chapter{Vyhodnocení výsledků}
-Zpracování výsledků probíhá jako porovnání anotací přidělených člověkem s anotacemi přiděleny klasifikátorem. Máme sadu obrázků $r_J$ porovnáme ji tak aby se dospělo k podmiňovacímu rozdělení $P(w|r_J)$. Vezmeme top 5 slov z tohoto rozdělení a zavoláme na ně automatickou anotaci obrázku v dotazu. Pak následující mi spočítáme anotaci recall a precision pro každé slovo v  testovacím sadě.  Recall je počet správně anotovaných obrázků v testovací sadě děleno počtem snímků, které mají toto slovo v anotaci přidělené člověkem. Precision je počet správně anotovaných obrázků děleno celkovým počtem anotovaných obrázků. 
+Zpracování výsledků probíhá jako porovnání anotací přidělených člověkem s anotacemi přiděleny klasifikátorem. Dále se počítá recall a precision. Recall \eqref{recall} je počet správně anotovaných obrázků v testovací sadě děleno počtem snímků, které mají toto slovo v anotaci přidělené člověkem. Precision \eqref{precision} je počet správně anotovaných obrázků děleno celkovým počtem anotovaných obrázků. 
+\begin{align}
+   \label{recall} \frac{a}{b} + c = 0
+\end{align}
+\begin{align}
+   \label{precision} a = \frac{z}{2}
+\end{align}
 
 
 \chapter{Závěr}

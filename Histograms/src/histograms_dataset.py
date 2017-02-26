@@ -8,14 +8,14 @@ Created on Wed Sep 21 15:02:46 2016
 #btw zaloz si work playlist, a pridej si tam ty monstra písničky, při nich se pracuje docela dobře, nacey own it prostě ta pisnička z twl hraje tam Bianca 
 #to mi tak napadlo jak si chces ulozit ty histogramy a k tomu cestu k obrázku aklíčový slova, 
 #i když teoreticky me by stacilo jen histogramy a klicovy slova
-# mozna na to pak udělat nejaky objekty, jde to v pythonu, kdyz udelas nejakou tridu hezkou, ktera by v metodach porovnavala jednotlivy ty histogramy,
-#ty histogramy by byli jednotlivy atributy toho objektu a pak atributy by mohli byt i klicova slova, a kdyz uz tak uz si tam rovnou muzes ulozit i tu cestu k tomu souboru 
-# a navíc by si mohla udělat jednu tridu a pak ji pouzívat všude možně.
-#akorát nevím uplně jestli to bude modulární, ale tak jako teoreticky jo protoze ten výstup budeš házet do souboru a nebudeš to muset znova počítat, ty histogramy taky
-#taky nespocitas zrovna za chvili
-#coz me taky vede k myšlence jak budeš sakra ty histogramy porovnávat? co znamená když jsou dva histogramy podobné?
+# mo
+
 import cv2
 import numpy as np
+
+#moje
+import class_pictures
+
 #import sys
 #import re
 #import os.path
@@ -33,6 +33,8 @@ dictionary_path = "/media/lada/Data/image_labelling_datasets/iaprtc12.20091111/i
 def prepare_annotations():  
     f = open(train_list, 'r')
     
+    listPictures = []
+    
     for line in f: 
         split_line = line.split(";")
         print type(split_line)
@@ -40,11 +42,25 @@ def prepare_annotations():
         img = cv2.imread(split_line[0])
         
         cv2.imshow('P201302280779501',img)
-        rgb = countRGBHistogram(img)
-        lab = countLABHistogram(img)
-        hsv = countHSVHistogram(img)
-        print type(img)
-        return
+        x = class_pictures.Pictures(5, split_line[0])
+        x.rgb = countRGBHistogram(img)
+        x.lab = countLABHistogram(img)
+        x.hsv = countHSVHistogram(img)
+        listPictures.append(x)
+        
+        print type(x.rgb[0])
+        print x.rgb[0]
+        print x.lab[0]
+        print x.hsv[0]
+        
+        
+        #lab = countLABHistogram(img)
+        #hsv = countHSVHistogram(img)
+        #print type(img)
+        
+        #TODO asi spočítat vzdálenosti mezi jednotlivýma histogramama, načíst to do nějakýho souboru, ale aby se to dalo snadno kontrolovat takže asi na 
+        #to napsat metodu přímo k tomu class_pictures, jako načti data ze souboru a načti data do souboru, tam by se měla dát přidat "statická metoda ne?"
+        #souvisí to s tím v podstatě.. 
         
         #countHistogram(img); #hmm.. jak to tý metody pošlu ten obrázek?, teoreticky tam můžu poslat string, a otevřít si to až v tý metodě,
         #ale na to by zase chtěla jiná metoda, aby se rovnou kontrolovalo jestli ten soubor 
@@ -72,6 +88,23 @@ def prepare_annotations():
 #    g.write("\n")  
     
     f.close()
+    
+    print "-----------------------------"
+    print len(listPictures)
+    for member in listPictures:
+        print member.name
+        print member.rgb[0]
+    
+    print "vzdálenost: "
+    print kl(listPictures[0].rgb, listPictures[1].rgb)
+    print kl(listPictures[0].rgb, listPictures[2].rgb)
+    print kl(listPictures[0].rgb, listPictures[3].rgb)
+    print kl(listPictures[1].rgb, listPictures[3].rgb)
+    #print kl(listPictures[0].lab, listPictures[1].lab) #blba nula ve vektoru
+
+
+    #cv2.compareHist(np.asarray(listPictures[0].rgb),np.asarray(listPictures[1].rgb), cv2.HISTCMP_CHISQR)
+   # help(cv2)
     #g.close()
   
 #  g = open("iapr_test.txt", 'w')
@@ -97,8 +130,11 @@ def prepare_annotations():
 #    
 #  f.close()
 #  g.close()
+    
+
 
 def countRGBHistogram(img):
+    list_rgb=[0,0,0]
     list=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     print ("------RGB--------")
     print "amin: {}, amax: {}".format(np.amin(img), np.amax(img))
@@ -110,8 +146,10 @@ def countRGBHistogram(img):
                 value = img.item(x,y,i) 
                 index = value/16
                 list[index]=list[index]+1
-        print list 
+        print list
+        list_rgb[i] = list
         list=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    return list_rgb
 
 def countLABHistogram(img):
     print ("------LAB--------")
@@ -125,6 +163,7 @@ def countLABHistogram(img):
     #l_channel,a_channel,b_channel = cv2.split(lab_image)
     #lab = cv2.split(lab_image)
 
+    list_LAB=[0,0,0]
     list=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
     for i in (0,1,2):
@@ -133,8 +172,10 @@ def countLABHistogram(img):
                 value = lab_image.item(x,y,i)
                 index = value/16
                 list[index]=list[index]+1
-        print list 
+        print list
+        list_LAB[i]=list
         list=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    return list_LAB
 
 def countHSVHistogram(img):
     print ("------HSV--------")
@@ -146,6 +187,7 @@ def countHSVHistogram(img):
     print hsv_image.shape
     #hsv = cv2.split(hsv_image)
     list=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    list_hsv=[0,0,0]
 
     for i in (0,1,2):
         for x in range(len(hsv_image)):
@@ -154,10 +196,23 @@ def countHSVHistogram(img):
                 index = value/16
                 list[index]=list[index]+1
         print list 
+        list_hsv[i]=list
         list=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     print len(hsv_image[0])
     print len(hsv_image[0][0])
     print type(hsv_image)
+    return list_hsv
 
+def kl(p, q):
+    p = np.asarray(p, dtype=np.float)
+    q = np.asarray(q, dtype=np.float)
+
+    return np.sum(np.where(p != 0, p * np.log(p / q), 0))
+
+def L1(v1, v2):
+    if(len(v1)!=len(v2)):
+        print "error"
+        return -1
+    return sum([abs(v1[i]-v2[i]) for i in range(len(v1))])
 
 prepare_annotations()

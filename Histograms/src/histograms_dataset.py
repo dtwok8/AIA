@@ -36,16 +36,26 @@ def prepare_annotations():
     listPictures = []
     
     for line in f: 
-        split_line = line.split(";")
+        split_line = line.split(";") # rozdeli radek na cestu k obrazku a klicova slova, vis ze tohle ti taky bude fungovat jen u nekterych dat, protoze nektery tam maji ty xml soubory
         print type(split_line)
         print split_line[0]
         img = cv2.imread(split_line[0])
         
-        cv2.imshow('P201302280779501',img)
-        x = class_pictures.Pictures(5, split_line[0])
+        cv2.imshow('P201302280779501',img)        
+    
+        x = class_pictures.Pictures(split_line[0], split_line[1])
         x.rgb = countRGBHistogram(img)
         x.lab = countLABHistogram(img)
         x.hsv = countHSVHistogram(img)
+        
+
+        
+        print x.keywords
+        print x.keywords[0]
+        
+       
+    
+    
         listPictures.append(x)
         
         print type(x.rgb[0])
@@ -100,7 +110,7 @@ def prepare_annotations():
     print kl(listPictures[0].rgb, listPictures[2].rgb)
     print kl(listPictures[0].rgb, listPictures[3].rgb)
     print kl(listPictures[1].rgb, listPictures[3].rgb)
-    #print kl(listPictures[0].lab, listPictures[1].lab) #blba nula ve vektoru
+    #print kl(listPictures[0].lab, listPictures[1].lab) #blba nula ve vektoru, navíc to je asi stejně blbě ty tam posíláš 2 trojrozměrný vektory
 
 
     #cv2.compareHist(np.asarray(listPictures[0].rgb),np.asarray(listPictures[1].rgb), cv2.HISTCMP_CHISQR)
@@ -130,6 +140,9 @@ def prepare_annotations():
 #    
 #  f.close()
 #  g.close()
+    class_pictures.exportDataToFile(listPictures)
+    x = class_pictures.importDateFromFile()
+    print x[0].rgb
     
 
 

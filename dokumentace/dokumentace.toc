@@ -19,4 +19,5 @@
 \contentsline {chapter}{\numberline {5}Pou\IeC {\v z}it\IeC {\'e} programov\IeC {\'e} prost\IeC {\v r}edky}{13}{chapter.5}
 \contentsline {section}{\numberline {5.1}OpenCV}{13}{section.5.1}
 \contentsline {chapter}{\numberline {6}Vyhodnocen\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{14}{chapter.6}
-\contentsline {chapter}{\numberline {7}Z\IeC {\'a}v\IeC {\v e}r}{15}{chapter.7}
+\contentsline {chapter}{\numberline {7}U\IeC {\v z}ivatelsk\IeC {\'a} dokumentace}{15}{chapter.7}
+\contentsline {chapter}{\numberline {8}Z\IeC {\'a}v\IeC {\v e}r}{16}{chapter.8}

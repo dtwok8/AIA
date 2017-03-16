@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.7)  31 JAN 2017 17:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.7)  9 MAR 2017 12:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -880,21 +880,32 @@ Kapitola 6.
 
 ]
 Kapitola 7.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 209.
 [15
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 209.
+Kapitola 8.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 211.
+[16
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 211.
  (./dokumentace.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 209.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 209.
-Package rerunfilecheck Info: File `dokumentace.out' has not changed.
-(rerunfilecheck)             Checksum: D262006014EE1BCDE5B6C161D9C95B3C;1844.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 209.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 211.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 211.
+
+
+Package rerunfilecheck Warning: File `dokumentace.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `dokumentace.out':
+(rerunfilecheck)             Before: D262006014EE1BCDE5B6C161D9C95B3C;1844
+(rerunfilecheck)             After:  3949DB46F84032AF5310B043AF39699D;2011.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 211.
  ) 
 Here is how much of TeX's memory you used:
- 12255 strings out of 493029
- 168167 string characters out of 6136234
+ 12257 strings out of 493029
+ 168183 string characters out of 6136234
  256467 words of memory out of 5000000
  15607 multiletter control sequences out of 15000+600000
  54780 words of font info for 39 fonts, out of 8000000 for 9000
@@ -907,10 +918,10 @@ hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm
 f/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12
 .pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/
 type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb>
-Output written on dokumentace.pdf (15 pages, 155719 bytes).
+Output written on dokumentace.pdf (16 pages, 156356 bytes).
 PDF statistics:
- 215 PDF objects out of 1000 (max. 8388607)
- 187 compressed objects within 2 object streams
- 45 named destinations out of 1000 (max. 500000)
+ 220 PDF objects out of 1000 (max. 8388607)
+ 191 compressed objects within 2 object streams
+ 47 named destinations out of 1000 (max. 500000)
  139 words of extra memory for PDF output out of 10000 (max. 10000000)
 

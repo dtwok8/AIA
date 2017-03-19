@@ -17,16 +17,9 @@ class Neighbor:
     lab_distance_scale = 0 
     hsv_distance = 0
     hsv_distance_scale = 0 
+    jec = 0
+    
     
     def __init__(self, picture):
         self.picture = picture
         
-
-#asi budu posilat jmeno souboru jako parametr
-def exportDataToFile(listPictures, fileName):
-    # ulozim seznam do souboru, ktery je uveden jako datafile v configu
-    pickle.dump(listPictures, open(fileName, "w"))
-
-def importDateFromFile(fileName):
-    data = pickle.load(open(fileName, "r"))
-    return data

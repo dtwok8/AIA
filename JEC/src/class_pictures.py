@@ -13,10 +13,12 @@ import config
 class Pictures:
     name = ""
     keywords = []
+    our_assignment_keywords=[]
     rgb = None
     lab = None
     hsv = None #np.zeros(shape=(3, 16), dtype=float32)
-    neighbors = []
+    neighbors = None
+    nereast_neighbors = None
     
     
     def __init__(self, name, keywordsInString):
@@ -38,6 +40,6 @@ def exportDataToFile(listPictures, fileName):
     # ulozim seznam do souboru, ktery je uveden jako datafile v configu
     pickle.dump(listPictures, open(fileName, "w"))
 
-def importDateFromFile(fileName):
+def importDataFromFile(fileName):
     data = pickle.load(open(fileName, "r"))
     return data

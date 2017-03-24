@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.7)  24 MAR 2017 11:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.7)  24 MAR 2017 11:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**dokumentace.tex
-(./dokumentace.tex
+**vzor_prace.tex
+(./vzor_prace.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (./thesiskiv.cls
@@ -651,8 +651,8 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip48
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count116
-) (./dokumentace.aux)
-\openout1 = `dokumentace.aux'.
+) (./vzor_prace.aux)
+\openout1 = `vzor_prace.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
 LaTeX Font Info:    ... okay on input line 90.
@@ -671,6 +671,7 @@ LaTeX Font Info:    ... okay on input line 90.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 90.
 LaTeX Font Info:    ... okay on input line 90.
 LaTeX Font Info:    Try loading font information for T1+lmr on input line 90.
+
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -760,9 +761,9 @@ LaTeX Info: Redefining \ref on input line 90.
 LaTeX Info: Redefining \pageref on input line 90.
 LaTeX Info: Redefining \nameref on input line 90.
 
-(./dokumentace.out) (./dokumentace.out)
+(./vzor_prace.out) (./vzor_prace.out)
 \@outlinefile=\write3
-\openout3 = `dokumentace.out'.
+\openout3 = `vzor_prace.out'.
 
  [1
 
@@ -796,9 +797,9 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 93.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 93.
- [4] (./dokumentace.toc)
+ [4] (./vzor_prace.toc)
 \tf@toc=\write4
-\openout4 = `dokumentace.toc'.
+\openout4 = `vzor_prace.toc'.
 
  [5
 
@@ -850,7 +851,7 @@ Kapitola 8.
 
 ]
 Kapitola 9.
-(./dokumentace.bbl [17
+(./vzor_prace.bbl [17
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -861,21 +862,21 @@ Package atveryend Info: Empty hook `BeforeClearDocument' on input line 215.
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 215.
- (./dokumentace.aux)
+ (./vzor_prace.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 215.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 215.
-Package rerunfilecheck Info: File `dokumentace.out' has not changed.
+Package rerunfilecheck Info: File `vzor_prace.out' has not changed.
 (rerunfilecheck)             Checksum: 02FB93D7394A84104B95198DECC42FD9;2171.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 215.
  ) 
 Here is how much of TeX's memory you used:
  11003 strings out of 493029
- 150413 string characters out of 6136234
+ 150396 string characters out of 6136234
  235694 words of memory out of 5000000
  14347 multiletter control sequences out of 15000+600000
  66080 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 31i,8n,28p,980b,510s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 31i,8n,28p,979b,510s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
 hare/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf/fonts/type1/public/lm
@@ -887,7 +888,7 @@ s/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb><
 ublic/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/sh
 are/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmtt12.pfb>
-Output written on dokumentace.pdf (18 pages, 276128 bytes).
+Output written on vzor_prace.pdf (18 pages, 276128 bytes).
 PDF statistics:
  273 PDF objects out of 1000 (max. 8388607)
  236 compressed objects within 3 object streams

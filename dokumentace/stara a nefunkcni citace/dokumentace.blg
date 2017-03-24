@@ -2,6 +2,14 @@ This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: dokumentace.aux
 The style file: csplainnatkiv.bst
+Illegal, another \bibstyle command---line 91 of file dokumentace.aux
+ : \bibstyle
+ :          {csplainnatkiv}
+I'm skipping whatever remains of this command
+Illegal, another \bibdata command---line 92 of file dokumentace.aux
+ : \bibdata
+ :         {literatura}
+I'm skipping whatever remains of this command
 Database file #1: literatura.bib
 You've used 3 entries,
             2898 wiz_defined-function locations,
@@ -44,3 +52,4 @@ warning$ -- 0
 while$ -- 7
 width$ -- 0
 write$ -- 53
+(There were 2 error messages)

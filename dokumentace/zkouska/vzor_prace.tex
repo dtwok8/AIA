@@ -18,18 +18,21 @@
 %
 % Jméno a příjmení; kvůli textu prohlášení určete, 
 % zda jde o mužské, nebo ženské jméno.
-\author{Kateřina Kratochvílová}
-\declarationfemale
+\author{Přemysl Oráč}
+\declarationmale
+
+%alternativa: 
+%\declarationfemale
 
 % Název práce
-\title{Automatická anotace\\obrázků}
+\title{Titul práce\\nanejvýš na dvě\\až tři řádky}
 
 % 
 % Texty abstraktů (anglicky, česky)
 %
 \abstracttexten{The text of the abstract (in English). It contains the English translation of the thesis title and a short description of the thesis.}
 
-\abstracttextcz{V této bakalářské práci se zabíváme automatickou anotací obrázků..
+\abstracttextcz{Text abstraktu (česky). Obsahuje krátkou anotaci (cca 10 řádek) v češtině. Budete ji potřebovat i při vyplňování údajů o bakalářské práci ve STAGu. Český i anglický abstrakt by měly být na stejné stránce a měly by si obsahem co možná nejvíce odpovídat (samozřejmě není možný doslovný překlad!).
 }
 
 % Na titulní stranu a do textu prohlášení se automaticky vkládá 
@@ -57,6 +60,9 @@
 % Zařadit literaturu do obsahu
 \usepackage[nottoc,notlot,notlof]{tocbibind}
 
+% Umožňuje vkládání obrázků
+\usepackage[pdftex]{graphicx}
+
 % Odkazy v PDF jsou aktivní; navíc se automaticky vkládá
 % balíček 'url', který umožňuje např. dělení slov
 % uvnitř URL
@@ -67,15 +73,6 @@
   citecolor=black,
   urlcolor=black,
   bookmarksopen=true}
-
-% Umožňuje vkládání obrázků
-\usepackage[pdftex]{graphicx}
-
-%Umožnuje vkládání zdrojových kódu%
-\usepackage{listings}
-
-%Umožňuje barvy - kvuli kodum%
-\usepackage{color}
 
 % matematicke rovnice %
 \usepackage{amsmath}
@@ -96,20 +93,16 @@
 \tableofcontents
 
 \chapter{Úvod}
+V souboru \texttt{literatura.bib} jsou uvedeny příklady, jak citovat knihu \cite{KnuthAOCP2}, článek v časopisu \cite{Hoare1961}, webovou stránku \cite{Graphics2D}.
+
+
+\chapter{Úvod}
 V dnešní době, kdy je svět přesycen obrázky v digitální podobě, není vůbec snadné nalézt obrázek zobrazující požadovaný obsah. Naneštěstí počítače nedokáží vnímat obraz jako lidé, vnímají totiž obrazy jako sérii binárních informací. Přitom počítače a jejich práce s obrazy by se dala využít v mnoha oborech jako je lékařství nebo doprava. Na základě toho vyplouvá na povrch problém jak spravovat digitální obrázky a efektivně mezi nimi vyhledávat. Prostřednictvím klíčových slov přiřazených k obrázkům se dá problém vyhledávání zjednodušit. Přiřazení klíčových slov probíhá pomocí procesu automatické anotace obrázků. Klíčová slova přiřazená k obrázku by měla vyjadřovat jeho obsah (například les, strom). Při reálném použití můžeme ovšem narazit na problém při zadávání abstraktních slov, například šťastná rodina.  
 \\
 Pro automatickou anotaci obrázků se používá strojové učení. Můžeme ji rozdělit na dvě části. V první části získáme klíčové příznaky ve druhé už je samotná anotace, tedy přidělení klíčových slov. Abychom tento postup mohli provést v praxi, musíme nejdřív klasifikátor natrénovat pomocí trénovací množiny. Trénovací množina je množina obrázků, která již má ke každému obrázku přidána metadata s klíčovými slovy připravenými od lidí. Vybrané obrázky v trénovací množině musí být různorodé, aby anotace probíhala správně. Pojem automatická anotace obrázků je jednoduše řečeno proces, při kterém jsou k obrázku automaticky přiřazena metada, která obsahují klíčová slova. 
 \\
 Cílem práce je navrhnout a implementovat software umožňující automatickou anotaci obrázků. Konkrétně se bude zabývat metodou JEC. Práce bude využívat nízkoúrovňové příznaky, konkrétně barvu a texturu. Metodu budeme zkoušet na standardních datech, následně se budeme snažit výsledky vylepšít, a porovnat s další metodou a literaturou.
 
-% 
-% PRO ANGLICKOU SAZBU JE NUTNÉ ZMĚNIT
-% CITAČNÍ STYL!
-%
-\bibliographystyle{csplainnatkiv}
-{\raggedright\small
-\bibliography{literatura}
-}
 
 \chapter{JEC Joint Equal Contribution}
 Tato metoda je založena na hypotéze, že podobné obrázky mají podobná klíčová slova. Pomocí metody hledání nejbližších sousedů (dále jen KNN) najdeme K nejpodobnějších obrázků. Přičemž klíčová slova od jednotlivých sousedů jsou posuzována odlišně a to právě na základě toho o kolik se s testovaným obrázkem liší. Metoda je postavena na dvou typech příznaků - barevných a texturových. 
@@ -117,12 +110,12 @@ Tato metoda je založena na hypotéze, že podobné obrázky mají podobná klí
 
 \section{Příznaky}
 Barva a textura jsou považovány za dva nejdůležitější nizkoúrovňové příznaky pro obrázkovou reprezentaci. Nejběžnější barevné deskriptory jsou barevné histogramy, které jsou často využívány pro porovnávání a indexování obrázků, zejména z důvodu jejich efektivnosti a snadného výpočtu. K vytvoření texturových příznaků se používají Haarovy a Gaborovy wavelety a to především z důvodu že jsou efektivní při vytváření rozptýlených diskriminativních obrázkových rysů.  
-\\
+
 \subsection{Barva}
 U digitálního obrazu je barva reprezentovaná n-rozměrným vektorem. Jeho velikost a význam jednotlivých složek (tzv. barevných kanálů) zavisí na příslušném barevném prostoru. Počet bitů použitých k uložení buď celého vektoru nebo jeho jednotlivých složek se nazývá barevná hloubka (totožně bitová hloubka). Obvykle se můžeme setkat s hodnotami 8, 12, 14 a 16 bitů na kanál. 
 \\
 V použité metodě získáme vlastnosti z obrázků ve třech rozdílných barevných prostorech: RGB, HSV a LAB. RGB (Red, Green, Blue) je nejobvykleji používaný pro zachycení obrázu nebo jeho zobrazení. Oproti tomu HSV (Hue, Saturation and Value) se snaží zachytit barevný model tak jak ho vnímá lidské oko, ale zároveň se snaží zůstat jednoduchý na výpočet. Hue znamená odstín barvy, saturation systost barvy a value je hodnota jasu nebo také množství bílého světla. RGB je závislý na konkrétním zařízení, nemůže dosáhnout celého rozsahu barev, které vidí lidské oko, zatímco barevný model LAB je shopen obsáhnout celé viditelné spektrum a navíc je nezávislý na zařízení. L (ve zkratce LAB) značí Luminanci (jas dosahuje hodnot 0 - 100, kde 0 je černá a 100 je bílá). Zbylé A a B jsou dvě barvonosné složky, kdy A je ve směru červeno/zeleném a B se pohybuje ve směru modro/žlutém. 
-\\
+
 
 Pro RGB, HSV i LAB použijeme barevnou hloubku 16 bitů na kanál histogramu v jejich příslušném barevném prostoru. 
 
@@ -191,7 +184,7 @@ OpenCV (Open source computer vision) je knihovna vydávána pod licencí BSD a j
 Knihovna byla navrhnuta pro výpočetní efektivitu v oblasti počítačového vidění a zpracování obrazu se zaměřením na zpracování obrazu v reálném čase. Z důvodu optimalizace byla napsána v C/C++. 
 \\
 Knihovnu OpenCV je možné stáhnout na adrese: http://opencv.org/
-\\
+
 
 \chapter{Vyhodnocení výsledků}
 Zpracování výsledků probíhá jako porovnání anotací přidělených člověkem s anotacemi přidělenymi klasifikátorem. Označme si $w_auto$ jako počet obrázků, kterým bylo dané slovo přiřazeno klasifikátorem, $w_human$ počet obrázků kterým bylo dané slovo přiřazeno člověkem. U klasifikátorů se počítá precision (přesnost) a recall (úplnost) pro každé slovo v testovací sadě.\\
@@ -204,18 +197,19 @@ Recall \eqref{recall} je počet obrázků správsně anotovaných s daným slove
 \end{align}
 
 
-
 \chapter{Závěr}
 V teoretické části byly popsány nízkoúrovňové příznaky barva a textura. Byla rozebrána metoda JEC, která bude v bakalářské práci implementována. Seznámili jsme se s knihovnou OpenCV, prostudovali obrázky a přiložená metadata od ČTK, ESP a iaprtc12. 
 
 \chapter{Uživatelská dokumentace}
 popsani jak vypada zdrojovej soubor kterej to zere, nejdriv cesta k souboru a pak jeho klicovy slova
-
-\chapter{Úvos}
-V souboru \texttt{literatura.bib} jsou uvedeny příklady, jak citovat knihu \cite{KnuthAOCP2}, článek v časopisu \cite{Hoare1961}, webovou stránku \cite{Graphics2D}.
-
+ 
+% 
+% PRO ANGLICKOU SAZBU JE NUTNÉ ZMĚNIT
+% CITAČNÍ STYL!
+%
 \bibliographystyle{csplainnatkiv}
 {\raggedright\small
 \bibliography{literatura}
 }
+
 \end{document}

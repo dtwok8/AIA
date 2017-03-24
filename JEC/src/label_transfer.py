@@ -16,66 +16,53 @@ import class_neighbor
 import config
 
 
-class MyPriorityQueue(PriorityQueue):
-    def __init__(self):
-        PriorityQueue.__init__(self)
-        self.counter = 0
+#kvůli sortování
+def getKey(item):
+    return item[1]
 
-    def put(self, item, priority):
-        PriorityQueue.put(self, (priority, self.counter, item))
-        self.counter += 1
-
-    def get(self, *args, **kwargs):
-        _, _, item = PriorityQueue.get(self, *args, **kwargs)
-        return item
-
-
-def add_items_to_queue(test_image):
-    print "metoda"
-    queue = MyPriorityQueue()
+#preneseni klicovych slov
+def label_transfer(test_image, train_keywords_dictionary):
+    print "-------------------------------------------"
+    n_keywords={}
+   
+    #serad klicova slova v I1 podle jejich frekvence v trenovacich datech
+    for word in test_image.nereast_neighbors[0][0].picture.keywords:
+        n_keywords[word] = train_keywords_dictionary[word]        
     
-    for item in test_image.neighbors:
-        queue.put(item, item.jec)
-        print "pridano"
-    return queue
+    keywords_list = n_keywords.items() # prevedeni na seznam
+    keywords_list = sorted(keywords_list, key=getKey, reverse=True)
+    print keywords_list
     
-
-def label_transfer(test_image):
-    print "ahoj"
+    if(len(keywords_list) > config.COUNT_NEIGHBORS): #zjistit jestli od prvniho mame dostatek klicovych slov
+        return
+    #else:
+        #takze vezmeme vsechny klicovy slova od I2 az Ik
+        #
     
+    #pokud ne pokracujeme dale
+    #seradime klicova slova od I2 do Ik podle dvou faktorů
+            #1) co výskyt v trénovacích datech s klicovymy slovy s prenesenych v kroku 2
+            #2) localni frequnce (jak casto se objevuji u I2 az Ik)
+            # vyberte největši n-|I1| klicovych slov prenesnych
 
 
+#spocita cetnost slov v trenovacich datech a seradi ve slovniku 
+def count_keyword_frequency_train_set(train_data): 
+    keywords_dictionary={}
 
-
-#queue = MyPriorityQueue()
-#queue.put('item1.3', 0.3)
-#queue.put('item1', 1)
-#queue.put('item3', 3)
-#queue.put('item6', 6)
-#queue.put('item2', 2)
-#
-#print queue.get()
-#print queue.get()
-#print queue.get()
-#print queue.get()
-#print queue.get()
-#train_data = class_pictures.importDateFromFile(config.DATAFILE_TRAIN)
-
-train_data = class_pictures.importDateFromFile(config.DATAFILE_TRAIN)
-test_data = class_pictures.importDateFromFile(config.DATEFILE_TEST_NEIGHBORS)
-
-print test_data[0].name
-print test_data[0].keywords
-print test_data[0].neighbors
-
-
-for item in test_data:
-    print item.neighbors[0]
-    fronta = add_items_to_queue(item)
+    for picture in train_data:
+        for word in picture.keywords:
+            if(word in keywords_dictionary):
+                keywords_dictionary[word] = keywords_dictionary[word]+1
+            else:
+                 keywords_dictionary[word] = 1
     
-while not fronta.empty():   
-    print fronta.get()
-exit()
+    return keywords_dictionary  
 
-#
-#label_transfer(train_data, test_data[0])
+def label_transfer_main(train_data, test_data):
+    #cetnost klicovych slov v trenovacich datech
+    train_keywords_dictionary=count_keyword_frequency_train_set(train_data) 
+
+    ####prirazeni klicovych slov####
+    for item in test_data:
+        label_transfer(item, train_keywords_dictionary)

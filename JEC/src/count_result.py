@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Spocita vzdalenosti mezi testovacima histogramama a testovacima histograma. Naskaluje vysledky na 0-1. Slozi dohromady jednotlive vysledky (JEC)
+Spocita Precision a recall
 Created on Wed Sep 21 15:02:46 2016
 
 @author: Katerina Kratochvilova

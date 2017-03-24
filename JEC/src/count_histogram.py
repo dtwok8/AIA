@@ -192,5 +192,5 @@ def countHSVHistogram(img):
 
 
 #prepare_annotations()
-#count_train_histogram()
+count_train_histogram()
 count_test_histogram()

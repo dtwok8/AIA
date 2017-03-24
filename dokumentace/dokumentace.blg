@@ -3,44 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: dokumentace.aux
 The style file: csplainnatkiv.bst
 Database file #1: literatura.bib
-You've used 3 entries,
+You've used 4 entries,
             2898 wiz_defined-function locations,
-            649 strings with 5535 characters,
-and the built_in function-call counts, 989 in all, are:
-= -- 108
-> -- 22
-< -- 2
-+ -- 9
-- -- 6
-* -- 71
-:= -- 162
-add.period$ -- 16
-call.type$ -- 3
-change.case$ -- 6
-chr.to.int$ -- 3
-cite$ -- 6
-duplicate$ -- 54
-empty$ -- 88
-format.name$ -- 10
-if$ -- 214
+            653 strings with 5633 characters,
+and the built_in function-call counts, 1390 in all, are:
+= -- 151
+> -- 33
+< -- 3
++ -- 13
+- -- 9
+* -- 102
+:= -- 230
+add.period$ -- 23
+call.type$ -- 4
+change.case$ -- 8
+chr.to.int$ -- 4
+cite$ -- 8
+duplicate$ -- 75
+empty$ -- 124
+format.name$ -- 15
+if$ -- 300
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 6
-newline$ -- 26
-num.names$ -- 10
-pop$ -- 17
+missing$ -- 7
+newline$ -- 34
+num.names$ -- 15
+pop$ -- 21
 preamble$ -- 1
-purify$ -- 6
+purify$ -- 8
 quote$ -- 0
-skip$ -- 32
+skip$ -- 43
 stack$ -- 0
-substring$ -- 15
-swap$ -- 6
+substring$ -- 26
+swap$ -- 9
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 28
+type$ -- 39
 warning$ -- 0
-while$ -- 7
+while$ -- 11
 width$ -- 0
-write$ -- 53
+write$ -- 72

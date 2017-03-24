@@ -18,14 +18,14 @@
 %
 % Jméno a příjmení; kvůli textu prohlášení určete, 
 % zda jde o mužské, nebo ženské jméno.
-\author{Přemysl Oráč}
-\declarationmale
+\author{Kateřina Kratochvílová}
+\declarationfemale
 
 %alternativa: 
 %\declarationfemale
 
 % Název práce
-\title{Titul práce\\nanejvýš na dvě\\až tři řádky}
+\title{Automatická anotace\\obrázků}
 
 % 
 % Texty abstraktů (anglicky, česky)
@@ -187,8 +187,8 @@ Knihovnu OpenCV je možné stáhnout na adrese: http://opencv.org/
 
 
 \chapter{Vyhodnocení výsledků}
-Zpracování výsledků probíhá jako porovnání anotací přidělených člověkem s anotacemi přidělenymi klasifikátorem. Označme si $w_auto$ jako počet obrázků, kterým bylo dané slovo přiřazeno klasifikátorem, $w_human$ počet obrázků kterým bylo dané slovo přiřazeno člověkem. U klasifikátorů se počítá precision (přesnost) a recall (úplnost) pro každé slovo v testovací sadě.\\
-Recall \eqref{recall} je počet obrázků správsně anotovaných s daným slovem děleno počtem obrázků kterým bylo toto slovo přiděleno v anotaci člověkem. Precision \eqref{precision} je počet správně anotovaných obrázků s tímto slovem děleno celkovým počtem anotovaných obrázků s tímto slovem(správně nebo ne). 
+Zpracování výsledků probíhá jako porovnání anotací přidělených člověkem s anotacemi přidělenymi klasifikátorem. Označme si $w_{auto}$ jako počet obrázků, kterým bylo dané slovo přiřazeno klasifikátorem, $w_{human}$ počet obrázků, kterým bylo dané slovo přiřazeno člověkem a $w_{corrrectly}$ jako počet obrázků, kterým bylo slovo přiřazené správně. U klasifikátorů se počítá precision (přesnost) a recall (úplnost) pro každé slovo v testovací sadě.\\
+Recall \eqref{recall} je počet obrázků správně anotovaných s daným slovem děleno počtem obrázků, kterým bylo toto slovo přiděleno v anotaci člověkem. Precision \eqref{precision} je počet správně anotovaných obrázků s tímto slovem děleno celkovým počtem anotovaných obrázků s tímto slovem (správně nebo ne). \cite{Result_A_A}
 \begin{align}
    \label{recall} Rec = \frac{w_c}{w_h}
 \end{align}

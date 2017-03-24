@@ -33,8 +33,26 @@ def label_transfer(test_image, train_keywords_dictionary):
     keywords_list = sorted(keywords_list, key=getKey, reverse=True)
     print keywords_list
     
-    if(len(keywords_list) > config.COUNT_NEIGHBORS): #zjistit jestli od prvniho mame dostatek klicovych slov
+    print "---------"
+    print n_keywords
+    if(len(keywords_list) == config.COUNT_NEIGHBORS): #zjistit jestli od prvniho mame dostatek klicovych slov
+        test_image.keywords = keywords_list
         return
+    
+    if(len(keywords_list) > config.COUNT_NEIGHBORS):
+        test_image.keywords = keywords_list[0:config.COUNT_NEIGHBORS] #usekneme
+        return
+    
+    #mame malo klicovych slov proto jeste musime pridat klicovy slova od sousedu
+    
+    #spocitame vyskyty v trenovacich datech s klicovymy slovy prenesenych v kroku 2
+    #vytvarime slovnik slovniku
+    for word in n_keywords:
+        word = {}
+    
+
+    
+    
     #else:
         #takze vezmeme vsechny klicovy slova od I2 az Ik
         #
@@ -59,10 +77,40 @@ def count_keyword_frequency_train_set(train_data):
     
     return keywords_dictionary  
 
+#spocte frequance vyskytu s ostatnimy slovy
+def frequency_word_with_other_word(train_data):
+    dictionary ={}
+    
+    for picture in train_data:
+        for keyword in picture.keywords:
+            if((keyword in dictionary) == False):    
+                dictionary[keyword] = {}
+    
+    
+    for key, value in dictionary.items():
+        for picture in train_data:
+            if(key in picture.keywords): #kdyz je to klicovy slovo v tomhle v kontakru tak ++
+                #tak potrebujeme pridat++ ke kazdymu slovu se kterym je v kontaktu
+                for keyword in picture.keywords:
+                    if(keyword in dictionary[key]):
+                        dictionary[key][keyword]=dictionary[key][keyword]+1
+                    else:
+                        dictionary[key][keyword] = 1
+            
+    for key, value in dictionary.items():
+        print (key,"-", value)
+            
+        
+
 def label_transfer_main(train_data, test_data):
     #cetnost klicovych slov v trenovacich datech
     train_keywords_dictionary=count_keyword_frequency_train_set(train_data) 
-
+    
+    frequency_word_with_other_word_dictionary = frequency_word_with_other_word(train_data)
     ####prirazeni klicovych slov####
     for item in test_data:
         label_transfer(item, train_keywords_dictionary)
+    
+    
+        
+    

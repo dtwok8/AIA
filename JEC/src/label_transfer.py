@@ -8,7 +8,6 @@ Created on Wed Sep 21 15:02:46 2016
 
 import cv2
 import numpy as np
-from Queue import PriorityQueue
 
 #moje
 import class_pictures
@@ -21,11 +20,12 @@ def getKey(item):
     return item[1]
 
 #preneseni klicovych slov
-def label_transfer(test_image, train_keywords_dictionary):
+def label_transfer(test_image, train_keywords_dictionary, frequency_word_with_other_word_dictionary):
     print "-------------------------------------------"
     n_keywords={}
    
     #serad klicova slova v I1 podle jejich frekvence v trenovacich datech
+    #nereast_neighbors[0] - instance neigbors jako takova, nereast_neighbors[1] - vzdalenost , kvuli serazeni
     for word in test_image.nereast_neighbors[0][0].picture.keywords:
         n_keywords[word] = train_keywords_dictionary[word]        
     
@@ -35,33 +35,50 @@ def label_transfer(test_image, train_keywords_dictionary):
     
     print "---------"
     print n_keywords
-    if(len(keywords_list) == config.COUNT_NEIGHBORS): #zjistit jestli od prvniho mame dostatek klicovych slov
-        test_image.keywords = keywords_list
+    if(len(keywords_list) == config.COUNT_KEYWORDS): #zjistit jestli od prvniho mame dostatek klicovych slov
+        test_image.our_assignment_keywords = keywords_list
         return
     
-    if(len(keywords_list) > config.COUNT_NEIGHBORS):
-        test_image.keywords = keywords_list[0:config.COUNT_NEIGHBORS] #usekneme
+    if(len(keywords_list) > config.COUNT_KEYWORDS):
+        test_image.our_assignment_keywords = keywords_list[0:config.COUNT_KEYWORDS] #usekneme
         return
     
-    #mame malo klicovych slov proto jeste musime pridat klicovy slova od sousedu
+    test_image.our_assignment_keywords = keywords_list
+    #mame malo klicovych slov proto jeste musime pridat klicovy slova od soused
+    add_keywords_from_neighbors(test_image, train_keywords_dictionary, frequency_word_with_other_word_dictionary, n_keywords, keywords_list)
+
+#mame malo klicovych slov proto jeste musime pridat klicovy slova od sousedu
+#neni tam naimplementovana lokalni frequnce, ale pri takovem mnozstvi obrazku je mala pravdepodobnost ze se na hrane potkaji dve stejna cisla
+def add_keywords_from_neighbors(test_image, train_keywords_dictionary, frequency_word_with_other_word_dictionary, n_keywords, keywords_list):
+    keywords_from_neigbords = {}
+    keywords_from_neigbords_local_frequency = {}
     
     #spocitame vyskyty v trenovacich datech s klicovymy slovy prenesenych v kroku 2
-    #vytvarime slovnik slovniku
-    for word in n_keywords:
-        word = {}
+    #takze vezmeme vsechny klicovy slova od I2 az Ik
+    for img in test_image.nereast_neighbors:
+        for word in img[0].picture.keywords:
+            if((word in keywords_from_neigbords) == False): #potrebujeme prazdny slovnik vsech slov, budeme posleze vyplnovat frequency v trenovacich datech s jiz frequenci klicovych slov kterou mame od prvniho obrazku    
+                keywords_from_neigbords[word] = 0
+                keywords_from_neigbords_local_frequency[word] = 1
+            else:
+                keywords_from_neigbords_local_frequency[word] = keywords_from_neigbords_local_frequency[word] + 1
+    
+    #co výskyt v trénovacích datech s klicovymy slovy s prenesenych v kroku 2
+    for key1, value1 in n_keywords.items():                
+        for key2, value2 in keywords_from_neigbords.items():
+            if(key2 in frequency_word_with_other_word_dictionary[key1]):
+                keywords_from_neigbords[key2] = keywords_from_neigbords[key2]+frequency_word_with_other_word_dictionary[key1][key2] 
     
 
+    keywords_from_neigbords_sorted = sorted(keywords_from_neigbords.items(), key=getKey, reverse=True)
     
-    
-    #else:
-        #takze vezmeme vsechny klicovy slova od I2 az Ik
-        #
-    
-    #pokud ne pokracujeme dale
-    #seradime klicova slova od I2 do Ik podle dvou faktorů
-            #1) co výskyt v trénovacích datech s klicovymy slovy s prenesenych v kroku 2
-            #2) localni frequnce (jak casto se objevuji u I2 az Ik)
-            # vyberte největši n-|I1| klicovych slov prenesnych
+    test_image.keywords = keywords_list
+    for item in keywords_from_neigbords_sorted:
+        if((item in test_image.keywords) == False):
+            test_image.our_assignment_keywords.append(item)
+  
+            if(len(test_image.our_assignment_keywords) >= config.COUNT_KEYWORDS):
+                break
 
 
 #spocita cetnost slov v trenovacich datech a seradi ve slovniku 
@@ -92,14 +109,18 @@ def frequency_word_with_other_word(train_data):
             if(key in picture.keywords): #kdyz je to klicovy slovo v tomhle v kontakru tak ++
                 #tak potrebujeme pridat++ ke kazdymu slovu se kterym je v kontaktu
                 for keyword in picture.keywords:
-                    if(keyword in dictionary[key]):
-                        dictionary[key][keyword]=dictionary[key][keyword]+1
+                    if(keyword == key):
+                        dictionary[key][keyword]=0
                     else:
-                        dictionary[key][keyword] = 1
+                        if(keyword in dictionary[key]):
+                            dictionary[key][keyword]=dictionary[key][keyword]+1
+                        else:
+                            dictionary[key][keyword] = 1
             
     for key, value in dictionary.items():
         print (key,"-", value)
-            
+     
+    return dictionary
         
 
 def label_transfer_main(train_data, test_data):
@@ -107,10 +128,16 @@ def label_transfer_main(train_data, test_data):
     train_keywords_dictionary=count_keyword_frequency_train_set(train_data) 
     
     frequency_word_with_other_word_dictionary = frequency_word_with_other_word(train_data)
+    
+    print "--------------------------------------"
+    print frequency_word_with_other_word_dictionary['building']['column']
+    print frequency_word_with_other_word_dictionary['column']['building']
+
     ####prirazeni klicovych slov####
     for item in test_data:
-        label_transfer(item, train_keywords_dictionary)
+        label_transfer(item, train_keywords_dictionary, frequency_word_with_other_word_dictionary)
+        print item.name
+        print item.keywords
     
     
-        
-    
+    class_pictures.exportDataToFile(test_data, config.DATAFILE_TEST_WITH_KEYWORDS)  

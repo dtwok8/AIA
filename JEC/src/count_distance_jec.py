@@ -9,7 +9,6 @@ Created on Wed Sep 21 15:02:46 2016
 import cv2
 import numpy as np
 
-from Queue import PriorityQueue #label transfer
 from operator import attrgetter #sorter
 
 #moje

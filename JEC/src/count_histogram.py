@@ -12,30 +12,7 @@ import numpy as np
 #moje
 import class_pictures
 import config
-        
-        
-        #TODO asi spočítat vzdálenosti mezi jednotlivýma histogramama, načíst to do nějakýho souboru, ale aby se to dalo snadno kontrolovat takže asi na 
-        #to napsat metodu přímo k tomu class_pictures, jako načti data ze souboru a načti data do souboru, tam by se měla dát přidat "statická metoda ne?"
-        #souvisí to s tím v podstatě.. 
-        
-        #countHistogram(img); #hmm.. jak to tý metody pošlu ten obrázek?, teoreticky tam můžu poslat string, a otevřít si to až v tý metodě,
-        #ale na to by zase chtěla jiná metoda, aby se rovnou kontrolovalo jestli ten soubor 
-        #takže nejlepší by asi bylo udělat metodu na otevření toho obrázku, + kontrola jestli exsituje, 
-        #což mi připomíná že tahle metoda je pojmenovaná dost debilně už nevím co jsem tím názvem uplně zamýšlela.
-        #jo a taky by si měla začít řešit ten latech mrknout na šablony a ták
-  
-    
 
-    
-#    print "vzdálenost: "
-#    print cv2.compareHist(np.array(listPictures[0].rgb, dtype=np.float32),np.array(listPictures[1].rgb, dtype=np.float32), cv2.HISTCMP_CHISQR)
-#    print cv2.compareHist(np.array(listPictures[0].rgb, dtype=np.float32),np.array(listPictures[1].rgb, dtype=np.float32), cv2.HISTCMP_KL_DIV)
-#    print cv2.compareHist(np.array(listPictures[0].lab, dtype=np.float32),np.array(listPictures[1].lab, dtype=np.float32), cv2.HISTCMP_KL_DIV)
-    #print kl(listPictures[0].rgb, listPictures[1].rgb)
-    #print kl(listPictures[0].rgb, listPictures[2].rgb)
-    #print kl(listPictures[0].rgb, listPictures[3].rgb)
-    #print kl(listPictures[1].rgb, listPictures[3].rgb)
-    #print kl(listPictures[0].lab, listPictures[1].lab) #blba nula ve vektoru, navíc to je asi stejně blbě ty tam posíláš 2 trojrozměrný vektory
 
 
 def count_train_histogram():
@@ -46,7 +23,7 @@ def count_train_histogram():
     for line in f: 
         split_line = line.split(";") # rozdeli radek na cestu k obrazku a klicova slova 
         #print type(split_line)
-        print split_line[0]
+        print 'train {}'.format(split_line[0])
         img = cv2.imread(split_line[0])      
     
         x = class_pictures.Pictures(split_line[0], split_line[1])
@@ -59,11 +36,7 @@ def count_train_histogram():
     f.close()
     
     class_pictures.exportDataToFile(listPictures, config.DATAFILE_TRAIN)
-    #print listPictures[0].rgb[0][0]
-    
-    x = class_pictures.importDataFromFile(config.DATAFILE_TRAIN)
-    #print cv2.compareHist(listPictures[0].rgb,listPictures[1].rgb, cv2.HISTCMP_CHISQR)
-    #print x[0].rgb
+
 
 def count_test_histogram():
     f = open(config.TEST_LIST, 'r')
@@ -73,28 +46,19 @@ def count_test_histogram():
     for line in f: 
         split_line = line.split(";") # rozdeli radek na cestu k obrazku a klicova slova 
         #print type(split_line)
-        print split_line[0]
+        print 'test {}'.format(split_line[0])
         img = cv2.imread(split_line[0])      
     
         x = class_pictures.Pictures(split_line[0], split_line[1])
         x.rgb = np.array(countRGBHistogram(img), dtype=np.float32)        
         x.lab = np.array(countLABHistogram(img), dtype=np.float32) 
         x.hsv = np.array(countHSVHistogram(img), dtype=np.float32) 
-        
-#        #testovaci vypisy
-#        print x.keywords
-#        print x.keywords[0]
-#        print type(x.rgb[0])
-#        print x.rgb[0]
-#        print x.lab[0]
-#        print x.hsv[0]
-        
+
         listPictures.append(x)
     
     f.close()
     class_pictures.exportDataToFile(listPictures, config.DATAFILE_TEST)
-    
-    x = class_pictures.importDataFromFile(config.DATAFILE_TEST)
+
 
 #def countRGBHistogram(img):
 #    array_rgb = np.zeros(shape=(3, 16), dtype=float32)
@@ -190,7 +154,7 @@ def countHSVHistogram(img):
 #    print type(hsv_image)
     return list_hsv
 
-
-#prepare_annotations()
+#spocita histogramy pro trenovaci mnozinu
 count_train_histogram()
+#spocita histogrami pro testovaci mnozinu
 count_test_histogram()

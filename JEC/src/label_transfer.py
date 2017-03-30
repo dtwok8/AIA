@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Spocita vzdalenosti mezi testovacima histogramama a testovacima histograma. Naskaluje vysledky na 0-1. Slozi dohromady jednotlive vysledky (JEC)
+Presune klicova slova na zaklade JEC metody. 
 Created on Wed Sep 21 15:02:46 2016
 
 @author: Katerina Kratochvilova
@@ -23,6 +23,7 @@ def getKey(item):
 def label_transfer(test_image, train_keywords_dictionary, frequency_word_with_other_word_dictionary):
     print "-------------------------------------------"
     n_keywords={}
+    test_image.our_assignment_keywords=[]
    
     #serad klicova slova v I1 podle jejich frekvence v trenovacich datech
     #nereast_neighbors[0] - instance neigbors jako takova, nereast_neighbors[1] - vzdalenost , kvuli serazeni
@@ -36,11 +37,16 @@ def label_transfer(test_image, train_keywords_dictionary, frequency_word_with_ot
     print "---------"
     print n_keywords
     if(len(keywords_list) == config.COUNT_KEYWORDS): #zjistit jestli od prvniho mame dostatek klicovych slov
-        test_image.our_assignment_keywords = keywords_list
+        #test_image.our_assignment_keywords = keywords_list
+        for key in keywords_list:
+            test_image.our_assignment_keywords.append(key[0])
         return
     
     if(len(keywords_list) > config.COUNT_KEYWORDS):
-        test_image.our_assignment_keywords = keywords_list[0:config.COUNT_KEYWORDS] #usekneme
+        #test_image.our_assignment_keywords = keywords_list[0:config.COUNT_KEYWORDS] #usekneme
+        for key in keywords_list[0:config.COUNT_KEYWORDS]:
+            test_image.our_assignment_keywords.append(key[0])
+        
         return
     
     test_image.our_assignment_keywords = keywords_list
@@ -72,10 +78,16 @@ def add_keywords_from_neighbors(test_image, train_keywords_dictionary, frequency
 
     keywords_from_neigbords_sorted = sorted(keywords_from_neigbords.items(), key=getKey, reverse=True)
     
-    test_image.keywords = keywords_list
+    #test_image.our_assignment_keywords = keywords_list
+    test_image.our_assignment_keywords=[]
+    for key in keywords_list:
+        #print key[0]
+        test_image.our_assignment_keywords.append(key[0])
+    
+    
     for item in keywords_from_neigbords_sorted:
-        if((item in test_image.keywords) == False):
-            test_image.our_assignment_keywords.append(item)
+        if((item in test_image.our_assignment_keywords) == False):
+            test_image.our_assignment_keywords.append(item[0])
   
             if(len(test_image.our_assignment_keywords) >= config.COUNT_KEYWORDS):
                 break
@@ -121,9 +133,38 @@ def frequency_word_with_other_word(train_data):
         print (key,"-", value)
      
     return dictionary
+ 
+def write_img_with_keyword_to_txt_file(test_data):
+    soubor = open(config.PICTURE_RESULT, 'w')
+    
+    for img in test_data:
+        soubor.write("{};{} \n".format(img.name,img.our_assignment_keywords))
         
+    soubor.close()
+
+def write_img_with_keyword_h_a_to_txt_file(test_data):
+    soubor = open(config.PICTURE_TEST_KEYWORDS, 'w')
+    
+    for img in test_data:
+        string_humain_keyword = ""
+        string_automatic_keyword = ""
+        
+        for word in img.keywords:
+            string_humain_keyword = string_humain_keyword + " "+word 
+     
+        for word in img.our_assignment_keywords:
+            string_automatic_keyword = string_automatic_keyword + " "+word 
+        
+        soubor.write("{};{};{} \n".format(img.name, string_humain_keyword, string_automatic_keyword))
+        
+    soubor.close()
+
 
 def label_transfer_main(train_data, test_data):
+    for item in test_data:
+        print item.name
+        print item.keywords
+
     #cetnost klicovych slov v trenovacich datech
     train_keywords_dictionary=count_keyword_frequency_train_set(train_data) 
     
@@ -138,6 +179,10 @@ def label_transfer_main(train_data, test_data):
         label_transfer(item, train_keywords_dictionary, frequency_word_with_other_word_dictionary)
         print item.name
         print item.keywords
+        print item.our_assignment_keywords
+#        exit()
     
     
-    class_pictures.exportDataToFile(test_data, config.DATAFILE_TEST_WITH_KEYWORDS)  
+    #class_pictures.exportDataToFile(test_data, config.DATAFILE_TEST_WITH_KEYWORDS) 
+    write_img_with_keyword_to_txt_file(test_data)
+    write_img_with_keyword_h_a_to_txt_file(test_data)

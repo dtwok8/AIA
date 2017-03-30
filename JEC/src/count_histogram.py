@@ -16,13 +16,17 @@ import config
 
 
 def count_train_histogram():
+    """
+        Nacte trenovaci seznam obrazku ze souboru. 
+        Projde celou trenovaci mnozinu a zavola na vsechny obrazky metody na vypocet histogramu.
+        Nasledne ulozi pres metodu do souboru celou strukturu list trenovaci obrazku.
+    """
     f = open(config.TRAIN_LIST, 'r')
     
     listPictures = []
     
     for line in f: 
         split_line = line.split(";") # rozdeli radek na cestu k obrazku a klicova slova 
-        #print type(split_line)
         print 'train {}'.format(split_line[0])
         img = cv2.imread(split_line[0])      
     
@@ -39,13 +43,17 @@ def count_train_histogram():
 
 
 def count_test_histogram():
+    """
+        Nacte testovaci seznam obrazku ze souboru. 
+        Projde celou testovaci mnozinu a zavola na vsechny obrazky metody na vypocet histogramu.
+        Nasledne ulozi pres metodu do souboru celou strukturu list testovacich obrazku.
+    """
     f = open(config.TEST_LIST, 'r')
     
     listPictures = []
     
     for line in f: 
         split_line = line.split(";") # rozdeli radek na cestu k obrazku a klicova slova 
-        #print type(split_line)
         print 'test {}'.format(split_line[0])
         img = cv2.imread(split_line[0])      
     
@@ -84,6 +92,15 @@ def count_test_histogram():
 
 
 def countRGBHistogram(img):
+    """
+        Spocita rgb na 16 bitovou hloubku pro obrazek poslany v parametru.
+        
+        Keyword arguments:
+            img -- Obrazek pro, ktery se ma histogram vypocitat.
+        
+        Return:  
+            list_rgb -- histogram jako trojrozmerny vektor -list
+    """
     list_rgb=[0,0,0]
     list=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 #    print ("------RGB--------")
@@ -103,6 +120,15 @@ def countRGBHistogram(img):
 
 
 def countLABHistogram(img):
+    """
+        Spocita lab na 16 bitovou hloubku pro obrazek poslany v parametru.
+        
+        Keyword arguments:
+            img -- Obrazek pro, ktery se ma histogram vypocitat.
+        
+        Return:  
+            list_lab -- histogram jako trojrozmerny vektor -list
+    """
 #    print ("------LAB--------")
     #prevedeni na LAB
     lab_image = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
@@ -129,6 +155,15 @@ def countLABHistogram(img):
     return list_LAB
 
 def countHSVHistogram(img):
+    """
+        Spocita hsv na 16 bitovou hloubku pro obrazek poslany v parametru.
+        
+        Keyword arguments:
+            img -- Obrazek pro, ktery se ma histogram vypocitat.
+        
+        Return:  
+            list_hsv -- histogram jako trojrozmerny vektor -list
+    """
 #    print ("------HSV--------")
     hsv_image = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
@@ -155,6 +190,6 @@ def countHSVHistogram(img):
     return list_hsv
 
 #spocita histogramy pro trenovaci mnozinu
-count_train_histogram()
+#count_train_histogram()
 #spocita histogrami pro testovaci mnozinu
 count_test_histogram()

@@ -1,5 +1,5 @@
 """
-Objekt Pictures a k nemu prislusne a potrebne metody jako zapsani objektu do souboru nebo naopak export objektu ze souboru.
+Objekt Keywords a k nemu prislusne a potrebne metody.
 
 @author: Katerina Kratochvilova
 """
@@ -22,8 +22,6 @@ class Keywords:
     def __init__(self, keyword):
         self.keyword = keyword
     
-    
-
 
 #asi budu posilat jmeno souboru jako parametr
 def exportDataToFile(listKeywords, fileName):

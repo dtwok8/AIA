@@ -28,8 +28,8 @@ def count_distance(train_data, test_image):
     lab_max=float("-inf")
     hsv_min=float("inf")
     hsv_max=float("-inf")
-    print ( rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)
-    print ( rgb_max , rgb_min, lab_max > 3333.72839, lab_min, hsv_max, hsv_min)
+    #print ( rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)
+    #print ( rgb_max , rgb_min, lab_max > 3333.72839, lab_min, hsv_max, hsv_min)
     test_image.neighbors  = []
     #spocitame vzdalenosti mezi testovacim obrazkem a tranovaci mnozinou
     #zaroven spocitame minmum a maximum pro dany testovaci obrazek
@@ -59,7 +59,7 @@ def count_distance(train_data, test_image):
 
 #spocita JEC pro tri parametry rgb, hsv, lab, ty to musíš naškálovat od 0 o 1 takže asi ten jec můžeš počítat stejně až budeš mít všechny ty výsledky
 def count_jec_n_3(test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min):
-    print ( rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)
+    #print ( rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)
     for neighbor in test_image.neighbors:
         #naskalovani na 0 - 1
         neighbor.rgb_distance_scale = ((neighbor.rgb_distance-rgb_min)/((rgb_max - rgb_min)/100 ))/100
@@ -115,7 +115,7 @@ test_data = class_pictures.importDataFromFile(config.DATAFILE_TEST)
 ######### spocitani vzdalenosti
 for item in test_data:
     count_distance(train_data, item)
-    print item.neighbors[0].jec
+    #print item.neighbors[0].jec
     print "--------dalsi test_image --------"
 
 print "----------------"

@@ -190,6 +190,6 @@ def countHSVHistogram(img):
     return list_hsv
 
 #spocita histogramy pro trenovaci mnozinu
-#count_train_histogram()
+count_train_histogram()
 #spocita histogrami pro testovaci mnozinu
 count_test_histogram()

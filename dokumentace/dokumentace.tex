@@ -127,6 +127,11 @@ Jako reprezentace textur budou použity Gabor a Haar wavelety. Každý obrázek 
 \section{Textura}
 Gabor filter je lineární filter používaný pro detekci hran. Frekvence a orientace reprezentující Gabor filter je podobná lidskému vnímání a jsou zvláště vhodné pro reprezentaci textury a rozlišování. 
 
+Gabor filtr reaguje na hrany a texturové změny. 
+
+Obrázky jsou filtrovány za použité reálné části z různých odlišních Gabor filtrů jader. Průměrný a rozptyl filtrovaných snímků jsou pak použity jako funkce pro klasifikaci, která je založena na nejméně kvadratické chyby pro jednoduchost.
+
+
 TODO Dohledat Haar a Gabor wavelety, přidat vzorečky a zase klidně i obrázky
 
 

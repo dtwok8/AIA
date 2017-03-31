@@ -9,6 +9,7 @@ Created on Wed Sep 21 15:02:46 2016
 import cv2
 import numpy as np
 
+from Queue import PriorityQueue #label transfer
 from operator import attrgetter #sorter
 
 #moje
@@ -30,7 +31,8 @@ def count_distance(train_data, test_image):
     hsv_max=float("-inf")
     #print ( rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)
     #print ( rgb_max , rgb_min, lab_max > 3333.72839, lab_min, hsv_max, hsv_min)
-    test_image.neighbors  = []
+    #test_image.neighbors  = []
+    pom_nei = []   
     #spocitame vzdalenosti mezi testovacim obrazkem a tranovaci mnozinou
     #zaroven spocitame minmum a maximum pro dany testovaci obrazek
     for picture in train_data:
@@ -53,14 +55,22 @@ def count_distance(train_data, test_image):
         if(pom_neighbor.hsv_distance > hsv_max):
             hsv_max = pom_neighbor.hsv_distance
         
-        test_image.neighbors.append(pom_neighbor) #pridani souseda
+        pom_nei.append(pom_neighbor) #pridani souseda
 
-    count_jec_n_3(test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)   
+    count_jec_n_3(pom_nei,test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min) 
+    
+    keywords_prepare_sort=[]
+    for neighbor in pom_nei:
+        keywords_prepare_sort.append([neighbor, neighbor.jec]) 
+
+    keywords_prepare_sort = sorted(keywords_prepare_sort, key=getKey, reverse=True)
+
+    item.nereast_neighbors = keywords_prepare_sort[0:config.COUNT_NEIGHBORS]
 
 #spocita JEC pro tri parametry rgb, hsv, lab, ty to musíš naškálovat od 0 o 1 takže asi ten jec můžeš počítat stejně až budeš mít všechny ty výsledky
-def count_jec_n_3(test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min):
+def count_jec_n_3(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min):
     #print ( rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)
-    for neighbor in test_image.neighbors:
+    for neighbor in pom_nei:
         #naskalovani na 0 - 1
         neighbor.rgb_distance_scale = ((neighbor.rgb_distance-rgb_min)/((rgb_max - rgb_min)/100 ))/100
         #print item.rgb_distance_scale
@@ -104,8 +114,82 @@ def getKey(item):
     return item[1]
 
 
-
+class MyPriorityQueue(PriorityQueue):
     
+    
+    def __init__(self):
+        PriorityQueue.__init__(self)
+        self.counter = 0
+        self.maxsize = config.COUNT_NEIGHBORS
+
+#    def put(self, item, priority):
+#        if(PriorityQueue.full(self)):
+#            print "full"
+#        else:
+#            PriorityQueue.put(self, (priority, self.counter, item))
+#            self.counter+=1
+##        if((self.counter + 1) >= max_size):
+##            while()
+##        else:    
+##            self.counter += 1
+
+    def put_nowait(self, item, priority):
+        #PriorityQueue.put_nowait(self, (priority, item))
+        
+        PriorityQueue.put_nowait(self, (priority, self.counter, item))
+        self.counter += 1
+        
+    def get(self, *args, **kwargs):
+        if((PriorityQueue.empty(self)) == False):
+            _, _, item = PriorityQueue.get(self, *args, **kwargs)
+            return item
+        return 0
+#
+#
+queue = MyPriorityQueue()
+queue.put_nowait('item2', 1)
+queue.put_nowait('item1', 1)
+queue.put_nowait('item3', 3)
+queue.put_nowait('item11', 1)
+queue.put_nowait('item31', -3)
+
+#queue.put_nowait('item4', 0.3)
+#queue.put_nowait('item2', 1)
+#queue.put_nowait('item1', 1)
+#queue.put_nowait('item3', 3)
+#queue.put_nowait('item11', 1)
+#queue.put_nowait('item31', -3)
+#queue.put_nowait('item4', 0.3)
+
+print queue.qsize()
+print queue.get()
+print queue.get()
+print queue.get()
+print queue.get()
+print queue.get()
+print queue.get()
+print queue.get()
+print queue.get()
+print queue.get()
+print queue.get()
+print queue.get()
+print queue.get()
+
+
+#pq = PriorityQueue()
+#pq.put(1, "one")
+#pq.put(2, "two")
+#pq.put(3, "three")
+#pq.put(1.3, "jedna.three")
+#
+#print pq.get()
+#print pq.get()
+#print pq.get()
+#print pq.get()
+
+
+
+#exit()    
 ##############################################################################
 
 train_data = class_pictures.importDataFromFile(config.DATAFILE_TRAIN)
@@ -121,12 +205,12 @@ for item in test_data:
 print "----------------"
 
 ######## serazeni sousedu podle jejich vzdalenosti
-for item in test_data: #tenhle cyklus si muzu usetrit
-    keywords_prepare_sort=[]
-    for neighbor in item.neighbors:
-        keywords_prepare_sort.append([neighbor, neighbor.jec]) 
-    
-    item.nereast_neighbors = sorted(keywords_prepare_sort, key=getKey, reverse=True)
+#for item in test_data: #tenhle cyklus si muzu usetrit
+#    keywords_prepare_sort=[]
+#    for neighbor in item.neighbors:
+#        keywords_prepare_sort.append([neighbor, neighbor.jec]) 
+#    
+#    item.nereast_neighbors = sorted(keywords_prepare_sort, key=getKey, reverse=True)
 
 ############
 

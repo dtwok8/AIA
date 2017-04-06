@@ -1,0 +1,18 @@
+\select@language {british}
+\select@language {czech}
+\select@language {british}
+\select@language {czech}
+\select@language {czech}
+\select@language {czech}
+\contentsline {chapter}{\numberline {1}\IeC {\'U}vod}{6}{chapter.1}
+\contentsline {chapter}{\numberline {2}\IeC {\'U}vod}{7}{chapter.2}
+\contentsline {section}{\numberline {2.1}co ja vim}{7}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Barva}{7}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}Kombinace vzd\IeC {\'a}lenost\IeC {\'\i }}{8}{section.2.2}
+\contentsline {section}{\numberline {2.3}P\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov}{9}{section.2.3}
+\contentsline {chapter}{\numberline {3}N\IeC {\'a}vrh syst\IeC {\'e}mu}{10}{chapter.3}
+\contentsline {chapter}{\numberline {4}Pou\IeC {\v z}it\IeC {\'e} programov\IeC {\'e} prost\IeC {\v r}edky}{11}{chapter.4}
+\contentsline {section}{\numberline {4.1}OpenCV}{11}{section.4.1}
+\contentsline {chapter}{\numberline {5}Z\IeC {\'a}v\IeC {\v e}r}{12}{chapter.5}
+\contentsline {chapter}{\numberline {6}U\IeC {\v z}ivatelsk\IeC {\'a} dokumentace}{13}{chapter.6}
+\contentsline {chapter}{Literatura}{14}{chapter*.5}

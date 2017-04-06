@@ -25,7 +25,7 @@
 %\declarationfemale
 
 % Název práce
-\title{Automatická anotace\\obrázků}
+\title{Deskriptor}
 
 % 
 % Texty abstraktů (anglicky, česky)
@@ -104,12 +104,10 @@ Pro automatickou anotaci obrázků se používá strojové učení. Můžeme ji 
 Cílem práce je navrhnout a implementovat software umožňující automatickou anotaci obrázků. Konkrétně se bude zabývat metodou JEC. Práce bude využívat nízkoúrovňové příznaky, konkrétně barvu a texturu. Metodu budeme zkoušet na standardních datech, následně se budeme snažit výsledky vylepšít, a porovnat s další metodou a literaturou.
 
 
-\chapter{JEC Joint Equal Contribution}
-Tato metoda je založena na hypotéze, že podobné obrázky mají podobná klíčová slova. Pomocí metody hledání nejbližších sousedů (dále jen KNN) najdeme K nejpodobnějších obrázků. Přičemž klíčová slova od jednotlivých sousedů jsou posuzována odlišně a to právě na základě toho o kolik se s testovaným obrázkem liší. Metoda je postavena na dvou typech příznaků - barevných a texturových. 
-\cite{JEC}
+\section{Výpočet gradientu}
+POEM deskritpro se používá jen na šedoonový obrázek, my by jsme ho chtěli na barevný obrázek
+\subsection{Vyýpočet u šedotónového obrázku}
 
-\section{Příznaky}
-Barva a textura jsou považovány za dva nejdůležitější nizkoúrovňové příznaky pro obrázkovou reprezentaci. Nejběžnější barevné deskriptory jsou barevné histogramy, které jsou často využívány pro porovnávání a indexování obrázků, zejména z důvodu jejich efektivnosti a snadného výpočtu. K vytvoření texturových příznaků se používají Haarovy a Gaborovy wavelety a to především z důvodu že jsou efektivní při vytváření rozptýlených diskriminativních obrázkových rysů.  
 
 \subsection{Barva}
 U digitálního obrazu je barva reprezentovaná n-rozměrným vektorem. Jeho velikost a význam jednotlivých složek (tzv. barevných kanálů) zavisí na příslušném barevném prostoru. Počet bitů použitých k uložení buď celého vektoru nebo jeho jednotlivých složek se nazývá barevná hloubka (totožně bitová hloubka). Obvykle se můžeme setkat s hodnotami 8, 12, 14 a 16 bitů na kanál. 
@@ -121,22 +119,10 @@ Pro RGB, HSV i LAB použijeme barevnou hloubku 16 bitů na kanál histogramu v j
 
 Jako reprezentace textur budou použity Gabor a Haar wavelety. Každý obrázek bude filtrován s Gabor wavelet na třech škálách a čtyřech orientacích. 
 
-\section{Vzdálenosti}
- K určení příslušné vzdálenosti se můžeme setkat se čtyřmi měřítky vzdálenosti pro histogramy a rozdělení (K L-divergence, $\chi^2$ statistika, L1 - vzdálenost a L2 - vzdálenost). Na RGB a HSV je nejlépší použít L1 zatímco pro LAB je nejvhodnější K L-divergence. 
- 
-\section{Textura}
-Gabor filter je lineární filter používaný pro detekci hran. Frekvence a orientace reprezentující Gabor filter je podobná lidskému vnímání a jsou zvláště vhodné pro reprezentaci textury a rozlišování. 
 
-Gabor filtr reaguje na hrany a texturové změny. 
-
-Obrázky jsou filtrovány za použité reálné části z různých odlišních Gabor filtrů jader. Průměrný a rozptyl filtrovaných snímků jsou pak použity jako funkce pro klasifikaci, která je založena na nejméně kvadratické chyby pro jednoduchost.
-
-
-TODO Dohledat Haar a Gabor wavelety, přidat vzorečky a zase klidně i obrázky
 
 \section{Kombinace vzdáleností}
-Nejrozumnějším přístupem ke zkombinování vzdáleností od různých desktiptorů je aby jednotlivé vzdálenosti přispívali rovnoceně. Z tohoto důvodu je potřeba vzdálenosti přeškálovat na jednotné měřítko.\\
-Označme si $I_i$ jako $i$-tý obrázek a řekněme, že máme $N$ jeho příznaků $f_i^1, ..., f_i^N$. Nadefinujme si $d_{(i,j)}^k$ jako vzdálenost mezi příznaky $f_i^k$ a $f_j^k$. Chtěli bychom zkombinovat všechny vzdálenosti příznaků mezi obrázky $I_i$ a $I_j$ tedy $d_{(i,j)}^k$ , $k=1, ..., N$.  Vzdálenosti nám ale v praxi nevyjdou tak aby měli stejný poměr na výsledku, proto předtím než vzdálenosti zkombinujeme musíme je normalizovat do jednotné formy. Získáme maximální a minimální hodnotu pro každý příznak a na základě toho hodnotu přeškálujeme na interval od 0 do 1. Jestliže označíme přeškálovánou vzdálenost jako ${\tilde{d}_{(i,j)}^k}$ následně můžeme označit kompletní vzdálenost mezi obrázky $I_i$ a $I_j$ jako \eqref{jec} Joint Equal Contribution (JEC). 
+Nejrozumnějším přístupem ke zkombinování vzdáleností od různých desktiptorů je aby jednotlivé vzdálenosti přispívali rovnoceně. Z tohoto důvodu je potřeba vzdálenosti přeškálovat na jednotné měřítko. Označme si $I_i$ jako $i$-tý obrázek a řekněme, že máme $N$ jeho příznaků $f_i^1, ..., f_i^N$. Nedefinujme si $d_{(i,j)}^k$ jako vzdálenost mezi $f_i^k$ a $f_j^k$. Chtěli bychom zkombinovat jednotlivé vzdálenosti $d_{(i,j)}^k$ , $k=1, ..., N$ to nám poskytne vzdálenosti mezi obrázky $I_i$ a $I_j$. Vzdálenosti které nám vyjdou  ale v praxi nám nevyjdou tak aby měli stejný poměr na výsledku. Předtím než vzdálenosti zkombinujeme musíme je normalizovat do jednotné formy. Získáme maximální a minimální hodnotu pro každý příznak a na základě toho hodnotu přeškláujeme na interval od 0 do 1. Když mi označíme přeškálovánou vzdálenost jako ${\tilde{d}_{(i,j)}^k}$ následně můžeme označit vzdálenosti mezi obrázky $I_i$ a $I_j$ jako \eqref{jec}. Označíme ten to vzorec na vzdálenosti jako Joint Equal Contribution (JEC)  
 
 
 \begin{align}
@@ -144,39 +130,19 @@ Označme si $I_i$ jako $i$-tý obrázek a řekněme, že máme $N$ jeho přízna
 \end{align}
 
 \section{Přenesení klíčových slov}
-Pro přenesení klíčových slov používáme metodu, kdy přeneseme $n$ klíčových slov k dotazovanému obrázku $\tilde{I}$ od K nejbližších sousedů z trénovací sady. Mějme $I_{i}, i = 1, ..., K$ ,těchto K nejbližší sousedů seřadíme podle vzrůstající vzdálenosti (tzn. že $I_{1} $ je nejvíce podobný obrázek). Počet klíčových slov k danému $I_{i}$ je označen jako $|I_{i}|$. Dále jsou popsány jednotlivé kroky alogoritmu na přenesení klíčových slov.
+Pro přenesení klíčových slov používáme metodu, kdy přeneseme n klíčových slov k dotazovanému obrázku $\tilde{I}$ od K nejbližších sousedů v trénovací sadě. Mějme $I_{i}, i = 1, ..., K$ ,tyto K nejbližší sousedy seřadíme podle vzrůstající vzdálenosti (tzn. že $I_{1} $ je nejvíce podobný obrázek). Počet klíčových slov k danému $I_{i}$ je označen jako $|I_{i}|$. Dále jsou popsány jednotlivé kroky alogoritmu na přenesení klíčových slov.
 \begin{enumerate}
-	\item Seřadíme klíčová slova z $I_{1}$ podle jejich frekvence výskytu v trénovací sadě.
-	\item Ze všech $|I_{1}|$ klíčových slov z $I_{1}$ přeneseme $n$ nejvýše umístěná klíčová slova do dotazovaného $\tilde{I}$. Když $|I_{1}| < n$ pokračujte na krok 3. 
-	\item Seřadíme klíčová slova sousedů od $I_{2}$ do $I_{K}$ podle dvou faktorů
+	\item Seřadíme klíčová slova z $I_{1}$ podle jejich frekvence v trénovacích datech.
+	\item Z $|I_{1}|$ klíčových slov z $I_{1}$ přeneseme n nejvýše umístěná klíčová slova do dotazovaného $\tilde{I}$. Když $|I_{1}| < n$ pokračujte na krok 3. 
+	\item Seřaď klíčová slova sousedů od $I_{2}$ do $I_{K}$ podle dvou faktorů
 	\begin{enumerate}
-		\item výskytu v trénovací sadě s klíčovými slovy přenesených v kroku 2
-		\item místní frekvence (tj. jak často se vyskytují jako klíčová slova u obrázků $I_{2}$ až $I_{K}$). Vybereme nejvíce vyskytující $n-|I_{1}|$ klíčových slov převedených do $\tilde{I}$.
+		\item Co výskyt v trénovacích datech s klíčovými slovy přenesených v kroku 2 a
+		\item místní frekvence (tj. jak často se vyskytují jako klíčová slova u obrázků $I_{2}$ až $I_{K}$). Vyber nejvyšší rankink $n-|I_{1}|$ klíčových slov převedených do $\tilde{I}$.
 	\end{enumerate}
 \end{enumerate}
 
-Tento algoritmus pro přenos klíčových slov je poněkud odlišný od algoritmů, které se běžně používají. Jeden z běžně užívaných funguje na principu, že klíčová slova jsou vybrána od všech sousedů (se všemi sousedy je zacházeno stejně bez ohledu na to jak jsou danému obrázku podobní), jiný užívaný algoritmus k sousedům přistupuje váženě (každý soused má jinou váhu)a to na základě jejich vzdálenosti od testovaného obrázku. Při testování se ovšem ukázalo, že tyto přímé přístupy přináší horší výsledky v porovnání s použitým dvoufaktorovým algoritmem pro přenos klíčových slov. \\
-V souhrnu použitá metoda je složenina ze dvou složenin a to obrázkové vzdálenosti (JEC) a výše popsaným algoritmem na přenášení klíčových slov.
-
-\chapter{Testovací databáze}
-Pro natrénování a následné testování byla použita data z databází ČTK, ESP a IAPRC.
-
-\section{ČTK}
-Data od ČTK obsahují 3 383 obrázků. Ke každému obrázku jsou přidána metadata ve formátu XML, která obsahují klíčová slova a další informace o obrázku. 
-
-\section{ESP}
-Data od ESP obsahují 67 796 obrázků ve formátu jpg. Ke každému obrázku je přiřazen soubor ve formátu desc, který obsahuje anglické anotace.
-
-\begin{figure}[h]
-		\centering
-		\includegraphics[width=140px]{./img/ESP.jpg}	
-		\caption{Ukázka obrázku s klíčovými slovy: tower, france, high, gold, paris, yellow, night, light, black, eiffel, dark}
-\end{figure}
-
-\section{iaprtc12}
-Data iaprtc12 obsahují 13 031 obrázků ve formátu jpg. Ke každému obrázku jsou přiložena metadata ve formátu XML, která obsahují 
-infromace o obrázku v různých jazycích. Kromě angličtiny je tam i například španělština nebo němčina. V metadatatech ovšem nenajdeme klíčová slova tak jak by jsme si je představovali, ale v různých tagách nalezneme například titulek obrázku, který může vypadat například The Plaza de Armas, a v tagu description je například  a woman and a child are walking over the square.
-
+Tento algoritmus pro přenos klíčových slov je poněkud odlišný od algoritmů které se běžně používají. Jeden z běžně užívaných funguje na principu, že klíčová slova jsou vybrána od všech sousedů (se všemi sousedy je zacházeno stejně bez ohledu na to jak jsou danému obrázku podobní), jiný užívaný algoritmus k sousedům přistupuje váženě (každý soused má jinou váhu)a to na základě jejich vzdálenosti od testovaného obrázku. Při testování se ovšem ukázalo, že tyto přímé přístupy přináší horší výsledky v porovnání s použitým dvoufaktorovým algoritmem pro přenos klíčových slov. \\
+V souhrnu použitá metoda je složenina ze svou složeniny obrázkové vzdálenosti měřítku (JEC nebo Lasso) pro nejbližší ranking, kombinuje se s výše popsaným algoritmem na přenášení klíčových slov.
 
 \chapter{Návrh systému}
 Systém byl navržen jako modulový a to z důvodu snadné obměny některé z častí, což je výhodné zejména pokud bychom potřebovali například spočítat vzdálenosti vektorů podle jiného algoritmu. 
@@ -197,17 +163,6 @@ OpenCV (Open source computer vision) je knihovna vydávána pod licencí BSD a j
 Knihovna byla navrhnuta pro výpočetní efektivitu v oblasti počítačového vidění a zpracování obrazu se zaměřením na zpracování obrazu v reálném čase. Z důvodu optimalizace byla napsána v C/C++. 
 \\
 Knihovnu OpenCV je možné stáhnout na adrese: http://opencv.org/
-
-
-\chapter{Vyhodnocení výsledků}
-Zpracování výsledků probíhá jako porovnání anotací přidělených člověkem s anotacemi přidělenymi klasifikátorem. Označme si $w_{auto}$ jako počet obrázků, kterým bylo dané slovo přiřazeno klasifikátorem, $w_{human}$ počet obrázků, kterým bylo dané slovo přiřazeno člověkem a $w_{corrrectly}$ jako počet obrázků, kterým bylo slovo přiřazené správně. U klasifikátorů se počítá precision (přesnost) a recall (úplnost) pro každé slovo v testovací sadě.\\
-Recall \eqref{recall} je počet obrázků správně anotovaných s daným slovem děleno počtem obrázků, kterým bylo toto slovo přiděleno v anotaci člověkem. Precision \eqref{precision} je počet správně anotovaných obrázků s tímto slovem děleno celkovým počtem anotovaných obrázků s tímto slovem (správně nebo ne). \cite{Result_A_A}
-\begin{align}
-   \label{recall} Rec = \frac{w_c}{w_h}
-\end{align}
-\begin{align}
-   \label{precision} Prec = \frac{w_c}{w_a}
-\end{align}
 
 
 \chapter{Závěr}

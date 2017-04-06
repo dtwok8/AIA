@@ -97,99 +97,12 @@ def count_jec_n_3(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_m
             print neighbor.jec
             exit()
         
-################################### label transfer ##########################    
-#    keywords_list = keywords_dictionary.items() # prevedeni na seznam
-#    
-#    print keywords_list
-#
-#    
-#    keywords_list = sorted(keywords_list, key=getKey, reverse=True)
-#    for item in keywords_list:
-#        print (item[0],"-", item[1])
-#    #return keywords_dictionary
-#    exit()
 
 #kvůli sortování
 def getKey(item):
     return item[1]
 
-
-class MyPriorityQueue(PriorityQueue):
-    
-    
-    def __init__(self):
-        PriorityQueue.__init__(self)
-        self.counter = 0
-        self.maxsize = config.COUNT_NEIGHBORS
-
-#    def put(self, item, priority):
-#        if(PriorityQueue.full(self)):
-#            print "full"
-#        else:
-#            PriorityQueue.put(self, (priority, self.counter, item))
-#            self.counter+=1
-##        if((self.counter + 1) >= max_size):
-##            while()
-##        else:    
-##            self.counter += 1
-
-    def put_nowait(self, item, priority):
-        #PriorityQueue.put_nowait(self, (priority, item))
-        
-        PriorityQueue.put_nowait(self, (priority, self.counter, item))
-        self.counter += 1
-        
-    def get(self, *args, **kwargs):
-        if((PriorityQueue.empty(self)) == False):
-            _, _, item = PriorityQueue.get(self, *args, **kwargs)
-            return item
-        return 0
-#
-#
-queue = MyPriorityQueue()
-queue.put_nowait('item2', 1)
-queue.put_nowait('item1', 1)
-queue.put_nowait('item3', 3)
-queue.put_nowait('item11', 1)
-queue.put_nowait('item31', -3)
-
-#queue.put_nowait('item4', 0.3)
-#queue.put_nowait('item2', 1)
-#queue.put_nowait('item1', 1)
-#queue.put_nowait('item3', 3)
-#queue.put_nowait('item11', 1)
-#queue.put_nowait('item31', -3)
-#queue.put_nowait('item4', 0.3)
-
-print queue.qsize()
-print queue.get()
-print queue.get()
-print queue.get()
-print queue.get()
-print queue.get()
-print queue.get()
-print queue.get()
-print queue.get()
-print queue.get()
-print queue.get()
-print queue.get()
-print queue.get()
-
-
-#pq = PriorityQueue()
-#pq.put(1, "one")
-#pq.put(2, "two")
-#pq.put(3, "three")
-#pq.put(1.3, "jedna.three")
-#
-#print pq.get()
-#print pq.get()
-#print pq.get()
-#print pq.get()
-
-
-
-#exit()    
+  
 ##############################################################################
 
 train_data = class_pictures.importDataFromFile(config.DATAFILE_TRAIN)
@@ -203,16 +116,6 @@ for item in test_data:
     print "--------dalsi test_image --------"
 
 print "----------------"
-
-######## serazeni sousedu podle jejich vzdalenosti
-#for item in test_data: #tenhle cyklus si muzu usetrit
-#    keywords_prepare_sort=[]
-#    for neighbor in item.neighbors:
-#        keywords_prepare_sort.append([neighbor, neighbor.jec]) 
-#    
-#    item.nereast_neighbors = sorted(keywords_prepare_sort, key=getKey, reverse=True)
-
-############
 
 
 

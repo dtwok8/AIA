@@ -109,6 +109,35 @@ POEM deskritpro se používá jen na šedoonový obrázek, my by jsme ho chtěli
 \subsection{Vyýpočet u šedotónového obrázku}
 
 
+\section{Textura}
+LBP i Gabor pracují s informací o intenzitě obrazu. Detekce hran. Obyčejné LBP problém s rotací.
+
+
+kombinace textur a barevne informace
+1. Vytvoření společného příznaku, 
+například rozšíření LBP na všechny barvené kanály
+informace o barvě a textuře se mohou oblivňovat protichůdně
+
+2. Vyhodnotit a klasifikovat příznaky odděleně a pak výslednou klasifikaci nějak s pojit z několika částí 
+	to je například JEC
+	
+	výhoda zachovává vlastnosti obou původních příznaků 
+	výpočetně náročnější a jeho úspěšnost je přímo závislá na způsobu kombinace obou informací	
+	
+vutbrno 117319 10 stranka
+
+
+
+
+Gabor filter je lineární filter používaný pro detekci hran. Frekvence a orientace reprezentující Gabor filter je podobná lidskému vnímání a jsou zvláště vhodné pro reprezentaci textury a rozlišování. 
+
+Gabor filtr reaguje na hrany a texturové změny. 
+
+Obrázky jsou filtrovány za použité reálné části z různých odlišních Gabor filtrů jader. Průměrný a rozptyl filtrovaných snímků jsou pak použity jako funkce pro klasifikaci, která je založena na nejméně kvadratické chyby pro jednoduchost.
+
+
+TODO Dohledat Haar a Gabor wavelety, přidat vzorečky a zase klidně i obrázky
+
 \subsection{Barva}
 U digitálního obrazu je barva reprezentovaná n-rozměrným vektorem. Jeho velikost a význam jednotlivých složek (tzv. barevných kanálů) zavisí na příslušném barevném prostoru. Počet bitů použitých k uložení buď celého vektoru nebo jeho jednotlivých složek se nazývá barevná hloubka (totožně bitová hloubka). Obvykle se můžeme setkat s hodnotami 8, 12, 14 a 16 bitů na kanál. 
 \\

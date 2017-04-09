@@ -13,14 +13,14 @@
 \contentsline {section}{\numberline {3.3}Textura}{9}{section.3.3}
 \contentsline {section}{\numberline {3.4}Kombinace vzd\IeC {\'a}lenost\IeC {\'\i }}{9}{section.3.4}
 \contentsline {section}{\numberline {3.5}P\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov}{10}{section.3.5}
-\contentsline {chapter}{\numberline {4}Testovac\IeC {\'\i } datab\IeC {\'a}ze}{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}\IeC {\v C}TK}{11}{section.4.1}
-\contentsline {section}{\numberline {4.2}ESP}{11}{section.4.2}
-\contentsline {section}{\numberline {4.3}iaprtc12}{11}{section.4.3}
-\contentsline {chapter}{\numberline {5}N\IeC {\'a}vrh syst\IeC {\'e}mu}{13}{chapter.5}
-\contentsline {chapter}{\numberline {6}Pou\IeC {\v z}it\IeC {\'e} programov\IeC {\'e} prost\IeC {\v r}edky}{14}{chapter.6}
-\contentsline {section}{\numberline {6.1}OpenCV}{14}{section.6.1}
-\contentsline {chapter}{\numberline {7}Vyhodnocen\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{15}{chapter.7}
-\contentsline {chapter}{\numberline {8}Z\IeC {\'a}v\IeC {\v e}r}{16}{chapter.8}
-\contentsline {chapter}{\numberline {9}U\IeC {\v z}ivatelsk\IeC {\'a} dokumentace}{17}{chapter.9}
-\contentsline {chapter}{Literatura}{18}{chapter*.5}
+\contentsline {chapter}{\numberline {4}Testovac\IeC {\'\i } datab\IeC {\'a}ze}{12}{chapter.4}
+\contentsline {section}{\numberline {4.1}\IeC {\v C}TK}{12}{section.4.1}
+\contentsline {section}{\numberline {4.2}ESP}{12}{section.4.2}
+\contentsline {section}{\numberline {4.3}iaprtc12}{12}{section.4.3}
+\contentsline {chapter}{\numberline {5}N\IeC {\'a}vrh syst\IeC {\'e}mu}{14}{chapter.5}
+\contentsline {chapter}{\numberline {6}Pou\IeC {\v z}it\IeC {\'e} programov\IeC {\'e} prost\IeC {\v r}edky}{15}{chapter.6}
+\contentsline {section}{\numberline {6.1}OpenCV}{15}{section.6.1}
+\contentsline {chapter}{\numberline {7}Vyhodnocen\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{16}{chapter.7}
+\contentsline {chapter}{\numberline {8}Z\IeC {\'a}v\IeC {\v e}r}{17}{chapter.8}
+\contentsline {chapter}{\numberline {9}U\IeC {\v z}ivatelsk\IeC {\'a} dokumentace}{18}{chapter.9}
+\contentsline {chapter}{Literatura}{19}{chapter*.5}

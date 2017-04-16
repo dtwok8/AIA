@@ -58,23 +58,27 @@ def load_pictures(listImages, outputFile, information):
         img = cv2.imread(split_line[0])      
     
         x = class_pictures.Pictures(split_line[0], split_line[1])
-        x.rgb = np.array(count_histogram(img), dtype=np.float32)
+        #x.rgb = np.array(count_histogram(img), dtype=np.float32)
         #x.rgb = count_histogram(img) 
         
         lab_image = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
-        x.lab = np.array(count_histogram(lab_image), dtype=np.float32)
-        #x.lab = count_histogram(lab_image) 
-
+        #x.lab = np.array(count_histogram(lab_image), dtype=np.float32)
+        x.lab = count_histogram(lab_image) 
+        print x.lab[0]
+        print x.lab[1]
+        print x.lab[2]
+        
         hsv_image = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-        x.hsv = np.array(count_histogram(hsv_image), dtype=np.float32)
+        #x.hsv = np.array(count_histogram(hsv_image), dtype=np.float32)
         #x.hsv = x.rgb = count_histogram(hsv_image) 
 
         listPictures.append(x)
+        exit()
     f.close()
     class_pictures.exportDataToFile(listPictures, outputFile)
 
 
-def count_histogram(img):
+#def count_histogram(img):
     """
         Spocita histogram na 16 bitovou hloubku pro obrazek poslany v parametru.
         
@@ -84,69 +88,69 @@ def count_histogram(img):
         Return:  
             list_histogram -- histogram jako trojrozmerny vektor -list
     """
-    list_histogram=[0,0,0]
-    pom_list=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-#    print ("------RGB--------")
-#    print "amin: {}, amax: {}".format(np.amin(img), np.amax(img))
-#    print "1: {} - {}, 2: {} - {}, 3: {} - {}".format(np.amin(img[:,:,0]),np.amax(img[:,:,0]),np.amin(img[:,:,1]), np.amax(img[:,:,1]), np.amin(img[:,:,2]), np.amax(img[:,:,1]))
-
-    for i in (0,1,2):
-        for x in range(len(img)):
-            for y in range(len(img[x])):
-                value = img.item(x,y,i) 
-                index = value/16
-                pom_list[index]=pom_list[index]+1
-#        print list
-        list_histogram[i] = pom_list
-        pom_list=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    return list_histogram
-
-#def count_histogram(img):
-#    array_rgb = np.zeros(shape=(3, 16), dtype=np.float32)
-#    array_pom = np.array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] , dtype=np.float32)
+#    list_histogram=[0,0,0]
+#    pom_list=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+##    print ("------RGB--------")
+##    print "amin: {}, amax: {}".format(np.amin(img), np.amax(img))
+##    print "1: {} - {}, 2: {} - {}, 3: {} - {}".format(np.amin(img[:,:,0]),np.amax(img[:,:,0]),np.amin(img[:,:,1]), np.amax(img[:,:,1]), np.amin(img[:,:,2]), np.amax(img[:,:,1]))
 #
-#    #print ("------RGB--------")
-#    #print "amin: {}, amax: {}".format(np.amin(img), np.amax(img))
-#    #print "1: {} - {}, 2: {} - {}, 3: {} - {}".format(np.amin(img[:,:,0]),np.amax(img[:,:,0]),np.amin(img[:,:,1]), np.amax(img[:,:,1]), np.amin(img[:,:,2]), np.amax(img[:,:,1]))
-#
-#    print img.shape
 #    for i in (0,1,2):
-#        print array_pom
-#        for x in range(len(img)):  
-#            
+#        for x in range(len(img)):
 #            for y in range(len(img[x])):
-#                value = img.item(x,y,i)
-#                #if(value < 1):
-#                    #print i# value/16
+#                value = img.item(x,y,i) 
 #                index = value/16
-#                if(i == 1):
-#                    index = int(value/16)
-#                    #print index
-#                    z = z +1
-#                    if(z > 13400):
-#                        print array_pom
-#                        print "z: {} index:{} value: {}".format(z, index, value)
-#                        
-#                        
-#                    if(z > 13500):
-#                        exit()
-#                    if(z == 13405):
-#                        
-#                        print array_pom
-#                        exit()
-#                    
-#                array_pom[index]=array_pom[index]+1
-#        #print array_pom
-#        print array_pom
-#        array_rgb[i] = array_pom
-#        array_pom=np.array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], dtype=np.float32)
-#        #print "format--------------------------------"
-#        #print type(array_rgb)
-#        #print type(array_pom)
-#    print "----------- konec metody -----------"
-#    return array_rgb
+#                pom_list[index]=pom_list[index]+1
+##        print list
+#        list_histogram[i] = pom_list
+#        pom_list=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+#    return list_histogram
+
+def count_histogram(img):
+    array_rgb = np.zeros(shape=(3, 16), dtype=np.float32)
+    array_pom = np.array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] , dtype=np.float32)
+
+    #print ("------RGB--------")
+    #print "amin: {}, amax: {}".format(np.amin(img), np.amax(img))
+    #print "1: {} - {}, 2: {} - {}, 3: {} - {}".format(np.amin(img[:,:,0]),np.amax(img[:,:,0]),np.amin(img[:,:,1]), np.amax(img[:,:,1]), np.amin(img[:,:,2]), np.amax(img[:,:,1]))
+    z=0
+    print img.shape
+    for i in (0,1,2):
+        print array_pom
+        for x in range(len(img)):  
+            
+            for y in range(len(img[x])):
+                value = img.item(x,y,i)
+                #if(value < 1):
+                    #print i# value/16
+                index = value/16
+                if(i == 1):
+                    index = int(value/16)
+                    #print index
+                    z = z +1
+                    if(z > 13400):
+                        print array_pom
+                        print "z: {} index:{} value: {}".format(z, index, value)
+                        
+                        
+                    if(z > 13500):
+                        exit()
+                    if(z == 13405):
+                        
+                        print array_pom
+                        
+                    
+                array_pom[index]=array_pom[index]+1
+        #print array_pom
+        print array_pom
+        array_rgb[i] = array_pom
+        array_pom=np.array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], dtype=np.float32)
+        #print "format--------------------------------"
+        #print type(array_rgb)
+        #print type(array_pom)
+    print "----------- konec metody -----------"
+    return array_rgb
 
 #spocita histogramy pro trenovaci mnozinu
-load_pictures(config.TRAIN_LIST, config.DATAFILE_TRAIN, "train")
+#load_pictures(config.TRAIN_LIST, config.DATAFILE_TRAIN, "train")
 #spocita histogrami pro testovaci mnozin
 load_pictures(config.TEST_LIST, config.DATAFILE_TEST, "test")

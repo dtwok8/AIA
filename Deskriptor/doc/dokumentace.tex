@@ -108,6 +108,20 @@ Cílem práce je navrhnout a implementovat software umožňující automatickou 
 POEM deskritpro se používá jen na šedoonový obrázek, my by jsme ho chtěli na barevný obrázek
 \subsection{Vyýpočet u šedotónového obrázku}
 
+\subsection{Výpočet}
+Nejprve je potřeba vypočítát gradient. Gradeint je směr růstu. Podle některých studii jsou nejlepší jednoduché masky jako je např. $[1, 0, -1]$ a $[1, 0, -1]^T$. Okraje se buď vypouštějí nebo se dají doplnit (existuje více způsobů doplňění). Masky použijeme na obrázek a vypadnou nám obrázky o rozměrech mxn každý bod původního obrázku je reprezentován jako 2D vektor. Pokud si vektor rozložíme na x a y složku dostali bychom dva obrázky jeden, který reprezentuje obrázek po použití x-ového filtru, a druhý který reprezentuje obrázek po použití y-filtru. Přičemž použití  y filtru by nám mělo zvíraznit hrany v ylonovém směru (svislé) a x zvírazní hrany v x směru (vodorovné).
+
+TODO doplnit obrázky gradient 
+
+Magnituda\\
+Magnituda je velikost směru růstu lze si ji představit jako velikost směru růstu pro každý pixel. Počítá se pro každý pixel. Takže se dá počítat jako velikost těch 2D vektrů které jsme dostaly při výpočtu gradientu.
+Magnituda představuje velikost vektoru gradientu.
+Velikost vektoru v rovině:
+\begin{align}
+   \label{velikost_vektoru} |u| = \sqrt{u_1^2 + u_2^2}
+\end{align}
+
+
 
 \section{Textura}
 LBP i Gabor pracují s informací o intenzitě obrazu. Detekce hran. Obyčejné LBP problém s rotací.

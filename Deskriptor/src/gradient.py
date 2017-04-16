@@ -13,48 +13,110 @@ import numpy as np
 from matplotlib import pyplot as plt
  
  
-#moje
+def count_gradient(img):
+    anchor = [ -1, 1 ];
+    delta = 0;
+    ddepth = -1;
+
+    x_kernel = np.array([1.0, 0.0, -1.0]).reshape((1,3))
+    y_kernel = np.array([1.0, 0.0, -1.0])
+
+    gradient = np.zeros((2, img.shape[0], img.shape[1]), dtype = float)
+    gradient[0,:,:] = cv2.filter2D(img, -1, x_kernel, borderType=cv2.BORDER_REPLICATE) #, dtype = np.float)
+    gradient[1,:,:] = cv2.filter2D(img, -1, y_kernel, anchor=(-1,0), borderType=cv2.BORDER_REPLICATE) #, dtype = np.float)
+    return gradient
+    
+def count_magnitude(gradient):
+    magnitude = cv2.magnitude(gradient[0,:,:],gradient[1,:,:])
+    return magnitude
 
 img = cv2.imread("../../Data/image_labelling_datasets/iaprtc12/images/01/1210.jpg", 0)
+gradient = count_gradient(img)
+magnitude = count_magnitude(gradient) 
 
 
-anchor = [ -1, 1 ];
-delta = 0;
-ddepth = -1;
+cv2.imwrite('gradientX.png', gradient[0,:,:])
+cv2.imwrite('gradientY.png', gradient[1,:,:])
+cv2.imwrite('magnitude.png', magnitude)
 
-#kernel = np.ones((5,5),np.float32)/25
-#dst = cv2.filter2D(img,ddepth,kernel)
-#
-#sepFilter2D(source5x5img, dst, deepth, filterX, filterY);
+def smer(img, gradient):
+    #Compute gradient magnitude at each pixel
+    directions = 3
+    bin_size = 2 * np.pi / directions
+    directional = np.zeros((directions, img.shape[0], img.shape[1]), dtype=float)
 
-x_kernel = np.array([1.0, 0.0, -1.0]).reshape((1,3))
-y_kernel = np.array([1.0, 0.0, -1.0])
+    dirs = np.arctan2(gradient[0,:,:], gradient[1,:,:]) + np.pi - np.pi / 1000000
 
-gradient =  cv2.sepFilter2D(img, ddepth, x_kernel, y_kernel)
-print gradient.shape
 
-gradient = np.zeros((2, img.shape[0], img.shape[1]), dtype = float)
-gradient[0,:,:] = cv2.filter2D(img, -1, x_kernel, borderType=cv2.BORDER_REPLICATE) #, dtype = np.float)
-gradient[1,:,:] = cv2.filter2D(img, -1, y_kernel, anchor=(-1,0), borderType=cv2.BORDER_REPLICATE) #, dtype = np.float)
+    dirs[dirs < 0] = 0
+    mags = np.sqrt(gradient[0,:,:]**2 + gradient[1,:,:]**2) #znova pocitam magnitudu ?
 
-#TODO co dela anchor?
-print gradient
+    for d in range(directions):
+          lower = d * bin_size
+          upper = (d + 1) * bin_size
+          directional[d] = dirs
+          directional[d][directional[d] < lower] = 0
+          directional[d][directional[d] > upper] = 0
+          directional[d][directional[d] > 0] = 1 
+          directional[d] *= mags
 
-magnitudy = cv2.magnitude(gradient[0,:,:],gradient[1,:,:])
-print magnitudy
-print magnitudy.shape
+    print directional
 
-plt.subplot(1,3,1),plt.imshow(gradient[0,:,:],cmap = 'gray')
-plt.title('x'), plt.xticks([]), plt.yticks([])
-plt.subplot(1,3,2),plt.imshow(gradient[1,:,:],cmap = 'gray')
-plt.title('y'), plt.xticks([]), plt.yticks([])
-plt.subplot(1,3,3),plt.imshow(magnitudy,cmap = 'gray')
-plt.title('magnituda'), plt.xticks([]), plt.yticks([]) 
-
-plt.show()
 #Compute gradient magnitude at each pixel
+directions = 3
+bin_size = 2 * np.pi / directions
+directional = np.zeros((directions, img.shape[0], img.shape[1]), dtype=float)
 
+x = np.array([-1, +1, +1, -1])
+y = np.array([-1, -1, +1, +1])
+asd = np.arctan2(y, x) * 180 / np.pi
+print asd
 
+dirs = np.arctan2(gradient[0,:,:], gradient[1,:,:]) * 180 / np.pi # vypocte to úhel
+print dirs
+
+# do jakeho kvadrantu to patri bezva porad mi vychazi jen ten prvni
+print dirs.shape
+print "{} {} {}".format(gradient[0,350,479], gradient[1,350,479], dirs[350,479])
+
+ 
+
+for i in range(len(dirs)):
+    for y in range(len(dirs[i])):
+        if(dirs[i][y] < 0):
+            dirs[i][y] = 360 - dirs[i][y]
+            print "prevadime"
+        if(dirs[i][y] >= 0 and dirs[i][y] < 120):
+            directional[0][i][y] = magnitude[i][y]
+        if(dirs[i][y] >= 120 and dirs[i][y] < 270):
+            directional[1][i][y] = magnitude[i][y]
+        if(dirs[i][y] >= 270 and dirs[i][y] < 360):
+            directional[2][i][y] = magnitude[i][y]    
+
+cv2.imwrite('directional1.png', directional[0,:,:])
+cv2.imwrite('directional2.png', directional[1,:,:])
+cv2.imwrite('directional3.png', directional[2,:,:])
+
+exit()
+dirs[dirs < 0] = 0
+mags = np.sqrt(gradient[0,:,:]**2 + gradient[1,:,:]**2) #znova pocitam magnitudu ?
+
+for d in range(directions):
+      lower = d * bin_size
+      upper = (d + 1) * bin_size
+      directional[d] = dirs
+      directional[d][directional[d] < lower] = 0
+      directional[d][directional[d] > upper] = 0
+      directional[d][directional[d] > 0] = 1 
+      directional[d] *= mags
+
+print directional
+
+    
+    
+cv2.imwrite('directional1.png', directional[0,:,:])
+cv2.imwrite('directional2.png', directional[1,:,:])
+cv2.imwrite('directional3.png', directional[2,:,:])
 
 #cv2.sepFilter2D(src, ddepth, kernelX, kernelY)
 #print kernel

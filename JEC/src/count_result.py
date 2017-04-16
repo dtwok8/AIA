@@ -18,12 +18,20 @@ import label_transfer
 
 
 def getKeywords(train_data):
+    """
+        Zjisti vsechny slova z trenovaci mnoziny a pro kazde slovo vytvori instanci v keywords_list.
+        Pres slovnik je to reseno z duvodu redundance.
+
+        Keyword arguments:
+            train_data -- list trenovacich dat (obrazku)
+        
+    """
     dictionary ={}
     
     for picture in train_data:
         for keyword in picture.keywords:
             if((keyword in dictionary) == False):    
-                dictionary[keyword] = {}
+                dictionary[keyword] = 0
     
     keywords_list = []
     for item in dictionary.items():
@@ -32,17 +40,33 @@ def getKeywords(train_data):
     return keywords_list
 
 def count_precsion_recall(list_keywords, test_data):
+    """
+        Spocita precision a recall pro kazde slovo. 
+        
+        Keyword arguments:
+            list_keywords -- list obsahujici objekty klicova slova
+            test_data -- list testovaci dat (obrazku)
+    """
+    
+    collectively_result = {}
+    collectively_result['count_nonzero_word'] = 0
+    collectively_result['count_keywords'] = len(list_keywords)
+
+    
+    count_precision = 0
+    count_recall = 0
+    
     print len (list_keywords)
     for item in list_keywords:
         w_a = 0
         w_c = 0
         w_h = 0
+        
 
         #print item.keyword
         for picture in test_data:
             #print picture.keywords
             #print picture.our_assignment_keywords
-            # uz vim kde je chyba prave v tom ze tam je [klicovy slovo][pocet]
             if (item.keyword in picture.keywords):
                 w_h = w_h + 1
                 #print "wh"
@@ -52,8 +76,7 @@ def count_precsion_recall(list_keywords, test_data):
             if((item.keyword in picture.keywords) and (item.keyword in picture.our_assignment_keywords)):
                 w_c = w_c + 1
                 #print "w_c"
-                
-  
+
                 
         item.w_auto = w_a
         item.w_human = w_h
@@ -61,14 +84,26 @@ def count_precsion_recall(list_keywords, test_data):
         
         if(w_a != 0): 
             item.precision= w_c/float(w_a)
+            count_precision = count_precision +  item.precision
         if(w_h != 0): 
             item.recall = w_c/float(w_h)
+            count_recall = count_recall + item.recall
+            
 
         if(item.recall > 0 and item.precision > 0):
+            collectively_result['count_nonzero_word'] = collectively_result['count_nonzero_word'] + 1
             print '{} recall: {} precision: {} {} {} {} '.format(item.keyword, item.recall, item.precision, item.w_auto, item.w_human, item.w_correctly)
+    
+    collectively_result['precision'] = count_precision / len(list_keywords)
+    collectively_result['recall'] = count_recall / len(list_keywords)
+    print "Souhrn: nenulových slov {} z {}  precision {} recall {} \n".format(collectively_result['count_nonzero_word'], collectively_result['count_keywords'], collectively_result['precision'], collectively_result['recall'])
+    return collectively_result
+    
         
-def write_keyword_result_to_txt_file(list_keywords):
+def write_keyword_result_to_txt_file(list_keywords, collectively_result):
     soubor = open(config.KEYWORDS_RESULT, 'w')
+    
+    soubor.write("Souhrn: nenulových slov {} z {}  precision {} recall {} \n".format(collectively_result['count_nonzero_word'], collectively_result['count_keywords'],collectively_result['precision'], collectively_result['recall']))
     
     for word in list_keywords:
         soubor.write("{} - precision: {} recall: {} \n".format(word.keyword, word.precision, word.recall))
@@ -102,6 +137,5 @@ for item in test_data:
 
 
 list_keywords = getKeywords(train_data) #vsechny klicovy slova
-count_precsion_recall(list_keywords, test_data) #zjistit jestli jsou spravne přiřazený   
-write_keyword_result_to_txt_file(list_keywords)
-
+collectively_result = count_precsion_recall(list_keywords, test_data) #zjistit jestli jsou spravne přiřazený   
+write_keyword_result_to_txt_file(list_keywords, collectively_result)

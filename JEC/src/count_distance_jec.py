@@ -37,19 +37,19 @@ def count_distance(train_data, test_image):
     #zaroven spocitame minmum a maximum pro dany testovaci obrazek
     for picture in train_data:
         pom_neighbor = class_neighbor.Neighbor(picture)
-        pom_neighbor.rgb_distance = cv2.norm(picture.lab, test_image.lab, cv2.NORM_L1)
+        pom_neighbor.rgb_distance = cv2.norm(picture.lab, test_image.lab, config.RGB_DISTANCE)
         if(pom_neighbor.rgb_distance < rgb_min):
             rgb_min = pom_neighbor.rgb_distance
         if(pom_neighbor.rgb_distance > rgb_max):
             rgb_max = pom_neighbor.rgb_distance
         
-        pom_neighbor.lab_distance  = cv2.compareHist(picture.lab, test_image.lab, cv2.HISTCMP_KL_DIV)            
+        pom_neighbor.lab_distance  = cv2.compareHist(picture.lab, test_image.lab, config.LAB_DISTANCE)            
         if(pom_neighbor.lab_distance < lab_min):
             lab_min = pom_neighbor.lab_distance
         if(pom_neighbor.lab_distance > lab_max):
             lab_max = pom_neighbor.lab_distance        
         
-        pom_neighbor.hsv_distance = cv2.norm(picture.hsv, test_image.hsv, cv2.NORM_L1)
+        pom_neighbor.hsv_distance = cv2.norm(picture.hsv, test_image.hsv, config.RGB_DISTANCE)
         if(pom_neighbor.hsv_distance < hsv_min):
             hsv_min = pom_neighbor.hsv_distance
         if(pom_neighbor.hsv_distance > hsv_max):
@@ -57,32 +57,50 @@ def count_distance(train_data, test_image):
         
         pom_nei.append(pom_neighbor) #pridani souseda
 
-    count_jec_n_3(pom_nei,test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min) 
+    count_jec(pom_nei,test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min) 
     
     keywords_prepare_sort=[]
     for neighbor in pom_nei:
         keywords_prepare_sort.append([neighbor, neighbor.jec]) 
 
-    keywords_prepare_sort = sorted(keywords_prepare_sort, key=getKey, reverse=True)
+    keywords_prepare_sort = sorted(keywords_prepare_sort, key=getKey, reverse=False)
 
     item.nereast_neighbors = keywords_prepare_sort[0:config.COUNT_NEIGHBORS]
 
+def count_n():
+    n = 0
+    if(config.RGB == True):
+        n = n +1
+    if(config.LAB == True):
+        n = n + 1
+    if(config.HSV == True):
+        n = n + 1
+    
+    return n
+
 #spocita JEC pro tri parametry rgb, hsv, lab, ty to musíš naškálovat od 0 o 1 takže asi ten jec můžeš počítat stejně až budeš mít všechny ty výsledky
-def count_jec_n_3(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min):
+def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min):
     #print ( rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)
+    n = count_n()
+
     for neighbor in pom_nei:
+        sum_distance = 0
         #naskalovani na 0 - 1
-        neighbor.rgb_distance_scale = ((neighbor.rgb_distance-rgb_min)/((rgb_max - rgb_min)/100 ))/100
-        #print item.rgb_distance_scale
-        
-        neighbor.lab_distance_scale = ((neighbor.lab_distance-lab_min)/((lab_max - lab_min)/100 ))/100 
-        #print ('lab', lab_min, lab_max, item.lab_distance,item.lab_distance_scale)
-        
-        neighbor.hsv_distance_scale = ((neighbor.hsv_distance-hsv_min)/((hsv_max - hsv_min)/100 ))/100
+        if(config.RGB == True):
+            neighbor.rgb_distance_scale = (neighbor.rgb_distance-rgb_min)/((rgb_max - rgb_min))
+            sum_distance = sum_distance + neighbor.rgb_distance_scale
+
+        if(config.LAB == True):
+            neighbor.lab_distance_scale = (neighbor.lab_distance-lab_min)/((lab_max - lab_min)) 
+            sum_distance = sum_distance + neighbor.lab_distance_scale
+
+        if(config.HSV == True):
+            neighbor.hsv_distance_scale = (neighbor.hsv_distance-hsv_min)/((hsv_max - hsv_min))
+            sum_distance = sum_distance + neighbor.hsv_distance_scale
         #print item.hsv_distance_scale
         
         #spocteni JEC - zkombinovani priznaku
-        neighbor.jec = (neighbor.rgb_distance_scale/3) + (neighbor.lab_distance_scale/3) + (neighbor.hsv_distance_scale/3)
+        neighbor.jec = sum_distance / n
         #print item.jec
         
         if(neighbor.jec > 1):

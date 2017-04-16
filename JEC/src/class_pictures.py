@@ -28,15 +28,15 @@ class Pictures:
         keywordsInString = keywordsInString.strip() # odstrani /n nakonci
         self.keywords = keywordsInString.split(" ")
     
-    def __init__(self, name, keywordsByHumanInString, keywordsByAutomatInString):
-        self.data = []
-        self.name = name
-        
-        keywordsByHumanInString = keywordsByHumanInString.strip() # odstrani /n nakonci
-        self.keywords = keywordsByHumanInString.split(" ")
-        
-        keywordsByAutomatInString = keywordsByAutomatInString.strip() # odstrani /n nakonci
-        self.our_assignment_keywords = keywordsByAutomatInString.split(" ")
+#    def __init__(self, name, keywordsByHumanInString, keywordsByAutomatInString):
+#        self.data = []
+#        self.name = name
+#        
+#        keywordsByHumanInString = keywordsByHumanInString.strip() # odstrani /n nakonci
+#        self.keywords = keywordsByHumanInString.split(" ")
+#        
+#        keywordsByAutomatInString = keywordsByAutomatInString.strip() # odstrani /n nakonci
+#        self.our_assignment_keywords = keywordsByAutomatInString.split(" ")
     
     #nejde mi to rozchodit
     def setKeywords(self, keywordsInString): 

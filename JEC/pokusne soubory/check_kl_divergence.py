@@ -27,7 +27,10 @@ def kl(a, b):
         """The KL divergence is defined only if Q(i)=0 implies P(i)=0, for all i (absolute continuity)"""
         #if(a[i] != 0 and b[i] != 0):
         if(a[i] != 0): # tohle by melo byt spravne ale hazi to chybu
-            sum = sum + a[i] * math.log(a[i] / b[i], math.e)
+            if(b[i] ==0):
+                sum = sum + a[i] * math.log(a[i] / (b[i] + 0.0000001), math.e)
+            else:
+                sum = sum + a[i] * math.log(a[i] / b[i], math.e)
             #sum = sum + a[i] * (math.log(a[i]) -  math.log(b[i]))
         
     return sum
@@ -42,7 +45,6 @@ a = np.asarray([1,1,1,1,1,1,1], dtype=np.float32)
 b = np.asarray([1,1,1,1,1,1,2], dtype=np.float32)
 print cv2.compareHist(a, b, cv2.HISTCMP_KL_DIV)
 print kl([1,1,0,1,1,1,1,1], [1,1,0,1,1,1,1,2])
-
 
 #zretezeni
 histogram1 = np.zeros(shape=(3*16), dtype=np.float32)
@@ -64,5 +66,6 @@ for slozka in test_data[1].lab:
         
 
 print cv2.compareHist(test_data[0].lab, test_data[1].lab, cv2.HISTCMP_KL_DIV)
+print "------------"
 print cv2.compareHist(histogram1, histogram2, cv2.HISTCMP_KL_DIV)
 print kl(histogram1, histogram2)

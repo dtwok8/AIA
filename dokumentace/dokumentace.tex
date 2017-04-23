@@ -118,10 +118,51 @@ V použité metodě získáme vlastnosti z obrázků ve třech rozdílných bare
 
 Pro RGB, HSV i LAB použijeme barevnou hloubku 16 bitů na kanál histogramu v jejich příslušném barevném prostoru. 
 
+\begin{figure}[ht]
+		\centering
+		\includegraphics[height=100px]{./img/img_histogram.jpg}	
+		\includegraphics[height=100px]{./img/bgr_histogram.png}	
+		\caption{RGB histogram - zastoupení jednotlivých složek v obrázku}
+\end{figure}
+
+\begin{figure}[ht]
+		\centering
+		\includegraphics[height=100px]{./img/img_histogram.jpg}
+		\includegraphics[height=100px]{./img/bgr_r.jpg}
+		\includegraphics[height=100px]{./img/bgr_g.jpg}
+		\includegraphics[height=100px]{./img/bgr_b.jpg}	
+		\caption{Barevný prostor RGB a jeho jednotlivé složky v pořadí R, G, B}
+\end{figure}
+
+\begin{figure}[ht]
+		\centering
+		\includegraphics[height=100px]{./img/img_histogram.jpg}
+		\includegraphics[height=100px]{./img/lab_l.jpg}
+		\includegraphics[height=100px]{./img/lab_a.jpg}
+		\includegraphics[height=100px]{./img/lab_b.jpg}	
+		\caption{Barevný prostor LAB a jeho jednotlivé složky v pořadí L, A, B}
+\end{figure}
+
+\begin{figure}[ht]
+		\centering
+		\includegraphics[height=100px]{./img/img_histogram.jpg}
+		\includegraphics[height=100px]{./img/hsv_h.jpg}
+		\includegraphics[height=100px]{./img/hsv_s.jpg}
+		\includegraphics[height=100px]{./img/hsv_v.jpg}	
+		\caption{Barevný prostor HSV a jeho jednotlivé složky v pořadí H, S, V}
+\end{figure}
+
+\subsection{textura}
 Jako reprezentace textur budou použity Gabor a Haar wavelety. Každý obrázek bude filtrován s Gabor wavelet na třech škálách a čtyřech orientacích.
  
 \section{Vzdálenosti}
- K určení příslušné vzdálenosti se můžeme setkat se čtyřmi měřítky vzdálenosti pro histogramy a rozdělení (K L-divergence, $\chi^2$ statistika, L1 - vzdálenost a L2 - vzdálenost). Na RGB a HSV je nejlépší použít L1 zatímco pro LAB je nejvhodnější K L-divergence. 
+ K určení příslušné vzdálenosti se můžeme setkat se čtyřmi měřítky vzdálenosti pro histogramy a rozdělení Kullaback-Leibler divergence KL - divergence, $\chi^2$ statistika, L1 - vzdálenost a L2 - vzdálenost. Na RGB a HSV je nejlépší použít L1 zatímco pro LAB je nejvhodnější KL - divergence. 
+
+Problém s KL - divergencí nastává pouze tehdy, když se histogramy nebudou shodovat v nulách. Jeden předpoklad pro fungování tohoto vzorce je totiž že když je $Q(i) = 0$ tak zároveň musí být i $P(i) = 0$.    
+\begin{align}
+   \label{kl}  D_{KL} (P || Q) = \sum_{i} P(i) \log_e({\frac{P(i)}{Q(i)}}) 
+\end{align}
+
  
 \section{Textura}
 
@@ -160,7 +201,16 @@ Tento algoritmus pro přenos klíčových slov je poněkud odlišný od algoritm
 V souhrnu použitá metoda je složenina ze dvou složenin a to obrázkové vzdálenosti (JEC) a výše popsaným algoritmem na přenášení klíčových slov.
 
 \chapter{Testovací databáze}
-Pro natrénování a následné testování byla použita data z databází ČTK, ESP a IAPRC.
+Pro natrénování a následné testování byla použita data z databází ČTK, ESP a IAPRC. Kolekce obrázků na natrénování musí být pečlivě vybrána aby zahrnovala co možná největši okruh z různých témat.
+
+\section{iaprtc12}
+Data iaprtc12 obsahují 20 000 obrázků ve formátu jpg s celkovým počtem 291 klíčových slov. Ke každému obrázku jsou přiložena metadata ve formátu XML, která obsahují informace o obrázku v různých jazycích. Kromě angličtiny je tam i například španělština nebo němčina. V metadatatech ovšem nenajdeme klíčová slova tak jak by jsme si je představovali, ale v různých tagách nalezneme například titulek obrázku, který může vypadat například The Plaza de Armas, a v tagu description je například  a woman and a child are walking over the square.
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=140px]{./img/iaprtc12.jpg}	
+		\caption{Ukázka obrázku s klíčovými slovy: front lake man mountain rock sky summit}
+\end{figure}
 
 \section{ČTK}
 Data od ČTK obsahují 3 383 obrázků. Ke každému obrázku jsou přidána metadata ve formátu XML, která obsahují klíčová slova a další informace o obrázku. 
@@ -168,15 +218,8 @@ Data od ČTK obsahují 3 383 obrázků. Ke každému obrázku jsou přidána met
 \section{ESP}
 Data od ESP obsahují 67 796 obrázků ve formátu jpg. Ke každému obrázku je přiřazen soubor ve formátu desc, který obsahuje anglické anotace.
 
-\begin{figure}[h]
-		\centering
-		\includegraphics[width=140px]{./img/ESP.jpg}	
-		\caption{Ukázka obrázku s klíčovými slovy: tower, france, high, gold, paris, yellow, night, light, black, eiffel, dark}
-\end{figure}
 
-\section{iaprtc12}
-Data iaprtc12 obsahují 13 031 obrázků ve formátu jpg. Ke každému obrázku jsou přiložena metadata ve formátu XML, která obsahují 
-infromace o obrázku v různých jazycích. Kromě angličtiny je tam i například španělština nebo němčina. V metadatatech ovšem nenajdeme klíčová slova tak jak by jsme si je představovali, ale v různých tagách nalezneme například titulek obrázku, který může vypadat například The Plaza de Armas, a v tagu description je například  a woman and a child are walking over the square.
+
 
 
 \chapter{Návrh systému}

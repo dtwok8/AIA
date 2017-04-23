@@ -19,7 +19,7 @@ COUNT_KEYWORDS = 5
 
 #nastaveni priznaku
 #KL - divergence cv2.HISTCMP_KL_DIV
-#euklidovska v2.NORM_L1
+#L1 v2.NORM_L1
 RGB = True
 RGB_DISTANCE = cv2.NORM_L1 # hele tohle neni uplne dobrej napad mas tam totiz dve metody compare a norm
 LAB = True

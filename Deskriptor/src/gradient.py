@@ -8,126 +8,151 @@ Created on Wed Sep 21 15:02:46 2016
 
 import cv2
 import numpy as np
+import math
 
 
 from matplotlib import pyplot as plt
  
+DEBUG = True 
  
-def count_gradient(img):
-#    anchor = [ -1, 1 ];
-#    delta = 0;
-#    ddepth = -1;
-
-#    x_kernel = np.array([1.0, 0.0, -1.0]).reshape((1,3))
-#    y_kernel = np.array([1.0, 0.0, -1.0])
-    x_kernel = np.array([-1.0, 1.0]).reshape((1,2))
-    y_kernel = np.array([-1.0, 1.0])
-    img = img.astype(float)
-    gradient = np.zeros((2, img.shape[0], img.shape[1]), dtype = float)
-    gradient[0,:,:] = cv2.filter2D(img, -1, x_kernel, borderType=cv2.BORDER_REPLICATE)
-    gradient[1,:,:] = cv2.filter2D(img, -1, y_kernel, borderType=cv2.BORDER_REPLICATE)
-    print gradient[0,:,:]
-    #exit()
-    return gradient
-    
-def count_magnitude(gradient):
-    magnitude = cv2.magnitude(gradient[0,:,:],gradient[1,:,:])
-    print magnitude
-    return magnitude
-
-
-
-def smer(img, gradient):
-    #Compute gradient magnitude at each pixel
-    directions = 3
-    bin_size = 2 * np.pi / directions
-    directional = np.zeros((directions, img.shape[0], img.shape[1]), dtype=float)
-
-    dirs = np.arctan2(gradient[0,:,:], gradient[1,:,:]) + np.pi - np.pi / 1000000
-
-
-    dirs[dirs < 0] = 0
-    mags = np.sqrt(gradient[0,:,:]**2 + gradient[1,:,:]**2) #znova pocitam magnitudu ?
-
-    for d in range(directions):
-          lower = d * bin_size
-          upper = (d + 1) * bin_size
-          directional[d] = dirs
-          directional[d][directional[d] < lower] = 0
-          directional[d][directional[d] > upper] = 0
-          directional[d][directional[d] > 0] = 1 
-          directional[d] *= mags
-
-    print directional
-
-
-def compute_direction(directions, gradient, magnitude):
-    dirs = np.arctan2(gradient[0,:,:], gradient[1,:,:]) * 180 / np.pi # vypocte to úhel
-    
-    soubor = open("uhly.txt", 'w')  
-    for row in dirs:
+ 
+def write_matrix_file(matrix, file_name):
+    soubor = open(file_name, 'w')
+    for row in matrix:
         for item in row:
             soubor.write(" {} ".format(item))
         soubor.write("\n")
-    soubor.close()
-    directional = np.zeros((directions, gradient[0].shape[0], gradient[0].shape[1]), dtype=float)
+    soubor.close()    
+
     
-    for i in range(len(dirs)):
-        for y in range(len(dirs[i])):
-            if(dirs[i][y] < 0):
-                dirs[i][y] = 360 - dirs[i][y]
-                print "prevadime"
-            if(dirs[i][y] >= 0 and dirs[i][y] < 120):
-                directional[0][i][y] = magnitude[i][y]
-            if(dirs[i][y] >= 120 and dirs[i][y] < 270):
-                directional[1][i][y] = magnitude[i][y]
-            if(dirs[i][y] >= 270 and dirs[i][y] < 360):
-                directional[2][i][y] = magnitude[i][y]    
+def count_gradient(img):
+    ddepth = -1; #when ddepth=-1, the output image will have the same depth as the source.
+
+    img = img.astype(float) #prevedeme obrazek na float, v zakladu je uint, kdyz to neudelame tak nam misto zapornych cisel vyjde v gradientech 0
+    
+    x_kernel = np.array([1.0, 0.0, -1.0]).reshape((1,3))
+    y_kernel = np.array([1.0, 0.0, -1.0])
+    #x_kernel = np.array([-1.0, 1.0]).reshape((1,2))
+    #y_kernel = np.array([-1.0, 1.0])
+    
+    gradient = np.zeros((2, img.shape[0], img.shape[1]), dtype = float)
+    gradient[0,:,:] = cv2.filter2D(img, ddepth, x_kernel, borderType=cv2.BORDER_REPLICATE)
+    gradient[1,:,:] = cv2.filter2D(img, ddepth, y_kernel, borderType=cv2.BORDER_REPLICATE)
+    
+    if (DEBUG):
+        write_matrix_file(gradient[0], "gradientX.txt")
+        write_matrix_file(gradient[1], "gradientY.txt")
+        cv2.imwrite('gradientX.png', gradient[0,:,:])
+        cv2.imwrite('gradientY.png', gradient[1,:,:])
+    
+    return gradient
+
+    
+def count_magnitude(gradient):
+    magnitude = cv2.magnitude(gradient[0,:,:],gradient[1,:,:])
+    
+    if (DEBUG):
+        write_matrix_file(magnitude, "magnitude.txt")
+        cv2.imwrite('magnitude.png', magnitude)
+        
+    return magnitude
+
+def count_phase(gradient):
+    phase = cv2.phase(gradient[0,:,:], gradient[1,:,:], angleInDegrees=False)
+    #angleInDegrees – when true, the input angles are measured in degrees, otherwise, they are measured in radians.
+    
+    if (DEBUG):
+        write_matrix_file(phase, "phase.txt")
+        
+    return phase
+
+def compute_direction(count_directions, gradient, magnitude): 
+    """
+        Spocita uhly kam vektor smeruje a rozradi se do matic podle smeru (pocet smeru = count_directions)
+    """
+    phases = cv2.phase(gradient[0,:,:], gradient[1,:,:], angleInDegrees=False)
+    #angleInDegrees – when true, the input angles are measured in degrees, otherwise, they are measured in radians.
+    
+    if (DEBUG):
+        write_matrix_file(phases, "phase.txt")
+    
+    size_of_direction = 2 * math.pi / count_directions
+    
+    #vytvoreni matice na magnitudy rozrazene podle smeru
+    directional = np.zeros((count_directions, gradient[0].shape[0], gradient[0].shape[1]), dtype=float)
+    
+    for x in range(len(phases)):
+        for y in range(len(phases[x])):            
+            for i in range(count_directions):
+                if(phases[x][y] >= (i*size_of_direction) and phases[x][y] < ((i+1)*size_of_direction)):
+                    directional[i][x][y] = magnitude[x][y]
+
+    if (DEBUG):
+    
+        for i in range(len(directional)):
+            write_matrix_file(directional[i,:,:], "directional{}.txt".format(i))
+            cv2.imwrite('directional{}.png'.format(i), directional[i,:,:])
 
     return directional
 
-def compute_aems(directional, img):
-    cell_size = 7
-    directions = 3
+
+def compute_aems(count_directions, cell_size, directional):
+    """
+    
+    """
     # use either convolution or integral image
     kernel = np.ones((cell_size, cell_size))
-    aems = np.zeros((directions, img.shape[0], img.shape[1]), dtype=float)
-    for d in range(directions):
+    aems = np.zeros((count_directions, img.shape[0], img.shape[1]), dtype=float)
+    for d in range(count_directions):
         aems[d, :, :] = cv2.filter2D(directional[d, :, :], -1, kernel, borderType=cv2.BORDER_REPLICATE)
     
+    
+    if (DEBUG):
+        for d in range(len(aems)):
+            write_matrix_file(aems[d,:,:], "aems{}.txt".format(d))
+            cv2.imwrite('aems{}.png'.format(d), aems[d,:,:])
+    
+
+        for d in range(len(aems)): 
+            cv2.imwrite('aems_deleno{}.png'.format(d), (aems[d,:,:]/cell_size))
     return aems
     
         
-def compute_lbp(directions, aems):
-    block_size = 10
+def compute_lbp(directions, aems, block_size, tau):
     bordersize = block_size / 2 + 1
     
     lbp = np.zeros(aems.shape, dtype=np.uint8)
-    for d in range(directions):
+    for d in range(len(directions)):
         border_img = cv2.copyMakeBorder(aems[d, :, :], top=bordersize, bottom=bordersize, left=bordersize, right=bordersize, borderType=cv2.BORDER_REPLICATE)
 
         for r in range(bordersize, border_img.shape[0] - bordersize):
             #print r
             for c in range(bordersize, border_img.shape[1] - bordersize):
-                #print r, c
-                lbp[d, r - bordersize, c - bordersize] = compute_lbp_value(r, c, border_img)
+                #print r, c 
+                #do LBP posilam cely block
+                lbp[d, r - bordersize, c - bordersize] = compute_lbp_value(r, c, border_img, block_size, tau)
                 #break
             #break
         #break
+        
+        if (DEBUG):
+            for i in range(len(lbp)):
+                write_matrix_file(lbp[i,:,:], "lbp{}.txt".format(i))
+                cv2.imwrite('lbp{}.png'.format(i), lbp[i,:,:])
     return lbp
 
 
-def compute_lbp_value(r, c, border_img):
-    block_size = 10
+def compute_lbp_value(r, c, border_img, block_size, tau):
     radius = float(block_size) / 2
-    tau = 4
-    #print "diameter:", r
+
     val = 0
     center = border_img[r, c]
     #print "Computing lbp val for", repr(r), repr(c), "center val:", center
-    for i in range(8):
-        x = np.cos(i * 2 * np.pi / 8) * radius
-        y = np.sin(i * 2 * np.pi / 8) * radius
+    count_pixels = 8
+    for i in range(count_pixels): # vyberu si jen 8 pixelu z celeho kola
+    #2 * np.pi / cout_pixels - rozdelim celou periodu pi na 8 casti a vezmu vzdycky i-tou case, tu stcim do konsinu a posunu to na okraj radius
+        x = np.cos(i * 2 * np.pi / count_pixels) * radius
+        y = np.sin(i * 2 * np.pi / count_pixels) * radius
         #print x, y
         if False: # self.interpolation:      
             v = 0#interpolate(c + x, r - y, border_img)
@@ -138,28 +163,25 @@ def compute_lbp_value(r, c, border_img):
         #  val += 1
         #val = val << 1;   
         if (v - center) >= tau:       
-            val += np.power(2, i)
+            val += np.power(2, i) # 2 na i-tou
         #print "akt lbp val:", val
     return val
 
 
-img = cv2.imread("../../Data/image_labelling_datasets/iaprtc12/images/01/1210.jpg", 0)
-img = np.float32(img) / 255.0
-img = np.array([[8, 7, 5, 5], [8, 7, 5, 5],[1,2,4, 4],[3, 5, 7, 7], [3, 5, 7, 5]], dtype= np.uint8)
+
+img = cv2.imread("../../Data/iaprtc12/images/01/1210.jpg", 0)
+#img = np.float32(img) / 255.0
+
+count_directions = 3
+cell_size = 7
+block_size = 10
+tau = 4
 gradient = count_gradient(img)
 magnitude = count_magnitude(gradient) 
-cv2.imwrite('gradientX.png', gradient[0,:,:])
-cv2.imwrite('gradientY.png', gradient[1,:,:])
-cv2.imwrite('magnitude.png', magnitude)
+directional = compute_direction(count_directions, gradient, magnitude)
+aems = compute_aems(count_directions, cell_size, directional)
 
-directions = 3
-directional = compute_direction(directions, gradient, magnitude)
-cv2.imwrite('directional1.png', directional[0,:,:])
-cv2.imwrite('directional2.png', directional[1,:,:])
-cv2.imwrite('directional3.png', directional[2,:,:])
-
-phase = cv2.phase(gradient[0,:,:], gradient[1,:,:])
-print phase
+compute_lbp(directional, aems, block_size, tau)
 
 exit()
 aems = compute_aems(directional, img)
@@ -170,20 +192,7 @@ print lbp
 
 cv2.imwrite('lbp.png', lbp[0,:,:])
 
-soubor = open("gradient0.txt", 'w')
 
-for row in gradient[0]:
-    for item in row:
-        soubor.write(" {} ".format(item))
-    soubor.write("\n")
-soubor.close()
-
-soubor = open("gradient1.txt", 'w')  
-for row in gradient[1]:
-    for item in row:
-        soubor.write(" {} ".format(item))
-    soubor.write("\n")
-soubor.close()
         
 soubor.close()
 
@@ -199,12 +208,12 @@ soubor.close()
 # Python gradient calculation 
 print "---------------------------------" 
 # Read image
-img = cv2.imread('../../Data/image_labelling_datasets/iaprtc12/images/01/1210.jpg', 0)
-img = np.float32(img) / 255.0
+img = cv2.imread('../../Data/iaprtc12/images/01/1210.jpg', 0)
+#img = np.float32(img) / 255.0
  
 # Calculate gradient 
-gx = cv2.Sobel(img, cv2.CV_32F, 1, 0, ksize=1)
-gy = cv2.Sobel(img, cv2.CV_32F, 0, 1, ksize=1)
+#gx = cv2.Sobel(img, cv2.CV_32F, 1, 0, ksize=1)
+#gy = cv2.Sobel(img, cv2.CV_32F, 0, 1, ksize=1)
 
 # Python Calculate gradient magnitude and direction ( in degrees ) 
 mag, angle = cv2.cartToPolar(gx, gy, angleInDegrees=True)
@@ -375,4 +384,27 @@ cv2.imwrite('directional3.png', directional[2,:,:])
 #plt.show()  
 #
 #
+#def compute_direction(directions, gradient, magnitude):
+#    dirs = np.arctan2(gradient[0,:,:], gradient[1,:,:]) * 180 / np.pi # vypocte to úhel
+#    
+#    soubor = open("uhly.txt", 'w')  
+#    for row in dirs:
+#        for item in row:
+#            soubor.write(" {} ".format(item))
+#        soubor.write("\n")
+#    soubor.close()
+#    directional = np.zeros((directions, gradient[0].shape[0], gradient[0].shape[1]), dtype=float)
+#    
+#    for i in range(len(dirs)):
+#        for y in range(len(dirs[i])):
+#            if(dirs[i][y] < 0):
+#                dirs[i][y] = 360 - dirs[i][y]
+#                print "prevadime"
+#            if(dirs[i][y] >= 0 and dirs[i][y] < 120):
+#                directional[0][i][y] = magnitude[i][y]
+#            if(dirs[i][y] >= 120 and dirs[i][y] < 270):
+#                directional[1][i][y] = magnitude[i][y]
+#            if(dirs[i][y] >= 270 and dirs[i][y] < 360):
+#                directional[2][i][y] = magnitude[i][y]    
 #
+#    return directional

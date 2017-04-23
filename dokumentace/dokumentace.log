@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.7)  7 APR 2017 21:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.7)  21 APR 2017 12:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -817,65 +817,149 @@ Kapitola 2.
 Kapitola 3.
 [8
 
-] [9] [10] [11]
-Kapitola 4.
-<./img/ESP.jpg, id=181, 10117.8pt x 9900.99pt>
-File: ./img/ESP.jpg Graphic file (type jpg)
- <use ./img/ESP.jpg>
-Package pdftex.def Info: ./img/ESP.jpg used on input line 173.
-(pdftex.def)             Requested size: 140.52551pt x 137.47984pt.
- [12
+] <./img/img_histogram.jpg, id=163, 361.35pt x 481.8pt>
+File: ./img/img_histogram.jpg Graphic file (type jpg)
 
- <./img/ESP.jpg>] [13]
+<use ./img/img_histogram.jpg>
+Package pdftex.def Info: ./img/img_histogram.jpg used on input line 123.
+(pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
+
+<./img/bgr_histogram.png, id=164, 578.16pt x 433.62pt>
+File: ./img/bgr_histogram.png Graphic file (type png)
+
+<use ./img/bgr_histogram.png>
+Package pdftex.def Info: ./img/bgr_histogram.png used on input line 124.
+(pdftex.def)             Requested size: 133.82973pt x 100.37537pt.
+File: ./img/img_histogram.jpg Graphic file (type jpg)
+ <use ./img/img_histogram.jpg>
+Package pdftex.def Info: ./img/img_histogram.jpg used on input line 130.
+(pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
+
+<./img/bgr_r.jpg, id=166, 361.35pt x 481.8pt>
+File: ./img/bgr_r.jpg Graphic file (type jpg)
+ <use ./img/bgr_r.jpg>
+Package pdftex.def Info: ./img/bgr_r.jpg used on input line 131.
+(pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
+
+<./img/bgr_g.jpg, id=167, 361.35pt x 481.8pt>
+File: ./img/bgr_g.jpg Graphic file (type jpg)
+ <use ./img/bgr_g.jpg>
+Package pdftex.def Info: ./img/bgr_g.jpg used on input line 132.
+(pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
+
+<./img/bgr_b.jpg, id=168, 361.35pt x 481.8pt>
+File: ./img/bgr_b.jpg Graphic file (type jpg)
+ <use ./img/bgr_b.jpg>
+Package pdftex.def Info: ./img/bgr_b.jpg used on input line 133.
+(pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
+File: ./img/img_histogram.jpg Graphic file (type jpg)
+
+<use ./img/img_histogram.jpg>
+Package pdftex.def Info: ./img/img_histogram.jpg used on input line 139.
+(pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
+ <./img/lab_l.jpg, id=169, 361.35pt x 481.8pt>
+File: ./img/lab_l.jpg Graphic file (type jpg)
+
+<use ./img/lab_l.jpg>
+Package pdftex.def Info: ./img/lab_l.jpg used on input line 140.
+(pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
+ <./img/lab_a.jpg, id=170, 361.35pt x 481.8pt>
+File: ./img/lab_a.jpg Graphic file (type jpg)
+
+<use ./img/lab_a.jpg>
+Package pdftex.def Info: ./img/lab_a.jpg used on input line 141.
+(pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
+ <./img/lab_b.jpg, id=171, 361.35pt x 481.8pt>
+File: ./img/lab_b.jpg Graphic file (type jpg)
+
+<use ./img/lab_b.jpg>
+Package pdftex.def Info: ./img/lab_b.jpg used on input line 142.
+(pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
+File: ./img/img_histogram.jpg Graphic file (type jpg)
+ <use ./img/img_histogram.jpg>
+Package pdftex.def Info: ./img/img_histogram.jpg used on input line 148.
+(pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
+
+<./img/hsv_h.jpg, id=172, 361.35pt x 481.8pt>
+File: ./img/hsv_h.jpg Graphic file (type jpg)
+ <use ./img/hsv_h.jpg>
+Package pdftex.def Info: ./img/hsv_h.jpg used on input line 149.
+(pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
+
+<./img/hsv_s.jpg, id=173, 361.35pt x 481.8pt>
+File: ./img/hsv_s.jpg Graphic file (type jpg)
+ <use ./img/hsv_s.jpg>
+Package pdftex.def Info: ./img/hsv_s.jpg used on input line 150.
+(pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
+
+<./img/hsv_v.jpg, id=174, 361.35pt x 481.8pt>
+File: ./img/hsv_v.jpg Graphic file (type jpg)
+ <use ./img/hsv_v.jpg>
+Package pdftex.def Info: ./img/hsv_v.jpg used on input line 151.
+(pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
+ [9 <./img/img_histogram.jpg> <./img/bgr_histogram.png> <./img/bgr_r.jpg> <./im
+g/bgr_g.jpg> <./img/bgr_b.jpg> <./img/lab_l.jpg> <./img/lab_a.jpg> <./img/lab_b
+.jpg>]
+[10 <./img/hsv_h.jpg> <./img/hsv_s.jpg> <./img/hsv_v.jpg>] [11] [12]
+Kapitola 4.
+<./img/iaprtc12.jpg, id=208, 481.8pt x 361.35pt>
+File: ./img/iaprtc12.jpg Graphic file (type jpg)
+ <use ./img/iaprtc12.jpg>
+Package pdftex.def Info: ./img/iaprtc12.jpg used on input line 211.
+(pdftex.def)             Requested size: 140.52551pt x 105.38982pt.
+
+[13
+
+ <./img/iaprtc12.jpg>] [14]
 Kapitola 5.
-<./img/graf.png, id=192, 358.51588pt x 437.87117pt>
+<./img/graf.png, id=219, 358.51588pt x 437.87117pt>
 File: ./img/graf.png Graphic file (type png)
  <use ./img/graf.png>
-Package pdftex.def Info: ./img/graf.png used on input line 187.
+Package pdftex.def Info: ./img/graf.png used on input line 230.
 (pdftex.def)             Requested size: 253.94968pt x 310.16911pt.
 
-[14
+[15
 
  <./img/graf.png>]
 Kapitola 6.
-[15
-
-]
-Kapitola 7.
 [16
 
 ]
-Kapitola 8.
+Kapitola 7.
 [17
 
 ]
+Kapitola 8.
+[18
+
+]
 Kapitola 9.
-(./dokumentace.bbl [18
+(./dokumentace.bbl [19
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 13.
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 229.
- [19
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 272.
+ [20
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 229.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 272.
  (./dokumentace.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 229.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 229.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 272.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 272.
 Package rerunfilecheck Info: File `dokumentace.out' has not changed.
-(rerunfilecheck)             Checksum: 755FB46ADCFAFA5417043044E3A4E445;2339.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 229.
+(rerunfilecheck)             Checksum: 37E746DD89874F4CA8B081F95118754F;2435.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 272.
  ) 
 Here is how much of TeX's memory you used:
- 11016 strings out of 493029
- 150573 string characters out of 6136234
- 237803 words of memory out of 5000000
- 14355 multiletter control sequences out of 15000+600000
+ 11080 strings out of 493029
+ 151745 string characters out of 6136234
+ 238846 words of memory out of 5000000
+ 14401 multiletter control sequences out of 15000+600000
  66080 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 31i,10n,28p,1277b,410s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 31i,10n,28p,1280b,410s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
 hare/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
@@ -889,10 +973,10 @@ are/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/te
 xmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
 tt12.pfb>
-Output written on dokumentace.pdf (19 pages, 291308 bytes).
+Output written on dokumentace.pdf (20 pages, 1129018 bytes).
 PDF statistics:
- 301 PDF objects out of 1000 (max. 8388607)
- 261 compressed objects within 3 object streams
- 59 named destinations out of 1000 (max. 500000)
- 171 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 329 PDF objects out of 1000 (max. 8388607)
+ 276 compressed objects within 3 object streams
+ 66 named destinations out of 1000 (max. 500000)
+ 234 words of extra memory for PDF output out of 10000 (max. 10000000)
 

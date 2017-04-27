@@ -1,4 +1,4 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{6}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -8,6 +8,14 @@
 \bibitem[Ameesh~Makadia(1961)]{JEC}
 {\sc Ameesh~Makadia}, S.~K.~V.~P.
 \newblock A new baseline for image annotation.
+\newblock \emph{Commun. ACM}. July 1961, 4, 7, s.~321.
+\newblock ISSN 0001-0782.
+\newblock \doi{10.1145/366622.366644}.
+\newblock Dostupn{\'{e}}~z: \url{http://doi.acm.org/10.1145/366622.366644}.
+
+\bibitem[Cruse(1961)]{Gabor}
+{\sc Cruse}, H.
+\newblock Neural Networks as Cybernetic Systems.
 \newblock \emph{Commun. ACM}. July 1961, 4, 7, s.~321.
 \newblock ISSN 0001-0782.
 \newblock \doi{10.1145/366622.366644}.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.7)  21 APR 2017 12:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.7)  25 APR 2017 10:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -817,14 +817,14 @@ Kapitola 2.
 Kapitola 3.
 [8
 
-] <./img/img_histogram.jpg, id=163, 361.35pt x 481.8pt>
+] <./img/img_histogram.jpg, id=157, 361.35pt x 481.8pt>
 File: ./img/img_histogram.jpg Graphic file (type jpg)
 
 <use ./img/img_histogram.jpg>
 Package pdftex.def Info: ./img/img_histogram.jpg used on input line 123.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 
-<./img/bgr_histogram.png, id=164, 578.16pt x 433.62pt>
+<./img/bgr_histogram.png, id=158, 578.16pt x 433.62pt>
 File: ./img/bgr_histogram.png Graphic file (type png)
 
 <use ./img/bgr_histogram.png>
@@ -835,19 +835,19 @@ File: ./img/img_histogram.jpg Graphic file (type jpg)
 Package pdftex.def Info: ./img/img_histogram.jpg used on input line 130.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 
-<./img/bgr_r.jpg, id=166, 361.35pt x 481.8pt>
+<./img/bgr_r.jpg, id=160, 361.35pt x 481.8pt>
 File: ./img/bgr_r.jpg Graphic file (type jpg)
  <use ./img/bgr_r.jpg>
 Package pdftex.def Info: ./img/bgr_r.jpg used on input line 131.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 
-<./img/bgr_g.jpg, id=167, 361.35pt x 481.8pt>
+<./img/bgr_g.jpg, id=161, 361.35pt x 481.8pt>
 File: ./img/bgr_g.jpg Graphic file (type jpg)
  <use ./img/bgr_g.jpg>
 Package pdftex.def Info: ./img/bgr_g.jpg used on input line 132.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 
-<./img/bgr_b.jpg, id=168, 361.35pt x 481.8pt>
+<./img/bgr_b.jpg, id=162, 361.35pt x 481.8pt>
 File: ./img/bgr_b.jpg Graphic file (type jpg)
  <use ./img/bgr_b.jpg>
 Package pdftex.def Info: ./img/bgr_b.jpg used on input line 133.
@@ -857,19 +857,19 @@ File: ./img/img_histogram.jpg Graphic file (type jpg)
 <use ./img/img_histogram.jpg>
 Package pdftex.def Info: ./img/img_histogram.jpg used on input line 139.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
- <./img/lab_l.jpg, id=169, 361.35pt x 481.8pt>
+ <./img/lab_l.jpg, id=163, 361.35pt x 481.8pt>
 File: ./img/lab_l.jpg Graphic file (type jpg)
 
 <use ./img/lab_l.jpg>
 Package pdftex.def Info: ./img/lab_l.jpg used on input line 140.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
- <./img/lab_a.jpg, id=170, 361.35pt x 481.8pt>
+ <./img/lab_a.jpg, id=164, 361.35pt x 481.8pt>
 File: ./img/lab_a.jpg Graphic file (type jpg)
 
 <use ./img/lab_a.jpg>
 Package pdftex.def Info: ./img/lab_a.jpg used on input line 141.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
- <./img/lab_b.jpg, id=171, 361.35pt x 481.8pt>
+ <./img/lab_b.jpg, id=165, 361.35pt x 481.8pt>
 File: ./img/lab_b.jpg Graphic file (type jpg)
 
 <use ./img/lab_b.jpg>
@@ -880,19 +880,19 @@ File: ./img/img_histogram.jpg Graphic file (type jpg)
 Package pdftex.def Info: ./img/img_histogram.jpg used on input line 148.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 
-<./img/hsv_h.jpg, id=172, 361.35pt x 481.8pt>
+<./img/hsv_h.jpg, id=166, 361.35pt x 481.8pt>
 File: ./img/hsv_h.jpg Graphic file (type jpg)
  <use ./img/hsv_h.jpg>
 Package pdftex.def Info: ./img/hsv_h.jpg used on input line 149.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 
-<./img/hsv_s.jpg, id=173, 361.35pt x 481.8pt>
+<./img/hsv_s.jpg, id=167, 361.35pt x 481.8pt>
 File: ./img/hsv_s.jpg Graphic file (type jpg)
  <use ./img/hsv_s.jpg>
 Package pdftex.def Info: ./img/hsv_s.jpg used on input line 150.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 
-<./img/hsv_v.jpg, id=174, 361.35pt x 481.8pt>
+<./img/hsv_v.jpg, id=168, 361.35pt x 481.8pt>
 File: ./img/hsv_v.jpg Graphic file (type jpg)
  <use ./img/hsv_v.jpg>
 Package pdftex.def Info: ./img/hsv_v.jpg used on input line 151.
@@ -900,22 +900,29 @@ Package pdftex.def Info: ./img/hsv_v.jpg used on input line 151.
  [9 <./img/img_histogram.jpg> <./img/bgr_histogram.png> <./img/bgr_r.jpg> <./im
 g/bgr_g.jpg> <./img/bgr_b.jpg> <./img/lab_l.jpg> <./img/lab_a.jpg> <./img/lab_b
 .jpg>]
-[10 <./img/hsv_h.jpg> <./img/hsv_s.jpg> <./img/hsv_v.jpg>] [11] [12]
+<./img/gabor.png, id=178, 784.9325pt x 431.6125pt>
+File: ./img/gabor.png Graphic file (type png)
+ <use ./img/gabor.png>
+Package pdftex.def Info: ./img/gabor.png used on input line 163.
+(pdftex.def)             Requested size: 365.08565pt x 200.75073pt.
+
+[10 <./img/hsv_h.jpg> <./img/hsv_s.jpg> <./img/hsv_v.jpg> <./img/gabor.png>]
+[11] [12]
 Kapitola 4.
-<./img/iaprtc12.jpg, id=208, 481.8pt x 361.35pt>
+<./img/iaprtc12.jpg, id=211, 481.8pt x 361.35pt>
 File: ./img/iaprtc12.jpg Graphic file (type jpg)
  <use ./img/iaprtc12.jpg>
-Package pdftex.def Info: ./img/iaprtc12.jpg used on input line 211.
+Package pdftex.def Info: ./img/iaprtc12.jpg used on input line 228.
 (pdftex.def)             Requested size: 140.52551pt x 105.38982pt.
 
 [13
 
  <./img/iaprtc12.jpg>] [14]
 Kapitola 5.
-<./img/graf.png, id=219, 358.51588pt x 437.87117pt>
+<./img/graf.png, id=222, 358.51588pt x 437.87117pt>
 File: ./img/graf.png Graphic file (type png)
  <use ./img/graf.png>
-Package pdftex.def Info: ./img/graf.png used on input line 230.
+Package pdftex.def Info: ./img/graf.png used on input line 247.
 (pdftex.def)             Requested size: 253.94968pt x 310.16911pt.
 
 [15
@@ -940,29 +947,29 @@ Kapitola 9.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 13.
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 272.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 289.
  [20
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 272.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 289.
  (./dokumentace.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 272.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 272.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 289.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 289.
 Package rerunfilecheck Info: File `dokumentace.out' has not changed.
-(rerunfilecheck)             Checksum: 37E746DD89874F4CA8B081F95118754F;2435.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 272.
+(rerunfilecheck)             Checksum: 515D0E59C6BF3CA3D4BE09DE144DE8D7;2346.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 289.
  ) 
 Here is how much of TeX's memory you used:
- 11080 strings out of 493029
- 151745 string characters out of 6136234
- 238846 words of memory out of 5000000
- 14401 multiletter control sequences out of 15000+600000
+ 11091 strings out of 493029
+ 151907 string characters out of 6136234
+ 237906 words of memory out of 5000000
+ 14408 multiletter control sequences out of 15000+600000
  66080 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 31i,10n,28p,1280b,410s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 31i,12n,28p,1280b,410s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
-hare/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
 -mathsy.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
 f/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lme
 x10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fo
@@ -973,10 +980,10 @@ are/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/te
 xmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
 tt12.pfb>
-Output written on dokumentace.pdf (20 pages, 1129018 bytes).
+Output written on dokumentace.pdf (20 pages, 1273551 bytes).
 PDF statistics:
- 329 PDF objects out of 1000 (max. 8388607)
- 276 compressed objects within 3 object streams
- 66 named destinations out of 1000 (max. 500000)
- 234 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 334 PDF objects out of 1000 (max. 8388607)
+ 278 compressed objects within 3 object streams
+ 69 named destinations out of 1000 (max. 500000)
+ 231 words of extra memory for PDF output out of 10000 (max. 10000000)
 

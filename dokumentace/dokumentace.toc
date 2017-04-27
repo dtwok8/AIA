@@ -10,10 +10,10 @@
 \contentsline {section}{\numberline {3.1}P\IeC {\v r}\IeC {\'\i }znaky}{8}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Barva}{8}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}textura}{10}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}Vzd\IeC {\'a}lenosti}{10}{section.3.2}
-\contentsline {section}{\numberline {3.3}Textura}{10}{section.3.3}
-\contentsline {section}{\numberline {3.4}Kombinace vzd\IeC {\'a}lenost\IeC {\'\i }}{11}{section.3.4}
-\contentsline {section}{\numberline {3.5}P\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov}{11}{section.3.5}
+\contentsline {subsubsection}{Gabor}{10}{section*.5}
+\contentsline {section}{\numberline {3.2}Vzd\IeC {\'a}lenosti}{11}{section.3.2}
+\contentsline {section}{\numberline {3.3}Kombinace vzd\IeC {\'a}lenost\IeC {\'\i }}{11}{section.3.3}
+\contentsline {section}{\numberline {3.4}P\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov}{12}{section.3.4}
 \contentsline {chapter}{\numberline {4}Testovac\IeC {\'\i } datab\IeC {\'a}ze}{13}{chapter.4}
 \contentsline {section}{\numberline {4.1}iaprtc12}{13}{section.4.1}
 \contentsline {section}{\numberline {4.2}\IeC {\v C}TK}{13}{section.4.2}
@@ -24,4 +24,4 @@
 \contentsline {chapter}{\numberline {7}Vyhodnocen\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{17}{chapter.7}
 \contentsline {chapter}{\numberline {8}Z\IeC {\'a}v\IeC {\v e}r}{18}{chapter.8}
 \contentsline {chapter}{\numberline {9}U\IeC {\v z}ivatelsk\IeC {\'a} dokumentace}{19}{chapter.9}
-\contentsline {chapter}{Literatura}{20}{chapter*.5}
+\contentsline {chapter}{Literatura}{20}{chapter*.6}

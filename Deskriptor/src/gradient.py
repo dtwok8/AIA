@@ -70,7 +70,8 @@ def compute_direction(count_directions, gradient, magnitude):
     """
         Spocita uhly kam vektor smeruje a rozradi se do matic podle smeru (pocet smeru = count_directions)
     """
-    phases = cv2.phase(gradient[0,:,:], gradient[1,:,:], angleInDegrees=False)
+    
+    phases = cv2.phase(gradient[0], gradient[1], angleInDegrees=False)
     #angleInDegrees – when true, the input angles are measured in degrees, otherwise, they are measured in radians.
     
     if (DEBUG):
@@ -101,7 +102,8 @@ def compute_aems(count_directions, cell_size, directional):
     
     """
     # use either convolution or integral image
-    kernel = np.ones((cell_size, cell_size))
+    kernel = np.ones((cell_size, cell_size)) 
+    kernel = kernel[:,:]/(cell_size*cell_size)  
     aems = np.zeros((count_directions, img.shape[0], img.shape[1]), dtype=float)
     for d in range(count_directions):
         aems[d, :, :] = cv2.filter2D(directional[d, :, :], -1, kernel, borderType=cv2.BORDER_REPLICATE)
@@ -111,10 +113,7 @@ def compute_aems(count_directions, cell_size, directional):
         for d in range(len(aems)):
             write_matrix_file(aems[d,:,:], "aems{}.txt".format(d))
             cv2.imwrite('aems{}.png'.format(d), aems[d,:,:])
-    
 
-        for d in range(len(aems)): 
-            cv2.imwrite('aems_deleno{}.png'.format(d), (aems[d,:,:]/cell_size))
     return aems
     
         

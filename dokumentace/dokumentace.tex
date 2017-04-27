@@ -153,9 +153,39 @@ Pro RGB, HSV i LAB použijeme barevnou hloubku 16 bitů na kanál histogramu v j
 \end{figure}
 
 \subsection{textura}
-Jako reprezentace textur budou použity Gabor a Haar wavelety. Každý obrázek bude filtrován s Gabor wavelet na třech škálách a čtyřech orientacích.
+Jako reprezentace textur budou použity Gabor a Haar wavelety. 
+
+\subsubsection{Gabor}
+Gabor filter je lineární filter používaný pro detekci hran. Frekvence a orientace reprezentující Gabor filter je podobná lidskému vnímání a jsou zvláště vhodné pro reprezentaci textury a rozlišování. 
+
+\begin{figure}[ht]
+		\centering
+		\includegraphics[height=200px]{./img/gabor.png}
+		\caption{Gabor vlnka je tvořena kombinací dvou cosinových funkcí, pro každou osu, které mají v základu odlišné frequnce.\cite{Gabor}} 					
+\end{figure}
+
+U obrazku bylo: 
+Gáborova vlnka je tvořena vynásobením dvou cosinusovek (které mají obecně různé
+frekvence) pro každou osu a výsledek se pak násobí dvourozměrnou Gaussovou funkcí
+
+\begin{align}
+   \label{gabor_complex}  g(x, y; \lambda, \theta, \psi, \sigma,  \gamma) = exp \Bigg( - \frac{{x^2 + \gamma^2 y^2}}{2 \sigma^2} \Bigg) exp \Bigg(i \bigg(2\pi \frac{x}{\lambda} + \psi \bigg)\Bigg)  
+\end{align}
+
+
+
+Každý obrázek bude filtrován na třech škálách (lambda = 2 , 2*sqrt(2), 4) a čtyřech orientacích (theta = 0, 45, 90 a 135 stupňů)
+
+Gabor filtr reaguje na hrany a texturové změny. 
+
+Obrázky jsou filtrovány za použité reálné části z různých odlišních Gabor filtrů jader. Průměrný a rozptyl filtrovaných snímků jsou pak použity jako funkce pro klasifikaci, která je založena na nejméně kvadratické chyby pro jednoduchost.
+
+
+TODO Dohledat Haar a Gabor wavelety, přidat vzorečky a zase klidně i obrázky
  
 \section{Vzdálenosti}
+vzdálenost vs podobnost
+
  K určení příslušné vzdálenosti se můžeme setkat se čtyřmi měřítky vzdálenosti pro histogramy a rozdělení Kullaback-Leibler divergence KL - divergence, $\chi^2$ statistika, L1 - vzdálenost a L2 - vzdálenost. Na RGB a HSV je nejlépší použít L1 zatímco pro LAB je nejvhodnější KL - divergence. 
 
 Problém s KL - divergencí nastává pouze tehdy, když se histogramy nebudou shodovat v nulách. Jeden předpoklad pro fungování tohoto vzorce je totiž že když je $Q(i) = 0$ tak zároveň musí být i $P(i) = 0$.    
@@ -164,17 +194,6 @@ Problém s KL - divergencí nastává pouze tehdy, když se histogramy nebudou s
 \end{align}
 
  
-\section{Textura}
-
-
-Gabor filter je lineární filter používaný pro detekci hran. Frekvence a orientace reprezentující Gabor filter je podobná lidskému vnímání a jsou zvláště vhodné pro reprezentaci textury a rozlišování. 
-
-Gabor filtr reaguje na hrany a texturové změny. 
-
-Obrázky jsou filtrovány za použité reálné části z různých odlišních Gabor filtrů jader. Průměrný a rozptyl filtrovaných snímků jsou pak použity jako funkce pro klasifikaci, která je založena na nejméně kvadratické chyby pro jednoduchost.
-
-
-TODO Dohledat Haar a Gabor wavelety, přidat vzorečky a zase klidně i obrázky
 
 \section{Kombinace vzdáleností}
 Nejrozumnějším přístupem ke zkombinování vzdáleností od různých desktiptorů je aby jednotlivé vzdálenosti přispívali rovnoceně. Z tohoto důvodu je potřeba vzdálenosti přeškálovat na jednotné měřítko.\\

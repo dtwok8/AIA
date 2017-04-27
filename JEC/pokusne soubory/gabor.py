@@ -4,61 +4,106 @@ import numpy as np
 import math
 import cv2
  
-def build_filters():
+def build_filters(psi):
     filters = []
     ksize = 7
+    sigma = 0.5 
+    gamma = 1
     for theta in (0, math.pi/4, math.pi/2, (3/4)*math.pi):
         for lambdaa in (2, 2*math.sqrt(2), 4): 
-            kern = cv2.getGaborKernel((ksize, ksize), 0.5, theta, lambdaa, 0.5)
-            filters.append(kern)
+            kern = cv2.getGaborKernel((ksize, ksize), sigma, theta, lambdaa, gamma, psi)
+            
 
-            #kern /= 1.5*kern.sum() #proc? bez toho je jen cerno kdyz mam nasteveny lambdu na 2
+            kern /= 1.5*kern.sum() #proc? bez toho je jen cerno kdyz mam nasteveny lambdu na 2
+            filters.append(kern)
     return filters
 
 
 def use_filters(img, filters):
     filtered_img = []
+    ddepth = -1 #when ddepth=-1, the output image will have the same depth as the source.
     
     i=1
     for kern in filters:
-        fimg = cv2.filter2D(img, cv2.CV_8UC3, kern)
+        fimg = cv2.filter2D(img, ddepth, kern)
         filtered_img.append(fimg)
-        
-        cv2.imwrite("gabor_filter_img{}.jpg".format(i), fimg)
+        print kern
+        exit()
+        #cv2.imwrite("gabor_filter_img{}.jpg".format(i), fimg)
+        cv2.imwrite("gabor_filter_img{}.jpg".format(i), kern)
         i = i+1
-#        cv2.waitKey(0)
-#        cv2.destroyAllWindows()
     
     return filtered_img
     
     
+def count_phase(filtered_img_real, filtered_img_imag):
+    phase = []
+
+    for i in range(len(filtered_img_real)):
+        cv2.phase(filtered_img_real[i], filtered_img_imag[i], angleInDegrees=False)
+        #angleInDegrees - when true, the input angles are measured in degrees, otherwise, they are measured in radians.
+    return phase
+
+
+def count_magnitude(filtered_img_real, filtered_img_imag):
+    magnitude = []
+    
+    for i in range(len(filtered_img_real)):
+        magnitude.append(cv2.magnitude(filtered_img_real[i], filtered_img_imag[i]))
+    
+    return magnitude
+    
  
-def count_vector(filtered_img, deep = 16): 
+def count_vector(magnitudes, deep): 
     """
     Nasklada vektory za sebe
     """
  
-    print len(filtered_img)
-    array_histograms_magnitude = np.zeros(shape=(deep*len(filtered_img)), dtype=np.int)
+    print len(magnitudes)
+    array_histograms_magnitude = np.zeros(shape=(deep*len(magnitudes)), dtype=np.int)
 
-    for i in range(len(filtered_img)): 
-        for x in range(len(filtered_img[i])):
-            for y in range(len(filtered_img[i][x])):
-                value = filtered_img[i].item(x,y) 
-                index = ((i*deep))+(value/deep) # (i*deep) potrebuju se posunout na i-ty filtrovany obrazek
-                #print index
-                #print float_formatter(index)
+    for i in range(len(magnitudes)): 
+        for x in range(len(magnitudes[i])):
+            for y in range(len(magnitudes[i][x])):
+                value = magnitudes[i].item(x,y) 
+                index = ((i*deep))+int((value/deep)) # (i*deep) potrebuju se posunout na i-ty filtrovany obrazek
+                print i
+                print value
+                print index
                 array_histograms_magnitude[index]=array_histograms_magnitude[index]+1
         print array_histograms_magnitude
     return array_histograms_magnitude
     
-    
  
-img = cv2.imread('P201302280779501.jpg', 0) # 0 Grayscale image 
-filters = build_filters()
+print "ahoj"
+print cv2.magnitude(255, 255)
+print math.sqrt(255*255+255*255)
 
-filtered_img = use_filters(img, filters)
-count_vector(filtered_img)
+vector_deep = 16
+img = cv2.imread('../../Data/iaprtc12/images/03/3117.jpg', 0) # 0 Grayscale image 
+img = img.astype(float)
+
+filters_real = build_filters(0)
+filtered_img = use_filters(img, filters_real)
+exit()
+#count_vector(filtered_img, vector_deep)
+
+filters_imag = build_filters((math.pi/2))
+
+filtered_img_imag = use_filters(img, filters_imag)
+filtered_img_real = use_filters(img, filters_real)
+
+magnitudes = count_magnitude(filtered_img_real, filtered_img_imag)
+count_vector(magnitudes, vector_deep)
+
+    
+
+phase = count_phase(filtered_img_real, filtered_img_imag)
+
+
+
+print filtered_img
+
 
 
 

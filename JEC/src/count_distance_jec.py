@@ -9,7 +9,6 @@ Created on Wed Sep 21 15:02:46 2016
 import cv2
 import numpy as np
 
-from Queue import PriorityQueue #label transfer
 from operator import attrgetter #sorter
 
 #moje
@@ -19,36 +18,6 @@ import config
 import label_transfer
 import math
 
-def kl(histogram1, histogram2):
-    a = np.zeros(shape=(3*16), dtype=np.float32)
-    i=0
-    for slozka in histogram1:
-        for pixel in slozka:
-            a[i] = pixel
-            i = i+1
-
-    b = np.zeros(shape=(3*16), dtype=np.float32)
-    i=0
-    for slozka in histogram2:
-        for pixel in slozka:
-            b[i] = pixel
-            i = i+1
-    
-    a = np.asarray(a, dtype=np.float)
-    b = np.asarray(b, dtype=np.float)
-
-    sum = 0
-    for i in range(len(a)):
-        """The KL divergence is defined only if Q(i)=0 implies P(i)=0, for all i (absolute continuity)"""
-        #if(a[i] != 0 and b[i] != 0):
-        if(a[i] != 0): # tohle by melo byt spravne ale hazi to chybu
-            if(b[i] ==0):
-                sum = sum + a[i] * math.log(a[i] / (b[i] + 0.0000001), math.e)
-            else:
-                sum = sum + a[i] * math.log(a[i] / b[i], math.e)
-            #sum = sum + a[i] * (math.log(a[i]) -  math.log(b[i]))
-        
-    return sum
 
 def count_distance(train_data, test_image):
     print test_image.name
@@ -60,6 +29,8 @@ def count_distance(train_data, test_image):
     lab_max=float("-inf")
     hsv_min=float("inf")
     hsv_max=float("-inf")
+    gabor_min = float("inf")
+    gabor_max = float("-inf")
     #print ( rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)
     #print ( rgb_max , rgb_min, lab_max > 3333.72839, lab_min, hsv_max, hsv_min)
     #test_image.neighbors  = []
@@ -86,9 +57,16 @@ def count_distance(train_data, test_image):
         if(pom_neighbor.hsv_distance > hsv_max):
             hsv_max = pom_neighbor.hsv_distance
         
+        pom_neighbor.gabor_distance = cv2.norm(picture.gabor, test_image.gabor, cv2.NORM_L1)
+        if(pom_neighbor.gabor_distance < gabor_min):
+            gabor_min = pom_neighbor.gabor_distance
+        if(pom_neighbor.gabor_distance > gabor_max):
+            gabor_max = pom_neighbor.gabor_distance 
+        
+        
         pom_nei.append(pom_neighbor) #pridani souseda
 
-    count_jec(pom_nei,test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min) 
+    count_jec(pom_nei,test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min) 
     
     keywords_prepare_sort=[]
     for neighbor in pom_nei:
@@ -100,17 +78,25 @@ def count_distance(train_data, test_image):
 
 def count_n():
     n = 0
-    if(config.RGB == True):
+    if(config.RGB):
         n = n +1
-    if(config.LAB == True):
+        
+    if(config.LAB):
         n = n + 1
-    if(config.HSV == True):
+        
+    if(config.HSV):
         n = n + 1
-    
+        
+    if(config.GABOR):
+        n = n + 1
+        
+    if(config.GABORQ):
+        n = n + 1
+        
     return n
 
 #spocita JEC pro tri parametry rgb, hsv, lab, ty to musíš naškálovat od 0 o 1 takže asi ten jec můžeš počítat stejně až budeš mít všechny ty výsledky
-def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min):
+def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min):
     #print ( rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)
     n = count_n()
 
@@ -128,6 +114,11 @@ def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, 
         if(config.HSV == True):
             neighbor.hsv_distance_scale = (neighbor.hsv_distance-hsv_min)/((hsv_max - hsv_min))
             sum_distance = sum_distance + neighbor.hsv_distance_scale
+            
+        if(config.GABOR):
+            neighbor.gabor_distance_scale = (neighbor.gabor_distance - gabor_min)/(gabor_max - gabor_min)
+            sum_distance = sum_distance + neighbor.gabor_distance_scale
+            
         #print item.hsv_distance_scale
         
         #spocteni JEC - zkombinovani priznaku
@@ -174,5 +165,5 @@ exit()
 
 
 
-#tady je problem s tim ze pickle umi jen to zakladni neumi exportovat objekt v objektu (tridu ve tride)
-class_pictures.exportDataToFile(test_data, config.DATEFILE_TEST_NEIGHBORS)
+#tady je problem s tim ze pickle umi jen to zakladni neumi exportovat objekt v objektu (tridu ve tride), takze proto to nepouzivame
+#class_pictures.exportDataToFile(test_data, config.DATEFILE_TEST_NEIGHBORS)

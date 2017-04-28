@@ -1,7 +1,7 @@
 import cv2
 
-TRAIN_LIST = "../../Data/image_labelling_datasets/iaprtc12/iapr_train_2009.txt"
-TEST_LIST = "../../Data/image_labelling_datasets/iaprtc12/iapr_test_2009.txt"
+TRAIN_LIST = "../../Data/iaprtc12/iapr_train_2009.txt"
+TEST_LIST = "../../Data/iaprtc12/iapr_test_2009.txt"
 
 
 DATAFILE_TRAIN = "../result/datafile_train.py"
@@ -20,10 +20,14 @@ COUNT_KEYWORDS = 5
 #nastaveni priznaku
 #KL - divergence cv2.HISTCMP_KL_DIV
 #L1 v2.NORM_L1
-RGB = True
+RGB = False
 RGB_DISTANCE = cv2.NORM_L1 # hele tohle neni uplne dobrej napad mas tam totiz dve metody compare a norm
-LAB = True
+LAB = False
 LAB_DISTANCE = cv2.HISTCMP_KL_DIV 
-HSV = True
+HSV = False
 HSV_DISTANCE = cv2.NORM_L1
+GABOR = True
+GABORQ = False
 
+
+#gabor setings

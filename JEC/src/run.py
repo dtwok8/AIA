@@ -5,5 +5,6 @@ Objekt Pictures a k nemu prislusne a potrebne metody jako zapsani objektu do sou
 """
 import os
 
-os.system("python count_histogram.py")
+os.system("python load_data.py")
 os.system("python count_distance_jec.py")
+os.system("python count_result.py")

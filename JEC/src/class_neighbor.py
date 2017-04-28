@@ -17,6 +17,8 @@ class Neighbor:
     lab_distance_scale = 0 
     hsv_distance = 0
     hsv_distance_scale = 0 
+    gabor_distance = 0
+    gabor_distance_scale = 0
     jec = 0
     
     

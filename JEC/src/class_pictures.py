@@ -17,26 +17,23 @@ class Pictures:
     rgb = None
     lab = None
     hsv = None #np.zeros(shape=(3, 16), dtype=float32)
+    gabor = None
+    gabor_q = None
     neighbors = None
     nereast_neighbors = None
     
     
-    def __init__(self, name, keywordsInString=[]):
+    def __init__(self, name, keywords_by_human_in_string, keywords_by_automat_in_string = None):
         self.data = []
         self.name = name
         
-        keywordsInString = keywordsInString.strip() # odstrani /n nakonci
-        self.keywords = keywordsInString.split(" ")
-    
-#    def __init__(self, name, keywordsByHumanInString, keywordsByAutomatInString):
-#        self.data = []
-#        self.name = name
-#        
-#        keywordsByHumanInString = keywordsByHumanInString.strip() # odstrani /n nakonci
-#        self.keywords = keywordsByHumanInString.split(" ")
-#        
-#        keywordsByAutomatInString = keywordsByAutomatInString.strip() # odstrani /n nakonci
-#        self.our_assignment_keywords = keywordsByAutomatInString.split(" ")
+        keywords_by_human_in_string = keywords_by_human_in_string.strip() # odstrani /n nakonci
+        self.keywords = keywords_by_human_in_string.split(" ")
+        
+        if(keywords_by_automat_in_string is not None):
+            keywords_by_automat_in_string = keywords_by_automat_in_string.strip() # odstrani /n nakonci
+            self.our_assignment_keywords = keywords_by_automat_in_string.split(" ")
+            
     
     #nejde mi to rozchodit
     def setKeywords(self, keywordsInString): 

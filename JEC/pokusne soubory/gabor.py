@@ -7,16 +7,31 @@ import cv2
 def build_filters(psi):
     filters = []
     ksize = 7
-    sigma = 0.5 
+    sigma = 6#0.5 
     gamma = 1
     for theta in (0, math.pi/4, math.pi/2, (3/4)*math.pi):
         for lambdaa in (2, 2*math.sqrt(2), 4): 
             kern = cv2.getGaborKernel((ksize, ksize), sigma, theta, lambdaa, gamma, psi)
-            
-
-            kern /= 1.5*kern.sum() #proc? bez toho je jen cerno kdyz mam nasteveny lambdu na 2
+            kern /= 1.5*kern.sum() #normovani #proc? bez toho je jen cerno kdyz mam nasteveny lambdu na 2
             filters.append(kern)
     return filters
+
+
+#def build_filters(psi):
+#    filters = []
+#    ksize = 7
+#    sigma = 0.5 
+#    gamma = 1
+#    
+#    for theta in range(4):
+#        theta = theta / 4. * np.pi
+#        for sigma in (1, 3):
+#
+#            for frequency in (0.05, 0.25):
+#                kernel = getGaborKernel(frequency, theta=theta, sigma_x=sigma, sigma_y=sigma)
+#
+#            filters.append(kernel)
+#    return filters
 
 
 def use_filters(img, filters):
@@ -27,10 +42,8 @@ def use_filters(img, filters):
     for kern in filters:
         fimg = cv2.filter2D(img, ddepth, kern)
         filtered_img.append(fimg)
-        print kern
-        exit()
-        #cv2.imwrite("gabor_filter_img{}.jpg".format(i), fimg)
-        cv2.imwrite("gabor_filter_img{}.jpg".format(i), kern)
+        cv2.imwrite("gabor_filter_img{}.jpg".format(i), fimg)
+
         i = i+1
     
     return filtered_img
@@ -74,6 +87,30 @@ def count_vector(magnitudes, deep):
         print array_histograms_magnitude
     return array_histograms_magnitude
     
+def show_filters(filters):
+    max_value = float('-inf')
+    min_value = float('inf')
+    
+    for filter in filters:
+        for i in range(len(filter)):
+            for y in range(len(filter[i])):  
+                if(filter[i][y] > max_value):
+                    max_value = filter[i][y]
+                if(filter[i][y] < min_value):
+                    min_value = filter[i][y]
+    
+    n= 0
+    for filter in filters:
+        for i in range(len(filter)):
+            for y in range(len(filter[i])):  
+                filter[i][y]=(filter[i][y]-min_value)/(max_value - min_value)*255
+        
+        cv2.imwrite("gabor_filter{}.jpg".format(n), filter)
+        n = n + 1
+    
+    print max_value
+    print min_value
+    
  
 print "ahoj"
 print cv2.magnitude(255, 255)
@@ -83,8 +120,9 @@ vector_deep = 16
 img = cv2.imread('../../Data/iaprtc12/images/03/3117.jpg', 0) # 0 Grayscale image 
 img = img.astype(float)
 
-filters_real = build_filters(0)
+filters_real = build_filters(math.pi/2)
 filtered_img = use_filters(img, filters_real)
+show_filters(filters_real)
 exit()
 #count_vector(filtered_img, vector_deep)
 

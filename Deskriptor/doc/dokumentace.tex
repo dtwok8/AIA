@@ -1,131 +1,122 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Vzor pro sazbu kvalifikační práce
-%
-% Západočeská univerzita v Plzni
-% Fakulta aplikovaných věd
-% Katedra informatiky a výpočetní techniky
-%
-% Petr Lobaz, lobaz@kiv.zcu.cz, 2016/03/14
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage{graphicx}
 
-% Možné jazyky práce: czech, english
-% Možné typy práce: BP (bakalářská), DP (diplomová)
-\documentclass[czech,BP]{thesiskiv}
 
-% Definujte údaje pro vstupní strany
-%
-% Jméno a příjmení; kvůli textu prohlášení určete, 
-% zda jde o mužské, nebo ženské jméno.
-\author{Kateřina Kratochvílová}
-\declarationfemale
 
-%alternativa: 
-%\declarationfemale
 
-% Název práce
 \title{Deskriptor}
-
-% 
-% Texty abstraktů (anglicky, česky)
-%
-\abstracttexten{The text of the abstract (in English). It contains the English translation of the thesis title and a short description of the thesis.}
-
-\abstracttextcz{Text abstraktu (česky). Obsahuje krátkou anotaci (cca 10 řádek) v češtině. Budete ji potřebovat i při vyplňování údajů o bakalářské práci ve STAGu. Český i anglický abstrakt by měly být na stejné stránce a měly by si obsahem co možná nejvíce odpovídat (samozřejmě není možný doslovný překlad!).
-}
-
-% Na titulní stranu a do textu prohlášení se automaticky vkládá 
-% aktuální rok, resp. datum. Můžete je změnit:
-%\titlepageyear{2016}
-%\declarationdate{1. března 2016}
-
-% Ve zvláštních případech je možné ovlivnit i ostatní texty:
-%
-%\university{Západočeská univerzita v Plzni}
-%\faculty{Fakulta aplikovaných věd}
-%\department{Katedra informatiky a výpočetní techniky}
-%\subject{Bakalářská práce}
-%\titlepagetown{Plzeň}
-%\declarationtown{Plzni}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% DODATEČNÉ BALÍČKY PRO SAZBU
-% Jejich užívání či neužívání záleží na libovůli autora 
-% práce
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Zařadit literaturu do obsahu
-\usepackage[nottoc,notlot,notlof]{tocbibind}
-
-% Umožňuje vkládání obrázků
-\usepackage[pdftex]{graphicx}
-
-% Odkazy v PDF jsou aktivní; navíc se automaticky vkládá
-% balíček 'url', který umožňuje např. dělení slov
-% uvnitř URL
-\usepackage[pdftex]{hyperref}
-\hypersetup{colorlinks=true,
-  unicode=true,
-  linkcolor=black,
-  citecolor=black,
-  urlcolor=black,
-  bookmarksopen=true}
+\author{Kateřina Kratochvílová}
 
 % matematicke rovnice %
 \usepackage{amsmath}
 
-% Při používání citačního stylu csplainnatkiv
-% (odvozen z csplainnat, http://repo.or.cz/w/csplainnat.git)
-% lze snadno modifikovat vzhled citací v textu
-\usepackage[numbers,sort&compress]{natbib}
+% #########
+% # START #
+% #########
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% VLASTNÍ TEXT PRÁCE
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{document}
-%
-\maketitle
+\begin{document} 
+% titulní stránka
+%\maketitle
+\begin{titlepage}
+\begin{flushleft} 
+{\includegraphics[width=.5\textwidth]{./img/fav_logo.jpg}\\[3cm]}
+\end{flushleft}
+\begin{center}
+
+{\Huge KIV/UIR - Semestrální práce}
+\\[0.3cm]
+\vspace{1.7cm}
+{\Large Kateřina Kratochvílová} \\
+\vspace{0.2cm}
+{\normalsize dtwok8@students.zcu.cz}\\
+
+{\large \today}
+\end{center}
+\end{titlepage}
+
+
+% obsah
 \tableofcontents
 
-\chapter{Úvod}
-V souboru \texttt{literatura.bib} jsou uvedeny příklady, jak citovat knihu \cite{KnuthAOCP2}, článek v časopisu \cite{Hoare1961}, webovou stránku \cite{Graphics2D}.
+% abstrakt
+\begin{abstract}
+abstrakt  
+\end{abstract}
 
 
-\chapter{Úvod}
-V dnešní době, kdy je svět přesycen obrázky v digitální podobě, není vůbec snadné nalézt obrázek zobrazující požadovaný obsah. Naneštěstí počítače nedokáží vnímat obraz jako lidé, vnímají totiž obrazy jako sérii binárních informací. Přitom počítače a jejich práce s obrazy by se dala využít v mnoha oborech jako je lékařství nebo doprava. Na základě toho vyplouvá na povrch problém jak spravovat digitální obrázky a efektivně mezi nimi vyhledávat. Prostřednictvím klíčových slov přiřazených k obrázkům se dá problém vyhledávání zjednodušit. Přiřazení klíčových slov probíhá pomocí procesu automatické anotace obrázků. Klíčová slova přiřazená k obrázku by měla vyjadřovat jeho obsah (například les, strom). Při reálném použití můžeme ovšem narazit na problém při zadávání abstraktních slov, například šťastná rodina.  
-\\
-Pro automatickou anotaci obrázků se používá strojové učení. Můžeme ji rozdělit na dvě části. V první části získáme klíčové příznaky ve druhé už je samotná anotace, tedy přidělení klíčových slov. Abychom tento postup mohli provést v praxi, musíme nejdřív klasifikátor natrénovat pomocí trénovací množiny. Trénovací množina je množina obrázků, která již má ke každému obrázku přidána metadata s klíčovými slovy připravenými od lidí. Vybrané obrázky v trénovací množině musí být různorodé, aby anotace probíhala správně. Pojem automatická anotace obrázků je jednoduše řečeno proces, při kterém jsou k obrázku automaticky přiřazena metada, která obsahují klíčová slova. 
-\\
-Cílem práce je navrhnout a implementovat software umožňující automatickou anotaci obrázků. Konkrétně se bude zabývat metodou JEC. Práce bude využívat nízkoúrovňové příznaky, konkrétně barvu a texturu. Metodu budeme zkoušet na standardních datech, následně se budeme snažit výsledky vylepšít, a porovnat s další metodou a literaturou.
+\chapter{Poem}
+Vstup algorimutmu se předpokládá šedotónový obrázek o rozměrech  m x n.
 
+\subsubsection{1. Výpočet gradientu a magnitudy}
+Nejprve je potřeba vypočítát gradient. Gradient je obecně směr růstu. Výpočet může probíhat různými způsoby. Pří výpočtu použijeme masku, kterou aplikujeme na vstupní obrázek. Podle některých studii jsou nejlepší jednoduché masky jako je např. $[1, 0, -1]$ a $[1, 0, -1]^{\,t}$. Okraje se buď vypouštějí nebo se dají doplnit (existuje více způsobů doplňění). Výstupem jsou dva obrázky o rozměrech m x n, na výstup se dá pohlíže také jako na vektor, kdy každý bod původního obrázku je reprezentován právě 2D vektorem. Analogicky pokud si vektory rozložíme na x a y složku dostali bychom dva obrázky jeden, který reprezentuje obrázek po použití x-ového filtru, a druhý který reprezentuje obrázek po použití y-filtru. Přičemž použití y filtru by nám mělo zvíraznit hrany v y směru (svislé) a x zvírazní hrany v x směru (vodorovné). Intenzita v každém pixelu představuje velikost gradientu (magnitudu).\\
+Magnituda je velikost směru růstu lze si ji představit jako velikost směru růstu pro každý pixel (počítá se tedy pro každý pixel). Počítá se tedy pro každý pixel. Takže se dá počítat jako velikost těch 2D vektrů které jsme dostaly při výpočtu gradientu. Magnituda představuje velikost vektoru gradientu. Magnitudu spočteme jako velikost vektoru.
 
-\section{Výpočet gradientu}
-POEM deskritpro se používá jen na šedoonový obrázek, my by jsme ho chtěli na barevný obrázek
-\subsection{Vyýpočet u šedotónového obrázku}
+\begin{align}
+	\label{vstupni_matice}image = \begin{pmatrix}8 & 7 & 5 \\1 & 2 & 4 \\3 & 5 & 7 \end{pmatrix}
+\end{align}
+\begin{align}
+	\label{masky}
+		maska(x) = \begin{pmatrix}-1 & 1 \end{pmatrix} 
+		maska(y) = \begin{pmatrix}-1 \\ 1 \end{pmatrix}
+\end{align}
 
-\subsection{Výpočet}
-Nejprve je potřeba vypočítát gradient. Gradeint je směr růstu. Podle některých studii jsou nejlepší jednoduché masky jako je např. $[1, 0, -1]$ a $[1, 0, -1]^T$. Okraje se buď vypouštějí nebo se dají doplnit (existuje více způsobů doplňění). Masky použijeme na obrázek a vypadnou nám obrázky o rozměrech mxn každý bod původního obrázku je reprezentován jako 2D vektor. Pokud si vektor rozložíme na x a y složku dostali bychom dva obrázky jeden, který reprezentuje obrázek po použití x-ového filtru, a druhý který reprezentuje obrázek po použití y-filtru. Přičemž použití  y filtru by nám mělo zvíraznit hrany v ylonovém směru (svislé) a x zvírazní hrany v x směru (vodorovné).
+\begin{align}
+	\label{vystupni_gradienty}
+		gradient(x) = \begin{pmatrix}-1 & -2 & 0\\1 & 2 & 0 \\2 & 2 & 0 \end{pmatrix}
+		gradient(y) = \begin{pmatrix}-7 & -5 & -1 \\2 & 3 & 3 \\0 & 0 & 0 \end{pmatrix}
+\end{align}
 
-TODO doplnit obrázky gradient 
-
-Magnituda\\
-Magnituda je velikost směru růstu lze si ji představit jako velikost směru růstu pro každý pixel. Počítá se pro každý pixel. Takže se dá počítat jako velikost těch 2D vektrů které jsme dostaly při výpočtu gradientu.
-Magnituda představuje velikost vektoru gradientu.
-Velikost vektoru v rovině:
 \begin{align}
    \label{velikost_vektoru} |u| = \sqrt{u_1^2 + u_2^2}
 \end{align}
 
+\begin{figure}[htp]
+	\centering
+	\begin{minipage}[c]{150pt}
+		\centering
+		\includegraphics[width=150pt]{./img/vstupni_obraz.jpg}
+		\caption{Vstupní obrázek}
+	\end{minipage}
+	\begin{minipage}[c]{150pt}
+		\includegraphics[width=150pt]{./img/magnitude.png}
+		\caption{magnituda}
+		\centering
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\begin{minipage}[c]{150pt}
+		\centering
+		\includegraphics[width=150pt]{./img/gradientX.png}
+		\caption{gradient x}
+	\end{minipage}
+	\begin{minipage}[c]{150pt}
+		\includegraphics[width=150pt]{./img/gradientY.png}
+		\caption{gradient y}
+		\centering
+	\end{minipage}
+\end{figure}
+
+\subsubsection{Diskretizace směru gradientu}
+Pokud se na gradienty budeme koukat jako na 2D vektory můžeme určit nejeden jejich velikost(gradient) ale i jejich směr. Je možné použít znamínkovou reprezentaci $0 - \pi$ nebo neznamínkovou reprezentaci $0 - 2\pi$. Každý pixel se pak dá reprezentovat nejen velikostí vektoru ale i jeho směrem. V praxi si rovnoměrně rozdělíme kružnici na několik dílů (podle toho kolik chceme směrů) označme si počet dílů $d$. Pro $d = 3$ znaménkovou reprezentaci to tedy bude $0 - \frac{2}{3}\pi$, $\frac{2}{3}\pi - \frac{4}{3}\pi$ a $\frac{3}{3}\pi - 2\pi$ 
+
+\subsubsection{dalsi}
+U každého směru vezmeme každý pixel a jeho okolí a zprůměrujeme jeho hodnoty. Toto okolí se nazývá cell. 
+
+\subsubsection{výpočet LBP}
 
 
+\begin{figure}[ht]
+		\centering
+		\includegraphics[width=253px]{./img/poem.png}	
+		\caption{Znázornění LBP}
+\end{figure} 
+ 
 \section{Textura}
 LBP i Gabor pracují s informací o intenzitě obrazu. Detekce hran. Obyčejné LBP problém s rotací.
-
 
 kombinace textur a barevne informace
 1. Vytvoření společného příznaku, 
@@ -140,61 +131,22 @@ informace o barvě a textuře se mohou oblivňovat protichůdně
 	
 vutbrno 117319 10 stranka
 
-
-
-
 Gabor filter je lineární filter používaný pro detekci hran. Frekvence a orientace reprezentující Gabor filter je podobná lidskému vnímání a jsou zvláště vhodné pro reprezentaci textury a rozlišování. 
 
 Gabor filtr reaguje na hrany a texturové změny. 
 
 Obrázky jsou filtrovány za použité reálné části z různých odlišních Gabor filtrů jader. Průměrný a rozptyl filtrovaných snímků jsou pak použity jako funkce pro klasifikaci, která je založena na nejméně kvadratické chyby pro jednoduchost.
 
-
 TODO Dohledat Haar a Gabor wavelety, přidat vzorečky a zase klidně i obrázky
 
 \subsection{Barva}
-U digitálního obrazu je barva reprezentovaná n-rozměrným vektorem. Jeho velikost a význam jednotlivých složek (tzv. barevných kanálů) zavisí na příslušném barevném prostoru. Počet bitů použitých k uložení buď celého vektoru nebo jeho jednotlivých složek se nazývá barevná hloubka (totožně bitová hloubka). Obvykle se můžeme setkat s hodnotami 8, 12, 14 a 16 bitů na kanál. 
+U digitálního obrazu je barva reprezentovaná n-rozměrným vektorem. Jeho velikost a význam jednotlivých složek (tzv. barevných kanálů) zavisí na příslušném barevném prostoru. Počet bitů použitých k uložení buď celého vektoru nebo jeho jednotlivých složek se nazývá barevná hloubka (totožně bitová hloubka). Obvykle se můžeme setkat s hodnotami 8, 12, 14 a 16 bitů na kanál.
 \\
-V použité metodě získáme vlastnosti z obrázků ve třech rozdílných barevných prostorech: RGB, HSV a LAB. RGB (Red, Green, Blue) je nejobvykleji používaný pro zachycení obrázu nebo jeho zobrazení. Oproti tomu HSV (Hue, Saturation and Value) se snaží zachytit barevný model tak jak ho vnímá lidské oko, ale zároveň se snaží zůstat jednoduchý na výpočet. Hue znamená odstín barvy, saturation systost barvy a value je hodnota jasu nebo také množství bílého světla. RGB je závislý na konkrétním zařízení, nemůže dosáhnout celého rozsahu barev, které vidí lidské oko, zatímco barevný model LAB je shopen obsáhnout celé viditelné spektrum a navíc je nezávislý na zařízení. L (ve zkratce LAB) značí Luminanci (jas dosahuje hodnot 0 - 100, kde 0 je černá a 100 je bílá). Zbylé A a B jsou dvě barvonosné složky, kdy A je ve směru červeno/zeleném a B se pohybuje ve směru modro/žlutém. 
-
-
+V použité metodě V použité metodě získáme vlastnosti z obrázků ve třech rozdílných barevných prostorech: RGB, HSV a LAB. RGB (Red, Green, Blue) je nejobvykleji používaný pro zachycení obrázu nebo jeho zobrazení. Oproti tomu HSV (Hue, Saturation and Value) se snaží zachytit barevný model tak jak ho vnímá lidské oko, ale zároveň se snaží zůstat jednoduchý na výpočet. Hue znamená odstín barvy, saturation systost barvy a value je hodnota jasu nebo také množství bílého světla. RGB je závislý na konkrétním zařízení, nemůže dosáhnout celého rozsahu barev, které vidí lidské oko, zatímco barevný model LAB je shopen obsáhnout celé viditelné spektrum a navíc je nezávislý na zařízení. L (ve zkratce LAB) značí Luminanci (jas dosahuje hodnot 0 - 100, kde 0 je černá a 100 je bílá). Zbylé A a B jsou dvě barvonosné složky, kdy A je ve směru červeno/zeleném a B se pohybuje ve směru modro/žlutém. 
+\\
 Pro RGB, HSV i LAB použijeme barevnou hloubku 16 bitů na kanál histogramu v jejich příslušném barevném prostoru. 
 
 Jako reprezentace textur budou použity Gabor a Haar wavelety. Každý obrázek bude filtrován s Gabor wavelet na třech škálách a čtyřech orientacích. 
-
-
-
-\section{Kombinace vzdáleností}
-Nejrozumnějším přístupem ke zkombinování vzdáleností od různých desktiptorů je aby jednotlivé vzdálenosti přispívali rovnoceně. Z tohoto důvodu je potřeba vzdálenosti přeškálovat na jednotné měřítko. Označme si $I_i$ jako $i$-tý obrázek a řekněme, že máme $N$ jeho příznaků $f_i^1, ..., f_i^N$. Nedefinujme si $d_{(i,j)}^k$ jako vzdálenost mezi $f_i^k$ a $f_j^k$. Chtěli bychom zkombinovat jednotlivé vzdálenosti $d_{(i,j)}^k$ , $k=1, ..., N$ to nám poskytne vzdálenosti mezi obrázky $I_i$ a $I_j$. Vzdálenosti které nám vyjdou  ale v praxi nám nevyjdou tak aby měli stejný poměr na výsledku. Předtím než vzdálenosti zkombinujeme musíme je normalizovat do jednotné formy. Získáme maximální a minimální hodnotu pro každý příznak a na základě toho hodnotu přeškláujeme na interval od 0 do 1. Když mi označíme přeškálovánou vzdálenost jako ${\tilde{d}_{(i,j)}^k}$ následně můžeme označit vzdálenosti mezi obrázky $I_i$ a $I_j$ jako \eqref{jec}. Označíme ten to vzorec na vzdálenosti jako Joint Equal Contribution (JEC)  
-
-
-\begin{align}
-   \label{jec} JEC = \sum_{k=1}^N\frac{\tilde{d}_{(i,j)}^k}{N}
-\end{align}
-
-\section{Přenesení klíčových slov}
-Pro přenesení klíčových slov používáme metodu, kdy přeneseme n klíčových slov k dotazovanému obrázku $\tilde{I}$ od K nejbližších sousedů v trénovací sadě. Mějme $I_{i}, i = 1, ..., K$ ,tyto K nejbližší sousedy seřadíme podle vzrůstající vzdálenosti (tzn. že $I_{1} $ je nejvíce podobný obrázek). Počet klíčových slov k danému $I_{i}$ je označen jako $|I_{i}|$. Dále jsou popsány jednotlivé kroky alogoritmu na přenesení klíčových slov.
-\begin{enumerate}
-	\item Seřadíme klíčová slova z $I_{1}$ podle jejich frekvence v trénovacích datech.
-	\item Z $|I_{1}|$ klíčových slov z $I_{1}$ přeneseme n nejvýše umístěná klíčová slova do dotazovaného $\tilde{I}$. Když $|I_{1}| < n$ pokračujte na krok 3. 
-	\item Seřaď klíčová slova sousedů od $I_{2}$ do $I_{K}$ podle dvou faktorů
-	\begin{enumerate}
-		\item Co výskyt v trénovacích datech s klíčovými slovy přenesených v kroku 2 a
-		\item místní frekvence (tj. jak často se vyskytují jako klíčová slova u obrázků $I_{2}$ až $I_{K}$). Vyber nejvyšší rankink $n-|I_{1}|$ klíčových slov převedených do $\tilde{I}$.
-	\end{enumerate}
-\end{enumerate}
-
-Tento algoritmus pro přenos klíčových slov je poněkud odlišný od algoritmů které se běžně používají. Jeden z běžně užívaných funguje na principu, že klíčová slova jsou vybrána od všech sousedů (se všemi sousedy je zacházeno stejně bez ohledu na to jak jsou danému obrázku podobní), jiný užívaný algoritmus k sousedům přistupuje váženě (každý soused má jinou váhu)a to na základě jejich vzdálenosti od testovaného obrázku. Při testování se ovšem ukázalo, že tyto přímé přístupy přináší horší výsledky v porovnání s použitým dvoufaktorovým algoritmem pro přenos klíčových slov. \\
-V souhrnu použitá metoda je složenina ze svou složeniny obrázkové vzdálenosti měřítku (JEC nebo Lasso) pro nejbližší ranking, kombinuje se s výše popsaným algoritmem na přenášení klíčových slov.
-
-\chapter{Návrh systému}
-Systém byl navržen jako modulový a to z důvodu snadné obměny některé z častí, což je výhodné zejména pokud bychom potřebovali například spočítat vzdálenosti vektorů podle jiného algoritmu. 
-
-\begin{figure}[h]
-		\centering
-		\includegraphics[width=253px]{./img/graf.png}	
-		\caption{Návrh systému}
-\end{figure}
 
 
 \chapter{Použité programové prostředky}
@@ -207,20 +159,9 @@ Knihovna byla navrhnuta pro výpočetní efektivitu v oblasti počítačového v
 \\
 Knihovnu OpenCV je možné stáhnout na adrese: http://opencv.org/
 
-
 \chapter{Závěr}
-V teoretické části byly popsány nízkoúrovňové příznaky barva a textura. Byla rozebrána metoda JEC, která bude v bakalářské práci implementována. Seznámili jsme se s knihovnou OpenCV, prostudovali obrázky a přiložená metadata od ČTK, ESP a iaprtc12. 
+V teoretické části byly popsány nízkoúrovňové příznaky barva a textura. Byla rozebrána metoda JEC, která bude v bakalářské práci implementována. Seznamili jsme se s knihovnou OpenCV, prostudovali obrázk y apříložená metadata.
 
 \chapter{Uživatelská dokumentace}
 popsani jak vypada zdrojovej soubor kterej to zere, nejdriv cesta k souboru a pak jeho klicovy slova
- 
-% 
-% PRO ANGLICKOU SAZBU JE NUTNÉ ZMĚNIT
-% CITAČNÍ STYL!
-%
-\bibliographystyle{csplainnatkiv}
-{\raggedright\small
-\bibliography{literatura}
-}
-
 \end{document}

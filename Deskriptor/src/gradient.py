@@ -168,7 +168,7 @@ def compute_lbp_value(r, c, border_img, block_size, tau):
 
 
 
-img = cv2.imread("../../Data/iaprtc12/images/01/1210.jpg", 0)
+img = cv2.imread("../../Data/iaprtc12/images/00/51.jpg", 0)
 #img = np.float32(img) / 255.0
 
 count_directions = 3

@@ -1,21 +1,12 @@
-\select@language {british}
 \select@language {czech}
-\select@language {british}
-\select@language {czech}
-\select@language {czech}
-\select@language {czech}
-\contentsline {chapter}{\numberline {1}\IeC {\'U}vod}{6}{chapter.1}
-\contentsline {chapter}{\numberline {2}\IeC {\'U}vod}{7}{chapter.2}
-\contentsline {section}{\numberline {2.1}V\IeC {\'y}po\IeC {\v c}et gradientu}{7}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Vy\IeC {\'y}po\IeC {\v c}et u \IeC {\v s}edot\IeC {\'o}nov\IeC {\'e}ho obr\IeC {\'a}zku}{8}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}V\IeC {\'y}po\IeC {\v c}et}{8}{subsection.2.1.2}
-\contentsline {section}{\numberline {2.2}Textura}{8}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Barva}{9}{subsection.2.2.1}
-\contentsline {section}{\numberline {2.3}Kombinace vzd\IeC {\'a}lenost\IeC {\'\i }}{9}{section.2.3}
-\contentsline {section}{\numberline {2.4}P\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov}{10}{section.2.4}
-\contentsline {chapter}{\numberline {3}N\IeC {\'a}vrh syst\IeC {\'e}mu}{12}{chapter.3}
-\contentsline {chapter}{\numberline {4}Pou\IeC {\v z}it\IeC {\'e} programov\IeC {\'e} prost\IeC {\v r}edky}{13}{chapter.4}
-\contentsline {section}{\numberline {4.1}OpenCV}{13}{section.4.1}
-\contentsline {chapter}{\numberline {5}Z\IeC {\'a}v\IeC {\v e}r}{14}{chapter.5}
-\contentsline {chapter}{\numberline {6}U\IeC {\v z}ivatelsk\IeC {\'a} dokumentace}{15}{chapter.6}
-\contentsline {chapter}{Literatura}{16}{chapter*.5}
+\contentsline {chapter}{\numberline {1}Poem}{1}
+\contentsline {subsubsection}{1. V\IeC {\'y}po\IeC {\v c}et gradientu a magnitudy}{1}
+\contentsline {subsubsection}{Diskretizace sm\IeC {\v e}ru gradientu}{2}
+\contentsline {subsubsection}{dalsi}{3}
+\contentsline {subsubsection}{v\IeC {\'y}po\IeC {\v c}et LBP}{3}
+\contentsline {section}{\numberline {1.1}Textura}{3}
+\contentsline {subsection}{\numberline {1.1.1}Barva}{3}
+\contentsline {chapter}{\numberline {2}Pou\IeC {\v z}it\IeC {\'e} programov\IeC {\'e} prost\IeC {\v r}edky}{5}
+\contentsline {section}{\numberline {2.1}OpenCV}{5}
+\contentsline {chapter}{\numberline {3}Z\IeC {\'a}v\IeC {\v e}r}{6}
+\contentsline {chapter}{\numberline {4}U\IeC {\v z}ivatelsk\IeC {\'a} dokumentace}{7}

@@ -4,6 +4,10 @@ import math
 import cv2
 from matplotlib import pyplot as plt
  
+#img = cv2.imread("../../Data/iaprtc12/images/00/51.jpg", 0)
+#cv2.imwrite('vstupni_obraz.jpg', img)
+
+ 
 img = cv2.imread("../../Data/image_labelling_datasets/iaprtc12/images/00/51.jpg")
 img = cv2.imread("../../Data/image_labelling_datasets/iaprtc12/images/02/2139.jpg")
 img = cv2.imread("../../Data/image_labelling_datasets/iaprtc12/images/02/2023.jpg")

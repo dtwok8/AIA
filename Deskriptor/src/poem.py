@@ -161,14 +161,75 @@ def compute_lbp_value(r, c, border_img, block_size, tau):
         #if (v - center) >= self.tau:
         #  val += 1
         #val = val << 1; 
-        #if (v - center) >= tau: 
-        if (v > center):
+        if (v - center) >= tau: 
+        #if (v > center):
             val += np.power(2, i) # 2 na i-tou
         #print "akt lbp val:", val
     #if (val != 0):
         #print val
         #exit()
     return val
+
+def compute_histogram(lbp, direction, x = 4, y = 4):
+    step_x = len(lbp[0]) /x
+    step_y = len(lbp[0,0]) /y 
+    print "step_x {} step_y {}".format(step_x, step_y)
+    
+    for row_block in range(x-1):
+        for column_block in range(y-1):
+            compute_local_histogram(lbp, row_block, column_block, step_x, step_y)
+    
+
+def compute_local_histogram(lbp, row_block, column_block, step_x, step_y):
+    histogram = np.zeros(3 * 16)
+    
+    for d in range(len(lbp)):
+        for x in range(step_x*row_block, step_x*(row_block+1)):
+            for y in range (step_y * column_block, step_y * (column_block+1)):
+                print "{} {} {} lbp: {} ".format(d,x,y, lbp[d,x,y])
+                index = (d+1)*int((lbp[d,x,y] / 16))
+                histogram[index] = histogram[index] + 1
+    
+    #histogram = histogram / np.sum(histogram) 
+    print histogram          
+            
+    
+def compute_histograms_dense(lbp, size_x, size_y, step_x, step_y, uniform=False):
+    histograms = []
+    r = size_y / 2
+    while r < lbp.shape[1] - size_y / 2 - 1:
+        #print r
+        c = size_x / 2
+        while c < lbp.shape[2] - size_x / 2 - 1:
+            histograms.append(compute_histogram_d(lbp, c, r, size_x, size_y, uniform))
+            c += step_x        
+
+        r += step_y
+
+    print "Histograms no.", len(histograms)
+    #print np.array(histograms).shape
+    return histograms   
+#
+##computes histogram from the patch centerd at x,y with size step_x X step_y
+def compute_histogram_d(lbp, x, y, size_x, size_y, uniform=False):
+    directions = 3
+    #print "computing histogram"
+    bins = 59 if uniform else 256
+    histogram = np.zeros((directions * bins))
+    half_x = size_x / 2
+    half_y = size_y / 2
+    #print histogram.shape
+    for d in range(directions):
+        for r in range(y - half_y, y + half_y + 1):
+            for c in range(x - half_x, x + half_x + 1):
+                index = lbp[d,r,c]
+                histogram[d * bins + index] += 1
+
+    #print histogram.shape
+    #print np.sum(histogram)
+    histogram = histogram / np.sum(histogram)
+    #print histogram
+    return histogram
 
 
 
@@ -177,8 +238,8 @@ img = cv2.imread("25.jpg", 0)
 #img = np.float32(img) / 255.0
 
 count_directions = 3
-cell_size = 7
-block_size = 10
+cell_size = 3#7
+block_size = 8#10
 tau = 4
 gradient = count_gradient(img)
 magnitude = count_magnitude(gradient) 
@@ -192,6 +253,53 @@ print lbp.shape
 cv2.imwrite('lbp0.png', lbp[0,:,:])
 cv2.imwrite('lbp1.png', lbp[1,:,:])
 cv2.imwrite('lbp2.png', lbp[2,:,:])
+
+#compute_histogram(self, x, y, size_x, size_y, uniform=False)
+
+som = compute_histogram(lbp, count_directions)
+#som = compute_histograms_dense(lbp, 4, 4, 1, 1, uniform=False)
+#print som
+#print len(som)
+#print som.shape
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 exit()
         
@@ -299,113 +407,3 @@ print directional
 cv2.imwrite('directional1.png', directional[0,:,:])
 cv2.imwrite('directional2.png', directional[1,:,:])
 cv2.imwrite('directional3.png', directional[2,:,:])
-
-#cv2.sepFilter2D(src, ddepth, kernelX, kernelY)
-#print kernel
-#print cv2.sepFilter2D(img, ddepth, [1, -1], [[1], [-1]])
-
-
-#print cv2.magnitude(x[:,:,0],y[:,:,1]) 
- 
- 
- 
- 
-# 
-# 
-# 
-# 
-# 
-#img = cv2.imread('../../Data/image_labelling_datasets/iaprtc12/images/01/1210.jpg',0)
-#
-#laplacian = cv2.Laplacian(img,cv2.CV_64F)
-#sobelx = cv2.Sobel(img,cv2.CV_64F,1,0,ksize=5)
-#sobely = cv2.Sobel(img,cv2.CV_64F,0,1,ksize=5)
-#
-#print laplacian.shape
-#
-#plt.subplot(2,2,1),plt.imshow(img,cmap = 'gray')
-#plt.title('Original'), plt.xticks([]), plt.yticks([])
-#plt.subplot(2,2,2),plt.imshow(laplacian,cmap = 'gray')
-#plt.title('Laplacian'), plt.xticks([]), plt.yticks([])
-#plt.subplot(2,2,3),plt.imshow(sobelx,cmap = 'gray')
-#plt.title('Sobel X'), plt.xticks([]), plt.yticks([])
-#plt.subplot(2,2,4),plt.imshow(sobely,cmap = 'gray')
-#plt.title('Sobel Y'), plt.xticks([]), plt.yticks([])
-#
-#plt.show()
-#
-#img = cv2.imread("../../Data/image_labelling_datasets/iaprtc12/images/01/1210.jpg", 0)
-#    
-#  # Output dtype = cv2.CV_8U
-#sobelx8u = cv2.Sobel(img,cv2.CV_8U,1,0,ksize=5)
-#
-## Output dtype = cv2.CV_64F. Then take its absolute and convert to cv2.CV_8U
-#sobelx64f = cv2.Sobel(img,cv2.CV_64F,1,0,ksize=5)
-#abs_sobel64f = np.absolute(sobelx64f)
-#sobel_8u = np.uint8(abs_sobel64f)
-#
-#
-##MAGNITUDA
-##print cv2.magnitude()
-#
-#plt.subplot(1,3,1),plt.imshow(img,cmap = 'gray')
-#plt.title('Original'), plt.xticks([]), plt.yticks([])
-#plt.subplot(1,3,2),plt.imshow(sobelx8u,cmap = 'gray')
-#plt.title('Sobel CV_8U'), plt.xticks([]), plt.yticks([])
-#plt.subplot(1,3,3),plt.imshow(sobel_8u,cmap = 'gray')
-#plt.title('Sobel abs(CV_64F)'), plt.xticks([]), plt.yticks([]) 
-#plt.show()
-#
-#img = cv2.imread('../../Data/image_labelling_datasets/iaprtc12/images/01/1210.jpg',0)
-#f = np.fft.fft2(img)
-#fshift = np.fft.fftshift(f)
-#magnitude_spectrum = 20*np.log(np.abs(fshift))
-#
-#plt.subplot(121),plt.imshow(img, cmap = 'gray')
-#plt.title('Input Image'), plt.xticks([]), plt.yticks([])
-#plt.subplot(122),plt.imshow(magnitude_spectrum, cmap = 'gray')
-#plt.title('Magnitude Spectrum'), plt.xticks([]), plt.yticks([])
-#plt.show()
-#
-#
-#
-#img = cv2.imread('../../Data/image_labelling_datasets/iaprtc12/images/01/1210.jpg',0)
-#
-#img_float32 = np.float32(img)
-#
-#dft = cv2.dft(img_float32, flags = cv2.DFT_COMPLEX_OUTPUT)
-#dft_shift = np.fft.fftshift(dft)
-#
-#magnitude_spectrum = 20*np.log(cv2.magnitude(dft_shift[:,:,0],dft_shift[:,:,1]))
-#
-#plt.subplot(121),plt.imshow(img, cmap = 'gray')
-#plt.title('Input Image'), plt.xticks([]), plt.yticks([])
-#plt.subplot(122),plt.imshow(magnitude_spectrum, cmap = 'gray')
-#plt.title('Magnitude Spectrum'), plt.xticks([]), plt.yticks([])
-#plt.show()  
-#
-#
-#def compute_direction(directions, gradient, magnitude):
-#    dirs = np.arctan2(gradient[0,:,:], gradient[1,:,:]) * 180 / np.pi # vypocte to úhel
-#    
-#    soubor = open("uhly.txt", 'w')  
-#    for row in dirs:
-#        for item in row:
-#            soubor.write(" {} ".format(item))
-#        soubor.write("\n")
-#    soubor.close()
-#    directional = np.zeros((directions, gradient[0].shape[0], gradient[0].shape[1]), dtype=float)
-#    
-#    for i in range(len(dirs)):
-#        for y in range(len(dirs[i])):
-#            if(dirs[i][y] < 0):
-#                dirs[i][y] = 360 - dirs[i][y]
-#                print "prevadime"
-#            if(dirs[i][y] >= 0 and dirs[i][y] < 120):
-#                directional[0][i][y] = magnitude[i][y]
-#            if(dirs[i][y] >= 120 and dirs[i][y] < 270):
-#                directional[1][i][y] = magnitude[i][y]
-#            if(dirs[i][y] >= 270 and dirs[i][y] < 360):
-#                directional[2][i][y] = magnitude[i][y]    
-#
-#    return directional

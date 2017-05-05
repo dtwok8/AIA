@@ -168,6 +168,9 @@ U obrazku bylo:
 Gáborova vlnka je tvořena vynásobením dvou cosinusovek (které mají obecně různé
 frekvence) pro každou osu a výsledek se pak násobí dvourozměrnou Gaussovou funkcí
 
+určuje se velikost filtru (značeno jako ksize). Sigma standartní odchylka Gausovy funkce použité v gaborově filtru. theta je orientace normálu na paralelní pruhy gaborovy funkce. lambda je vlnová délka sinosového faktoru (vlnova delka sinosovky), gamma - prostorový poměr stran (elipsicityda), když je gamma 1 je gausian do kruhu, psi je fazovy posun (určije jestli nám vrátí realnou nebo imaginární část), 
+
+
 \begin{align}
    \label{gabor_complex}  g(x, y; \lambda, \theta, \psi, \sigma,  \gamma) = exp \Bigg( - \frac{{x^2 + \gamma^2 y^2}}{2 \sigma^2} \Bigg) exp \Bigg(i \bigg(2\pi \frac{x}{\lambda} + \psi \bigg)\Bigg)  
 \end{align}

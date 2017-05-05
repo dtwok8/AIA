@@ -67,7 +67,40 @@ def count_vector(magnitudes, deep):
                 index = ((i*deep))+int((value/deep)) # (i*deep) potrebuju se posunout na i-ty filtrovany obrazek
                 array_histograms_magnitude[index]=array_histograms_magnitude[index]+1
     return array_histograms_magnitude
+ 
+def count_magnitude(filtered_img_real, filtered_img_imag):
+    magnitudes = np.zeros(shape=(len(filtered_img_real), len(filtered_img_real[0]),len(filtered_img_real[0][0])), dtype=np.int)
     
+    for i in range(len(filtered_img_real)):
+        magnitudes[i] = cv2.magnitude(filtered_img_imag[i], filtered_img_real[i])
+
+    m_min = 0
+    m_max = 360
+    
+#    for i in range(len(magnitudes)):
+#        for x in range(len(magnitudes[i])):
+#            for y in range(len(magnitudes[i][x])):
+#                if (magnitudes[i].item(x,y) > 360):
+#                    print "chyba!!"
+#                    
+#                magnitudes[i][x,y] =  254* (magnitudes[i].item(x,y) /m_max)
+#    
+    return magnitudes
+
+#def count_gabor(img):
+#    "Gabor pocitame pouze s realnou casti."
+#    
+#    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+#    img = img.astype(float)
+#    vector_deep = 16
+#    
+#    #gabor
+#    filters_real = build_filters(0)
+#    filtered_img_real = use_filters(img, filters_real)
+#    
+#    gabor_vector = count_vector(filtered_img_real, vector_deep) 
+#    return gabor_vector
+
 
 def count_gabor(img):
     "Gabor pocitame pouze s realnou casti."
@@ -80,7 +113,13 @@ def count_gabor(img):
     filters_real = build_filters(0)
     filtered_img_real = use_filters(img, filters_real)
     
-    gabor_vector = count_vector(filtered_img_real, vector_deep) 
+    filters_imag = build_filters((math.pi/2)) 
+    filtered_img_imag = use_filters(img, filters_imag)
+    
+    magnitude = count_magnitude(filtered_img_real, filtered_img_imag)
+    gabor_vector = count_vector(magnitude, vector_deep)
+    #gabor_vector = count_vector(filtered_img_real, vector_deep) 
+    
     return gabor_vector
 
 

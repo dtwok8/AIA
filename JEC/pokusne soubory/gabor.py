@@ -6,14 +6,16 @@ import cv2
  
 def build_filters(psi):
     filters = []
-    ksize = 7
-    sigma = 6#0.5 
-    gamma = 1
-    for theta in (0, math.pi/4, math.pi/2, (3/4)*math.pi):
+    ksize = 20
+    sigma = 1#0.5 #odchylka gausovky
+    gamma = 1 #prostorovy pomer stran (elypsicityda)
+    #lambda je vlnova delka
+    for theta in (0, math.pi/4, math.pi/2, (3/4)*math.pi): #theta orientace
+        #kern = cv2.getGaborKernel((ksize, ksize), sigma, theta, 4, gamma, psi)
         for lambdaa in (2, 2*math.sqrt(2), 4): 
             kern = cv2.getGaborKernel((ksize, ksize), sigma, theta, lambdaa, gamma, psi)
-            kern /= 1.5*kern.sum() #normovani #proc? bez toho je jen cerno kdyz mam nasteveny lambdu na 2
-            filters.append(kern)
+            #kern /= 1.5*kern.sum() #normovani #proc? bez toho je jen cerno kdyz mam nasteveny lambdu na 2
+        filters.append(kern)
     return filters
 
 

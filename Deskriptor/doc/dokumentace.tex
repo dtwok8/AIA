@@ -11,6 +11,8 @@
 
 % matematicke rovnice %
 \usepackage{amsmath}
+%odkazy%
+\usepackage{hyperref}
 
 % #########
 % # START #
@@ -47,7 +49,7 @@ abstrakt
 
 
 \chapter{Poem}
-Vstup algorimutmu se předpokládá šedotónový obrázek o rozměrech  m x n.
+POEM (Patterns of Oriented Edge Magnitudes). Vstup algorimutmu se předpokládá šedotónový obrázek o rozměrech  m x n.
 
 \subsubsection{1. Výpočet gradientu a magnitudy}
 Nejprve je potřeba vypočítát gradient. Gradient je obecně směr růstu. Výpočet může probíhat různými způsoby. Pří výpočtu použijeme masku, kterou aplikujeme na vstupní obrázek. Podle některých studii jsou nejlepší jednoduché masky jako je např. $[1, 0, -1]$ a $[1, 0, -1]^{\,t}$. Okraje se buď vypouštějí nebo se dají doplnit (existuje více způsobů doplňění). Výstupem jsou dva obrázky o rozměrech m x n, na výstup se dá pohlíže také jako na vektor, kdy každý bod původního obrázku je reprezentován právě 2D vektorem. Analogicky pokud si vektory rozložíme na x a y složku dostali bychom dva obrázky jeden, který reprezentuje obrázek po použití x-ového filtru, a druhý který reprezentuje obrázek po použití y-filtru. Přičemž použití y filtru by nám mělo zvíraznit hrany v y směru (svislé) a x zvírazní hrany v x směru (vodorovné). Intenzita v každém pixelu představuje velikost gradientu (magnitudu).\\
@@ -113,7 +115,18 @@ U každého směru vezmeme každý pixel a jeho okolí a zprůměrujeme jeho hod
 		\centering
 		\includegraphics[width=253px]{./img/poem.png}	
 		\caption{Znázornění LBP}
-\end{figure} 
+\end{figure} \begin{align}
+   \label{velikost_vektoru_v_prostoru} |u| = \sqrt{u_1^2 + u_2^2 + u_3^2}
+\end{align} 
+ 
+\chapter{Barevný poem}
+\begin{align}
+   \label{velikost_vektoru_v_prostoru} |u| = \sqrt{u_1^2 + u_2^2 + u_3^2}
+\end{align} 
+
+\begin{align}
+   \label{soucet_vektrou} \vec{u} + \vec{v} = (u_1 + v_1, u_2 + v_2, u_3 + v_3 )
+\end{align} 
  
 \section{Textura}
 LBP i Gabor pracují s informací o intenzitě obrazu. Detekce hran. Obyčejné LBP problém s rotací.
@@ -164,4 +177,9 @@ V teoretické části byly popsány nízkoúrovňové příznaky barva a textura
 
 \chapter{Uživatelská dokumentace}
 popsani jak vypada zdrojovej soubor kterej to zere, nejdriv cesta k souboru a pak jeho klicovy slova
+
+\chapter{Zdroje}
+\url{https://dspace5.zcu.cz/bitstream/11025/17883/1/A13N0110P.pdf} \\
+\url{https://en.wikipedia.org/wiki/Local_binary_patterns} \\
+
 \end{document}

@@ -55,40 +55,40 @@ POEM (Patterns of Oriented Edge Magnitudes). Vstup algorimutmu se předpokládá
 \subsection{Výpočet gradientu a magnitudy}
 Nejprve je potřeba vypočítat gradient. Gradient je obecně směr růstu. Výpočet může probíhat různými způsoby. Jednou z možností je použít masku, kterou aplikujeme na vstupní obrázek. Podle některých studii jsou nejlepší jednoduché masky jako je např. $[1, 0, -1]$ a $[1, 0, -1]^{\,t}$. Okraje obrázku se buď vypouštějí nebo se dají doplnit (opět existuje více způsobů).Výstupem jsou dva obrázky o rozměrech $m \times n$. \\
 Na výstup se dá pohlíže také jako na vektor, kdy každý bod původního obrázku je reprezentován právě 2D vektorem. Analogicky pokud si vektory rozložíme na x a y složku dostaneme dva obrázky. Jeden, který reprezentuje obrázek po použití x-ového filtru, a druhý který reprezentuje obrázek po použití y-filtru. Přičemž použití y filtru by nám mělo zvýraznit hrany v y směru (svislé) a x zvýrazní hrany v x směru (vodorovné). \\
-Magnituda je velikost směru růstu, lze si ji představit jako velikost směru růstu pro každý pixel (počítá se tedy pro každý pixel).  Z toho vyplývá, že ji můžeme spočítat jako velikost 2D vektorů, které jsme dostaly při výpočtu gradientu. Zjednodušeně magnituda představuje velikost vektoru gradientu.
+Magnituda je velikost směru růstu, lze si ji představit jako velikost směru růstu pro každý pixel (počítá se tedy pro každý pixel).  Z toho vyplývá, že ji můžeme spočítat jako velikost 2D vektorů, které jsme dostaly při výpočtu gradientu. Zjednodušeně magnituda představuje velikost vektoru gradientu. \\
 
+Ukázka vstupního obrázku: 
 \begin{displaymath} 
 	\label{vstupni_matice} \begin{pmatrix}8 & 7 & 5 \\1 & 2 & 4 \\3 & 5 & 7 \end{pmatrix}
-	\tag{Vstupni obrazek}
 \end{displaymath}
 
+Ukázka masky: 
 \begin{align}
 	\label{masky}
-		maska(x) = \begin{pmatrix}-1 & 1 \end{pmatrix} \\
-		maska(y) = \begin{pmatrix}-1 \\ 1 \end{pmatrix}
-		\tag{Masky}
+		maska(x) &= \begin{pmatrix}-1 & 1 \end{pmatrix} \\
+		maska(y) &= \begin{pmatrix}-1 \\ 1 \end{pmatrix}
 \end{align}
 
+Ukázka gradientů:
 \begin{align}
 	\label{vystupni_gradienty}
-		gradient(x) = \begin{pmatrix}-1 & -2 & 0\\1 & 2 & 0 \\2 & 2 & 0 \end{pmatrix}
-		gradient(y) = \begin{pmatrix}-7 & -5 & -1 \\2 & 3 & 3 \\0 & 0 & 0 \end{pmatrix}
-		\tag{Gradienty}
+		gradient(x) &= \begin{pmatrix}-1 & -2 & 0\\1 & 2 & 0 \\2 & 2 & 0 \end{pmatrix} \\
+		gradient(y) &= \begin{pmatrix}-7 & -5 & -1 \\2 & 3 & 3 \\0 & 0 & 0 \end{pmatrix}
 \end{align}
 
+Gradient jako 2D vektory
 \begin{align}
 	\label{gradient_vektory} 
 		\begin{pmatrix} 
 			[-1 ; -7] & [-2 ; -5] & [0 ; -1] \\
 			[1 ; 2] & [2 ; 3] & [0 ; 3] \\
 			[2 ; 0] & [2 ; 0] & [0 ; 0] \\
-		\end{pmatrix}
-		\tag{Gradient jako 2D vektory} 			   
+		\end{pmatrix}		   
 \end{align}
 
+Vzoreček pro výpočet velikosti vektoru v rovině
 \begin{align}
    \label{velikost_vektoru} |u| = \sqrt{u_1^2 + u_2^2}
-   \tag{Velikost vektoru v rovině.}
 \end{align}
 
 \begin{figure}[htp]
@@ -132,19 +132,20 @@ Pokud se na gradienty budeme koukat jako na 2D vektory můžeme určit nejen jej
 
 
 \subsection{Výpočet lokálního histogramu orientace gradientů z okolí}
-U každého směru projdeme jednotlivé pixely s jejich okolí a zprůměrujeme jejich hodnoty. Toto okolí se nazývá cell. Ukázka výpočtu u jednoho směru při velikosti cell 3. 
-
+U každého směru projdeme jednotlivé pixely s jejich okolí a zprůměrujeme jejich hodnoty. Toto okolí se nazývá cell. Ukázka výpočtu u jednoho směru při velikosti cell 3. \\
+ 
+Ukázka výpočtu u jednoho směru při velikosti cell 3
 \begin{align}
 	\label{aems}
 		smer = \begin{pmatrix}0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\0 & 0 & 0 & 0 \\ 0 & 3.6 & 3.6 & 3 \\ 0 & 2 & 2 & 0 \end{pmatrix}
 		aems = \begin{pmatrix}0 & 0 \\ 0.8 & 1.1 \\ 1.2 & 1.5 \end{pmatrix}
-		\tag{Ukázka výpočtu u jednoho směru při velikosti cell 3}
 \end{align}
+
+Ukázka výpočtu pro jeden pixel při velikosti cell 3
 \begin{align}
 	\label{aems_detail}
 		cell = \begin{pmatrix}0 & 0 & 0 \\ 0 & 3.6 & 3.6 \\ 0 & 2 & 2 \end{pmatrix}
 		aems = \begin{pmatrix}0.8 \end{pmatrix}
-		\tag{Ukázka výpočtu pro jeden pixel při velikosti cell 3}
 \end{align}
 
 \begin{figure}[H]
@@ -160,18 +161,10 @@ LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. 
 
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=200px]{./img/lbp_thresholding.jpg}	
-		\caption{Znázornění LBP}
-\end{figure} 
-
-\begin{figure}[H]
-		\centering
-		\includegraphics[width=253px]{./img/lbp_calculation.jpg}	
-		\caption{Znázornění LBP}
-\end{figure} 
-
-\begin{figure}[H]
-		\centering
+		\includegraphics[width=200px]{./img/lbp_thresholding.jpg}
+		\\[0.5cm]	
+		\includegraphics[width=350px]{./img/lbp_calculation.jpg}
+		\\[0.5cm]
 		\includegraphics[width=253px]{./img/lbp_to_output.jpg}	
 		\caption{Znázornění LBP}
 \end{figure} 

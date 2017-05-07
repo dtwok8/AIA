@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.7)  7 MAY 2017 13:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.7)  7 MAY 2017 15:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -752,32 +752,37 @@ Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 55.
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--59
+
+ []
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.77 \end{align}
+l.70 \end{align}
                  [1
 
-] <./img/vstupni_obraz.jpg, id=92, 481.8pt x 361.35pt>
+] <./img/vstupni_obraz.jpg, id=89, 481.8pt x 361.35pt>
 File: ./img/vstupni_obraz.jpg Graphic file (type jpg)
 
 <use ./img/vstupni_obraz.jpg>
 Package pdftex.def Info: ./img/vstupni_obraz.jpg used on input line 98.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
- <./img/magnitude.png, id=93, 481.8pt x 361.35pt>
+ <./img/magnitude.png, id=90, 481.8pt x 361.35pt>
 File: ./img/magnitude.png Graphic file (type png)
 
 <use ./img/magnitude.png>
 Package pdftex.def Info: ./img/magnitude.png used on input line 102.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
- <./img/gradientX.png, id=94, 481.8pt x 361.35pt>
+ <./img/gradientX.png, id=91, 481.8pt x 361.35pt>
 File: ./img/gradientX.png Graphic file (type png)
 
 <use ./img/gradientX.png>
 Package pdftex.def Info: ./img/gradientX.png used on input line 112.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
- <./img/gradientY.png, id=95, 481.8pt x 361.35pt>
+ <./img/gradientY.png, id=92, 481.8pt x 361.35pt>
 File: ./img/gradientY.png Graphic file (type png)
 
 <use ./img/gradientY.png>
@@ -789,21 +794,21 @@ Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 122.
 
-<./img/directional0.jpg, id=96, 481.8pt x 361.35pt>
+<./img/directional0.jpg, id=93, 481.8pt x 361.35pt>
 File: ./img/directional0.jpg Graphic file (type jpg)
 
 <use ./img/directional0.jpg>
 Package pdftex.def Info: ./img/directional0.jpg used on input line 127.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
 
-<./img/directional1.jpg, id=97, 481.8pt x 361.35pt>
+<./img/directional1.jpg, id=94, 481.8pt x 361.35pt>
 File: ./img/directional1.jpg Graphic file (type jpg)
 
 <use ./img/directional1.jpg>
 Package pdftex.def Info: ./img/directional1.jpg used on input line 128.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
 
-<./img/directional2.jpg, id=98, 481.8pt x 361.35pt>
+<./img/directional2.jpg, id=95, 481.8pt x 361.35pt>
 File: ./img/directional2.jpg Graphic file (type jpg)
 
 <use ./img/directional2.jpg>
@@ -820,238 +825,247 @@ Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textring' on input line 134.
 
-[2 <./img/vstupni_obraz.jpg> <./img/magnitude.png (PNG copy)> <./img/gradientX.
-png (PNG copy)> <./img/gradientY.png (PNG copy)>]
-<./img/aems0.png, id=109, 481.8pt x 361.35pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 135--136
+
+ []
+
+[2 <./img/vstupni_obraz.jpg> <./img/magnitude.png (PNG copy)>]
+<./img/aems0.png, id=108, 481.8pt x 361.35pt>
 File: ./img/aems0.png Graphic file (type png)
  <use ./img/aems0.png>
-Package pdftex.def Info: ./img/aems0.png used on input line 152.
+Package pdftex.def Info: ./img/aems0.png used on input line 153.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
 
-<./img/aems1.png, id=110, 481.8pt x 361.35pt>
+<./img/aems1.png, id=109, 481.8pt x 361.35pt>
 File: ./img/aems1.png Graphic file (type png)
  <use ./img/aems1.png>
-Package pdftex.def Info: ./img/aems1.png used on input line 153.
+Package pdftex.def Info: ./img/aems1.png used on input line 154.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
 
-<./img/aems2.png, id=111, 481.8pt x 361.35pt>
+<./img/aems2.png, id=110, 481.8pt x 361.35pt>
 File: ./img/aems2.png Graphic file (type png)
  <use ./img/aems2.png>
-Package pdftex.def Info: ./img/aems2.png used on input line 154.
+Package pdftex.def Info: ./img/aems2.png used on input line 155.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
- [3 <./img/directional0.jpg> <./img/directional1.jpg> <./img/directional2.jpg>]
-
+ [3 <./img/gradientX.png (PNG copy)> <./img/gradientY.png (PNG copy)>]
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 158.
+(hyperref)                removing `\textasciicaron' on input line 159.
 
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 158.
+(hyperref)                removing `\textring' on input line 159.
 
-<./img/lbp_thresholding.jpg, id=119, 839.135pt x 365.365pt>
+[4 <./img/directional0.jpg> <./img/directional1.jpg> <./img/directional2.jpg> <
+./img/aems0.png (PNG copy)> <./img/aems1.png (PNG copy)> <./img/aems2.png (PNG 
+copy)>] <./img/lbp_thresholding.jpg, id=125, 839.135pt x 365.365pt>
 File: ./img/lbp_thresholding.jpg Graphic file (type jpg)
 
 <use ./img/lbp_thresholding.jpg>
-Package pdftex.def Info: ./img/lbp_thresholding.jpg used on input line 163.
+Package pdftex.def Info: ./img/lbp_thresholding.jpg used on input line 164.
 (pdftex.def)             Requested size: 200.75073pt x 87.40506pt.
 
-<./img/lbp_calculation.jpg, id=120, 1252.68pt x 365.365pt>
+<./img/lbp_calculation.jpg, id=126, 1252.68pt x 365.365pt>
 File: ./img/lbp_calculation.jpg Graphic file (type jpg)
 
 <use ./img/lbp_calculation.jpg>
-Package pdftex.def Info: ./img/lbp_calculation.jpg used on input line 169.
-(pdftex.def)             Requested size: 253.94968pt x 74.06406pt.
- [4 <./img/aems0.png (PNG copy)> <./img/aems1.png (PNG copy)> <./img/aems2.png 
-(PNG copy)> <./img/lbp_thresholding.jpg>]
-<./img/lbp_to_output.jpg, id=128, 1330.9725pt x 674.52pt>
+Package pdftex.def Info: ./img/lbp_calculation.jpg used on input line 166.
+(pdftex.def)             Requested size: 351.31378pt x 102.46317pt.
+
+Overfull \hbox (6.31378pt too wide) in paragraph at lines 166--167
+ [][] 
+ []
+
+<./img/lbp_to_output.jpg, id=127, 1330.9725pt x 674.52pt>
 File: ./img/lbp_to_output.jpg Graphic file (type jpg)
 
 <use ./img/lbp_to_output.jpg>
-Package pdftex.def Info: ./img/lbp_to_output.jpg used on input line 175.
+Package pdftex.def Info: ./img/lbp_to_output.jpg used on input line 168.
 (pdftex.def)             Requested size: 253.94968pt x 128.69533pt.
 
-<./img/poem.png, id=129, 359.3425pt x 118.4425pt>
+<./img/poem.png, id=128, 359.3425pt x 118.4425pt>
 File: ./img/poem.png Graphic file (type png)
  <use ./img/poem.png>
-Package pdftex.def Info: ./img/poem.png used on input line 181.
+Package pdftex.def Info: ./img/poem.png used on input line 174.
 (pdftex.def)             Requested size: 253.94968pt x 83.70618pt.
-
-<./img/lbp0.jpg, id=131, 481.8pt x 361.35pt>
+ [5 <./img/lbp_thresholding.jpg> <./img/lbp_calculation.jpg> <./img/lbp_to_outp
+ut.jpg>]
+<./img/lbp0.jpg, id=135, 481.8pt x 361.35pt>
 File: ./img/lbp0.jpg Graphic file (type jpg)
  <use ./img/lbp0.jpg>
-Package pdftex.def Info: ./img/lbp0.jpg used on input line 187.
+Package pdftex.def Info: ./img/lbp0.jpg used on input line 180.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
 
-<./img/lbp1.jpg, id=132, 481.8pt x 361.35pt>
+<./img/lbp1.jpg, id=136, 481.8pt x 361.35pt>
 File: ./img/lbp1.jpg Graphic file (type jpg)
  <use ./img/lbp1.jpg>
-Package pdftex.def Info: ./img/lbp1.jpg used on input line 188.
+Package pdftex.def Info: ./img/lbp1.jpg used on input line 181.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
 
-<./img/lbp2.jpg, id=133, 481.8pt x 361.35pt>
+<./img/lbp2.jpg, id=137, 481.8pt x 361.35pt>
 File: ./img/lbp2.jpg Graphic file (type jpg)
  <use ./img/lbp2.jpg>
-Package pdftex.def Info: ./img/lbp2.jpg used on input line 189.
+Package pdftex.def Info: ./img/lbp2.jpg used on input line 182.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
- [5 <./img/lbp_calculation.jpg> <./img/lbp_to_output.jpg> <./img/poem.png>]
-<./img/lbp0_tau.jpg, id=142, 481.8pt x 361.35pt>
+
+<./img/lbp0_tau.jpg, id=138, 481.8pt x 361.35pt>
 File: ./img/lbp0_tau.jpg Graphic file (type jpg)
  <use ./img/lbp0_tau.jpg>
-Package pdftex.def Info: ./img/lbp0_tau.jpg used on input line 195.
+Package pdftex.def Info: ./img/lbp0_tau.jpg used on input line 188.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
 
-<./img/lbp1_tau.jpg, id=143, 481.8pt x 361.35pt>
+<./img/lbp1_tau.jpg, id=139, 481.8pt x 361.35pt>
 File: ./img/lbp1_tau.jpg Graphic file (type jpg)
  <use ./img/lbp1_tau.jpg>
-Package pdftex.def Info: ./img/lbp1_tau.jpg used on input line 196.
+Package pdftex.def Info: ./img/lbp1_tau.jpg used on input line 189.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
 
-<./img/lbp2_tau.jpg, id=144, 481.8pt x 361.35pt>
+<./img/lbp2_tau.jpg, id=140, 481.8pt x 361.35pt>
 File: ./img/lbp2_tau.jpg Graphic file (type jpg)
  <use ./img/lbp2_tau.jpg>
-Package pdftex.def Info: ./img/lbp2_tau.jpg used on input line 197.
+Package pdftex.def Info: ./img/lbp2_tau.jpg used on input line 190.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
 
-[6 <./img/lbp0.jpg> <./img/lbp1.jpg> <./img/lbp2.jpg> <./img/lbp0_tau.jpg> <./i
-mg/lbp1_tau.jpg> <./img/lbp2_tau.jpg>] [7]
+[6 <./img/poem.png> <./img/lbp0.jpg> <./img/lbp1.jpg> <./img/lbp2.jpg>]
+[7 <./img/lbp0_tau.jpg> <./img/lbp1_tau.jpg> <./img/lbp2_tau.jpg>]
 Kapitola 2.
-(./img/image.pdf_tex <img/image.pdf, id=155, page=1, 481.8pt x 385.44pt>
+(./img/image.pdf_tex <img/image.pdf, id=153, page=1, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 1>
 Package pdftex.def Info: img/image.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=156, page=2, 481.8pt x 385.44pt>
+<img/image.pdf, id=154, page=2, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 2>
 Package pdftex.def Info: img/image.pdf, page2 used on input line 54.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=157, page=3, 481.8pt x 385.44pt>
+<img/image.pdf, id=155, page=3, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 3>
 Package pdftex.def Info: img/image.pdf, page3 used on input line 56.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=158, page=4, 481.8pt x 385.44pt>
+<img/image.pdf, id=156, page=4, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 4>
 Package pdftex.def Info: img/image.pdf, page4 used on input line 58.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=159, page=5, 481.8pt x 385.44pt>
+<img/image.pdf, id=157, page=5, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 5>
 Package pdftex.def Info: img/image.pdf, page5 used on input line 60.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=160, page=6, 481.8pt x 385.44pt>
+<img/image.pdf, id=158, page=6, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 6>
 Package pdftex.def Info: img/image.pdf, page6 used on input line 62.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=161, page=7, 481.8pt x 385.44pt>
+<img/image.pdf, id=159, page=7, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 7>
 Package pdftex.def Info: img/image.pdf, page7 used on input line 64.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=162, page=8, 481.8pt x 385.44pt>
+<img/image.pdf, id=160, page=8, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 8>
 Package pdftex.def Info: img/image.pdf, page8 used on input line 66.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=163, page=9, 481.8pt x 385.44pt>
+<img/image.pdf, id=161, page=9, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 9>
 Package pdftex.def Info: img/image.pdf, page9 used on input line 68.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=164, page=10, 481.8pt x 385.44pt>
+<img/image.pdf, id=162, page=10, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 10>
 Package pdftex.def Info: img/image.pdf, page10 used on input line 70.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=165, page=11, 481.8pt x 385.44pt>
+<img/image.pdf, id=163, page=11, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 11>
 Package pdftex.def Info: img/image.pdf, page11 used on input line 72.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=166, page=12, 481.8pt x 385.44pt>
+<img/image.pdf, id=164, page=12, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 12>
 Package pdftex.def Info: img/image.pdf, page12 used on input line 74.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=167, page=13, 481.8pt x 385.44pt>
+<img/image.pdf, id=165, page=13, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 13>
 Package pdftex.def Info: img/image.pdf, page13 used on input line 76.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=168, page=14, 481.8pt x 385.44pt>
+<img/image.pdf, id=166, page=14, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 14>
 Package pdftex.def Info: img/image.pdf, page14 used on input line 78.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=169, page=15, 481.8pt x 385.44pt>
+<img/image.pdf, id=167, page=15, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 15>
 Package pdftex.def Info: img/image.pdf, page15 used on input line 80.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=170, page=16, 481.8pt x 385.44pt>
+<img/image.pdf, id=168, page=16, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 16>
 Package pdftex.def Info: img/image.pdf, page16 used on input line 82.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=171, page=17, 481.8pt x 385.44pt>
+<img/image.pdf, id=169, page=17, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 17>
 Package pdftex.def Info: img/image.pdf, page17 used on input line 84.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=172, page=18, 481.8pt x 385.44pt>
+<img/image.pdf, id=170, page=18, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 18>
 Package pdftex.def Info: img/image.pdf, page18 used on input line 86.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=173, page=19, 481.8pt x 385.44pt>
+<img/image.pdf, id=171, page=19, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 19>
 Package pdftex.def Info: img/image.pdf, page19 used on input line 88.
 (pdftex.def)             Requested size: 345.0pt x 276.00508pt.
 
-<img/image.pdf, id=174, page=20, 481.8pt x 385.44pt>
+<img/image.pdf, id=172, page=20, 481.8pt x 385.44pt>
 File: img/image.pdf Graphic file (type pdf)
 
 <use img/image.pdf, page 20>
@@ -1144,7 +1158,7 @@ Kapitola 3.
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 238.
+(hyperref)                removing `\textasciicaron' on input line 231.
 
 [10
 
@@ -1153,7 +1167,7 @@ Kapitola 4.
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 248.
+(hyperref)                removing `\textasciicaron' on input line 241.
 
 [11
 
@@ -1164,32 +1178,36 @@ Kapitola 5.
 ]
 Kapitola 6.
 
-Overfull \hbox (82.74629pt too wide) in paragraph at lines 255--258
+Overfull \hbox (82.74629pt too wide) in paragraph at lines 248--251
 []$\OT1/cmtt/m/n/10 http : / / www . pyimagesearch . com / 2015 / 12 / 07 / loc
 al-[]binary-[]patterns-[]with-[]python-[]opencv/$[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 255--258
+Underfull \hbox (badness 10000) in paragraph at lines 248--251
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 260.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 253.
 [13
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 260.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 253.
  (./dokumentace.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 260.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 260.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 253.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 253.
 Package rerunfilecheck Info: File `dokumentace.out' has not changed.
 (rerunfilecheck)             Checksum: 417ACD53E6B192C69277D4FBB5D5FBD0;859.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 260.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 253.
  ) 
 Here is how much of TeX's memory you used:
- 8693 strings out of 493029
- 127145 string characters out of 6136234
- 235489 words of memory out of 5000000
+ 8691 strings out of 493029
+ 127163 string characters out of 6136234
+ 236335 words of memory out of 5000000
  12058 multiletter control sequences out of 15000+600000
  6992 words of font info for 26 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1205,10 +1223,10 @@ public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 tt10.pfb>
-Output written on dokumentace.pdf (16 pages, 1488823 bytes).
+Output written on dokumentace.pdf (16 pages, 1488787 bytes).
 PDF statistics:
- 259 PDF objects out of 1000 (max. 8388607)
- 186 compressed objects within 2 object streams
- 48 named destinations out of 1000 (max. 500000)
+ 257 PDF objects out of 1000 (max. 8388607)
+ 184 compressed objects within 2 object streams
+ 46 named destinations out of 1000 (max. 500000)
  302 words of extra memory for PDF output out of 10000 (max. 10000000)
 

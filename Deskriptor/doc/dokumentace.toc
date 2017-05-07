@@ -3,7 +3,7 @@
 \contentsline {subsection}{\numberline {1.0.1}V\IeC {\'y}po\IeC {\v c}et gradientu a magnitudy}{1}{subsection.1.0.1}
 \contentsline {subsection}{\numberline {1.0.2}Diskretizace sm\IeC {\v e}ru gradientu}{2}{subsection.1.0.2}
 \contentsline {subsection}{\numberline {1.0.3}V\IeC {\'y}po\IeC {\v c}et lok\IeC {\'a}ln\IeC {\'\i }ho histogramu orientace gradient\IeC {\r u} z okol\IeC {\'\i }}{3}{subsection.1.0.3}
-\contentsline {subsection}{\numberline {1.0.4}Zak\IeC {\'o}dov\IeC {\'a}n\IeC {\'\i } p\IeC {\v r}\IeC {\'\i }znak\IeC {\r u} pomoc\IeC {\'\i } LBP}{4}{subsection.1.0.4}
+\contentsline {subsection}{\numberline {1.0.4}Zak\IeC {\'o}dov\IeC {\'a}n\IeC {\'\i } p\IeC {\v r}\IeC {\'\i }znak\IeC {\r u} pomoc\IeC {\'\i } LBP}{5}{subsection.1.0.4}
 \contentsline {subsection}{\numberline {1.0.5}Konstrukce glob\IeC {\'a}ln\IeC {\'\i }ho histogramu}{7}{subsection.1.0.5}
 \contentsline {chapter}{\numberline {2}Barevn\IeC {\'y} poem}{8}{chapter.2}
 \contentsline {chapter}{\numberline {3}Pou\IeC {\v z}it\IeC {\'e} programov\IeC {\'e} prost\IeC {\v r}edky}{10}{chapter.3}

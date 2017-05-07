@@ -14,8 +14,6 @@ import math
 from matplotlib import pyplot as plt
  
 DEBUG = True 
-IMG = cv2.imread("25.jpg", 0)
-#img = np.float32(img) / 255.0
 COUNT_DIRECTIONS = 3
 CELL_SIZE = 3 #7
 BLOCK_SIZE = 8 #10
@@ -199,13 +197,9 @@ def compute_histogram(lbp, directions):
             
         soubor.close()
 
-
-
-
-
+img = cv2.imread("25.jpg", 0)
 #img = cv2.imread("../../Data/iaprtc12/images/00/51.jpg", 0)
-
-gradient = count_gradient(IMG)
+gradient = count_gradient(img)
 magnitude = count_magnitude(gradient) 
 directional = compute_direction(COUNT_DIRECTIONS, gradient, magnitude)
 aems = compute_aems(COUNT_DIRECTIONS, CELL_SIZE, directional)

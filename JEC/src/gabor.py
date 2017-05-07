@@ -14,7 +14,7 @@ def build_filters(psi):
     for theta in (0, math.pi/4, math.pi/2, (3/4)*math.pi):
         for lambdaa in (2, 2*math.sqrt(2), 4): 
             kern = cv2.getGaborKernel((ksize, ksize), sigma, theta, lambdaa, gamma, psi)
-            kern /= 1.5*kern.sum() #normovani #proc? bez toho je jen cerno kdyz mam nasteveny lambdu na 2
+            #kern /= 1.5*kern.sum() #normovani #proc? bez toho je jen cerno kdyz mam nasteveny lambdu na 2
             filters.append(kern)
     return filters
 
@@ -77,14 +77,14 @@ def count_magnitude(filtered_img_real, filtered_img_imag):
     m_min = 0
     m_max = 360
     
-#    for i in range(len(magnitudes)):
-#        for x in range(len(magnitudes[i])):
-#            for y in range(len(magnitudes[i][x])):
-#                if (magnitudes[i].item(x,y) > 360):
-#                    print "chyba!!"
-#                    
-#                magnitudes[i][x,y] =  254* (magnitudes[i].item(x,y) /m_max)
-#    
+    for i in range(len(magnitudes)):
+        for x in range(len(magnitudes[i])):
+            for y in range(len(magnitudes[i][x])):
+                if (magnitudes[i].item(x,y) > 360):
+                    print "chyba!!"
+                    
+                magnitudes[i][x,y] =  254* (magnitudes[i].item(x,y) /m_max)
+    
     return magnitudes
 
 #def count_gabor(img):

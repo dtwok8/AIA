@@ -14,7 +14,12 @@ import math
 from matplotlib import pyplot as plt
  
 DEBUG = True 
- 
+IMG = cv2.imread("25.jpg", 0)
+#img = np.float32(img) / 255.0
+COUNT_DIRECTIONS = 3
+CELL_SIZE = 3 #7
+BLOCK_SIZE = 8 #10
+TAU = 4
  
 def write_matrix_file(matrix, file_name):
     soubor = open(file_name, 'w')
@@ -58,7 +63,8 @@ def count_magnitude(gradient):
     return magnitude
 
 def count_phase(gradient):
-    phase = cv2.phase(gradient[0,:,:], gradient[1,:,:], angleInDegrees=False)
+    #phase = cv2.phase(gradient[0,:,:], gradient[1,:,:], angleInDegrees=False)
+    phase = cv2.phase(gradient[1,:,:], gradient[0,:,:], angleInDegrees=False)
     #angleInDegrees – when true, the input angles are measured in degrees, otherwise, they are measured in radians.
     
     if (DEBUG):
@@ -92,7 +98,7 @@ def compute_direction(count_directions, gradient, magnitude):
     
         for i in range(len(directional)):
             write_matrix_file(directional[i,:,:], "directional{}.txt".format(i))
-            cv2.imwrite('directional{}.png'.format(i), directional[i,:,:])
+            cv2.imwrite('directional{}.jpg'.format(i), directional[i,:,:])
 
     return directional
 
@@ -104,7 +110,7 @@ def compute_aems(count_directions, cell_size, directional):
     # use either convolution or integral image
     kernel = np.ones((cell_size, cell_size)) 
     kernel = kernel[:,:]/(cell_size*cell_size)  
-    aems = np.zeros((count_directions, img.shape[0], img.shape[1]), dtype=float)
+    aems = np.zeros((count_directions, directional[0].shape[0], directional[0].shape[1]), dtype=float)
     for d in range(count_directions):
         aems[d, :, :] = cv2.filter2D(directional[d, :, :], -1, kernel, borderType=cv2.BORDER_REPLICATE)
     
@@ -121,9 +127,10 @@ def compute_lbp(directions, aems, block_size, tau):
     bordersize = block_size / 2 + 1
     
     lbp = np.zeros(aems.shape, dtype=np.uint8)
-    for d in range(len(directions)):
+    for d in range(directions):
         border_img = cv2.copyMakeBorder(aems[d, :, :], top=bordersize, bottom=bordersize, left=bordersize, right=bordersize, borderType=cv2.BORDER_REPLICATE)
-
+        write_matrix_file(border_img, "border1{}.txt".format(d))
+        
         for r in range(bordersize, border_img.shape[0] - bordersize):
             #print r
             for c in range(bordersize, border_img.shape[1] - bordersize):
@@ -137,7 +144,10 @@ def compute_lbp(directions, aems, block_size, tau):
         if (DEBUG):
             for i in range(len(lbp)):
                 write_matrix_file(lbp[i,:,:], "lbp{}.txt".format(i))
-                cv2.imwrite('lbp{}.png'.format(i), lbp[i,:,:])
+                cv2.imwrite('lbp{}.jpg'.format(i), lbp[i,:,:])
+                write_matrix_file(border_img, "border{}.txt".format(i))
+                cv2.imwrite('border{}.jpg'.format(i), border_img)
+                
     return lbp
 
 
@@ -149,261 +159,58 @@ def compute_lbp_value(r, c, border_img, block_size, tau):
     #print "Computing lbp val for", repr(r), repr(c), "center val:", center
     count_pixels = 8
     for i in range(count_pixels): # vyberu si jen 8 pixelu z celeho kola
-    #2 * np.pi / cout_pixels - rozdelim celou periodu pi na 8 casti a vezmu vzdycky i-tou case, tu stcim do konsinu a posunu to na okraj radius
-        x = np.cos(i * 2 * np.pi / count_pixels) * radius # zjistit pozici pixelu
-        y = np.sin(i * 2 * np.pi / count_pixels) * radius #zjistit pozici pixelu
+    #2 * np.pi / cout_pixels - rozdelim celou periodu pi na 8 casti a vezmu vzdycky i-tou cast, tu stcim do konsinu a posunu to na okraj radius
+        x = c -1 + np.cos(i * 2 * np.pi / count_pixels) * radius # zjistit pozici pixelu
+        y = r -1 + np.sin(i * 2 * np.pi / count_pixels) * radius #zjistit pozici pixelu
+        #print "border_img[{}, {}] center[{},{}]> {}".format(x,y, r,c,center)
         v = border_img[int(y), int(x)] # hodnota pixelu 
-#        if False: # self.interpolation:      
-#            v = 0#interpolate(c + x, r - y, border_img)
-#        else:
-#            v = border_img[int(y), int(x)]
-            #print "value", v
-        #if (v - center) >= self.tau:
-        #  val += 1
-        #val = val << 1; 
-        if (v - center) >= tau: 
-        #if (v > center):
+        #if (v - center) >= tau: 
+        if (v > center):
             val += np.power(2, i) # 2 na i-tou
-        #print "akt lbp val:", val
-    #if (val != 0):
-        #print val
-        #exit()
+
     return val
 
-def compute_histogram(lbp, direction, x = 4, y = 4):
-    step_x = len(lbp[0]) /x
-    step_y = len(lbp[0,0]) /y 
-    print "step_x {} step_y {}".format(step_x, step_y)
-    
-    for row_block in range(x-1):
-        for column_block in range(y-1):
-            compute_local_histogram(lbp, row_block, column_block, step_x, step_y)
-    
-
-def compute_local_histogram(lbp, row_block, column_block, step_x, step_y):
-    histogram = np.zeros(3 * 16)
-    
-    for d in range(len(lbp)):
-        for x in range(step_x*row_block, step_x*(row_block+1)):
-            for y in range (step_y * column_block, step_y * (column_block+1)):
-                print "{} {} {} lbp: {} ".format(d,x,y, lbp[d,x,y])
-                index = (d+1)*int((lbp[d,x,y] / 16))
-                histogram[index] = histogram[index] + 1
-    
-    #histogram = histogram / np.sum(histogram) 
-    print histogram          
-            
-    
-def compute_histograms_dense(lbp, size_x, size_y, step_x, step_y, uniform=False):
+def compute_histogram(lbp, directions):
+    histogram_size = 256
     histograms = []
-    r = size_y / 2
-    while r < lbp.shape[1] - size_y / 2 - 1:
-        #print r
-        c = size_x / 2
-        while c < lbp.shape[2] - size_x / 2 - 1:
-            histograms.append(compute_histogram_d(lbp, c, r, size_x, size_y, uniform))
-            c += step_x        
 
-        r += step_y
+    for d in range(len(lbp)):
+        histogram = np.zeros(histogram_size)
+        for x in lbp[d]:
+            for y in x:
+                index = y #lbp[d,x,y]
+                histogram[index] = histogram[index] + 1
+        histogram = histogram / np.sum(histogram) #normalizovani aby soucet hodnot byl 1 pro dany smer
+        histograms.append(histogram)
+        
+        if (DEBUG):
+            print histogram
+    
+    histogram_np = np.zeros(histogram_size * directions)
+    for h in range(len(histograms)):
+        for i in range(len(histograms[h])):
+            histogram_np[(h*256)+i] = histograms[h][i]
 
-    print "Histograms no.", len(histograms)
-    #print np.array(histograms).shape
-    return histograms   
-#
-##computes histogram from the patch centerd at x,y with size step_x X step_y
-def compute_histogram_d(lbp, x, y, size_x, size_y, uniform=False):
-    directions = 3
-    #print "computing histogram"
-    bins = 59 if uniform else 256
-    histogram = np.zeros((directions * bins))
-    half_x = size_x / 2
-    half_y = size_y / 2
-    #print histogram.shape
-    for d in range(directions):
-        for r in range(y - half_y, y + half_y + 1):
-            for c in range(x - half_x, x + half_x + 1):
-                index = lbp[d,r,c]
-                histogram[d * bins + index] += 1
+    if (DEBUG):
+        soubor = open("histogram.txt", 'w')
+        
+        for item in histogram_np:
+            soubor.write(" {0:.6f} ".format(item))
+            
+        soubor.close()
 
-    #print histogram.shape
-    #print np.sum(histogram)
-    histogram = histogram / np.sum(histogram)
-    #print histogram
-    return histogram
+
 
 
 
 #img = cv2.imread("../../Data/iaprtc12/images/00/51.jpg", 0)
-img = cv2.imread("25.jpg", 0)
-#img = np.float32(img) / 255.0
 
-count_directions = 3
-cell_size = 3#7
-block_size = 8#10
-tau = 4
-gradient = count_gradient(img)
+gradient = count_gradient(IMG)
 magnitude = count_magnitude(gradient) 
-directional = compute_direction(count_directions, gradient, magnitude)
-aems = compute_aems(count_directions, cell_size, directional)
+directional = compute_direction(COUNT_DIRECTIONS, gradient, magnitude)
+aems = compute_aems(COUNT_DIRECTIONS, CELL_SIZE, directional)
 
-lbp = compute_lbp(directional, aems, block_size, tau)
-
-print lbp.shape
-
-cv2.imwrite('lbp0.png', lbp[0,:,:])
-cv2.imwrite('lbp1.png', lbp[1,:,:])
-cv2.imwrite('lbp2.png', lbp[2,:,:])
+lbp = compute_lbp(COUNT_DIRECTIONS, aems, BLOCK_SIZE, TAU)
 
 #compute_histogram(self, x, y, size_x, size_y, uniform=False)
-
-som = compute_histogram(lbp, count_directions)
-#som = compute_histograms_dense(lbp, 4, 4, 1, 1, uniform=False)
-#print som
-#print len(som)
-#print som.shape
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-exit()
-        
-soubor.close()
-
-soubor = open("img.txt", 'w')  
-for row in img:
-    for item in row:
-        soubor.write(" {} ".format(item))
-    soubor.write("\n")
-soubor.close()
-
-
-
-# Python gradient calculation 
-print "---------------------------------" 
-# Read image
-img = cv2.imread('../../Data/iaprtc12/images/01/1210.jpg', 0)
-#img = np.float32(img) / 255.0
- 
-# Calculate gradient 
-#gx = cv2.Sobel(img, cv2.CV_32F, 1, 0, ksize=1)
-#gy = cv2.Sobel(img, cv2.CV_32F, 0, 1, ksize=1)
-
-# Python Calculate gradient magnitude and direction ( in degrees ) 
-mag, angle = cv2.cartToPolar(gx, gy, angleInDegrees=True)
-
-print angle.shape
-print mag.shape
-
-soubor = open("angle.txt", 'w')  
-for row in angle:
-    for item in row:
-        soubor.write(" {} ".format(item))
-    soubor.write("\n")
-soubor.close()
-
-soubor = open("mag.txt", 'w')  
-for row in mag:
-    for item in row:
-        soubor.write(" {} ".format(item))
-    soubor.write("\n")
-soubor.close()
-exit()
-#smery = compute_direction(directions, gradient, mag)
-#print smery.shape
-
-directional = np.zeros((3, 360, 480), dtype=float)
-print angle.shape
-print directional.shape
-for i in range(len(angle)):
-    for y in range(len(angle[i])):
-        if(angle[i][y] >= 0 and angle[i][y] < 120):
-            directional[0][i][y] = magnitude[i][y]
-        if(angle[i][y] >= 120 and angle[i][y] < 270):
-            directional[1][i][y] = magnitude[i][y]
-        if(angle[i][y] >= 270 and angle[i][y] < 360):
-            directional[2][i][y] = magnitude[i][y] 
-                
-cv2.imwrite('directional1.png', directional[0,:,:])
-cv2.imwrite('directional2.png', directional[1,:,:])
-cv2.imwrite('directional3.png', directional[2,:,:])
-                
-exit()
-
-#Compute gradient magnitude at each pixel
-
-bin_size = 2 * np.pi / directions
-directional = np.zeros((directions, img.shape[0], img.shape[1]), dtype=float)
-
-x = np.array([-1, +1, +1, -1])
-y = np.array([-1, -1, +1, +1])
-asd = np.arctan2(y, x) * 180 / np.pi
-print asd
-
-
-print dirs
-
-# do jakeho kvadrantu to patri bezva porad mi vychazi jen ten prvni
-print dirs.shape
-#print "{} {} {}".format(gradient[0,350,479], gradient[1,350,479], dirs[350,479])
-
- 
-
-
-
-
-exit()
-dirs[dirs < 0] = 0
-mags = np.sqrt(gradient[0,:,:]**2 + gradient[1,:,:]**2) #znova pocitam magnitudu ?
-
-for d in range(directions):
-      lower = d * bin_size
-      upper = (d + 1) * bin_size
-      directional[d] = dirs
-      directional[d][directional[d] < lower] = 0
-      directional[d][directional[d] > upper] = 0
-      directional[d][directional[d] > 0] = 1 
-      directional[d] *= mags
-
-print directional
-
-    
-    
-cv2.imwrite('directional1.png', directional[0,:,:])
-cv2.imwrite('directional2.png', directional[1,:,:])
-cv2.imwrite('directional3.png', directional[2,:,:])
+compute_histogram(lbp, COUNT_DIRECTIONS)

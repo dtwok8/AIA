@@ -39,17 +39,17 @@ def count_distance(train_data, test_image):
     #zaroven spocitame minmum a maximum pro dany testovaci obrazek
     for picture in train_data:
         pom_neighbor = class_neighbor.Neighbor(picture)
-        pom_neighbor.rgb_distance = cv2.norm(picture.lab, test_image.lab, config.RGB_DISTANCE)
+        pom_neighbor.rgb_distance = cv2.norm(picture.rgb, test_image.rgb, config.RGB_DISTANCE)
         if(pom_neighbor.rgb_distance < rgb_min):
             rgb_min = pom_neighbor.rgb_distance
         if(pom_neighbor.rgb_distance > rgb_max):
             rgb_max = pom_neighbor.rgb_distance
         
-        pom_neighbor.lab_distance  = cv2.compareHist(picture.lab, test_image.lab, config.LAB_DISTANCE) #kl(picture.lab, test_image.lab)#            
-        if(pom_neighbor.lab_distance < lab_min):
-            lab_min = pom_neighbor.lab_distance
-        if(pom_neighbor.lab_distance > lab_max):
-            lab_max = pom_neighbor.lab_distance        
+#        pom_neighbor.lab_distance  = cv2.compareHist(picture.lab, test_image.lab, cv2.HISTCMP_KL_DIV) #kl(picture.lab, test_image.lab)#            
+#        if(pom_neighbor.lab_distance < lab_min):
+#            lab_min = pom_neighbor.lab_distance
+#        if(pom_neighbor.lab_distance > lab_max):
+#            lab_max = pom_neighbor.lab_distance        
         
         pom_neighbor.hsv_distance = cv2.norm(picture.hsv, test_image.hsv, config.RGB_DISTANCE)
         if(pom_neighbor.hsv_distance < hsv_min):

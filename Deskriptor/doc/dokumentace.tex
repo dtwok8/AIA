@@ -1,10 +1,8 @@
 \documentclass{report}
 \usepackage[utf8]{inputenc}
 \usepackage[czech]{babel}
-\usepackage{graphicx}
-
-
-
+\usepackage{graphicx, import}
+\usepackage{float}
 
 \title{Deskriptor}
 \author{Kateřina Kratochvílová}
@@ -13,6 +11,8 @@
 \usepackage{amsmath}
 %odkazy%
 \usepackage{hyperref}
+%svg%
+\usepackage{svg}
 
 % #########
 % # START #
@@ -41,6 +41,7 @@
 
 % obsah
 \tableofcontents
+\thispagestyle{empty} %odstraneni cisla stranky z obsahu
 
 % abstrakt
 \begin{abstract}
@@ -49,29 +50,45 @@ abstrakt
 
 
 \chapter{Poem}
-POEM (Patterns of Oriented Edge Magnitudes). Vstup algorimutmu se předpokládá šedotónový obrázek o rozměrech  m x n.
+POEM (Patterns of Oriented Edge Magnitudes). Vstup algorimutmu se předpokládá šedotónový obrázek o rozměrech  $m \times n$.
 
-\subsubsection{1. Výpočet gradientu a magnitudy}
-Nejprve je potřeba vypočítát gradient. Gradient je obecně směr růstu. Výpočet může probíhat různými způsoby. Pří výpočtu použijeme masku, kterou aplikujeme na vstupní obrázek. Podle některých studii jsou nejlepší jednoduché masky jako je např. $[1, 0, -1]$ a $[1, 0, -1]^{\,t}$. Okraje se buď vypouštějí nebo se dají doplnit (existuje více způsobů doplňění). Výstupem jsou dva obrázky o rozměrech m x n, na výstup se dá pohlíže také jako na vektor, kdy každý bod původního obrázku je reprezentován právě 2D vektorem. Analogicky pokud si vektory rozložíme na x a y složku dostali bychom dva obrázky jeden, který reprezentuje obrázek po použití x-ového filtru, a druhý který reprezentuje obrázek po použití y-filtru. Přičemž použití y filtru by nám mělo zvíraznit hrany v y směru (svislé) a x zvírazní hrany v x směru (vodorovné). Intenzita v každém pixelu představuje velikost gradientu (magnitudu).\\
-Magnituda je velikost směru růstu lze si ji představit jako velikost směru růstu pro každý pixel (počítá se tedy pro každý pixel). Počítá se tedy pro každý pixel. Takže se dá počítat jako velikost těch 2D vektrů které jsme dostaly při výpočtu gradientu. Magnituda představuje velikost vektoru gradientu. Magnitudu spočteme jako velikost vektoru.
+\subsection{Výpočet gradientu a magnitudy}
+Nejprve je potřeba vypočítat gradient. Gradient je obecně směr růstu. Výpočet může probíhat různými způsoby. Jednou z možností je použít masku, kterou aplikujeme na vstupní obrázek. Podle některých studii jsou nejlepší jednoduché masky jako je např. $[1, 0, -1]$ a $[1, 0, -1]^{\,t}$. Okraje obrázku se buď vypouštějí nebo se dají doplnit (opět existuje více způsobů).Výstupem jsou dva obrázky o rozměrech $m \times n$. \\
+Na výstup se dá pohlíže také jako na vektor, kdy každý bod původního obrázku je reprezentován právě 2D vektorem. Analogicky pokud si vektory rozložíme na x a y složku dostaneme dva obrázky. Jeden, který reprezentuje obrázek po použití x-ového filtru, a druhý který reprezentuje obrázek po použití y-filtru. Přičemž použití y filtru by nám mělo zvýraznit hrany v y směru (svislé) a x zvýrazní hrany v x směru (vodorovné). \\
+Magnituda je velikost směru růstu, lze si ji představit jako velikost směru růstu pro každý pixel (počítá se tedy pro každý pixel).  Z toho vyplývá, že ji můžeme spočítat jako velikost 2D vektorů, které jsme dostaly při výpočtu gradientu. Zjednodušeně magnituda představuje velikost vektoru gradientu.
 
-\begin{align}
-	\label{vstupni_matice}image = \begin{pmatrix}8 & 7 & 5 \\1 & 2 & 4 \\3 & 5 & 7 \end{pmatrix}
-\end{align}
+\begin{displaymath} 
+	\label{vstupni_matice} \begin{pmatrix}8 & 7 & 5 \\1 & 2 & 4 \\3 & 5 & 7 \end{pmatrix}
+	\tag{Vstupni obrazek}
+\end{displaymath}
+
 \begin{align}
 	\label{masky}
-		maska(x) = \begin{pmatrix}-1 & 1 \end{pmatrix} 
+		maska(x) = \begin{pmatrix}-1 & 1 \end{pmatrix} \\
 		maska(y) = \begin{pmatrix}-1 \\ 1 \end{pmatrix}
+		\tag{Masky}
 \end{align}
 
 \begin{align}
 	\label{vystupni_gradienty}
 		gradient(x) = \begin{pmatrix}-1 & -2 & 0\\1 & 2 & 0 \\2 & 2 & 0 \end{pmatrix}
 		gradient(y) = \begin{pmatrix}-7 & -5 & -1 \\2 & 3 & 3 \\0 & 0 & 0 \end{pmatrix}
+		\tag{Gradienty}
+\end{align}
+
+\begin{align}
+	\label{gradient_vektory} 
+		\begin{pmatrix} 
+			[-1 ; -7] & [-2 ; -5] & [0 ; -1] \\
+			[1 ; 2] & [2 ; 3] & [0 ; 3] \\
+			[2 ; 0] & [2 ; 0] & [0 ; 0] \\
+		\end{pmatrix}
+		\tag{Gradient jako 2D vektory} 			   
 \end{align}
 
 \begin{align}
    \label{velikost_vektoru} |u| = \sqrt{u_1^2 + u_2^2}
+   \tag{Velikost vektoru v rovině.}
 \end{align}
 
 \begin{figure}[htp]
@@ -102,33 +119,89 @@ Magnituda je velikost směru růstu lze si ji představit jako velikost směru r
 	\end{minipage}
 \end{figure}
 
-\subsubsection{Diskretizace směru gradientu}
-Pokud se na gradienty budeme koukat jako na 2D vektory můžeme určit nejeden jejich velikost(gradient) ale i jejich směr. Je možné použít znamínkovou reprezentaci $0 - \pi$ nebo neznamínkovou reprezentaci $0 - 2\pi$. Každý pixel se pak dá reprezentovat nejen velikostí vektoru ale i jeho směrem. V praxi si rovnoměrně rozdělíme kružnici na několik dílů (podle toho kolik chceme směrů) označme si počet dílů $d$. Pro $d = 3$ znaménkovou reprezentaci to tedy bude $0 - \frac{2}{3}\pi$, $\frac{2}{3}\pi - \frac{4}{3}\pi$ a $\frac{3}{3}\pi - 2\pi$ 
-
-\subsubsection{dalsi}
-U každého směru vezmeme každý pixel a jeho okolí a zprůměrujeme jeho hodnoty. Toto okolí se nazývá cell. 
-
-\subsubsection{výpočet LBP}
-
+\subsection{Diskretizace směru gradientu}
+Pokud se na gradienty budeme koukat jako na 2D vektory můžeme určit nejen jejich velikost(magnitudu) ale i jejich směr. Je možné použít znaménkovou reprezentaci $0 - \pi$ nebo neznaménkovou reprezentaci $0 - 2\pi$.  V praxi si rovnoměrně rozdělíme kružnici na několik dílů (podle toho kolik chceme směrů). Označme si počet dílů $d$. Pro $d = 3$ znaménkovou reprezentaci to tedy bude $0 - \frac{2}{3}\pi$, $\frac{2}{3}\pi - \frac{4}{3}\pi$ a $\frac{3}{3}\pi - 2\pi$ 
 
 \begin{figure}[ht]
-		\centering
-		\includegraphics[width=253px]{./img/poem.png}	
-		\caption{Znázornění LBP}
-\end{figure} \begin{align}
-   \label{velikost_vektoru_v_prostoru} |u| = \sqrt{u_1^2 + u_2^2 + u_3^2}
-\end{align} 
- 
-\chapter{Barevný poem}
-\begin{align}
-   \label{velikost_vektoru_v_prostoru} |u| = \sqrt{u_1^2 + u_2^2 + u_3^2}
-\end{align} 
+	\centering
+	\includegraphics[width=150pt]{./img/directional0.jpg}
+	\includegraphics[width=150pt]{./img/directional1.jpg}
+	\includegraphics[width=150pt]{./img/directional2.jpg}
+	\caption{Obrázky po diskretizaci. Každý obrázek představuje jeden směr.}
+\end{figure}
+
+
+\subsection{Výpočet lokálního histogramu orientace gradientů z okolí}
+U každého směru projdeme jednotlivé pixely s jejich okolí a zprůměrujeme jejich hodnoty. Toto okolí se nazývá cell. Ukázka výpočtu u jednoho směru při velikosti cell 3. 
 
 \begin{align}
-   \label{soucet_vektrou} \vec{u} + \vec{v} = (u_1 + v_1, u_2 + v_2, u_3 + v_3 )
-\end{align} 
+	\label{aems}
+		smer = \begin{pmatrix}0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\0 & 0 & 0 & 0 \\ 0 & 3.6 & 3.6 & 3 \\ 0 & 2 & 2 & 0 \end{pmatrix}
+		aems = \begin{pmatrix}0 & 0 \\ 0.8 & 1.1 \\ 1.2 & 1.5 \end{pmatrix}
+		\tag{Ukázka výpočtu u jednoho směru při velikosti cell 3}
+\end{align}
+\begin{align}
+	\label{aems_detail}
+		cell = \begin{pmatrix}0 & 0 & 0 \\ 0 & 3.6 & 3.6 \\ 0 & 2 & 2 \end{pmatrix}
+		aems = \begin{pmatrix}0.8 \end{pmatrix}
+		\tag{Ukázka výpočtu pro jeden pixel při velikosti cell 3}
+\end{align}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=150pt]{./img/aems0.png}
+	\includegraphics[width=150pt]{./img/aems1.png}
+	\includegraphics[width=150pt]{./img/aems2.png}
+	\caption{Obrázky po výpočtu lokálních histogramů orientace gradientů . Každý obrázek představuje jeden směr.}
+\end{figure}
+
+\subsection{Zakódování příznaků pomocí LBP}
+LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. Oproti tomu POEM můžeme aplikovat na větší okolí. Toto okolí nazýváme block, zpravidla se jedná o kruhové okolí s poloměrem L/2. Pro stanovení intenzit okolních hodnot je možné použít bilineární interpolaci. Pokud bychom chtěli zvýšit stabilitu v téměř konstantní oblasti lze k centrálnímu pixelu přičítat malou konstantu $\tau$.
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=200px]{./img/lbp_thresholding.jpg}	
+		\caption{Znázornění LBP}
+\end{figure} 
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=253px]{./img/lbp_calculation.jpg}	
+		\caption{Znázornění LBP}
+\end{figure} 
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=253px]{./img/lbp_to_output.jpg}	
+		\caption{Znázornění LBP}
+\end{figure} 
  
-\section{Textura}
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=253px]{./img/poem.png}	
+		\caption{Znázornění POEM}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=150pt]{./img/lbp0.jpg}
+	\includegraphics[width=150pt]{./img/lbp1.jpg}
+	\includegraphics[width=150pt]{./img/lbp2.jpg}
+	\caption{Obrázky po aplikaci POEM. Každý obrázek představuje jeden směr.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=150pt]{./img/lbp0_tau.jpg}
+	\includegraphics[width=150pt]{./img/lbp1_tau.jpg}
+	\includegraphics[width=150pt]{./img/lbp2_tau.jpg}
+	\caption{Obrázky po aplikaci POEM při použití $\tau$. Každý obrázek představuje jeden směr.}
+\end{figure} 
+
+\subsection{Konstrukce globálního histogramu}
+256 binu pro každý směr a zřetězí se.
+
+\chapter{Barevný poem}
 LBP i Gabor pracují s informací o intenzitě obrazu. Detekce hran. Obyčejné LBP problém s rotací.
 
 kombinace textur a barevne informace
@@ -143,24 +216,24 @@ informace o barvě a textuře se mohou oblivňovat protichůdně
 	výpočetně náročnější a jeho úspěšnost je přímo závislá na způsobu kombinace obou informací	
 	
 vutbrno 117319 10 stranka
+\begin{figure}[h!]
+    \centering    
+    \def\svgwidth{\columnwidth}
+	\import{img/}{image.pdf_tex}    
+    %\input{image.pdf_tex}
+    \caption{Your image caption}
+    \label{fig:your image label}
+\end{figure}
 
-Gabor filter je lineární filter používaný pro detekci hran. Frekvence a orientace reprezentující Gabor filter je podobná lidskému vnímání a jsou zvláště vhodné pro reprezentaci textury a rozlišování. 
 
-Gabor filtr reaguje na hrany a texturové změny. 
+\begin{align}
+   \label{velikost_vektoru_v_prostoru} |u| = \sqrt{u_1^2 + u_2^2 + u_3^2}
+\end{align} 
 
-Obrázky jsou filtrovány za použité reálné části z různých odlišních Gabor filtrů jader. Průměrný a rozptyl filtrovaných snímků jsou pak použity jako funkce pro klasifikaci, která je založena na nejméně kvadratické chyby pro jednoduchost.
-
-TODO Dohledat Haar a Gabor wavelety, přidat vzorečky a zase klidně i obrázky
-
-\subsection{Barva}
-U digitálního obrazu je barva reprezentovaná n-rozměrným vektorem. Jeho velikost a význam jednotlivých složek (tzv. barevných kanálů) zavisí na příslušném barevném prostoru. Počet bitů použitých k uložení buď celého vektoru nebo jeho jednotlivých složek se nazývá barevná hloubka (totožně bitová hloubka). Obvykle se můžeme setkat s hodnotami 8, 12, 14 a 16 bitů na kanál.
-\\
-V použité metodě V použité metodě získáme vlastnosti z obrázků ve třech rozdílných barevných prostorech: RGB, HSV a LAB. RGB (Red, Green, Blue) je nejobvykleji používaný pro zachycení obrázu nebo jeho zobrazení. Oproti tomu HSV (Hue, Saturation and Value) se snaží zachytit barevný model tak jak ho vnímá lidské oko, ale zároveň se snaží zůstat jednoduchý na výpočet. Hue znamená odstín barvy, saturation systost barvy a value je hodnota jasu nebo také množství bílého světla. RGB je závislý na konkrétním zařízení, nemůže dosáhnout celého rozsahu barev, které vidí lidské oko, zatímco barevný model LAB je shopen obsáhnout celé viditelné spektrum a navíc je nezávislý na zařízení. L (ve zkratce LAB) značí Luminanci (jas dosahuje hodnot 0 - 100, kde 0 je černá a 100 je bílá). Zbylé A a B jsou dvě barvonosné složky, kdy A je ve směru červeno/zeleném a B se pohybuje ve směru modro/žlutém. 
-\\
-Pro RGB, HSV i LAB použijeme barevnou hloubku 16 bitů na kanál histogramu v jejich příslušném barevném prostoru. 
-
-Jako reprezentace textur budou použity Gabor a Haar wavelety. Každý obrázek bude filtrován s Gabor wavelet na třech škálách a čtyřech orientacích. 
-
+\begin{align}
+   \label{soucet_vektrou} \vec{u} + \vec{v} = (u_1 + v_1, u_2 + v_2, u_3 + v_3 )
+\end{align} 
+ 
 
 \chapter{Použité programové prostředky}
 Program byl navržen na operační systému Linux. Jako programovací jazyk byl zvolen Python a to z důvodu jeho jednoduchého použití, což je na prototyp, jako je tento velice výhodné na časovou náročnost. Program využívá knihovnu OpenCV 3.1. 
@@ -181,5 +254,7 @@ popsani jak vypada zdrojovej soubor kterej to zere, nejdriv cesta k souboru a pa
 \chapter{Zdroje}
 \url{https://dspace5.zcu.cz/bitstream/11025/17883/1/A13N0110P.pdf} \\
 \url{https://en.wikipedia.org/wiki/Local_binary_patterns} \\
+\url{http://www.pyimagesearch.com/2015/12/07/local-binary-patterns-with-python-opencv/} \\
+
 
 \end{document}

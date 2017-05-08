@@ -1,0 +1,15 @@
+
+LBP i Gabor pracují s informací o intenzitě obrazu. Detekce hran. Obyčejné LBP problém s rotací.
+
+kombinace textur a barevne informace
+1. Vytvoření společného příznaku, 
+například rozšíření LBP na všechny barvené kanály
+informace o barvě a textuře se mohou oblivňovat protichůdně
+
+2. Vyhodnotit a klasifikovat příznaky odděleně a pak výslednou klasifikaci nějak s pojit z několika částí 
+	to je například JEC
+	
+	výhoda zachovává vlastnosti obou původních příznaků 
+	výpočetně náročnější a jeho úspěšnost je přímo závislá na způsobu kombinace obou informací	
+	
+vutbrno 117319 10 stranka

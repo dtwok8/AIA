@@ -45,38 +45,50 @@
 
 % abstrakt
 \begin{abstract}
-abstrakt  
+Tato práce byla vytvořena za účelem vytvoření deskriptoru, který ponese informaci nejeno o barvě, ale i o textuře obrázku. 
 \end{abstract}
 
+\chapter{Úvod}
+Většina metod používaných na textury pracuje pouze s šedotónovým obrázkem. Takže zahazuje informaci o barvě a pracuje jen s intenzitou obrazu. My bychom ovšem chtěli obě informace zkombinovat a vytvořit tak jeden deskriptor, který ponese jak informaci o barvě tak i informaci o textuře obrázku. Nabízí se několik možností: 
+
+\begin{description}
+\item[Vytvoření společného příznaku] 
+	například rozšíření LBP/POEM na všechny barvené kanály. Musíme si být ale vědomi, že informace o barvě a textuře se mohou ovlinovat i protichůdně. 
+
+\item[Vyhodnotit a klasifikovat příznaky odděleně] 
+	a pak výslednou klasifikaci spojit z několika částí (Například JEC). Výhodou tohoto přístupu je zachování vlastností obou původních příznaků. Nevýhodou je náročnější výpočet a úspěšnost přístupu závisí na způsobu kombinace obou informací.
+\end{description} 
+
+V práci rozebereme POEM (Patterns of Oriented Edge Magnitudes) pracující jen s texturou následovaný metodou POEM procházející všechny kanály barevného prostoru RGB.
 
 \chapter{Poem}
-POEM (Patterns of Oriented Edge Magnitudes). Vstup algorimutmu se předpokládá šedotónový obrázek o rozměrech  $m \times n$.
+POEM (Patterns of Oriented Edge Magnitudes). Vstup algorimutmu se předpokládá šedotónový obrázek o rozměrech  $m \times n$. Proto každý obrázek musí být po načtení převeden.
 
 \subsection{Výpočet gradientu a magnitudy}
 Nejprve je potřeba vypočítat gradient. Gradient je obecně směr růstu. Výpočet může probíhat různými způsoby. Jednou z možností je použít masku, kterou aplikujeme na vstupní obrázek. Podle některých studii jsou nejlepší jednoduché masky jako je např. $[1, 0, -1]$ a $[1, 0, -1]^{\,t}$. Okraje obrázku se buď vypouštějí nebo se dají doplnit (opět existuje více způsobů).Výstupem jsou dva obrázky o rozměrech $m \times n$. \\
 Na výstup se dá pohlíže také jako na vektor, kdy každý bod původního obrázku je reprezentován právě 2D vektorem. Analogicky pokud si vektory rozložíme na x a y složku dostaneme dva obrázky. Jeden, který reprezentuje obrázek po použití x-ového filtru, a druhý který reprezentuje obrázek po použití y-filtru. Přičemž použití y filtru by nám mělo zvýraznit hrany v y směru (svislé) a x zvýrazní hrany v x směru (vodorovné). \\
 Magnituda je velikost směru růstu, lze si ji představit jako velikost směru růstu pro každý pixel (počítá se tedy pro každý pixel).  Z toho vyplývá, že ji můžeme spočítat jako velikost 2D vektorů, které jsme dostaly při výpočtu gradientu. Zjednodušeně magnituda představuje velikost vektoru gradientu. \\
 
-Ukázka vstupního obrázku: 
+Vstupní obrázek: 
 \begin{displaymath} 
 	\label{vstupni_matice} \begin{pmatrix}8 & 7 & 5 \\1 & 2 & 4 \\3 & 5 & 7 \end{pmatrix}
 \end{displaymath}
 
-Ukázka masky: 
+Masky:
 \begin{align}
 	\label{masky}
 		maska(x) &= \begin{pmatrix}-1 & 1 \end{pmatrix} \\
 		maska(y) &= \begin{pmatrix}-1 \\ 1 \end{pmatrix}
 \end{align}
 
-Ukázka gradientů:
+Na základě předchozích masek byly vypočteny tyto matice gradientů:
 \begin{align}
 	\label{vystupni_gradienty}
 		gradient(x) &= \begin{pmatrix}-1 & -2 & 0\\1 & 2 & 0 \\2 & 2 & 0 \end{pmatrix} \\
 		gradient(y) &= \begin{pmatrix}-7 & -5 & -1 \\2 & 3 & 3 \\0 & 0 & 0 \end{pmatrix}
 \end{align}
 
-Gradient jako 2D vektory
+Gradient jako 2D vektory:
 \begin{align}
 	\label{gradient_vektory} 
 		\begin{pmatrix} 
@@ -86,12 +98,12 @@ Gradient jako 2D vektory
 		\end{pmatrix}		   
 \end{align}
 
-Vzoreček pro výpočet velikosti vektoru v rovině
+Vzoreček pro výpočet velikosti vektoru v rovině:
 \begin{align}
    \label{velikost_vektoru} |u| = \sqrt{u_1^2 + u_2^2}
 \end{align}
 
-\begin{figure}[htp]
+\begin{figure}[H]
 	\centering
 	\begin{minipage}[c]{150pt}
 		\centering
@@ -105,7 +117,7 @@ Vzoreček pro výpočet velikosti vektoru v rovině
 	\end{minipage}
 \end{figure}
 
-\begin{figure}[htp]
+\begin{figure}[H]
 	\centering
 	\begin{minipage}[c]{150pt}
 		\centering
@@ -122,7 +134,7 @@ Vzoreček pro výpočet velikosti vektoru v rovině
 \subsection{Diskretizace směru gradientu}
 Pokud se na gradienty budeme koukat jako na 2D vektory můžeme určit nejen jejich velikost(magnitudu) ale i jejich směr. Je možné použít znaménkovou reprezentaci $0 - \pi$ nebo neznaménkovou reprezentaci $0 - 2\pi$.  V praxi si rovnoměrně rozdělíme kružnici na několik dílů (podle toho kolik chceme směrů). Označme si počet dílů $d$. Pro $d = 3$ znaménkovou reprezentaci to tedy bude $0 - \frac{2}{3}\pi$, $\frac{2}{3}\pi - \frac{4}{3}\pi$ a $\frac{3}{3}\pi - 2\pi$ 
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=150pt]{./img/directional0.jpg}
 	\includegraphics[width=150pt]{./img/directional1.jpg}
@@ -134,14 +146,14 @@ Pokud se na gradienty budeme koukat jako na 2D vektory můžeme určit nejen jej
 \subsection{Výpočet lokálního histogramu orientace gradientů z okolí}
 U každého směru projdeme jednotlivé pixely s jejich okolí a zprůměrujeme jejich hodnoty. Toto okolí se nazývá cell. Ukázka výpočtu u jednoho směru při velikosti cell 3. \\
  
-Ukázka výpočtu u jednoho směru při velikosti cell 3
+Výpočet u jednoho směru při cell = 3:
 \begin{align}
 	\label{aems}
 		smer = \begin{pmatrix}0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\0 & 0 & 0 & 0 \\ 0 & 3.6 & 3.6 & 3 \\ 0 & 2 & 2 & 0 \end{pmatrix}
 		aems = \begin{pmatrix}0 & 0 \\ 0.8 & 1.1 \\ 1.2 & 1.5 \end{pmatrix}
 \end{align}
 
-Ukázka výpočtu pro jeden pixel při velikosti cell 3
+Výpočet pro jeden pixel jednoho směru při cell = 3:
 \begin{align}
 	\label{aems_detail}
 		cell = \begin{pmatrix}0 & 0 & 0 \\ 0 & 3.6 & 3.6 \\ 0 & 2 & 2 \end{pmatrix}
@@ -153,11 +165,11 @@ Ukázka výpočtu pro jeden pixel při velikosti cell 3
 	\includegraphics[width=150pt]{./img/aems0.png}
 	\includegraphics[width=150pt]{./img/aems1.png}
 	\includegraphics[width=150pt]{./img/aems2.png}
-	\caption{Obrázky po výpočtu lokálních histogramů orientace gradientů . Každý obrázek představuje jeden směr.}
+	\caption{Obrázky po výpočtu lokálních histogramů orientace gradientů. Obrázky by měli mít rozmazanější hrany. Každý obrázek představuje jeden směr.}
 \end{figure}
 
 \subsection{Zakódování příznaků pomocí LBP}
-LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. Oproti tomu POEM můžeme aplikovat na větší okolí. Toto okolí nazýváme block, zpravidla se jedná o kruhové okolí s poloměrem L/2. Pro stanovení intenzit okolních hodnot je možné použít bilineární interpolaci. Pokud bychom chtěli zvýšit stabilitu v téměř konstantní oblasti lze k centrálnímu pixelu přičítat malou konstantu $\tau$.
+LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. Oproti tomu POEM můžeme aplikovat na větší okolí. Toto okolí nazýváme block, zpravidla se jedná o kruhové okolí s poloměrem L/2 (L představuje velikost blocku). Pro stanovení intenzit okolních hodnot je možné použít bilineární interpolaci. Pokud bychom chtěli zvýšit stabilitu v téměř konstantní oblasti lze k centrálnímu pixelu přičítat malou konstantu $\tau$.
 
 \begin{figure}[H]
 		\centering
@@ -172,7 +184,7 @@ LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. 
 \begin{figure}[H]
 		\centering
 		\includegraphics[width=253px]{./img/poem.png}	
-		\caption{Znázornění POEM}
+		\caption{Znázornění LBP}
 \end{figure}
 
 \begin{figure}[H]
@@ -180,7 +192,7 @@ LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. 
 	\includegraphics[width=150pt]{./img/lbp0.jpg}
 	\includegraphics[width=150pt]{./img/lbp1.jpg}
 	\includegraphics[width=150pt]{./img/lbp2.jpg}
-	\caption{Obrázky po aplikaci POEM. Každý obrázek představuje jeden směr.}
+	\caption{Obrázky po aplikaci LBP. Každý obrázek představuje jeden směr.}
 \end{figure}
 
 \begin{figure}[H]
@@ -188,28 +200,15 @@ LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. 
 	\includegraphics[width=150pt]{./img/lbp0_tau.jpg}
 	\includegraphics[width=150pt]{./img/lbp1_tau.jpg}
 	\includegraphics[width=150pt]{./img/lbp2_tau.jpg}
-	\caption{Obrázky po aplikaci POEM při použití $\tau$. Každý obrázek představuje jeden směr.}
+	\caption{Obrázky po aplikaci LBP při použití $\tau$. Každý obrázek představuje jeden směr.}
 \end{figure} 
 
 \subsection{Konstrukce globálního histogramu}
 256 binu pro každý směr a zřetězí se.
 
 \chapter{Barevný poem}
-LBP i Gabor pracují s informací o intenzitě obrazu. Detekce hran. Obyčejné LBP problém s rotací.
 
-kombinace textur a barevne informace
-1. Vytvoření společného příznaku, 
-například rozšíření LBP na všechny barvené kanály
-informace o barvě a textuře se mohou oblivňovat protichůdně
-
-2. Vyhodnotit a klasifikovat příznaky odděleně a pak výslednou klasifikaci nějak s pojit z několika částí 
-	to je například JEC
-	
-	výhoda zachovává vlastnosti obou původních příznaků 
-	výpočetně náročnější a jeho úspěšnost je přímo závislá na způsobu kombinace obou informací	
-	
-vutbrno 117319 10 stranka
-\begin{figure}[h!]
+\begin{figure}[!ht]
     \centering    
     \def\svgwidth{\columnwidth}
 	\import{img/}{image.pdf_tex}    
@@ -219,35 +218,69 @@ vutbrno 117319 10 stranka
 \end{figure}
 
 
+\subsection{Výpočet gradientu a magnitudy}
+Výpočet gradientu probíhá obdobně jako u nebarevného obrázku. Pro každou složku získáme 2 matice takže celkem budeme mít 3*2 matice.
+Na které se dá pohlížet jako na 2 vektory o 3 složkách. Tyto vektory sloučíme pomocí součtu vektoru do jednoho 3 složkového vektoru. Magnituda je opět velikost vektoru tentokrát, ale v prostoru. 
+
+Součet vektoru:
+\begin{align}
+   \label{soucet_vektrou} \vec{u} + \vec{v} = (u_1 + v_1, u_2 + v_2, u_3 + v_3 )
+\end{align} 
+
+
+Výpočet velikosti vektoru v prostoru:
 \begin{align}
    \label{velikost_vektoru_v_prostoru} |u| = \sqrt{u_1^2 + u_2^2 + u_3^2}
 \end{align} 
 
-\begin{align}
-   \label{soucet_vektrou} \vec{u} + \vec{v} = (u_1 + v_1, u_2 + v_2, u_3 + v_3 )
-\end{align} 
+
  
 
 \chapter{Použité programové prostředky}
-Program byl navržen na operační systému Linux. Jako programovací jazyk byl zvolen Python a to z důvodu jeho jednoduchého použití, což je na prototyp, jako je tento velice výhodné na časovou náročnost. Program využívá knihovnu OpenCV 3.1. 
+Program byl navržen na operační systému Linux. Jako programovací jazyk byl zvolen Python a to z důvodu jeho jednoduchého použití, což je na prototyp, jako je tento velice výhodné na časovou náročnost. Počítač na kterým byl program vyvíjen a spouštěn pracoval s Python verzí 2.7.12. Program využívá knihovnu OpenCV 3.1. 
   
 \section{OpenCV}
 OpenCV (Open source computer vision) je knihovna vydávána pod licencí BSD a je volně k dispozici jak pro akademické účely, tak pro komerční použití. Je vhodná pro použití v C++, C, Python a Javě. Podporuje operační systémy Windows, Linux, Mac OS, iOS a Android.
 \\
 Knihovna byla navrhnuta pro výpočetní efektivitu v oblasti počítačového vidění a zpracování obrazu se zaměřením na zpracování obrazu v reálném čase. Z důvodu optimalizace byla napsána v C/C++. 
 \\
-Knihovnu OpenCV je možné stáhnout na adrese: http://opencv.org/
+Knihovnu OpenCV je možné stáhnout na adrese: http://opencv.org/  
 
 \chapter{Závěr}
-V teoretické části byly popsány nízkoúrovňové příznaky barva a textura. Byla rozebrána metoda JEC, která bude v bakalářské práci implementována. Seznamili jsme se s knihovnou OpenCV, prostudovali obrázk y apříložená metadata.
+V semestrální práci jsem vytvořila skript, který z vloženého obrázku vytvoří POEM deskriptor. 
 
 \chapter{Uživatelská dokumentace}
-popsani jak vypada zdrojovej soubor kterej to zere, nejdriv cesta k souboru a pak jeho klicovy slova
+Pro spuštění programu je třeba mít nainstalovaný python (2.7.12) a knihovnu openCV verzi 3.1. Následné postupy jsou uvedeny pro operační systém Linux.
+
+\subsubsection{Spuštění programu}
+Program spustíme z příkazové řádky zadáním příkazu \textit{python nazevskriptu.py}. 
+\begin{itemize}
+	\item \textit{python poem.py} - v případě poemu pracujícím s šedotónovým obrázkem
+	\item \textit{python color\_poem.py} - v případě poemu pracujícím s barevným obrázkem
+\end{itemize}
+
+\subsubsection{Výstupy programu}
+V případě zájmu se můžeme podívat na mezivýstupy programu.
+\begin{itemize}
+	\item \textit{gradientX.jpg} - obrázek po použití filtru x, analogicky \textit{gradientY.jpg}
+	\item \textit{gradientX.txt} - matice po použití filtru x, analogicky \textit{gradientY.txt} 
+	\item \textit{magnitude.jpg} - obrázek vzniklý po spočtení magnitud
+	\item \textit{magnitude.txt} - matice magnitud 
+	\item \textit{phase.txt} - matice magnitud 
+	\item \textit{directional0.jpg} - obrázek magnitud po rozdeleni do smeru, smer 0 (analogicky directional1.jpg, atd)
+	\item \textit{directional0.txt} - magnitudy po rozdeleni do smeru, smer 0 (analogicky directional1.txt, atd)
+	\item \textit{ames0.jpg} - obrázek po výpočtu lokálních histogramů orientace gradientů, smer 0 (analogicky aems1.jpg, atd)
+	\item \textit{ames0.txt} - matice po výpočtu lokálních histogramů orientace gradientů, smer 0 (analogicky aems1.txt, atd)
+	\item \textit{lbp0.jpg} - obrázek výsledného LBP, smer 0 (analogicky lbp1.jpg, atd)
+	\item \textit{lbp0.txt} - výsledného LBP, smer 0 (analogicky lbp1.txt, atd)
+\end{itemize}
+
 
 \chapter{Zdroje}
 \url{https://dspace5.zcu.cz/bitstream/11025/17883/1/A13N0110P.pdf} \\
 \url{https://en.wikipedia.org/wiki/Local_binary_patterns} \\
 \url{http://www.pyimagesearch.com/2015/12/07/local-binary-patterns-with-python-opencv/} \\
+\url{https://www.vutbr.cz/www_base/zav_prace_soubor_verejne.php?file_id=117319} \\
 
 
 \end{document}

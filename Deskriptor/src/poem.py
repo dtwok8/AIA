@@ -61,8 +61,8 @@ def count_magnitude(gradient):
     return magnitude
 
 def count_phase(gradient):
-    #phase = cv2.phase(gradient[0,:,:], gradient[1,:,:], angleInDegrees=False)
-    phase = cv2.phase(gradient[1,:,:], gradient[0,:,:], angleInDegrees=False)
+    phase = cv2.phase(gradient[0,:,:], gradient[1,:,:], angleInDegrees=False)
+    
     #angleInDegrees – when true, the input angles are measured in degrees, otherwise, they are measured in radians.
     
     if (DEBUG):
@@ -193,7 +193,7 @@ def compute_histogram(lbp, directions):
         soubor = open("histogram.txt", 'w')
         
         for item in histogram_np:
-            soubor.write(" {0:.6f} ".format(item))
+            soubor.write("{0:.6f} ".format(item))
             
         soubor.close()
 

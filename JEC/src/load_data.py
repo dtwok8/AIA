@@ -14,6 +14,8 @@ import class_pictures
 import config
 import gabor
 
+import deskriptors.poem as poem
+
 def load_pictures(listImages, outputFile, information):
     """
         Nacte seznam obrazku ze souboru inputFile. 
@@ -65,7 +67,9 @@ def load_features(picture):
     
     if(config.GABORQ):
         picture.gabor_q = gabor.count_gabor_q(img)
-        
+     
+    if(config.POEM):
+        picture.poem = poem.count_poem(img)
 
 def count_histogram(img):
     """

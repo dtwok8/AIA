@@ -8,6 +8,7 @@ Created on Wed Sep 21 15:02:46 2016
 
 import cv2
 import numpy as np
+import math
 
 from operator import attrgetter #sorter
 
@@ -16,8 +17,9 @@ import class_pictures
 import class_neighbor
 import config
 import label_transfer
-import math
 
+
+import deskriptors.poem as poem
 
 def count_distance(train_data, test_image):
     print test_image.name
@@ -31,6 +33,8 @@ def count_distance(train_data, test_image):
     hsv_max=float("-inf")
     gabor_min = float("inf")
     gabor_max = float("-inf")
+    poem_min = float("inf")
+    poem_max = float("-inf")
     #print ( rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)
     #print ( rgb_max , rgb_min, lab_max > 3333.72839, lab_min, hsv_max, hsv_min)
     #test_image.neighbors  = []
@@ -63,10 +67,15 @@ def count_distance(train_data, test_image):
         if(pom_neighbor.gabor_distance > gabor_max):
             gabor_max = pom_neighbor.gabor_distance 
         
+        pom_neighbor.poem_distance = cv2.norm(picture.poem, test_image.poem, cv2.NORM_L1)
+        if(pom_neighbor.poem_distance < poem_min):
+            poem_min = pom_neighbor.poem_distance
+        if(pom_neighbor.poem_distance > poem_max):
+            poem_max = pom_neighbor.poem_distance 
         
         pom_nei.append(pom_neighbor) #pridani souseda
 
-    count_jec(pom_nei,test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min) 
+    count_jec(pom_nei,test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min, poem_max, poem_min) 
     
     keywords_prepare_sort=[]
     for neighbor in pom_nei:
@@ -92,11 +101,14 @@ def count_n():
         
     if(config.GABORQ):
         n = n + 1
+    
+    if(config.POEM):
+        n = n + 1
         
     return n
 
 #spocita JEC pro tri parametry rgb, hsv, lab, ty to musíš naškálovat od 0 o 1 takže asi ten jec můžeš počítat stejně až budeš mít všechny ty výsledky
-def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min):
+def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min, poem_max, poem_min):
     #print ( rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)
     n = count_n()
 
@@ -118,6 +130,10 @@ def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, 
         if(config.GABOR):
             neighbor.gabor_distance_scale = (neighbor.gabor_distance - gabor_min)/(gabor_max - gabor_min)
             sum_distance = sum_distance + neighbor.gabor_distance_scale
+        
+        if(config.POEM):
+            neighbor.poem_distance_scale = (neighbor.poem_distance - poem_min)/(poem_max - gabor_min)
+            sum_distance = sum_distance + neighbor.poem_distance_scale
             
         #print item.hsv_distance_scale
         

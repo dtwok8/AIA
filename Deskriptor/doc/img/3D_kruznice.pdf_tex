@@ -1,0 +1,98 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file '3D_kruznice.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{480bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.8)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{3D_kruznice.pdf}}%
+    \put(0.64666667,0.316){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{3D_kruznice.pdf}}%
+    \put(0.5945,0.28233333){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{3D_kruznice.pdf}}%
+    \put(0.54216667,0.24866667){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{3D_kruznice.pdf}}%
+    \put(0.49,0.21516667){\makebox(0,0)[lb]{\smash{6}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{3D_kruznice.pdf}}%
+    \put(0.43783333,0.1815){\makebox(0,0)[lb]{\smash{8}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{3D_kruznice.pdf}}%
+    \put(0.3855,0.14783333){\makebox(0,0)[lb]{\smash{10}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{3D_kruznice.pdf}}%
+    \put(0.3975,0.36233333){\makebox(0,0)[b]{\smash{-10}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{3D_kruznice.pdf}}%
+    \put(0.5105,0.33816667){\makebox(0,0)[b]{\smash{-5}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{3D_kruznice.pdf}}%
+    \put(0.62366667,0.31383333){\makebox(0,0)[b]{\smash{0}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{3D_kruznice.pdf}}%
+    \put(0.73683333,0.28966667){\makebox(0,0)[b]{\smash{5}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{3D_kruznice.pdf}}%
+    \put(0.85,0.26533333){\makebox(0,0)[b]{\smash{10}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{3D_kruznice.pdf}}%
+    \put(0.6005,0.3235){\makebox(0,0)[rb]{\smash{0}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{3D_kruznice.pdf}}%
+    \put(0.6005,0.39083333){\makebox(0,0)[rb]{\smash{2}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{3D_kruznice.pdf}}%
+    \put(0.6005,0.45783333){\makebox(0,0)[rb]{\smash{4}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{3D_kruznice.pdf}}%
+    \put(0.6005,0.52516667){\makebox(0,0)[rb]{\smash{6}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{3D_kruznice.pdf}}%
+    \put(0.6005,0.59233333){\makebox(0,0)[rb]{\smash{8}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{3D_kruznice.pdf}}%
+    \put(0.6005,0.65966667){\makebox(0,0)[rb]{\smash{10}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=18]{3D_kruznice.pdf}}%
+    \put(0.56133333,0.6415){\makebox(0,0)[rb]{\smash{z}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=19]{3D_kruznice.pdf}}%
+    \put(0.43216667,0.1375){\makebox(0,0)[b]{\smash{x}}}%
+    \put(0.833,0.24266667){\makebox(0,0)[b]{\smash{y}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=20]{3D_kruznice.pdf}}%
+    \put(0.56133333,0.6415){\makebox(0,0)[rb]{\smash{z}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=21]{3D_kruznice.pdf}}%
+    \put(0.68593414,0.5136996){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{[ 4 , 9 , 8 ]}}}%
+    \put(0.66692657,0.18895411){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{[ 4 , 9 , 0 ]}}}%
+    \put(0.71397237,0.25534775){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{.}}}%
+  \end{picture}%
+\endgroup%

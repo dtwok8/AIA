@@ -19,6 +19,8 @@ class Neighbor:
     hsv_distance_scale = 0 
     gabor_distance = 0
     gabor_distance_scale = 0
+    poem_distance = 0
+    poem_distance_scale = 0
     jec = 0
     
     

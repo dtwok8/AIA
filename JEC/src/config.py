@@ -26,8 +26,11 @@ LAB = False
 LAB_DISTANCE = cv2.HISTCMP_KL_DIV 
 HSV = False
 HSV_DISTANCE = cv2.NORM_L1
-GABOR = True
+GABOR = False
 GABORQ = False
+
+POEM = True
+
 
 
 #gabor setings

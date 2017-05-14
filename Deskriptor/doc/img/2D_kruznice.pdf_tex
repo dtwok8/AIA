@@ -1,0 +1,86 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file '2D_kruznice.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{480bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.8)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{2D_kruznice.pdf}}%
+    \put(0.48266667,0.07466667){\makebox(0,0)[rb]{\smash{-6}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{2D_kruznice.pdf}}%
+    \put(0.48266667,0.181){\makebox(0,0)[rb]{\smash{-4}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{2D_kruznice.pdf}}%
+    \put(0.48266667,0.28733333){\makebox(0,0)[rb]{\smash{-2}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{2D_kruznice.pdf}}%
+    \put(0.48266667,0.39383333){\makebox(0,0)[rb]{\smash{0}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{2D_kruznice.pdf}}%
+    \put(0.48266667,0.50016667){\makebox(0,0)[rb]{\smash{2}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{2D_kruznice.pdf}}%
+    \put(0.48266667,0.6065){\makebox(0,0)[rb]{\smash{4}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{2D_kruznice.pdf}}%
+    \put(0.48266667,0.71283333){\makebox(0,0)[rb]{\smash{6}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{2D_kruznice.pdf}}%
+    \put(0.17733333,0.34883333){\makebox(0,0)[b]{\smash{-6}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{2D_kruznice.pdf}}%
+    \put(0.28366667,0.34883333){\makebox(0,0)[b]{\smash{-4}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{2D_kruznice.pdf}}%
+    \put(0.39,0.34883333){\makebox(0,0)[b]{\smash{-2}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{2D_kruznice.pdf}}%
+    \put(0.4965,0.34883333){\makebox(0,0)[b]{\smash{0}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{2D_kruznice.pdf}}%
+    \put(0.60283333,0.34883333){\makebox(0,0)[b]{\smash{2}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{2D_kruznice.pdf}}%
+    \put(0.70916667,0.34883333){\makebox(0,0)[b]{\smash{4}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{2D_kruznice.pdf}}%
+    \put(0.8155,0.34883333){\makebox(0,0)[b]{\smash{6}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{2D_kruznice.pdf}}%
+    \put(0.2305,0.1){\makebox(0,0)[lb]{\smash{[ -2 , -5 ]}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{2D_kruznice.pdf}}%
+    \put(0.44116667,0.75233333){\makebox(0,0)[b]{\smash{y}}}%
+    \put(0.88366667,0.38016667){\makebox(0,0)[b]{\smash{x}}}%
+  \end{picture}%
+\endgroup%

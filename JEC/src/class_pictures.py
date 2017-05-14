@@ -19,6 +19,7 @@ class Pictures:
     hsv = None #np.zeros(shape=(3, 16), dtype=float32)
     gabor = None
     gabor_q = None
+    poem = None
     neighbors = None
     nereast_neighbors = None
     

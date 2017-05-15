@@ -19,8 +19,6 @@ import config
 import label_transfer
 
 
-import deskriptors.poem as poem
-
 def count_distance(train_data, test_image):
     print test_image.name
     print test_image.keywords
@@ -35,6 +33,8 @@ def count_distance(train_data, test_image):
     gabor_max = float("-inf")
     poem_min = float("inf")
     poem_max = float("-inf")
+    color_poem_min = float("inf")
+    color_poem_max = float("-inf")
     #print ( rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)
     #print ( rgb_max , rgb_min, lab_max > 3333.72839, lab_min, hsv_max, hsv_min)
     #test_image.neighbors  = []
@@ -43,39 +43,52 @@ def count_distance(train_data, test_image):
     #zaroven spocitame minmum a maximum pro dany testovaci obrazek
     for picture in train_data:
         pom_neighbor = class_neighbor.Neighbor(picture)
-        pom_neighbor.rgb_distance = cv2.norm(picture.rgb, test_image.rgb, config.RGB_DISTANCE)
-        if(pom_neighbor.rgb_distance < rgb_min):
-            rgb_min = pom_neighbor.rgb_distance
-        if(pom_neighbor.rgb_distance > rgb_max):
-            rgb_max = pom_neighbor.rgb_distance
         
-#        pom_neighbor.lab_distance  = cv2.compareHist(picture.lab, test_image.lab, cv2.HISTCMP_KL_DIV) #kl(picture.lab, test_image.lab)#            
-#        if(pom_neighbor.lab_distance < lab_min):
-#            lab_min = pom_neighbor.lab_distance
-#        if(pom_neighbor.lab_distance > lab_max):
-#            lab_max = pom_neighbor.lab_distance        
+        if(config.RGB):    
+            pom_neighbor.rgb_distance = cv2.norm(picture.rgb, test_image.rgb, config.RGB_DISTANCE)
+            if(pom_neighbor.rgb_distance < rgb_min):
+                rgb_min = pom_neighbor.rgb_distance
+            if(pom_neighbor.rgb_distance > rgb_max):
+                rgb_max = pom_neighbor.rgb_distance
         
-        pom_neighbor.hsv_distance = cv2.norm(picture.hsv, test_image.hsv, config.RGB_DISTANCE)
-        if(pom_neighbor.hsv_distance < hsv_min):
-            hsv_min = pom_neighbor.hsv_distance
-        if(pom_neighbor.hsv_distance > hsv_max):
-            hsv_max = pom_neighbor.hsv_distance
+        if(config.LAB):
+            pom_neighbor.lab_distance  = cv2.compareHist(picture.lab, test_image.lab, cv2.HISTCMP_KL_DIV) #kl(picture.lab, test_image.lab)#            
+            if(pom_neighbor.lab_distance < lab_min):
+                lab_min = pom_neighbor.lab_distance
+            if(pom_neighbor.lab_distance > lab_max):
+                lab_max = pom_neighbor.lab_distance        
         
-        pom_neighbor.gabor_distance = cv2.norm(picture.gabor, test_image.gabor, cv2.NORM_L1)
-        if(pom_neighbor.gabor_distance < gabor_min):
-            gabor_min = pom_neighbor.gabor_distance
-        if(pom_neighbor.gabor_distance > gabor_max):
-            gabor_max = pom_neighbor.gabor_distance 
+        if(config.HSV):
+            pom_neighbor.hsv_distance = cv2.norm(picture.hsv, test_image.hsv, config.RGB_DISTANCE)
+            if(pom_neighbor.hsv_distance < hsv_min):
+                hsv_min = pom_neighbor.hsv_distance
+            if(pom_neighbor.hsv_distance > hsv_max):
+                hsv_max = pom_neighbor.hsv_distance
         
-        pom_neighbor.poem_distance = cv2.norm(picture.poem, test_image.poem, cv2.NORM_L1)
-        if(pom_neighbor.poem_distance < poem_min):
-            poem_min = pom_neighbor.poem_distance
-        if(pom_neighbor.poem_distance > poem_max):
-            poem_max = pom_neighbor.poem_distance 
+        if(config.GABOR):
+            pom_neighbor.gabor_distance = cv2.norm(picture.gabor, test_image.gabor, cv2.NORM_L1)
+            if(pom_neighbor.gabor_distance < gabor_min):
+                gabor_min = pom_neighbor.gabor_distance
+            if(pom_neighbor.gabor_distance > gabor_max):
+                gabor_max = pom_neighbor.gabor_distance 
+                
+        if(config.POEM):
+            pom_neighbor.poem_distance = cv2.norm(picture.poem, test_image.poem, cv2.NORM_L1)
+            if(pom_neighbor.poem_distance < poem_min):
+                poem_min = pom_neighbor.poem_distance
+            if(pom_neighbor.poem_distance > poem_max):
+                poem_max = pom_neighbor.poem_distance 
+        
+        if(config.COLOR_POEM):
+            pom_neighbor.color_poem_distance = cv2.norm(picture.color_poem, test_image.color_poem, cv2.NORM_L1)
+            if(pom_neighbor.color_poem_distance < poem_min):
+                color_poem_min = pom_neighbor.color_poem_distance
+            if(pom_neighbor.color_poem_distance > color_poem_max):
+                color_poem_max = pom_neighbor.color_poem_distance     
         
         pom_nei.append(pom_neighbor) #pridani souseda
 
-    count_jec(pom_nei,test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min, poem_max, poem_min) 
+    count_jec(pom_nei,test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min, poem_max, poem_min, color_poem_max, color_poem_min) 
     
     keywords_prepare_sort=[]
     for neighbor in pom_nei:
@@ -104,11 +117,14 @@ def count_n():
     
     if(config.POEM):
         n = n + 1
+    
+    if(config.COLOR_POEM):
+        n = n + 1
         
     return n
 
 #spocita JEC pro tri parametry rgb, hsv, lab, ty to musíš naškálovat od 0 o 1 takže asi ten jec můžeš počítat stejně až budeš mít všechny ty výsledky
-def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min, poem_max, poem_min):
+def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min, poem_max, poem_min, color_poem_max, color_poem_min):
     #print ( rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)
     n = count_n()
 
@@ -134,6 +150,10 @@ def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, 
         if(config.POEM):
             neighbor.poem_distance_scale = (neighbor.poem_distance - poem_min)/(poem_max - gabor_min)
             sum_distance = sum_distance + neighbor.poem_distance_scale
+        
+        if(config.COLOR_POEM):
+            neighbor.color_poem_distance_scale = (neighbor.color_poem_distance - color_poem_min)/(color_poem_max - gabor_min)
+            sum_distance = sum_distance + neighbor.color_poem_distance_scale
             
         #print item.hsv_distance_scale
         

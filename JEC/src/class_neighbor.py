@@ -21,6 +21,8 @@ class Neighbor:
     gabor_distance_scale = 0
     poem_distance = 0
     poem_distance_scale = 0
+    color_poem_distance = 0
+    color_poem_distance_scale = 0
     jec = 0
     
     

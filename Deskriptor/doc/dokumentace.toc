@@ -6,15 +6,16 @@
 \contentsline {subsection}{\numberline {2.0.3}V\IeC {\'y}po\IeC {\v c}et lok\IeC {\'a}ln\IeC {\'\i }ho histogramu orientace gradient\IeC {\r u} z okol\IeC {\'\i }}{5}{subsection.2.0.3}
 \contentsline {subsection}{\numberline {2.0.4}Zak\IeC {\'o}dov\IeC {\'a}n\IeC {\'\i } p\IeC {\v r}\IeC {\'\i }znak\IeC {\r u} pomoc\IeC {\'\i } LBP}{6}{subsection.2.0.4}
 \contentsline {subsection}{\numberline {2.0.5}Konstrukce glob\IeC {\'a}ln\IeC {\'\i }ho histogramu}{9}{subsection.2.0.5}
+\contentsline {subsubsection}{Uniformn\IeC {\'\i } vzory}{9}{section*.11}
 \contentsline {chapter}{\numberline {3}Barevn\IeC {\'y} poem}{10}{chapter.3}
 \contentsline {subsection}{\numberline {3.0.1}V\IeC {\'y}po\IeC {\v c}et gradientu a magnitudy u barevneho poemu}{10}{subsection.3.0.1}
 \contentsline {subsection}{\numberline {3.0.2}Diskretizace sm\IeC {\v e}ru gradientu u barevneho poemu}{12}{subsection.3.0.2}
-\contentsline {subsection}{\numberline {3.0.3}V\IeC {\'y}po\IeC {\v c}et lok\IeC {\'a}ln\IeC {\'\i }ho histogramu u barevneho poemu}{12}{subsection.3.0.3}
+\contentsline {subsection}{\numberline {3.0.3}V\IeC {\'y}po\IeC {\v c}et lok\IeC {\'a}ln\IeC {\'\i }ho histogramu u barevneho poemu}{13}{subsection.3.0.3}
 \contentsline {subsection}{\numberline {3.0.4}Zak\IeC {\'o}dov\IeC {\'a}n\IeC {\'\i } p\IeC {\v r}\IeC {\'\i }znaku pomoc\IeC {\'\i } LBP u barevneho poemu}{14}{subsection.3.0.4}
 \contentsline {chapter}{\numberline {4}Pou\IeC {\v z}it\IeC {\'e} programov\IeC {\'e} prost\IeC {\v r}edky}{15}{chapter.4}
 \contentsline {section}{\numberline {4.1}OpenCV}{15}{section.4.1}
 \contentsline {chapter}{\numberline {5}Testovac\IeC {\'\i } data}{16}{chapter.5}
 \contentsline {chapter}{\numberline {6}Z\IeC {\'a}v\IeC {\v e}r}{17}{chapter.6}
 \contentsline {chapter}{\numberline {7}U\IeC {\v z}ivatelsk\IeC {\'a} dokumentace}{18}{chapter.7}
-\contentsline {subsubsection}{Spu\IeC {\v s}t\IeC {\v e}n\IeC {\'\i } programu}{18}{section*.22}
-\contentsline {subsubsection}{V\IeC {\'y}stupy programu}{18}{section*.23}
+\contentsline {subsubsection}{Spu\IeC {\v s}t\IeC {\v e}n\IeC {\'\i } programu}{18}{section*.23}
+\contentsline {subsubsection}{V\IeC {\'y}stupy programu}{18}{section*.24}

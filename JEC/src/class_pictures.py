@@ -20,6 +20,7 @@ class Pictures:
     gabor = None
     gabor_q = None
     poem = None
+    color_poem = None
     neighbors = None
     nereast_neighbors = None
     

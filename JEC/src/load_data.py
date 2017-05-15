@@ -15,6 +15,7 @@ import config
 import gabor
 
 import deskriptors.poem as poem
+import deskriptors.color_poem as color_poem
 
 def load_pictures(listImages, outputFile, information):
     """
@@ -70,6 +71,9 @@ def load_features(picture):
      
     if(config.POEM):
         picture.poem = poem.count_poem(img)
+        
+    if(config.COLOR_POEM):
+        picture.color_poem = color_poem.count_color_poem(img)
 
 def count_histogram(img):
     """

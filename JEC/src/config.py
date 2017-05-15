@@ -29,7 +29,9 @@ HSV_DISTANCE = cv2.NORM_L1
 GABOR = False
 GABORQ = False
 
-POEM = True
+POEM = False
+
+COLOR_POEM = True
 
 
 

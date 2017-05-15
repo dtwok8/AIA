@@ -168,39 +168,41 @@ def compute_lbp_value(r, c, border_img, block_size, tau):
 
     return val
 
-def compute_histogram(lbp, directions):
+def compute_histogram(lbp, x = 4, y = 4):
     histogram_size = 256
-    histograms = []
-
-    for d in range(len(lbp)):
-        histogram = np.zeros(histogram_size)
-        for x in lbp[d]:
-            for y in x:
-                index = y #lbp[d,x,y]
-                histogram[index] = histogram[index] + 1
-        histogram = histogram / np.sum(histogram) #normalizovani aby soucet hodnot byl 1 pro dany smer
-        histograms.append(histogram)
-        
-        if (DEBUG):
-            print histogram
+    histograms = np.zeros(x*y * len(lbp) * histogram_size)
+    step_x = len(lbp[0]) /x
+    step_y = len(lbp[0,0]) /y 
     
-    histogram_np = np.zeros(histogram_size * directions)
-    for h in range(len(histograms)):
-        for i in range(len(histograms[h])):
-            histogram_np[(h*256)+i] = histograms[h][i]
-
-    if (DEBUG):
+    for d in range(len(lbp)):
+        for row_block in range(x):
+            for column_block in range(y):
+                shift_direction = d*(x*y*histogram_size) #posunu se na spravny smer v histogramu
+                shift_block = ((row_block*x)+column_block)*histogram_size  #posunu se na spravny block v histogramu
+                compute_local_histogram(histograms,lbp[d], row_block, column_block, step_x, step_y, shift_direction, shift_block)
+    if(DEBUG):
         soubor = open("histogram.txt", 'w')
-        
-        for item in histogram_np:
-            soubor.write("{0:.6f} ".format(item))
-            
+        for item in histograms:
+                soubor.write(" {} ".format(item))
+
         soubor.close()
+    return histograms
+
+    
+
+def compute_local_histogram(histogram, lbp, row_block, column_block, step_x, step_y, shift_direction, shift_block):    
+    for x in range(step_x*row_block, step_x*(row_block+1)): #od zacatku blocku, #dokonce blocku po radcich
+        for y in range (step_y * column_block, step_y * (column_block+1)): # po sloupcich            
+            index = shift_direction+shift_block+int(lbp[x,y])
+            histogram[index] = histogram[index] + 1
         
         
 def count_poem(img):
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     #img = cv2.imread("../../../Data/iaprtc12/images/00/51.jpg", 0)
+    factor = 0.5 #zmenseni obrazkuna polovinu
+    img = cv2.resize(img, (0,0), fx=factor, fy=factor) 
+    
     gradient = count_gradient(img)
     magnitude = count_magnitude(gradient) 
     directional = compute_direction(COUNT_DIRECTIONS, gradient, magnitude)
@@ -209,5 +211,5 @@ def count_poem(img):
     lbp = compute_lbp(COUNT_DIRECTIONS, aems, BLOCK_SIZE, TAU)
 
     #compute_histogram(self, x, y, size_x, size_y, uniform=False)
-    histogram = compute_histogram(lbp, COUNT_DIRECTIONS)
+    histogram = compute_histogram(lbp)
     return histogram

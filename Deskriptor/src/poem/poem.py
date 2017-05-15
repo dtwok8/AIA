@@ -231,28 +231,46 @@ def compute_lbp_value(r, c, border_img, block_size, tau):
 
     return val
 
+
 def compute_histogram(lbp, x = 4, y = 4):
+    histogram_size = 256
+    histograms = np.zeros(x*y * len(lbp) * histogram_size)
     step_x = len(lbp[0]) /x
     step_y = len(lbp[0,0]) /y 
     print "step_x {} step_y {}".format(step_x, step_y)
     
     for d in range(len(lbp)):
-        for row_block in range(x-1):
-            for column_block in range(y-1):
-                compute_local_histogram(lbp[d], row_block, column_block, step_x, step_y)
+        for row_block in range(x):
+            for column_block in range(y):
+                print "x: {} y: {}".format(row_block,column_block)
+                shift_direction = d*(x*y*histogram_size) #posunu se na spravny smer v histogramu
+                shift_block = ((row_block*x)+column_block)*histogram_size  #posunu se na spravny block v histogramu
+                compute_local_histogram(histograms,lbp[d], row_block, column_block, step_x, step_y, shift_direction, shift_block)
+    
+    soubor = open("histogram.txt", 'w')
+    for item in histograms:
+            soubor.write(" {} ".format(item))
+            
+    soubor.close()    
+
     
 
-def compute_local_histogram(lbp, row_block, column_block, step_x, step_y):
-    histogram = np.zeros(256)
+def compute_local_histogram(histogram, lbp, row_block, column_block, step_x, step_y, shift_direction, shift_block):
+    print lbp.shape
     
     for x in range(step_x*row_block, step_x*(row_block+1)): #od zacatku blocku, #dokonce blocku po radcich
+        #print "x: {}".format(x) 
         for y in range (step_y * column_block, step_y * (column_block+1)): # po sloupcich
-            print "{} {} {} lbp: {} ".format(x,y, lbp[x,y])
-            index = int(lbp[x,y])
+            #print "y: {}".format(y) 
+            #print "{} {} ".format(x,y)
+            #print "{} {} lbp: {} ".format(x,y, lbp[x,y])
+            
+            index = shift_direction+shift_block+int(lbp[x,y])
             histogram[index] = histogram[index] + 1
     
     #histogram = histogram / np.sum(histogram) 
-    print histogram  
+    print histogram 
+    
 
 
 def compute_histogram_experiments(lbp, directions):
@@ -300,8 +318,8 @@ def main():
     img = cv2.imread(img_name,0)
     #img = cv2.imread("../../../Data/iaprtc12/images/00/51.jpg", 0)
     
-    #factor = 0.5 #zmenseni obrazkuna polovinu
-    #img = cv2.resize(img, (0,0), fx=factor, fy=factor) 
+    factor = 0.5 #zmenseni obrazkuna polovinu
+    img = cv2.resize(img, (0,0), fx=factor, fy=factor) 
     
     gradient = count_gradient(img)
     magnitude = count_magnitude(gradient) 
@@ -311,6 +329,5 @@ def main():
     lbp = compute_lbp(COUNT_DIRECTIONS, aems, BLOCK_SIZE, TAU)
 
     compute_histogram(lbp)
- 
     
 main()

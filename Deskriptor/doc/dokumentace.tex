@@ -67,17 +67,17 @@ Tato práce byla vytvořena za účelem vytvoření deskriptoru, který ponese i
 \end{abstract}
 
 \chapter{Úvod}
-Většina metod používaných na detekci textury pracuje pouze s šedotónovým obrázkem. Takže zanedbávají informaci o barvě a pracují jen s intenzitou obrazu. My bychom ovšem chtěli obě informace zkombinovat a vytvořit tak jeden deskriptor, který ponese jak informaci o barvě tak i informaci o textuře obrázku \cite{DiplomovaBrno}. Nabízí se několik možností: 
+Většina metod používaných na detekci textury pracuje pouze s šedotónovým obrázkem. Takže zanedbávají informaci o barvě a pracují jen s intenzitou obrazu. Cílem této práce však je obě informace zkombinovat a vytvořit tak jeden deskriptor, který ponese jak informaci o barvě tak i informaci o textuře obrázku \cite{DiplomovaBrno}. Nabízí se několik možností: 
 
 \begin{description}
 \item[Vytvoření společného příznaku] 
-	například rozšíření LBP/POEM na všechny barvené kanály. Musíme si být ale vědomi, že informace o barvě a textuře se mohou ovlinovat i protichůdně. 
+například rozšíření LBP/POEM na všechny barvené kanály. Musí se však dbát na to, že informace o barvě a textuře se mohou ovlinovat i protichůdně. 
 
 \item[Vyhodnotit a klasifikovat příznaky odděleně] 
-	a pak výslednou klasifikaci spojit z několika částí (například JEC - Joint Equal Contribution). Výhodou tohoto přístupu je zachování vlastností obou původních příznaků. Nevýhodou je náročnější výpočet a úspěšnost přístupu závisí na způsobu kombinace obou informací.
+a pak výslednou klasifikaci spojit z několika částí (například JEC - Joint Equal Contribution \cite{JEC} ). Výhodou tohoto přístupu je zachování vlastností obou původních příznaků. Nevýhodou je náročnější výpočet a úspěšnost přístupu závisí na způsobu kombinace obou informací.
 \end{description} 
 
-V práci rozebereme POEM (Patterns of Oriented Edge Magnitudes) pracující jen s texturou následovaný metodou POEM procházející všechny kanály barevného prostoru RGB. \\
+V práci je rozebrán POEM (Patterns of Oriented Edge Magnitudes) pracující jen s texturou následovaný metodou POEM procházející všechny kanály barevného prostoru RGB. \\
 
 Hotový deskriptor bude použit pro porovnání v bakalářské práci "Automatická anotace obrázků". Kde hlavním tématem je právě spojení příznaků vyhodnocených zvlášť. 
 
@@ -86,7 +86,7 @@ POEM (Patterns of Oriented Edge Magnitudes). Vstup algorimutmu se předpokládá
 
 \subsection{Výpočet gradientu a magnitudy}
 Nejprve je potřeba vypočítat gradient. Gradient je obecně směr růstu. Výpočet může probíhat různými způsoby. Jednou z možností je použít masku, kterou aplikujeme na vstupní obrázek. Podle některých studii jsou nejlepší jednoduché masky jako je např. $[1, 0, -1]$ a $[1, 0, -1]^{\,t}$. Okraje obrázku se buď vypouštějí nebo se dají doplnit (opět existuje více způsobů).Výstupem jsou dva obrázky o rozměrech $m \times n$. \\
-Na výstup se dá pohlíže také jako na vektory, kdy každý bod původního obrázku je reprezentován právě 2D vektorem. Analogicky pokud si vektory rozložíme na x a y složku dostaneme dva obrázky. Jeden, který reprezentuje obrázek po použití x-ového filtru, a druhý který reprezentuje obrázek po použití y-filtru. Přičemž použití y filtru by nám mělo zvýraznit hrany v y směru (svislé) a x zvýrazní hrany v x směru (vodorovné). \\
+Na výstup se dá pohlížet také jako na vektory, kdy každý bod původního obrázku je reprezentován právě 2D vektorem. Analogicky pokud si vektory rozložíme na x a y složku dostaneme dva obrázky. Jeden, který reprezentuje obrázek po použití x-ového filtru, a druhý který reprezentuje obrázek po použití y-filtru. Přičemž použití y filtru by nám mělo zvýraznit hrany v y směru (svislé) a x zvýrazní hrany v x směru (vodorovné). \\
 
 \begin{multicols}{2}
 	Vstupní obrázek:
@@ -200,8 +200,8 @@ Magnituda na základě vyše uvedených gradientů:
 \end{figure}
 
 \subsection{Diskretizace směru gradientu}
-Pokud na gradienty budeme pohlížet jako na 2D vektory můžeme určit nejen jejich velikost(magnitudu) ale i jejich směr. Je možné použít znaménkovou reprezentaci $0 - \pi$ nebo neznaménkovou reprezentaci $0 - 2\pi$. \\
-V praxi si rovnoměrně rozdělíme kružnici na několik dílů (dle počtu požadovaných směrů). Označme si počet dílů $d$. Pro $d = 3$ znaménkovou reprezentaci to tedy bude $\left(0 - \frac{2}{3}\pi \right)$, $\left(\frac{2}{3}\pi - \frac{4}{3}\pi \right)$ a $\left(\frac{4}{3}\pi - 2\pi \right)$. Máme připraveno $d$ matic (pro každý směr jednu) a podle toho kam vektor směřuje, umístíme jeho magnitudu na souřadnice kde se nachází v původní matici. 
+Pokud se na gradienty bude pohlížet jako na 2D vektory a tím určit nejen jejich velikost(magnitudu) ale i jejich směr. Je možné použít znaménkovou reprezentaci $0 - \pi$ nebo neznaménkovou reprezentaci $0 - 2\pi$. \\
+V praxi si rovnoměrně rozdělíme kružnici na několik dílů (dle počtu požadovaných směrů). Počet dílů  je označen písmenem $d$. Pro $d = 3$ znaménkovou reprezentaci to tedy bude $\left(0 - \frac{2}{3}\pi \right)$, $\left(\frac{2}{3}\pi - \frac{4}{3}\pi \right)$ a $\left(\frac{4}{3}\pi - 2\pi \right)$. Je připraveno $d$ matic (pro každý směr jedna) a podle toho kam vektor směřuje, umístíme jeho magnitudu na souřadnice kde se nachází v původní matici. 
 
 \begin{figure}[H]
     \centering    
@@ -222,7 +222,7 @@ V praxi si rovnoměrně rozdělíme kružnici na několik dílů (dle počtu po�
 
 
 \subsection{Výpočet lokálního histogramu orientace gradientů z okolí}
-U každého směru projdeme jednotlivé pixely s jejich okolím a zprůměrujeme jejich hodnoty. Toto okolí se nazývá cell. \\
+U každého směru  se vemou jednotlivé pixely s jejich okolím a zprůměrují se jejich hodnoty. Toto okolí se nazývá cell. \\
 
 \definecolor{orange}{rgb}{1,0.5,0} 
 Výpočet u jednoho směru při cell = 3, Oranžově je vyznačená oblast výpočtu pro jeden pixel:
@@ -256,11 +256,11 @@ Výpočet u jednoho směru při cell = 3, Oranžově je vyznačená oblast výpo
 	\includegraphics[width=150pt]{./img/aems0.jpg}
 	\includegraphics[width=150pt]{./img/aems1.jpg}
 	\includegraphics[width=150pt]{./img/aems2.jpg}
-	\caption{Obrázky po diskretizaci, oproti předchozím by měli být hrany více rozmazané. Každý obrázek představuje jeden směr.}
+	\caption{Obrázky po diskretizaci, oproti předchozím jsou hrany více rozmazané. Každý obrázek představuje jeden směr.}
 \end{figure}
 
 \subsection{Zakódování příznaků pomocí LBP}
-LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. Oproti tomu POEM můžeme aplikovat na větší okolí. Toto okolí nazýváme block, zpravidla se jedná o kruhové okolí s poloměrem L/2 (L představuje velikost blocku). Pro stanovení intenzit okolních hodnot je možné použít bilineární interpolaci. Pokud bychom chtěli zvýšit stabilitu v téměř konstantní oblasti lze k centrálnímu pixelu přičítat malou konstantu $\tau$. 
+LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. Oproti tomu POEM je možné aplikovat na větší okolí. Toto okolí se nazývá block, zpravidla se jedná o kruhové okolí s poloměrem L/2 (L představuje velikost blocku). Pro stanovení intenzit okolních hodnot je možné použít bilineární interpolaci. Pro zvýšení stability v téměř konstantní oblasti lze k centrálnímu pixelu přičítat malou konstantu $\tau$. 
 
 \begin{figure}[H]
 		\centering
@@ -268,7 +268,7 @@ LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. 
 		\caption{Znázornění blocku Převzato z \cite{SrovnaniDeskriptoru}}
 \end{figure}
 
-Následující matice představuje block pro střední pixel s hodnotou intenzity 4, označme si ho $c$ (centrální). Následně procházíme všechny okolní pixely, označme si je $x$, hodnotu daného pixelu jako $p(x)$. $s(x)$ představuje výsledek tohoto porovnání.
+Následující matice představuje block pro střední pixel s hodnotou intenzity 4, označený písmenem $c$ (centrální). Algoritmus následně prochází všechny okolní pixely, označené písmenem  $x$, hodnotu daného pixelu jako $p(x)$. $s(x)$ představuje výsledek tohoto porovnání.
 
 \begin{displaymath} 
 	\label{asd2} 
@@ -305,17 +305,21 @@ Zobrazení postupu algoritmu LBP:
 \end{figure} 
 
 \subsection{Konstrukce globálního histogramu}
-Obrázky získané z LBP rozdělíme pravidelnou čtvercovou mřížkou. Pro každou vzniklou oblast vypočteme lokální histogram. Vzniklé histogramy zřetězíme. Díky tomu získáme tři histogramy pro každý směr jeden, které opět zřetězíme. 
+Obrázky získané z LBP jsou rozdeleny pravidelnou čtvercovou mřížkou. Pro každou vzniklou oblast je vypočten lokální histogram. Vzniklé histogramy jsou zřetězeny. Díky tomu jsou získány tři histogramy pro každý směr jeden, které jsou opět zřetězeny. \\
+Rozdělení obrázků a určování lokálních histogramů se dělá za účelem zachování informace o prostorovém rozložení jednotlivých příznaků.
+
+\subsubsection{Uniformní vzory}
+Jelikož histogram, který bude vytvořen je velmi dlouhý, je možné ho zkrátit vybíráním pouze tz. uniformních vzorů. Některé binární vzory se totiž na běžných obrázcích vyskytují častěji a to až, dle experimentů z 90 \%. Jsou to právě výše zmíněné uniformní vzory. Uniformní vzory jsou hodnoty čísla (čísla z pohledu binární reprezentace), kdy dochází k maximálně dvěma přechodům z 0 na 1 a nebo opačně. Například 00011110 je uniformní, oproti tomu 01101111 není. Těchto vzorů je 58, všechny ostatní vzory jsou reprezentovány jediným vzorem. Takto je délka jednoho lokálního histogramu zredukována z 256 na 59 binů.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=150pt]{./img/vypocet_histogramu.png}
-	\caption{Obrázky získané z LBP jsou rozdeleny pravidelnou čtvercovou mřížkou. Převzato z \cite{SrovnaniDeskriptoru}}
+	\caption{Obrázky získané z LBP jsou rozděleny pravidelnou čtvercovou mřížkou. Převzato z \cite{SrovnaniDeskriptoru}}
 \end{figure} 
 \chapter{Barevný poem}
 
 \subsection{Výpočet gradientu a magnitudy u barevneho poemu}
-Výpočet gradientu probíhá obdobně jako u nebarevného obrázku. Pro každou ze tří složek získáme dvě matice filtrované maskami. Celkem budeme mít $3 \times 2$ matic. Na matice se dá pohlížet jako na 2 vektory o 3 složkách. Vektory sloučíme pomocí součtu vektoru do jednoho 3 složkového vektoru. Magnituda je opět velikost vektoru tentokrát, ale v prostoru. \\
+Výpočet gradientu probíhá obdobně jako u nebarevného obrázku. Pro každou ze tří složek jsou získány dvě matice filtrované maskami. Celkem bude $3 \times 2$ matic. Na matice se dá pohlížet jako na 2 vektory o 3 složkách. Vektory jsou sloučeny pomocí součtu vektoru do jednoho 3 složkového vektoru. Magnituda je opět velikost vektoru tentokrát, ale v prostoru. \\
 
 Format vzniklych vektoru
 \begin{align} 
@@ -343,7 +347,7 @@ Format vzniklych vektoru
 		\caption{Gradienty pro zelenou složku.}
 \end{figure}
 
-Pomocí součtu vektorú získáme jeden třísložkový vektor:
+Pomocí součtu vektorů je získán jeden třísložkový vektor:
 \begin{align}
    \label{soucet_vektrou} \vec{u} + \vec{v} = (u_1 + v_1, u_2 + v_2, u_3 + v_3 )
 \end{align} 
@@ -362,7 +366,7 @@ Výpočet velikosti vektoru v prostoru (magnituda):
 
 
 \subsection{Diskretizace směru gradientu u barevneho poemu}
-U vektorů získaných v předchozím kroku určíme velikost úhlu mezi vektorem a equivalentní vektorem s vynulovanou složkou $z$. Následně počítáme do které části naší kružnice vektor směřuje. Pro znaménkovou reprezentaci je celkový rozsah $0 - \pi$, pro neznaménkovou reprezentaci $0 - 2\pi$
+U vektorů získaných v předchozím kroku je určena velikost úhlu mezi vektorem a equivalentní vektorem s vynulovanou složkou $z$. Následně je spočítáno do které části kružnice vektor směřuje. Pro znaménkovou reprezentaci je celkový rozsah $0 - \pi$, pro neznaménkovou reprezentaci $0 - 2\pi$
 \\
 Při neznaménkové reprezentaci a počtu směrů $d = 3$, jsou následující intervaly $\left(0 - \frac{\pi}{3}\right)$, $\left(\frac{\pi}{3} - \frac{2\pi}{3}\right)$ a  $\left(\frac{2\pi}{3} - \pi\right)$.
 
@@ -371,10 +375,11 @@ Při neznaménkové reprezentaci a počtu směrů $d = 3$, jsou následující i
     \def\svgwidth{\columnwidth}
 	\import{img/}{3D_kruznice.pdf_tex}    
     %\input{image.pdf_tex}
-    \caption{Diskretizace směru gradientu v neznamenkové reprezentaci. Mějme vektor $[4, 9, 8]$ a jeho ekvivalentní vektor s vynulovanou složkou $z$ $[4,9, 0]$. Úhel, který mezi sebou vektory svírají je $39 ^\circ$. Zároveň je vektor v prvním kvadrantu tudíž spadá do prvního intervalu. Pokud by ovšem byl vektor například $[4, -9, 8]$, tedy spadající do druhého kvadrantu, pak bychom jeho úhel počítali jako $180 -$ úhel mezi $[4, -9, 8]$ a $[4, -9, 0]$. A vektor by připadl do třetího intervalu.}
+    \caption{Diskretizace směru gradientu v neznamenkové reprezentaci. Mějme vektor $[4, 9, 8]$ a jeho ekvivalentní vektor s vynulovanou složkou $z$ $[4,9, 0]$. Úhel, který mezi sebou vektory svírají je $39 ^\circ$. Zároveň je vektor v prvním kvadrantu tudíž spadá do prvního intervalu.}
     \label{fig: diskretizace3D}
 \end{figure}
 
+\par Pro výpočet diskretizace směru při neznaménkové reprezentaci je $y$ složka rozdělena na kladnou a zápornou část. To hraje velkou roli, pokud je $y$ složka vekotru záporná. V tom případě je nutné nebrat úhel $\alpha$, ale jeho doplněk ($ 180 - \alpha$).
 
 \subsection{Výpočet lokálního histogramu u barevneho poemu}
 Zbývající postup je již totožný s výše uvedeným POEM. Pro srovnání jsou zde alespoň uvedeny výsledné obrázky. 
@@ -421,7 +426,9 @@ Knihovna byla navrhnuta pro výpočetní efektivitu v oblasti počítačového v
 Knihovnu OpenCV je možné stáhnout na adrese: \url{http://opencv.org/}  
 
 \chapter{Testovací data}
-Pro natrénování a následné testování byla použita data z databáze iaprc12. Data obsahují \num{20 000} obrázků ve formátu \textit{jpg} s celkovým počtem 291 klíčových slov. Ke každému obrázku jsou přiložena metadata ve formátu XML, která obsahují informace o obrázku v různých jazycích. Kromě angličtiny zde nalezneme například i španělštinu nebo němčinu. Metadatata ovšem neobsahují klíčová slova tak jak bychom si je představovali. V jednotlivých elementech jsou roztřízené obsáhle informace. Například titulek obrázku, který může vypadat \textit{The Plaza de Armas}, a v elementu \textit{description} je například \textit{a woman and a child are walking over the square}. Spolu s databází jsme zíkali klíčová slova které byla extrahována právě z přiloženého xml. Z celkových \num{20 000} obrázků jich bylo použitou \num{19 805} a to \num{17 664} na trénování a \num{1 960} na testování. K jednomu obrázku je v průměru přiřazeno 5.7 klíčových slov.
+Pro natrénování a následné testování byla použita data z databáze iaprc12. Data obsahují \num{20 000} obrázků ve formátu \textit{jpg} s celkovým počtem 291 klíčových slov. Z toho bylo použito \num{19 805} obrázků a to \num{17 664} na trénování a \num{1 960} na testování. K jednomu obrázku je v průměru přiřazeno 5.7 klíčových slov.\\
+
+Ke každému obrázku jsou přiložena metadata ve formátu XML, která obsahují informace o obrázku v různých jazycích. Kromě angličtiny je zde možné nalést například i španělštinu nebo němčinu. Metadatata ovšem neobsahují klíčová slova, ale v jednotlivých elementech jsou roztřízené obsáhle informace. Například titulek obrázku, který může vypadat \textit{The Plaza de Armas}, a v elementu \textit{description} je například \textit{a woman and a child are walking over the square}. Spolu s databází byla získána i klíčová slova které byla extrahována právě z přiloženého xml.
 
 \begin{figure}[h]
 		\centering
@@ -430,17 +437,18 @@ Pro natrénování a následné testování byla použita data z databáze iaprc
 \end{figure}
  
 \chapter{Závěr}
-V semestrální práci jsem vytvořila skript, který z vloženého obrázku vytvoří POEM deskriptor. Dále jsme vyzkoušeli vytvoření POEM na barevný obrázek, tak aby obsahoval jak informaci o textuře tak informaci o barvě. Použitý POEM byl použit pro porovnání v bakalářské práci \textit{Automatická anotace obrázků}. \\
+V semestrální práci byl vytvořen skript, který z vloženého obrázku vytvoří POEM deskriptor. Dále bylo vyzkoušeno vytvoření POEM na barevný obrázek, tak aby obsahoval jak informaci o textuře tak informaci o barvě. Použitý POEM byl použit pro porovnání v bakalářské práci \textit{Automatická anotace obrázků}. \\
 \\
 Dosažené výsledky: \\
+Při spojování bylo použito Joint Equal Contribution. \cite{JEC} 
 
 \begin{tabular}{l*{3}{c}}
 	          		& Přesnost (\%) & Úplnost (\%) & Nenulových slov \\
 \hline
-RGB						& 0 & 0 & 0 \\
+RGB						& 14 & 8 & 167 \\
 LAB	  			  		& 12 & 7 & 148  \\
-HSV            			& 0 & 0 & 0  \\
-RGB, LAB, HSV      		& 0 & 0 & 0  \\
+HSV            			& 16 & 10 & 181  \\
+RGB, LAB, HSV      		& 17 & 11 & 178  \\
 POEM		     		& 0 & 0 & 0  \\
 RGB, LAB, HSV, POEM		& 0 & 0 & 0  \\
 Barevný POEM			& 0 & 0 & 0  \\

@@ -12,7 +12,7 @@ import sys #srgv
 
 from matplotlib import pyplot as plt
  
-DEBUG = True #vypisuje vsechny mezivystupy
+DEBUG = False #vypisuje vsechny mezivystupy
 COUNT_DIRECTIONS = 3
 CELL_SIZE = 3 #7
 BLOCK_SIZE = 8 #10
@@ -300,10 +300,10 @@ def compute_histogram(lbp, x = 4, y = 4):
 
         soubor.close()    
 
+    return histograms
     
 
 def compute_local_histogram(histogram, lbp, row_block, column_block, step_x, step_y, shift_direction, shift_block):
-    print lbp.shape
     
     for x in range(step_x*row_block, step_x*(row_block+1)): #od zacatku blocku, #dokonce blocku po radcich
         #print "x: {}".format(x) 
@@ -316,14 +316,10 @@ def compute_local_histogram(histogram, lbp, row_block, column_block, step_x, ste
             histogram[index] = histogram[index] + 1
     
 
-def main():
-    img_name = sys.argv[1]
-    img_name = img_name.strip() #odriznuti netisknutelnych znaku
-    img = cv2.imread(img_name)
-    #img = cv2.imread("../../../Data/iaprtc12/images/00/51.jpg")
-    
-    #factor = 0.5 #zmenseni obrazkuna polovinu
-    #img = cv2.resize(img, (0,0), fx=factor, fy=factor) 
+def count_color_poem(img):
+    #img = cv2.imread("../../../Data/iaprtc12/images/00/51.jpg", 0)
+    factor = 0.5 #zmenseni obrazkuna polovinu
+    img = cv2.resize(img, (0,0), fx=factor, fy=factor)  
 
     #spoctu gradient
     gradient = count_gradient_3(img)
@@ -335,6 +331,5 @@ def main():
 
     lbp = compute_lbp(COUNT_DIRECTIONS, aems, BLOCK_SIZE, TAU)
   
-    compute_histogram(lbp)
-    
-main()
+    histogram = compute_histogram(lbp)
+    return histogram

@@ -28,7 +28,8 @@
 \usepackage{sidecap}
 %citace%
 \bibliographystyle{IEEEtran} 
-
+% Zařadit literaturu do obsahu
+\usepackage[nottoc,notlot,notlof]{tocbibind}
 
 \title{Deskriptor}
 \author{Kateřina Kratochvílová}
@@ -59,6 +60,7 @@
 
 % obsah
 \tableofcontents
+
 \thispagestyle{empty} %odstraneni cisla stranky z obsahu
 
 % abstrakt
@@ -82,10 +84,10 @@ V práci je rozebrán POEM (Patterns of Oriented Edge Magnitudes) pracující je
 Hotový deskriptor bude použit pro porovnání v bakalářské práci "Automatická anotace obrázků". Kde hlavním tématem je právě spojení příznaků vyhodnocených zvlášť. 
 
 \chapter{Poem}
-POEM (Patterns of Oriented Edge Magnitudes). Vstup algorimutmu se předpokládá šedotónový obrázek o rozměrech  $m \times n$. Proto každý obrázek musí být po načtení převeden na šedotóny, protože většinou vkládáme obrázek barevný. \cite{SrovnaniDeskriptoru}
+POEM (Patterns of Oriented Edge Magnitudes). Vstup algorimutmu se předpokládá šedotónový obrázek o rozměrech  $m \times n$. Jelikož většinou je vložený barevný obrázek, musí být po načtení převeden na šedotónový. \cite{SrovnaniDeskriptoru}
 
 \subsection{Výpočet gradientu a magnitudy}
-Nejprve je potřeba vypočítat gradient. Gradient je obecně směr růstu. Výpočet může probíhat různými způsoby. Jednou z možností je použít masku, kterou aplikujeme na vstupní obrázek. Podle některých studii jsou nejlepší jednoduché masky jako je např. $[1, 0, -1]$ a $[1, 0, -1]^{\,t}$. Okraje obrázku se buď vypouštějí nebo se dají doplnit (opět existuje více způsobů).Výstupem jsou dva obrázky o rozměrech $m \times n$. \\
+Nejprve je potřeba vypočítat gradient. Gradient je obecně směr růstu. Výpočet může probíhat různými způsoby. Jednou z možností je použít masku, kterou aplikujeme na vstupní obrázek. Podle některých studii jsou nejlepší jednoduché masky jako je např. $[1, 0, -1]$ a $[1, 0, -1]^{\,t}$. Okraje obrázku se buď vypouštějí nebo se dají doplnit (opět existuje více způsobů). Výstupem jsou dva obrázky o rozměrech $m \times n$. \\
 Na výstup se dá pohlížet také jako na vektory, kdy každý bod původního obrázku je reprezentován právě 2D vektorem. Analogicky pokud si vektory rozložíme na x a y složku dostaneme dva obrázky. Jeden, který reprezentuje obrázek po použití x-ového filtru, a druhý který reprezentuje obrázek po použití y-filtru. Přičemž použití y filtru by nám mělo zvýraznit hrany v y směru (svislé) a x zvýrazní hrany v x směru (vodorovné). \\
 
 \begin{multicols}{2}
@@ -200,8 +202,8 @@ Magnituda na základě vyše uvedených gradientů:
 \end{figure}
 
 \subsection{Diskretizace směru gradientu}
-Pokud se na gradienty bude pohlížet jako na 2D vektory a tím určit nejen jejich velikost(magnitudu) ale i jejich směr. Je možné použít znaménkovou reprezentaci $0 - \pi$ nebo neznaménkovou reprezentaci $0 - 2\pi$. \\
-V praxi si rovnoměrně rozdělíme kružnici na několik dílů (dle počtu požadovaných směrů). Počet dílů  je označen písmenem $d$. Pro $d = 3$ znaménkovou reprezentaci to tedy bude $\left(0 - \frac{2}{3}\pi \right)$, $\left(\frac{2}{3}\pi - \frac{4}{3}\pi \right)$ a $\left(\frac{4}{3}\pi - 2\pi \right)$. Je připraveno $d$ matic (pro každý směr jedna) a podle toho kam vektor směřuje, umístíme jeho magnitudu na souřadnice kde se nachází v původní matici. 
+Pokud se na gradienty bude pohlížet jako na 2D vektory je možné určit nejen jejich velikost (magnitudu) ale i jejich směr. Při výpočtu lze použít znaménkovou reprezentaci $0 - \pi$ nebo neznaménkovou reprezentaci $0 - 2\pi$. \\
+V praxi je kružnice rovnoměrně rozdělena na několik dílů (dle počtu požadovaných směrů). Počet dílů  je označen písmenem $d$. Pro $d = 3$ znaménkovou reprezentaci to tedy bude $\left(0 - \frac{2}{3}\pi \right)$, $\left(\frac{2}{3}\pi - \frac{4}{3}\pi \right)$ a $\left(\frac{4}{3}\pi - 2\pi \right)$. Je připraveno $d$ matic (pro každý směr jedna) a podle toho kam vektor směřuje, je umístěna jeho magnituda na souřadnice kde se nachází v původní matici. 
 
 \begin{figure}[H]
     \centering    
@@ -268,7 +270,7 @@ LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. 
 		\caption{Znázornění blocku Převzato z \cite{SrovnaniDeskriptoru}}
 \end{figure}
 
-Následující matice představuje block pro střední pixel s hodnotou intenzity 4, označený písmenem $c$ (centrální). Algoritmus následně prochází všechny okolní pixely, označené písmenem  $x$, hodnotu daného pixelu jako $p(x)$. $s(x)$ představuje výsledek tohoto porovnání.
+Následující matice představuje block pro střední pixel s hodnotou intenzity 4, označený písmenem $c$ (centrální). Algoritmus následně prochází všechny okolní pixely, označené písmenem  $x$. Hodnota daného pixelu je označena jako $p(x)$ a výsledek tohoto porovnání je označen $s(x)$.
 
 \begin{displaymath} 
 	\label{asd2} 
@@ -351,6 +353,16 @@ Pomocí součtu vektorů je získán jeden třísložkový vektor:
 \begin{align}
    \label{soucet_vektrou} \vec{u} + \vec{v} = (u_1 + v_1, u_2 + v_2, u_3 + v_3 )
 \end{align} 
+
+\begin{figure}[H]
+    \centering    
+    \def\svgwidth{\columnwidth}
+	\import{img/}{soucet_vektoru.pdf_tex}    
+    %\input{image.pdf_tex}
+    \caption{Grafické znázornění součtu vektorů.}
+    \label{fig: soucet_vektoru}
+\end{figure}
+
 
 Výpočet velikosti vektoru v prostoru (magnituda):
 \begin{align}
@@ -451,7 +463,7 @@ HSV            			& 16 & 10 & 181  \\
 RGB, LAB, HSV      		& 17 & 11 & 178  \\
 POEM		     		& 0 & 0 & 0  \\
 RGB, LAB, HSV, POEM		& 0 & 0 & 0  \\
-Barevný POEM			& 0 & 0 & 0  \\
+Barevný POEM			& 21 & 12 & 184  \\
 \end{tabular}
 
 

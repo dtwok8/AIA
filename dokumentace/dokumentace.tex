@@ -92,9 +92,6 @@
 \maketitle
 \tableofcontents
 
-\chapter{Úvod}
-V souboru \texttt{literatura.bib} jsou uvedeny příklady, jak citovat knihu \cite{KnuthAOCP2}, článek v časopisu \cite{Hoare1961}, webovou stránku \cite{Graphics2D}.
-
 
 \chapter{Úvod}
 V dnešní době, kdy je svět přesycen obrázky v digitální podobě, není vůbec snadné nalézt obrázek zobrazující požadovaný obsah. Naneštěstí počítače nedokáží vnímat obraz jako lidé, vnímají totiž obrazy jako sérii binárních informací. Přitom počítače a jejich práce s obrazy by se dala využít v mnoha oborech jako je lékařství nebo doprava. Na základě toho vyplouvá na povrch problém jak spravovat digitální obrázky a efektivně mezi nimi vyhledávat. Prostřednictvím klíčových slov přiřazených k obrázkům se dá problém vyhledávání zjednodušit. Přiřazení klíčových slov probíhá pomocí procesu automatické anotace obrázků. Klíčová slova přiřazená k obrázku by měla vyjadřovat jeho obsah (například les, strom). Při reálném použití můžeme ovšem narazit na problém při zadávání abstraktních slov, například šťastná rodina.  
@@ -276,6 +273,20 @@ Recall \eqref{recall} je počet obrázků správně anotovaných s daným slovem
 \begin{align}
    \label{precision} Prec = \frac{w_c}{w_a}
 \end{align}
+
+\section{Srovnání výsledků}
+\subsection{iaprtc12}
+\begin{tabular}{l*{3}{c}}
+	          		& Přesnost (\%) & Úplnost (\%) & Nenulových slov \\
+\hline
+RGB						& 14 & 8 & 167 \\
+LAB	  			  		& 12 & 7 & 148  \\
+HSV            			& 16 & 10 & 181  \\
+RGB, LAB, HSV      		& 17 & 11 & 178  \\
+POEM		     		& 0 & 0 & 0  \\
+RGB, LAB, HSV, POEM		& 0 & 0 & 0  \\
+Barevný POEM			& 0 & 0 & 0  \\
+\end{tabular}
 
 
 \chapter{Závěr}

@@ -81,7 +81,7 @@ def count_distance(train_data, test_image):
         
         if(config.COLOR_POEM):
             pom_neighbor.color_poem_distance = cv2.norm(picture.color_poem, test_image.color_poem, cv2.NORM_L1)
-            if(pom_neighbor.color_poem_distance < poem_min):
+            if(pom_neighbor.color_poem_distance < color_poem_min):
                 color_poem_min = pom_neighbor.color_poem_distance
             if(pom_neighbor.color_poem_distance > color_poem_max):
                 color_poem_max = pom_neighbor.color_poem_distance     
@@ -148,11 +148,11 @@ def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, 
             sum_distance = sum_distance + neighbor.gabor_distance_scale
         
         if(config.POEM):
-            neighbor.poem_distance_scale = (neighbor.poem_distance - poem_min)/(poem_max - gabor_min)
+            neighbor.poem_distance_scale = (neighbor.poem_distance - poem_min)/(poem_max - poem_min)
             sum_distance = sum_distance + neighbor.poem_distance_scale
         
         if(config.COLOR_POEM):
-            neighbor.color_poem_distance_scale = (neighbor.color_poem_distance - color_poem_min)/(color_poem_max - gabor_min)
+            neighbor.color_poem_distance_scale = (neighbor.color_poem_distance - color_poem_min)/(color_poem_max - color_poem_min)
             sum_distance = sum_distance + neighbor.color_poem_distance_scale
             
         #print item.hsv_distance_scale
@@ -183,6 +183,11 @@ def getKey(item):
 
 train_data = class_pictures.importDataFromFile(config.DATAFILE_TRAIN)
 test_data = class_pictures.importDataFromFile(config.DATAFILE_TEST)
+
+train_data2 = class_pictures.importDataFromFile(config.DATAFILE_TRAIN2)
+
+for data in train_data2:
+    train_data.append(data)
 
 
 ######### spocitani vzdalenosti

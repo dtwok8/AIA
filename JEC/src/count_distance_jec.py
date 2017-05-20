@@ -72,8 +72,10 @@ def count_distance(train_data, test_image):
             if(pom_neighbor.gabor_distance > gabor_max):
                 gabor_max = pom_neighbor.gabor_distance 
                 
-        if(config.POEM):
-            pom_neighbor.poem_distance = cv2.norm(picture.poem, test_image.poem, cv2.NORM_L1)
+        if(config.POEM):            
+            #pom_neighbor.poem_distance = cv2.norm(picture.poem, test_image.poem, cv2.NORM_L1)
+            pom_neighbor.poem_distance = cv2.compareHist(picture.poem.astype(np.float32), test_image.poem.astype(np.float32), cv2.HISTCMP_INTERSECT)
+            #pom_neighbor.poem_distance = cv2.compareHist(np.zeros(16, dtype=np.float32), np.zeros(16, dtype=np.float32), cv2.HISTCMP_KL_DIV)
             if(pom_neighbor.poem_distance < poem_min):
                 poem_min = pom_neighbor.poem_distance
             if(pom_neighbor.poem_distance > poem_max):

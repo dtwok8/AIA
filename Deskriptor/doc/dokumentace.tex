@@ -84,7 +84,7 @@ V práci je rozebrán POEM (Patterns of Oriented Edge Magnitudes) pracující je
 Hotový deskriptor bude použit pro porovnání v bakalářské práci "Automatická anotace obrázků". Kde hlavním tématem je právě spojení příznaků vyhodnocených zvlášť. 
 
 \chapter{Poem}
-POEM (Patterns of Oriented Edge Magnitudes). Vstup algorimutmu se předpokládá šedotónový obrázek o rozměrech  $m \times n$. Jelikož většinou je vložený barevný obrázek, musí být po načtení převeden na šedotónový. \cite{SrovnaniDeskriptoru}
+POEM (Patterns of Oriented Edge Magnitudes). Vstupem algoritmu se předpokládá šedotónový obrázek o rozměrech  $m \times n$. Jelikož většinou je vložený barevný obrázek, musí být po načtení převeden na šedotónový. \cite{SrovnaniDeskriptoru}
 
 \subsection{Výpočet gradientu a magnitudy}
 Nejprve je potřeba vypočítat gradient. Gradient je obecně směr růstu. Výpočet může probíhat různými způsoby. Jednou z možností je použít masku, kterou aplikujeme na vstupní obrázek. Podle některých studii jsou nejlepší jednoduché masky jako je např. $[1, 0, -1]$ a $[1, 0, -1]^{\,t}$. Okraje obrázku se buď vypouštějí nebo se dají doplnit (opět existuje více způsobů). Výstupem jsou dva obrázky o rozměrech $m \times n$. \\
@@ -359,7 +359,7 @@ Pomocí součtu vektorů je získán jeden třísložkový vektor:
     \def\svgwidth{\columnwidth}
 	\import{img/}{soucet_vektoru.pdf_tex}    
     %\input{image.pdf_tex}
-    \caption{Grafické znázornění součtu vektorů.}
+    \caption{Grafické znázornění součtu vektorů. Součet je vytvořen z vektoru [4, 8, 10] a [8, 4, 0].}
     \label{fig: soucet_vektoru}
 \end{figure}
 
@@ -378,7 +378,7 @@ Výpočet velikosti vektoru v prostoru (magnituda):
 
 
 \subsection{Diskretizace směru gradientu u barevneho poemu}
-U vektorů získaných v předchozím kroku je určena velikost úhlu mezi vektorem a equivalentní vektorem s vynulovanou složkou $z$. Následně je spočítáno do které části kružnice vektor směřuje. Pro znaménkovou reprezentaci je celkový rozsah $0 - \pi$, pro neznaménkovou reprezentaci $0 - 2\pi$
+U vektorů získaných v předchozím kroku je určena velikost úhlu mezi vektorem a ekvivalentní vektorem s vynulovanou složkou $z$. Následně je spočítáno do které části kružnice vektor směřuje. Pro znaménkovou reprezentaci je celkový rozsah $0 - \pi$, pro neznaménkovou reprezentaci $0 - 2\pi$
 \\
 Při neznaménkové reprezentaci a počtu směrů $d = 3$, jsou následující intervaly $\left(0 - \frac{\pi}{3}\right)$, $\left(\frac{\pi}{3} - \frac{2\pi}{3}\right)$ a  $\left(\frac{2\pi}{3} - \pi\right)$.
 
@@ -391,7 +391,7 @@ Při neznaménkové reprezentaci a počtu směrů $d = 3$, jsou následující i
     \label{fig: diskretizace3D}
 \end{figure}
 
-\par Pro výpočet diskretizace směru při neznaménkové reprezentaci je $y$ složka rozdělena na kladnou a zápornou část. To hraje velkou roli, pokud je $y$ složka vekotru záporná. V tom případě je nutné nebrat úhel $\alpha$, ale jeho doplněk ($ 180 - \alpha$).
+\par Pro výpočet diskretizace směru při neznaménkové reprezentaci je $y$ složka rozdělena na kladnou a zápornou část. To hraje velkou roli, pokud je $y$ složka vektoru záporná. V tom případě je nutné nebrat úhel $\alpha$, ale jeho doplněk ($ 180 - \alpha$).
 
 \subsection{Výpočet lokálního histogramu u barevneho poemu}
 Zbývající postup je již totožný s výše uvedeným POEM. Pro srovnání jsou zde alespoň uvedeny výsledné obrázky. 
@@ -449,10 +449,9 @@ Ke každému obrázku jsou přiložena metadata ve formátu XML, která obsahuj�
 \end{figure}
  
 \chapter{Závěr}
-V semestrální práci byl vytvořen skript, který z vloženého obrázku vytvoří POEM deskriptor. Dále bylo vyzkoušeno vytvoření POEM na barevný obrázek, tak aby obsahoval jak informaci o textuře tak informaci o barvě. Vytvořený POEM bude použit pro porovnání v bakalářské práci \textit{Automatická anotace obrázků}. \\
+V semestrální práci byl vytvořen skript, který z vloženého obrázku vytvoří POEM deskriptor. Dále bylo vyzkoušeno vytvoření POEM na barevném obrázku, tak aby obsahoval jak informaci o textuře tak informaci o barvě. Vytvořený POEM bude použit pro porovnání v bakalářské práci \textit{Automatická anotace obrázků}. \\
 \\
 Dosažené výsledky: \\
-Při spojování bylo použito Joint Equal Contribution. \cite{JEC} 
 
 \begin{tabular}{l*{3}{c}}
 	          		& Přesnost (\%) & Úplnost (\%) & Nenulových slov \\
@@ -460,12 +459,14 @@ Při spojování bylo použito Joint Equal Contribution. \cite{JEC}
 RGB						& 14 & 8 & 167 \\
 LAB	  			  		& 12 & 7 & 148  \\
 HSV            			& 16 & 10 & 181  \\
-RGB, LAB, HSV      		& 17 & 11 & 178  \\
-POEM		     		& 0 & 0 & 0  \\
-RGB, LAB, HSV, POEM		& 0 & 0 & 0  \\
+RGB, LAB, HSV *    		& 17 & 11 & 178  \\
+POEM		     		& 21 & 13 & 189  \\
+RGB, LAB, HSV, POEM *	& 22 & 14 & 187  \\
 Barevný POEM			& 21 & 12 & 184  \\
 \end{tabular}
 
+\vspace{1cm}
+* Při spojování bylo použito Joint Equal Contribution. \cite{JEC} s KL divergencí pro LAB a L1 vzdálenosti pro ostatní
 
 \chapter{Uživatelská dokumentace}
 Pro spuštění programu je třeba mít nainstalovaný python (2.7.12) a knihovnu openCV verzi 3.1. Následné postupy jsou uvedeny pro operační systém Linux.

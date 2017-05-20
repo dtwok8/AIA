@@ -101,4 +101,4 @@ def count_histogram(img):
     
 load_pictures(config.TRAIN_LIST, config.DATAFILE_TRAIN, "train")
 #spocita histogrami pro testovaci mnozin
-load_pictures(config.TEST_LIST, config.DATAFILE_TEST, "test")
+#load_pictures(config.TEST_LIST, config.DATAFILE_TEST, "test")

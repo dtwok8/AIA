@@ -1,10 +1,10 @@
 import cv2
 
-TRAIN_LIST = "../../Data/iaprtc12/iapr_train_2009_pulka_2.txt"
+TRAIN_LIST = "../../Data/iaprtc12/iapr_train_2009.txt"
 TEST_LIST = "../../Data/iaprtc12/iapr_test_2009.txt"
 
 
-DATAFILE_TRAIN = "../result/datafile_train_pulka_1.py"
+DATAFILE_TRAIN = "../result/datafile_train.py"
 DATAFILE_TRAIN2 = "../result/datafile_train_pulka_2.py"
 DATAFILE_TEST = "../result/datafile_test.py"
 
@@ -30,9 +30,12 @@ HSV_DISTANCE = cv2.NORM_L1
 GABOR = False
 GABORQ = False
 
-POEM = True
+POEM = False
 
 COLOR_POEM = False
+
+HAAR = False
+HAARQ = True
 
 
 

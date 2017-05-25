@@ -35,6 +35,10 @@ def count_distance(train_data, test_image):
     poem_max = float("-inf")
     color_poem_min = float("inf")
     color_poem_max = float("-inf")
+    haar_min = float("inf")
+    haar_max = float("-inf")
+    haarq_min = float("inf")
+    haarq_max = float("-inf")
     #print ( rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)
     #print ( rgb_max , rgb_min, lab_max > 3333.72839, lab_min, hsv_max, hsv_min)
     #test_image.neighbors  = []
@@ -88,9 +92,23 @@ def count_distance(train_data, test_image):
             if(pom_neighbor.color_poem_distance > color_poem_max):
                 color_poem_max = pom_neighbor.color_poem_distance     
         
+        if(config.HAAR):
+            pom_neighbor.haar_distance = cv2.norm(picture.haar, test_image.haar, cv2.NORM_L1)
+            if(pom_neighbor.haar_distance < haar_min):
+                haar_min = pom_neighbor.haar_distance
+            if(pom_neighbor.haar_distance > haar_max):
+                haar_max = pom_neighbor.haar_distance 
+
+        if(config.HAARQ):
+            pom_neighbor.haarq_distance = cv2.norm(picture.haarq, test_image.haarq, cv2.NORM_L1)
+            if(pom_neighbor.haarq_distance < haarq_min):
+                haarq_min = pom_neighbor.haarq_distance
+            if(pom_neighbor.haarq_distance > haarq_max):
+                haarq_max = pom_neighbor.haarq_distance 
+                
         pom_nei.append(pom_neighbor) #pridani souseda
 
-    count_jec(pom_nei,test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min, poem_max, poem_min, color_poem_max, color_poem_min) 
+    count_jec(pom_nei,test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min, poem_max, poem_min, color_poem_max, color_poem_min, haar_max, haar_min, haarq_max, haarq_min) 
     
     keywords_prepare_sort=[]
     for neighbor in pom_nei:
@@ -122,11 +140,17 @@ def count_n():
     
     if(config.COLOR_POEM):
         n = n + 1
+    
+    if(config.HAAR):
+        n = n + 1
+    
+    if(config.HAARQ):
+        n = n + 1
         
     return n
 
 #spocita JEC pro tri parametry rgb, hsv, lab, ty to musíš naškálovat od 0 o 1 takže asi ten jec můžeš počítat stejně až budeš mít všechny ty výsledky
-def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min, poem_max, poem_min, color_poem_max, color_poem_min):
+def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min, poem_max, poem_min, color_poem_max, color_poem_min, haar_max, haar_min, haarq_max, haarq_min):
     #print ( rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)
     n = count_n()
 
@@ -156,7 +180,14 @@ def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, 
         if(config.COLOR_POEM):
             neighbor.color_poem_distance_scale = (neighbor.color_poem_distance - color_poem_min)/(color_poem_max - color_poem_min)
             sum_distance = sum_distance + neighbor.color_poem_distance_scale
-            
+
+        if(config.HAAR):
+            neighbor.haar_distance_scale = (neighbor.haar_distance - haar_min)/(haar_max - haar_min)
+            sum_distance = sum_distance + neighbor.haar_distance_scale
+        
+        if(config.HAARQ):
+            neighbor.haarq_distance_scale = (neighbor.haarq_distance - haarq_min)/(haarq_max - haarq_min)
+            sum_distance = sum_distance + neighbor.haarq_distance_scale
         #print item.hsv_distance_scale
         
         #spocteni JEC - zkombinovani priznaku
@@ -186,10 +217,10 @@ def getKey(item):
 train_data = class_pictures.importDataFromFile(config.DATAFILE_TRAIN)
 test_data = class_pictures.importDataFromFile(config.DATAFILE_TEST)
 
-train_data2 = class_pictures.importDataFromFile(config.DATAFILE_TRAIN2)
-
-for data in train_data2:
-    train_data.append(data)
+#train_data2 = class_pictures.importDataFromFile(config.DATAFILE_TRAIN2)
+#
+#for data in train_data2:
+#    train_data.append(data)
 
 
 ######### spocitani vzdalenosti

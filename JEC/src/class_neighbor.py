@@ -23,6 +23,10 @@ class Neighbor:
     poem_distance_scale = 0
     color_poem_distance = 0
     color_poem_distance_scale = 0
+    haar_distance = 0
+    haar_distance_scale = 0
+    haarq_distance = 0
+    haarq_distance_scale = 0
     jec = 0
     
     

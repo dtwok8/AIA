@@ -21,6 +21,8 @@ class Pictures:
     gabor_q = None
     poem = None
     color_poem = None
+    haar = None
+    haarq = None
     neighbors = None
     nereast_neighbors = None
     

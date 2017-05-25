@@ -16,6 +16,8 @@ import gabor
 
 import deskriptors.poem as poem
 import deskriptors.color_poem as color_poem
+import deskriptors.haar as haar
+import deskriptors.haarq as haarq
 
 def load_pictures(listImages, outputFile, information):
     """
@@ -74,6 +76,12 @@ def load_features(picture):
         
     if(config.COLOR_POEM):
         picture.color_poem = color_poem.count_color_poem(img)
+        
+    if(config.HAAR):
+        picture.haar = haar.count_haar(img)
+    
+    if(config.HAARQ):
+        picture.haarq = haarq.count_haarq(img)
 
 def count_histogram(img):
     """
@@ -99,6 +107,6 @@ def count_histogram(img):
     return list_histogram
     
     
-load_pictures(config.TRAIN_LIST, config.DATAFILE_TRAIN, "train")
+#load_pictures(config.TRAIN_LIST, config.DATAFILE_TRAIN, "train")
 #spocita histogrami pro testovaci mnozin
-#load_pictures(config.TEST_LIST, config.DATAFILE_TEST, "test")
+load_pictures(config.TEST_LIST, config.DATAFILE_TEST, "test")

@@ -1,5 +1,0 @@
-../../Data/iaprtc12/images/00/26.jpg; building car centre palm park people picture road street tree; tree building house square column 
-../../Data/iaprtc12/images/00/35.jpg; bag lookout man rock sky tee-shirt tree waterfall woman; tree building house square column 
-../../Data/iaprtc12/images/00/38.jpg; cliff cloud sky view waterfall; tree building house square column 
-../../Data/iaprtc12/images/00/42.jpg; balcony car church front house people side street; tree building house square column 
-../../Data/iaprtc12/images/00/45.jpg; bit church clock cross pinnacle side tower window; tree building house square column 

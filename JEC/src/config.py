@@ -27,7 +27,7 @@ LAB = False
 LAB_DISTANCE = cv2.HISTCMP_KL_DIV 
 HSV = False
 HSV_DISTANCE = cv2.NORM_L1
-GABOR = False
+GABOR = True
 GABORQ = False
 
 POEM = False
@@ -35,7 +35,7 @@ POEM = False
 COLOR_POEM = False
 
 HAAR = False
-HAARQ = True
+HAARQ = False
 
 
 

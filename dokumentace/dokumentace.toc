@@ -10,19 +10,25 @@
 \contentsline {subsection}{\numberline {2.1.1}Barva}{7}{subsection.2.1.1}
 \contentsline {subsection}{\numberline {2.1.2}textura}{9}{subsection.2.1.2}
 \contentsline {subsubsection}{Gabor}{9}{section*.5}
-\contentsline {section}{\numberline {2.2}Vzd\IeC {\'a}lenosti}{10}{section.2.2}
-\contentsline {section}{\numberline {2.3}Kombinace vzd\IeC {\'a}lenost\IeC {\'\i }}{10}{section.2.3}
-\contentsline {section}{\numberline {2.4}P\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov}{11}{section.2.4}
-\contentsline {chapter}{\numberline {3}Testovac\IeC {\'\i } datab\IeC {\'a}ze}{13}{chapter.3}
-\contentsline {section}{\numberline {3.1}iaprtc12}{13}{section.3.1}
-\contentsline {section}{\numberline {3.2}\IeC {\v C}TK}{13}{section.3.2}
-\contentsline {section}{\numberline {3.3}ESP}{14}{section.3.3}
-\contentsline {chapter}{\numberline {4}N\IeC {\'a}vrh syst\IeC {\'e}mu}{15}{chapter.4}
-\contentsline {chapter}{\numberline {5}Pou\IeC {\v z}it\IeC {\'e} programov\IeC {\'e} prost\IeC {\v r}edky}{16}{chapter.5}
-\contentsline {section}{\numberline {5.1}OpenCV}{16}{section.5.1}
-\contentsline {chapter}{\numberline {6}Vyhodnocen\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{17}{chapter.6}
-\contentsline {section}{\numberline {6.1}Srovn\IeC {\'a}n\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{17}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}iaprtc12}{17}{subsection.6.1.1}
-\contentsline {chapter}{\numberline {7}Z\IeC {\'a}v\IeC {\v e}r}{18}{chapter.7}
-\contentsline {chapter}{\numberline {8}U\IeC {\v z}ivatelsk\IeC {\'a} dokumentace}{19}{chapter.8}
-\contentsline {chapter}{Literatura}{20}{chapter*.6}
+\contentsline {subsection}{\numberline {2.1.3}Barevn\IeC {\'y} POEM}{10}{subsection.2.1.3}
+\contentsline {subsubsection}{V\IeC {\'y}po\IeC {\v c}et gradientu a magnitudy}{10}{section*.6}
+\contentsline {subsubsection}{Diskretizace sm\IeC {\v e}ru gradientu}{11}{section*.7}
+\contentsline {subsubsection}{V\IeC {\'y}po\IeC {\v c}et lok\IeC {\'a}ln\IeC {\'\i }ho histogramu}{12}{section*.8}
+\contentsline {subsubsection}{Zak\IeC {\'o}dov\IeC {\'a}n\IeC {\'\i } p\IeC {\v r}\IeC {\'\i }znak\IeC {\r u} pomoc\IeC {\'\i } LBP}{12}{section*.9}
+\contentsline {subsubsection}{Konstrukce glob\IeC {\'a}ln\IeC {\'\i }ho histogramu}{13}{section*.10}
+\contentsline {section}{\numberline {2.2}Vzd\IeC {\'a}lenosti}{13}{section.2.2}
+\contentsline {section}{\numberline {2.3}Kombinace vzd\IeC {\'a}lenost\IeC {\'\i }}{14}{section.2.3}
+\contentsline {section}{\numberline {2.4}P\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov}{15}{section.2.4}
+\contentsline {chapter}{\numberline {3}Testovac\IeC {\'\i } datab\IeC {\'a}ze}{16}{chapter.3}
+\contentsline {section}{\numberline {3.1}iaprtc12}{16}{section.3.1}
+\contentsline {section}{\numberline {3.2}\IeC {\v C}TK}{16}{section.3.2}
+\contentsline {section}{\numberline {3.3}ESP}{17}{section.3.3}
+\contentsline {chapter}{\numberline {4}N\IeC {\'a}vrh syst\IeC {\'e}mu}{18}{chapter.4}
+\contentsline {chapter}{\numberline {5}Pou\IeC {\v z}it\IeC {\'e} programov\IeC {\'e} prost\IeC {\v r}edky}{19}{chapter.5}
+\contentsline {section}{\numberline {5.1}OpenCV}{19}{section.5.1}
+\contentsline {chapter}{\numberline {6}Vyhodnocen\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{20}{chapter.6}
+\contentsline {section}{\numberline {6.1}Srovn\IeC {\'a}n\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{20}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}iaprtc12}{20}{subsection.6.1.1}
+\contentsline {chapter}{\numberline {7}Z\IeC {\'a}v\IeC {\v e}r}{21}{chapter.7}
+\contentsline {chapter}{\numberline {8}U\IeC {\v z}ivatelsk\IeC {\'a} dokumentace}{22}{chapter.8}
+\contentsline {chapter}{Literatura}{23}{chapter*.11}

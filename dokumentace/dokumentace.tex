@@ -63,6 +63,13 @@
 % Umožňuje vkládání obrázků
 \usepackage[pdftex]{graphicx}
 
+% import kvuli vkladani svg, import
+\usepackage{graphicx, import}
+
+
+% tabulky, viceradkove bunky 
+\usepackage{multirow}
+
 % Odkazy v PDF jsou aktivní; navíc se automaticky vkládá
 % balíček 'url', který umožňuje např. dělení slov
 % uvnitř URL
@@ -102,7 +109,7 @@ Cílem práce je navrhnout a implementovat software umožňující automatickou 
 
 
 \chapter{JEC Joint Equal Contribution}
-Tato metoda je založena na hypotéze, že podobné obrázky mají podobná klíčová slova. Pomocí metody hledání nejbližších sousedů (dále jen KNN) najdeme K nejpodobnějších obrázků. Přičemž klíčová slova od jednotlivých sousedů jsou posuzována odlišně a to právě na základě toho o kolik se s testovaným obrázkem liší. Metoda je postavena na dvou typech příznaků - barevných a texturových. 
+Tato metoda je založena na hypotéze, že podobné obrázky mají podobná klíčová slova. Pomocí metody hledání nejbližších sousedů (dále jen KNN) je nalezeno K nejpodobnějších obrázků. Přičemž klíčová slova od jednotlivých sousedů jsou posuzována odlišně a to právě na základě toho o kolik se s testovaným obrázkem liší. Metoda je postavena na dvou typech příznaků - barevných a texturových. 
 \cite{JEC}
 
 \section{Příznaky}
@@ -111,9 +118,9 @@ Barva a textura jsou považovány za dva nejdůležitější nizkoúrovňové p�
 \subsection{Barva}
 U digitálního obrazu je barva reprezentovaná n-rozměrným vektorem. Jeho velikost a význam jednotlivých složek (tzv. barevných kanálů) zavisí na příslušném barevném prostoru. Počet bitů použitých k uložení buď celého vektoru nebo jeho jednotlivých složek se nazývá barevná hloubka (totožně bitová hloubka). Obvykle se můžeme setkat s hodnotami 8, 12, 14 a 16 bitů na kanál. 
 \\
-V použité metodě získáme vlastnosti z obrázků ve třech rozdílných barevných prostorech: RGB, HSV a LAB. RGB (Red, Green, Blue) je nejpoužívanější barevný prostor pro zachycení obrázu nebo jeho zobrazení. Oproti tomu HSV (Hue, Saturation and Value) se snaží zachytit barevný model tak jak ho vnímá lidské oko, ale zároveň se snaží zůstat jednoduchý na výpočet. Hue znamená odstín barvy (měří se jako poloha na standartním barevném kole $0^{\circ} - 360^{\circ}$ ), saturation je systost barvy (množství šedi v poměru k odstínu $0 \%$ šedá barva - $100 \%$ plně sytá barva) a value je hodnota jasu nebo také množství bílého světla (relativní světlost nebo tmavost barvy). Některé kombinace hodnot H, S a V mohou dávat nesmyslné výsledky. RGB je závislý na konkrétním zařízení, nemůže dosáhnout celého rozsahu barev, které vidí lidské oko, zatímco barevný model LAB je shopen obsáhnout celé viditelné spektrum a navíc je nezávislý na zařízení. L (ve zkratce LAB) značí Luminanci (jas dosahuje hodnot 0 - 100, kde 0 je černá a 100 je bílá). Zbylé A a B jsou dvě barvonosné složky, kdy A je ve směru červeno/zeleném a B se pohybuje ve směru modro/žlutém.
+V použité metodě jsou získány vlastnosti z obrázků ve třech rozdílných barevných prostorech: RGB, HSV a LAB. RGB (Red, Green, Blue) je nejpoužívanější barevný prostor pro zachycení obrázu nebo jeho zobrazení. Oproti tomu HSV (Hue, Saturation and Value) se snaží zachytit barevný model tak jak ho vnímá lidské oko, ale zároveň se snaží zůstat jednoduchý na výpočet. Hue znamená odstín barvy (měří se jako poloha na standartním barevném kole $0^{\circ} - 360^{\circ}$ ), saturation je systost barvy (množství šedi v poměru k odstínu $0 \%$ šedá barva - $100 \%$ plně sytá barva) a value je hodnota jasu nebo také množství bílého světla (relativní světlost nebo tmavost barvy). Některé kombinace hodnot H, S a V mohou dávat nesmyslné výsledky. RGB je závislý na konkrétním zařízení, nemůže dosáhnout celého rozsahu barev, které vidí lidské oko, zatímco barevný model LAB je shopen obsáhnout celé viditelné spektrum a navíc je nezávislý na zařízení. L (ve zkratce LAB) značí Luminanci (jas dosahuje hodnot 0 - 100, kde 0 je černá a 100 je bílá). Zbylé A a B jsou dvě barvonosné složky, kdy A je ve směru červeno/zeleném a B se pohybuje ve směru modro/žlutém.
 
-Pro RGB, HSV i LAB použijeme barevnou hloubku 16 bitů na kanál histogramu v jejich příslušném barevném prostoru. 
+Pro RGB, HSV i LAB je použita barevná hloubku 16 bitů na kanál histogramu v jejich příslušném barevném prostoru. 
 
 \begin{figure}[ht]
 		\centering
@@ -167,7 +174,6 @@ frekvence) pro každou osu a výsledek se pak násobí dvourozměrnou Gaussovou 
 
 určuje se velikost filtru (značeno jako ksize). Sigma standartní odchylka Gausovy funkce použité v gaborově filtru. theta je orientace normálu na paralelní pruhy gaborovy funkce. lambda je vlnová délka sinosového faktoru (vlnova delka sinosovky), gamma - prostorový poměr stran (elipsicityda), když je gamma 1 je gausian do kruhu, psi je fazovy posun (určije jestli nám vrátí realnou nebo imaginární část), 
 
-
 \begin{align}
    \label{gabor_complex}  g(x, y; \lambda, \theta, \psi, \sigma,  \gamma) = exp \Bigg( - \frac{{x^2 + \gamma^2 y^2}}{2 \sigma^2} \Bigg) exp \Bigg(i \bigg(2\pi \frac{x}{\lambda} + \psi \bigg)\Bigg)  
 \end{align}
@@ -182,17 +188,102 @@ Obrázky jsou filtrovány za použité reálné části z různých odlišních 
 
 
 TODO Dohledat Haar a Gabor wavelety, přidat vzorečky a zase klidně i obrázky
+
+\begin{tabular}{ |c|c|c|c| }
+\hline
+\multicolumn{4}{ |c| }{Gabor s knihovnou scikit na datech iaprtc12} \\
+\hline
+Parametry & Přesnost (\%) & Úplnost (\%) & Počet nenulových slov \\ \hline
+ lambda $0.25$, $0.5$, $1.0$ & \multirow{3}{*}{9.9} & \multirow{3}{*}{6.8} & \multirow{3}{*}{151} \\
+ sigma $1$ & & & \\
+ theta $0$, $\frac{\pi}{4}$, $\frac{\pi}{2}$, $\frac{3}{4}\pi$ & & & \\ \hline
+ lambda 2, $2\sqrt{2}$, 4 & \multirow{3}{*}{8.5} & \multirow{3}{*}{5.7} & \multirow{3}{*}{143} \\
+ sigma $1$ & & & \\
+ theta $0$, $\frac{\pi}{4}$, $\frac{\pi}{2}$, $\frac{3}{4}\pi$ & & & \\ \hline
+\hline
+\end{tabular}
+
+ 
+\subsection{Barevný POEM}
+\subsubsection{Výpočet gradientu a magnitudy}
+Výpočet gradientu probíhá obdobně jako u nebarevného obrázku. Pro každou ze tří složek jsou získány dvě matice filtrované maskami. Celkem bude $3 \times 2$ matic. Na matice se dá pohlížet jako na 2 vektory o 3 složkách. Vektory jsou sloučeny pomocí součtu vektoru do jednoho 3 složkového vektoru. Magnituda je opět velikost vektoru tentokrát, ale v prostoru. \\
+\\
+Format vzniklých vektorů 
+\begin{align}
+	\label{barevny_poem_vznikle_vektory}
+			 u = [blue_x, green_x, red_x] \\
+			 v = [blue_y, green_y, red_y]
+\end{align}
+
+Pomocí součtu vektorů je získán jeden třísložkový vektor:
+\begin{align}
+   \label{soucet_vektrou} \vec{u} + \vec{v} = (u_1 + v_1, u_2 + v_2, u_3 + v_3 )
+\end{align} 
+
+\begin{figure}[ht]
+    \centering
+    \def\svgwidth{\columnwidth}
+    \import{img/}{soucet_vektoru.pdf_tex} 
+    \caption{Grafické znázornění součtu vektorů. Součet je tvořen z vektorů [4, 8, 10] a [8 4, 0].}
+    %\input{soucet_vektoru.pdf_tex}
+\end{figure}
+
+\subsubsection{Diskretizace směru gradientu}
+U vektorů získaných v předchozím kroku je určena velikost úhlu mezi vektorem a ekvivalentní vektorem s vynulovanou složkou $z$. Následně je spočítáno do které části kružnice vektor směřuje. Pro znaménkovou reprezentaci je celkový rozsah $0 - \pi$, pro neznaménkovou reprezentaci $0 - 2\pi$.
+\\
+Při neznaménkové reprezentaci a počtu směrů $d = 3$, jsou následující intervaly $\left(0 - \frac{\pi}{3}\right)$, $\left(\frac{\pi}{3} - \frac{2\pi}{3}\right)$ a  $\left(\frac{2\pi}{3} - \pi\right)$.
+\\
+Pro výpočet diskretizace směru při neznaménkové reprezentaci je $y$ složka rozdělena na kladnou a zápornou část. To hraje velkou roli, pokud je $y$ složka vektoru záporná. V tom případě je nutné nebrat úhel $\alpha$, ale jeho doplněk ($ 180 - \alpha$).
+
+\begin{figure}[ht]
+    \centering
+    \def\svgwidth{\columnwidth}
+    \import{img/}{3D_kruznice.pdf_tex} 
+    \caption{Grafické znázorněnní součtu vektorů. Součet je tvořen z vektorů [4, 8, 10] a [8 4, 0].}
+    %\input{soucet_vektoru.pdf_tex}
+\end{figure}
+
+\subsubsection{Výpočet lokálního histogramu}
+U každého směru  se vemou jednotlivé pixely s jejich okolím a zprůměrují se jejich hodnoty. Toto okolí se nazývá cell. \\
+
+\subsubsection{Zakódování příznaků pomocí LBP}
+LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. Oproti tomu POEM je možné aplikovat na větší okolí. Toto okolí se nazývá block, zpravidla se jedná o kruhové okolí s poloměrem L/2 (L představuje velikost blocku). Pro stanovení intenzit okolních hodnot je možné použít bilineární interpolaci. Pro zvýšení stability v téměř konstantní oblasti lze k centrálnímu pixelu přičítat malou konstantu $\tau$.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=150pt]{./img/lbp1_tau.jpg}
+	\includegraphics[width=150pt]{./img/lbp2_tau.jpg}
+	\includegraphics[width=150pt]{./img/lbp3_tau.jpg}
+	\caption{Obrázky po aplikaci LBP s použitím $\tau$. Každý obrázek představuje jeden směr.}
+\end{figure}
+
+\subsubsection{Konstrukce globálního histogramu}
+Obrázky získané z LBP jsou rozdeleny pravidelnou čtvercovou mřížkou. Pro každou vzniklou oblast je vypočten lokální histogram. Vzniklé histogramy jsou zřetězeny. Díky tomu jsou získány tři histogramy pro každý směr jeden, které jsou opět zřetězeny. \\
+Rozdělení obrázků a určování lokálních histogramů se dělá za účelem zachování informace o prostorovém rozložení jednotlivých příznaků.
+
+Jelikož histogram, který bude vytvořen je velmi dlouhý, je možné ho zkrátit vybíráním pouze tz. uniformních vzorů. Některé binární vzory se totiž na běžných obrázcích vyskytují častěji a to až, dle experimentů z 90 \%. Jsou to právě výše zmíněné uniformní vzory. Uniformní vzory jsou hodnoty čísla (čísla z pohledu binární reprezentace), kdy dochází k maximálně dvěma přechodům z 0 na 1 a nebo opačně. Například 00011110 je uniformní, oproti tomu 01101111 není. Těchto vzorů je 58, všechny ostatní vzory jsou reprezentovány jediným vzorem. Takto je délka jednoho lokálního histogramu zredukována z 256 na 59 binů.
  
 \section{Vzdálenosti}
 vzdálenost vs podobnost
 
  K určení příslušné vzdálenosti se můžeme setkat se čtyřmi měřítky vzdálenosti pro histogramy a rozdělení Kullaback-Leibler divergence KL - divergence, $\chi^2$ statistika, L1 - vzdálenost a L2 - vzdálenost. Na RGB a HSV je nejlépší použít L1 zatímco pro LAB je nejvhodnější KL - divergence. 
 
-Problém s KL - divergencí nastává pouze tehdy, když se histogramy nebudou shodovat v nulách. Jeden předpoklad pro fungování tohoto vzorce je totiž že když je $Q(i) = 0$ tak zároveň musí být i $P(i) = 0$.    
+Problém s KL - divergencí nastává pouze tehdy, když se histogramy nebudou shodovat v nulách. Jeden předpoklad pro fungování tohoto vzorce je totiž že když je $Q(i) = 0$ tak zároveň musí být i $P(i) = 0$. \\
+
+Kullaback-Leiber divergence:
 \begin{align}
-   \label{kl}  D_{KL} (P || Q) = \sum_{i} P(i) \log_e({\frac{P(i)}{Q(i)}}) 
+   \label{kl}  D_{KL} (P || Q) = \sum_{i} P(i) \log_e \bigg({\frac{P(i)}{Q(i)}} \bigg) 
 \end{align}
 
+L1 (jinak označováno jako Manhattan):
+\begin{align}
+   \label{L1} L_1 = \sum_{i=1}^{N} |x_i - y_i|  
+\end{align}
+
+L2 (jinak označováno jako Euklidovská vzdálenost)
+\begin{align}
+   \label{L2} L_2 = \sqrt{\sum_{i=1}^{N} (x_i - y_i)^2}  
+\end{align}
  
 
 \section{Kombinace vzdáleností}
@@ -295,6 +386,7 @@ V teoretické části byly popsány nízkoúrovňové příznaky barva a textura
 \chapter{Uživatelská dokumentace}
 popsani jak vypada zdrojovej soubor kterej to zere, nejdriv cesta k souboru a pak jeho klicovy slova
  
+že je potřeba aspoň těch 16 Gb RAM 
 % 
 % PRO ANGLICKOU SAZBU JE NUTNÉ ZMĚNIT
 % CITAČNÍ STYL!

@@ -12,12 +12,13 @@ import numpy as np
 #moje
 import class_pictures
 import config
-import gabor
+#import gabor
 
 import deskriptors.poem as poem
 import deskriptors.color_poem as color_poem
 import deskriptors.haar as haar
 import deskriptors.haarq as haarq
+import deskriptors.gabor as gabor
 
 def load_pictures(listImages, outputFile, information):
     """
@@ -107,6 +108,6 @@ def count_histogram(img):
     return list_histogram
     
     
-#load_pictures(config.TRAIN_LIST, config.DATAFILE_TRAIN, "train")
+load_pictures(config.TRAIN_LIST, config.DATAFILE_TRAIN, "train")
 #spocita histogrami pro testovaci mnozin
 load_pictures(config.TEST_LIST, config.DATAFILE_TEST, "test")

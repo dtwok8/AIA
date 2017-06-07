@@ -19,6 +19,7 @@ import deskriptors.color_poem as color_poem
 import deskriptors.haar as haar
 import deskriptors.haarq as haarq
 import deskriptors.gabor as gabor
+import deskriptors.gaborq as gaborq
 
 def load_pictures(listImages, outputFile, information):
     """
@@ -70,7 +71,7 @@ def load_features(picture):
         picture.gabor = gabor.count_gabor(img)
     
     if(config.GABORQ):
-        picture.gabor_q = gabor.count_gabor_q(img)
+        picture.gaborq = gaborq.count_gaborq(img)
      
     if(config.POEM):
         picture.poem = poem.count_poem(img)

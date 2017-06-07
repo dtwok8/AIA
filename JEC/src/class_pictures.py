@@ -18,7 +18,7 @@ class Pictures:
     lab = None
     hsv = None #np.zeros(shape=(3, 16), dtype=float32)
     gabor = None
-    gabor_q = None
+    gaborq = None
     poem = None
     color_poem = None
     haar = None

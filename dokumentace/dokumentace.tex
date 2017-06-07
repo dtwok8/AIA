@@ -27,6 +27,7 @@
 % Název práce
 \title{Automatická anotace\\obrázků}
 
+\thanktext{Ráda bych poděkovala Ing. Ladislavu Lencovi, Ph.D. za cenné rady, věcné připomínky, trpělivost a ochotu, kterou mi v průběhu zpracování této práce věnoval.}
 % 
 % Texty abstraktů (anglicky, česky)
 %
@@ -66,9 +67,11 @@
 % import kvuli vkladani svg, import
 \usepackage{graphicx, import}
 
-
 % tabulky, viceradkove bunky 
 \usepackage{multirow}
+
+%popisky u tabulek
+\usepackage{caption}
 
 % Odkazy v PDF jsou aktivní; navíc se automaticky vkládá
 % balíček 'url', který umožňuje např. dělení slov
@@ -113,14 +116,14 @@ Tato metoda je založena na hypotéze, že podobné obrázky mají podobná klí
 \cite{JEC}
 
 \section{Příznaky}
-Barva a textura jsou považovány za dva nejdůležitější nizkoúrovňové příznaky pro obrázkovou reprezentaci. Nejběžnější barevné deskriptory jsou barevné histogramy, které jsou často využívány pro porovnávání a indexování obrázků, zejména z důvodu jejich efektivnosti a snadného výpočtu. K vytvoření texturových příznaků se používají Haarovy a Gaborovy wavelety a to především z důvodu že jsou efektivní při vytváření rozptýlených diskriminativních obrázkových rysů.  
+\par Barva a textura jsou považovány za dva nejdůležitější nízkoúrovňové příznaky pro obrázkovou reprezentaci. Nejběžnější barevné deskriptory jsou barevné histogramy, které jsou často využívány pro porovnávání a indexování obrázků, zejména z důvodu jejich efektivnosti a snadného výpočtu. K vytvoření texturových příznaků se používají Haarovy a Gaborovy wavelety a to především z důvodu, že jsou efektivní při vytváření řídkých a zároveň diskriminačních obrázkových rysů. Je-li žádoucí omezit vliv a předpoklady jednotlivých funkci a maximilizovat množství získaných informací, že využijeme několik jednoduchých a snadných výpočetních funkcí. 
 
 \subsection{Barva}
 U digitálního obrazu je barva reprezentovaná n-rozměrným vektorem. Jeho velikost a význam jednotlivých složek (tzv. barevných kanálů) zavisí na příslušném barevném prostoru. Počet bitů použitých k uložení buď celého vektoru nebo jeho jednotlivých složek se nazývá barevná hloubka (totožně bitová hloubka). Obvykle se můžeme setkat s hodnotami 8, 12, 14 a 16 bitů na kanál. 
 \\
 V použité metodě jsou získány vlastnosti z obrázků ve třech rozdílných barevných prostorech: RGB, HSV a LAB. RGB (Red, Green, Blue) je nejpoužívanější barevný prostor pro zachycení obrázu nebo jeho zobrazení. Oproti tomu HSV (Hue, Saturation and Value) se snaží zachytit barevný model tak jak ho vnímá lidské oko, ale zároveň se snaží zůstat jednoduchý na výpočet. Hue znamená odstín barvy (měří se jako poloha na standartním barevném kole $0^{\circ} - 360^{\circ}$ ), saturation je systost barvy (množství šedi v poměru k odstínu $0 \%$ šedá barva - $100 \%$ plně sytá barva) a value je hodnota jasu nebo také množství bílého světla (relativní světlost nebo tmavost barvy). Některé kombinace hodnot H, S a V mohou dávat nesmyslné výsledky. RGB je závislý na konkrétním zařízení, nemůže dosáhnout celého rozsahu barev, které vidí lidské oko, zatímco barevný model LAB je shopen obsáhnout celé viditelné spektrum a navíc je nezávislý na zařízení. L (ve zkratce LAB) značí Luminanci (jas dosahuje hodnot 0 - 100, kde 0 je černá a 100 je bílá). Zbylé A a B jsou dvě barvonosné složky, kdy A je ve směru červeno/zeleném a B se pohybuje ve směru modro/žlutém.
 
-Pro RGB, HSV i LAB je použita barevná hloubku 16 bitů na kanál histogramu v jejich příslušném barevném prostoru. 
+Pro RGB, HSV i LAB je použita barevná hloubka 16 bitů na kanál histogramu v jejich příslušném barevném prostoru. 
 
 \begin{figure}[ht]
 		\centering
@@ -156,38 +159,41 @@ Pro RGB, HSV i LAB je použita barevná hloubku 16 bitů na kanál histogramu v 
 		\caption{Barevný prostor HSV a jeho jednotlivé složky v pořadí H, S, V}
 \end{figure}
 
-\subsection{textura}
-Jako reprezentace textur budou použity Gabor a Haar wavelety. 
+\subsection{Textura}
+Jako reprezentace textur a detekci hran budou použity Gabor a Haar wavelety. 
 
 \subsubsection{Gabor}
-Gabor filter je lineární filter používaný pro detekci hran. Frekvence a orientace reprezentující Gabor filter je podobná lidskému vnímání a jsou zvláště vhodné pro reprezentaci textury a rozlišování. 
+Gabor filtr je lineární filtr používaný pro analýzu textury, což znamená, že v podstatě analyzuje, zda existuje nějaký specifický frekvenční obsah v obraze ve specifických směrech v lokalizované oblasti kolem oblasti analýzy. Frekvence a orientace reprezentující Gabor filtr je podobná lidskému vnímání a jsou zvláště vhodné pro reprezentaci textury a detekci hran. V prostoru je 2D Gaborův filtr funkcí gausova jádra modulovaného sinusouvou rovinou vlnou.
 
 \begin{figure}[ht]
 		\centering
 		\includegraphics[height=200px]{./img/gabor.png}
-		\caption{Gabor vlnka je tvořena kombinací dvou cosinových funkcí, pro každou osu, které mají v základu odlišné frequnce.\cite{Gabor}} 					
+		\caption{Gábor vlnka je tvořena kombinací dvou cosinových funkcí, s rozdílnou frekvencí pro každou osu, a následně jsou vynásobeny dvourozměrnou Gaussovou funkcí \cite{Gabor}.} 					
 \end{figure}
-
-U obrazku bylo: 
-Gáborova vlnka je tvořena vynásobením dvou cosinusovek (které mají obecně různé
-frekvence) pro každou osu a výsledek se pak násobí dvourozměrnou Gaussovou funkcí
-
-určuje se velikost filtru (značeno jako ksize). Sigma standartní odchylka Gausovy funkce použité v gaborově filtru. theta je orientace normálu na paralelní pruhy gaborovy funkce. lambda je vlnová délka sinosového faktoru (vlnova delka sinosovky), gamma - prostorový poměr stran (elipsicityda), když je gamma 1 je gausian do kruhu, psi je fazovy posun (určije jestli nám vrátí realnou nebo imaginární část), 
 
 \begin{align}
    \label{gabor_complex}  g(x, y; \lambda, \theta, \psi, \sigma,  \gamma) = exp \Bigg( - \frac{{x^2 + \gamma^2 y^2}}{2 \sigma^2} \Bigg) exp \Bigg(i \bigg(2\pi \frac{x}{\lambda} + \psi \bigg)\Bigg)  
 \end{align}
 
+Gabor filtry jsou aplikovány na obrázky stejnou cestou jako běžné filtry. Základ tvorí maska (přesnější termín je konvoluční jádro), která reprezentuje filtr. Maskou je myšleno pole (obyvykle 2D protože se jedná o 2D obrázky) pixelů ve kterém každý pixel má přiřazenou hodnotu (váhu). Toto pole je přesunuto na každý pixel obrazu a je provedena konvoluční operace.
+Když je na obrázek aplikován gabor filtr, poskytuje nejvyšší odezvu na hranach a místech, kde se textura mění. 
 
+Gabor filtr reaguje na hrany a změny textury. Když se řekne, že filtr odpovídá na konkrétní funkci, myslí se tím že filtr má rozlišovací hodnotu v prostorové poloze této funkce (když se bude zabývat aplikací konolučních jader v prostoru - směru. Stejně platí i pro jinou oblast, jako frequence)
 
-Každý obrázek bude filtrován na třech škálách (lambda = 2 , 2*sqrt(2), 4) a čtyřech orientacích (theta = 0, 45, 90 a 135 stupňů)
+U Gabor filtru máme několik parametrů, které ho ovlivňují. 
+\paragraph{ksize} určuje velikost Gabor jádra. Když je ksize (a, b) je získáno jádro velikostí $a \times b$ pixelů. Jako u mnoha jiných konvolučních jader je preferován rozměr čtverce o lichých hranách (jen kvůli jednotnosti). Pří různých ksize se velikost konvolučního jádra mění. To také znamená, že konvoluční jádro je měřítko invariantní, protože zmenšení velikosti jádra je analogické k zmenšení velikosti obrazu. 
 
-Gabor filtr reaguje na hrany a texturové změny. 
+\paragraph{sigma} označuje standartní odchylka Gaussovi funkce použita v gaborově filtru. Tento parametr kontroluje šířku šířku Gausovi obalu použité v gabor jádře.
 
-Obrázky jsou filtrovány za použité reálné části z různých odlišních Gabor filtrů jader. Průměrný a rozptyl filtrovaných snímků jsou pak použity jako funkce pro klasifikaci, která je založena na nejméně kvadratické chyby pro jednoduchost.
+\paragraph{theta} je orientace normálu na paralelní pruhy Gaborovy funkce. Představuje možná jeden z nejdůležitějších parametrů gabor filtru. Theta rozhoduje jakého druhu funkce (na jaký typ funkce filtr reaguje). Například při nulév thetě bude filtr reagovat pouze na vodorovné příznaky. Proto abychom získali vlastnosti v různých úhlech obrazu, rozdělíme interval mezi 0-180 na několik stejných částí a vypočítáme Gaborovo jádro pro každou takto získanou hodnotu theta.
 
+\paragraph{lambda} udává vlnovou délku sinusovky ve výše uvedené rovnici.
 
-TODO Dohledat Haar a Gabor wavelety, přidat vzorečky a zase klidně i obrázky
+\paragraph{gamma} určuje prostorový poměr stran. Kontroluju elipsicitu gausovy funkce. Když je gamma = 1 je Gauss do kruhu (obalen kruhem)
+
+\paragraph{psi} je fázový posun (určuje jestli nám vrátí reálnou nebo imaginární část). \\ 
+
+\par Podle \citep{JEC} bude každý obrázek filtrován na třech vlnových délkách a čtyřech orientacích. Z každého z dvanácti obrázků bude histogram postaven skrze získané magnitudy. Vzniklé magnitudy zřetězíme a označíme jako příznak Gabor. Druhý příznak zachycuje Gabor faze. Příznak je označen jako GaborQ
 
 \begin{tabular}{ |c|c|c|c| }
 \hline
@@ -203,6 +209,8 @@ Parametry & Přesnost (\%) & Úplnost (\%) & Počet nenulových slov \\ \hline
 \hline
 \end{tabular}
 
+\subsection{Haar}
+Haar wavelet generují konvoluční blok s Haar filtry na třech rozdílných orientacíh (horizontální, diagonální a veritkální). Použité na obrázky různých velikostí.  
  
 \subsection{Barevný POEM}
 \subsubsection{Výpočet gradientu a magnitudy}
@@ -224,7 +232,7 @@ Pomocí součtu vektorů je získán jeden třísložkový vektor:
     \centering
     \def\svgwidth{\columnwidth}
     \import{img/}{soucet_vektoru.pdf_tex} 
-    \caption{Grafické znázornění součtu vektorů. Součet je tvořen z vektorů [4, 8, 10] a [8 4, 0].}
+    \caption{Grafické znázornění součtu vektorů. Součet je tvořen z vektorů [4, 8, 10] a [8, 4, 0].}
     %\input{soucet_vektoru.pdf_tex}
 \end{figure}
 
@@ -244,7 +252,7 @@ Pro výpočet diskretizace směru při neznaménkové reprezentaci je $y$ složk
 \end{figure}
 
 \subsubsection{Výpočet lokálního histogramu}
-U každého směru  se vemou jednotlivé pixely s jejich okolím a zprůměrují se jejich hodnoty. Toto okolí se nazývá cell. \\
+U každého směru  se vezmou jednotlivé pixely s jejich okolím a zprůměrují se jejich hodnoty. Toto okolí se nazývá cell. \\
 
 \subsubsection{Zakódování příznaků pomocí LBP}
 LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. Oproti tomu POEM je možné aplikovat na větší okolí. Toto okolí se nazývá block, zpravidla se jedná o kruhové okolí s poloměrem L/2 (L představuje velikost blocku). Pro stanovení intenzit okolních hodnot je možné použít bilineární interpolaci. Pro zvýšení stability v téměř konstantní oblasti lze k centrálnímu pixelu přičítat malou konstantu $\tau$.
@@ -354,6 +362,10 @@ Knihovna byla navrhnuta pro výpočetní efektivitu v oblasti počítačového v
 \\
 Knihovnu OpenCV je možné stáhnout na adrese: http://opencv.org/
 
+\section{Scikit}
+Scikit-image je sbírka algoritmů pro zpracování obrazu. Je k dispozici zdarma a bez omezení.
+\citep{Scikit}
+http://scikit-image.org/docs/dev/install.html
 
 \chapter{Vyhodnocení výsledků}
 Zpracování výsledků probíhá jako porovnání anotací přidělených člověkem s anotacemi přidělenymi klasifikátorem. Označme si $w_{auto}$ jako počet obrázků, kterým bylo dané slovo přiřazeno klasifikátorem, $w_{human}$ počet obrázků, kterým bylo dané slovo přiřazeno člověkem a $w_{corrrectly}$ jako počet obrázků, kterým bylo slovo přiřazené správně. U klasifikátorů se počítá precision (přesnost) a recall (úplnost) pro každé slovo v testovací sadě.\\
@@ -366,20 +378,45 @@ Recall \eqref{recall} je počet obrázků správně anotovaných s daným slovem
 \end{align}
 
 \section{Srovnání výsledků}
-\subsection{iaprtc12}
-\begin{tabular}{l*{3}{c}}
-	          		& Přesnost (\%) & Úplnost (\%) & Nenulových slov \\
+
+
+\begin{tabular}{l | c c c|c c c|c c c}
+		          	& \multicolumn{3}{|c|}{IAPRTC12} & \multicolumn{3}{ c|}{ESP} & \multicolumn{3}{ c}{ČTK}  \\ 
+Metoda          		& $P_{\%}$ & $U_{\%}$ & N & $P_{\%}$ & $U_{\%}$ & N & $P_{\%}$ & $U_{\%}$ & N   \\
 \hline
-RGB						& 14 & 8 & 167 \\
-LAB	  			  		& 12 & 7 & 148  \\
-HSV            			& 16 & 10 & 181  \\
-RGB, LAB, HSV      		& 17 & 11 & 178  \\
-POEM		     		& 0 & 0 & 0  \\
-RGB, LAB, HSV, POEM		& 0 & 0 & 0  \\
-Barevný POEM			& 0 & 0 & 0  \\
+RGB						& 14.1 & 9 & 167 & 0 & 0 & 0 & 0 & 0 & 0   \\
+LAB					  	& 12.7 & 7.5 & 148 & 0 & 0 & 0 & 0 & 0 & 0  \\
+HSV            			& 16.7 & 10.9 & 181 & 0 & 0 & 0 & 0 & 0 & 0  \\
+RGB, LAB, HSV      		& 17.4 & 11.1 & 178 & 0 & 0 & 0 & 0 & 0 & 0 \\
+Gabor					& 8.1 & 4.7 & 126 & 0 & 0 & 0 & 0 & 0 & 0 \\
+POEM		     		& 21.5 & 12.8 & 189 & 0 & 0 & 0 & 0 & 0 & 0 \\
+RGB, LAB, HSV, POEM		& 21.8 & 13.8 & 187 & 0 & 0 & 0 & 0 & 0 & 0 \\
+Barevný POEM			& 21 & 12.4 & 184 & 0 & 0 & 0 & 0 & 0 & 0  \\
+\hline
+\hline
+JEC						& 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\ 
 \end{tabular}
+\captionof{table}{Výsledky získané v rámci práce.}
 
 
+\begin{center}
+	\begin{tabular}{l | c c c|c c c|c c c}
+		          	& \multicolumn{3}{|c|}{IAPRTC12} & \multicolumn{3}{ c|}{ESP} & \multicolumn{3}{ c}{ČTK}  \\ 
+	Metoda          		& $P_{\%}$ & $U_{\%}$ & N & $P_{\%}$ & $U_{\%}$ & N & $P_{\%}$ & $U_{\%}$ & N   \\
+	\hline
+	RGB						& 24 & 24 & 233 & 20 & 22 & 212 & 0 & 0 & 0   \\
+	LAB					  	& 24 & 25 & 232 & 20 & 22 & 221 & 0 & 0 & 0  \\
+	HSV            			& 20 & 20 & 215 & 18 & 20 & 212 & 0 & 0 & 0  \\
+	Haar					& 20 & 11 & 176 & 21 & 18 & 205 & 0 & 0 & 0 \\
+	HaarQ					& 19 & 16 & 189 & 18 & 19 & 207 & 0 & 0 & 0 \\
+	Gabor					& 15 & 15 & 183 & 15 & 16 & 186 & 0 & 0 & 0 \\
+	GaborQ					& 8 & 9 & 137 & 14 & 15 & 193 & 0 & 0 & 0 \\
+	\hline
+	\hline
+	JEC						& 28 & 29 & 250 & 22 & 25 & 224 & 0 & 0 & 0  \\ 
+	\end{tabular}
+	\captionof{table}{Výsledky z literatury.}
+\end{center}
 \chapter{Závěr}
 V teoretické části byly popsány nízkoúrovňové příznaky barva a textura. Byla rozebrána metoda JEC, která bude v bakalářské práci implementována. Seznámili jsme se s knihovnou OpenCV, prostudovali obrázky a přiložená metadata od ČTK, ESP a iaprtc12. 
 

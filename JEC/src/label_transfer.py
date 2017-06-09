@@ -171,8 +171,8 @@ def label_transfer_main(train_data, test_data):
     frequency_word_with_other_word_dictionary = frequency_word_with_other_word(train_data)
     
     print "--------------------------------------"
-    print frequency_word_with_other_word_dictionary['building']['column']
-    print frequency_word_with_other_word_dictionary['column']['building']
+    #print frequency_word_with_other_word_dictionary['building']['column']
+    #print frequency_word_with_other_word_dictionary['column']['building']
 
     ####prirazeni klicovych slov####
     for item in test_data:

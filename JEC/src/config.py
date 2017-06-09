@@ -1,7 +1,9 @@
 import cv2
 
-TRAIN_LIST = "../../Data/iaprtc12/iapr_train_2009.txt"
-TEST_LIST = "../../Data/iaprtc12/iapr_test_2009.txt"
+#TRAIN_LIST = "../../Data/iaprtc12/iapr_train_2009.txt"
+TRAIN_LIST = "../../Data/ESP-ImageSet/esp_train_2009.txt"
+#TEST_LIST = "../../Data/iaprtc12/iapr_test_2009.txt"
+TEST_LIST = "../../Data/ESP-ImageSet/esp_test_2009.txt"
 
 
 DATAFILE_TRAIN = "../result/datafile_train.py"

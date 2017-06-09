@@ -95,15 +95,16 @@ def count_histogram(img, deep = 16):
         Return:  
             list_histogram -- histogram jako trojrozmerny vektor -list
     """
-    histogram=np.zeros((3*deep), dtype=np.float32)
-    
+   
+    histogram_list = [0] * (3*deep)
 
     for i in (0,1,2):
         for x in range(len(img)):
             for y in range(len(img[x])):
                 value = img.item(x,y,i) 
                 index = value/deep
-                histogram[index+(deep*i)]=histogram[index+(deep*i)]+1
+                histogram_list[index+(deep*i)]=histogram_list[index+(deep*i)]+1
+    histogram = np.asarray(histogram_list, dtype=np.float32)  # kdyz to udelam jako list a pak to prevedu do numpy tak je to o dost rychlejsi           
     return histogram
     
     

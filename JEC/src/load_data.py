@@ -55,17 +55,17 @@ def load_features(picture):
     img = cv2.imread(picture.name)  
     
     if(config.RGB):
-        picture.rgb = np.array(count_histogram(img), dtype=np.float32)
+        picture.rgb = count_histogram(img)
         #x.rgb = count_histogram(img) 
 
     if(config.LAB):
         lab_image = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
-        picture.lab = np.array(count_histogram(lab_image), dtype=np.float32)
+        picture.lab = count_histogram(lab_image)
         #x.lab = count_histogram(lab_image) 
     
     if(config.HSV):
         hsv_image = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-        picture.hsv = np.array(count_histogram(hsv_image), dtype=np.float32)
+        picture.hsv = count_histogram(hsv_image)
     
     if(config.GABOR):
         picture.gabor = gabor.count_gabor(img)
@@ -85,7 +85,7 @@ def load_features(picture):
     if(config.HAARQ):
         picture.haarq = haarq.count_haarq(img)
 
-def count_histogram(img):
+def count_histogram(img, deep = 16):
     """
         Spocita histogram na 16 bitovou hloubku pro obrazek poslany v parametru.
         
@@ -95,18 +95,16 @@ def count_histogram(img):
         Return:  
             list_histogram -- histogram jako trojrozmerny vektor -list
     """
-    list_histogram=[0,0,0]
-    pom_list=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    histogram=np.zeros((3*deep), dtype=np.float32)
+    
 
     for i in (0,1,2):
         for x in range(len(img)):
             for y in range(len(img[x])):
                 value = img.item(x,y,i) 
-                index = value/16
-                pom_list[index]=pom_list[index]+1
-        list_histogram[i] = pom_list
-        pom_list=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    return list_histogram
+                index = value/deep
+                histogram[index+(deep*i)]=histogram[index+(deep*i)]+1
+    return histogram
     
     
 load_pictures(config.TRAIN_LIST, config.DATAFILE_TRAIN, "train")

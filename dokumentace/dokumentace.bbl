@@ -1,4 +1,4 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{7}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -13,6 +13,10 @@
 \newblock \doi{10.1145/366622.366644}.
 \newblock Dostupn{\'{e}}~z: \url{http://doi.acm.org/10.1145/366622.366644}.
 
+\bibitem[Ameesh~Makadia()]{JEC2}
+{\sc Ameesh~Makadia}, S.~K.~V.~P.
+\newblock Baselines for Image Anotation.
+
 \bibitem[Cruse(1961)]{Gabor}
 {\sc Cruse}, H.
 \newblock Neural Networks as Cybernetic Systems.
@@ -21,26 +25,24 @@
 \newblock \doi{10.1145/366622.366644}.
 \newblock Dostupn{\'{e}}~z: \url{http://doi.acm.org/10.1145/366622.366644}.
 
-\bibitem[Hoare(1961)]{Hoare1961}
-{\sc Hoare}, C. A.~R.
-\newblock Algorithm 64: {Q}uicksort.
-\newblock \emph{Commun. ACM}. July 1961, 4, 7, s.~321.
-\newblock ISSN 0001-0782.
-\newblock \doi{10.1145/366622.366644}.
-\newblock Dostupn{\'{e}}~z: \url{http://doi.acm.org/10.1145/366622.366644}.
+\bibitem[HUTÁREK(2010)]{DiplomovaBrno}
+{\sc HUTÁREK}, B.~J.
+\newblock Klasifikace objektu v obraze podle textury.
+\newblock Master's thesis, Vysoké učení technické v Brně, Brno, 2010.
+\newblock Dostupn{\'{e}}~z:
+  \url{https://www.vutbr.cz/www_base/zav_prace_soubor_verejne.php?file_id=117319}.
 
-\bibitem[Java SE Documentation - Graphics()]{Graphics2D}
+\bibitem[Java SE Documentation - Graphics()]{Scikit}
 \emph{Class Graphics2D} [online]. Oracle, 2016. [cit.~2016/03/09]. Java {SE}
   Documentation.
-\newblock Dostupn{\'{e}}~z:
-  \url{https://docs.oracle.com/javase/7/docs/api/java/awt/Graphics2D.html}.
+\newblock Dostupn{\'{e}}~z: \url{http://scikit-image.org/}.
 
-\bibitem[Knuth(1997)]{KnuthAOCP2}
-{\sc Knuth}, D.~E.
-\newblock \emph{The Art of Computer Programming, Volume 2 (3rd Ed.):
-  Seminumerical Algorithms}.
-\newblock Addison-Wesley Longman Publishing Co., Inc., 1997.
-\newblock ISBN 0-201-89684-2.
+\bibitem[Košař(2015)]{SrovnaniDeskriptoru}
+{\sc Košař}, V.
+\newblock Srovnání deskriptorů pro reprezentaci obrazu.
+\newblock Master's thesis, Západočeská univerzita v Plzni, Plzeň, 2015.
+\newblock Dostupn{\'{e}}~z:
+  \url{https://dspace5.zcu.cz/bitstream/11025/17883/1/A13N0110P.pdf}.
 
 \bibitem[V.~Lavrenko(1961)]{Result_A_A}
 {\sc V.~Lavrenko}, J.~J.~R.

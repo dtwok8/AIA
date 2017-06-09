@@ -73,6 +73,9 @@
 %popisky u tabulek
 \usepackage{caption}
 
+%hezke cisla v textu%
+\usepackage{siunitx}
+
 % Odkazy v PDF jsou aktivní; navíc se automaticky vkládá
 % balíček 'url', který umožňuje např. dělení slov
 % uvnitř URL
@@ -87,6 +90,7 @@
 % matematicke rovnice %
 \usepackage{amsmath}
 
+\usepackage{float}
 % Při používání citačního stylu csplainnatkiv
 % (odvozen z csplainnat, http://repo.or.cz/w/csplainnat.git)
 % lze snadno modifikovat vzhled citací v textu
@@ -102,21 +106,30 @@
 \maketitle
 \tableofcontents
 
-
 \chapter{Úvod}
-V dnešní době, kdy je svět přesycen obrázky v digitální podobě, není vůbec snadné nalézt obrázek zobrazující požadovaný obsah. Naneštěstí počítače nedokáží vnímat obraz jako lidé, vnímají totiž obrazy jako sérii binárních informací. Přitom počítače a jejich práce s obrazy by se dala využít v mnoha oborech jako je lékařství nebo doprava. Na základě toho vyplouvá na povrch problém jak spravovat digitální obrázky a efektivně mezi nimi vyhledávat. Prostřednictvím klíčových slov přiřazených k obrázkům se dá problém vyhledávání zjednodušit. Přiřazení klíčových slov probíhá pomocí procesu automatické anotace obrázků. Klíčová slova přiřazená k obrázku by měla vyjadřovat jeho obsah (například les, strom). Při reálném použití můžeme ovšem narazit na problém při zadávání abstraktních slov, například šťastná rodina.  
-\\
-Pro automatickou anotaci obrázků se používá strojové učení. Můžeme ji rozdělit na dvě části. V první části získáme klíčové příznaky ve druhé už je samotná anotace, tedy přidělení klíčových slov. Abychom tento postup mohli provést v praxi, musíme nejdřív klasifikátor natrénovat pomocí trénovací množiny. Trénovací množina je množina obrázků, která již má ke každému obrázku přidána metadata s klíčovými slovy připravenými od lidí. Vybrané obrázky v trénovací množině musí být různorodé, aby anotace probíhala správně. Pojem automatická anotace obrázků je jednoduše řečeno proces, při kterém jsou k obrázku automaticky přiřazena metada, která obsahují klíčová slova. 
-\\
-Cílem práce je navrhnout a implementovat software umožňující automatickou anotaci obrázků. Konkrétně se bude zabývat metodou JEC. Práce bude využívat nízkoúrovňové příznaky, konkrétně barvu a texturu. Metodu budeme zkoušet na standardních datech, následně se budeme snažit výsledky vylepšít, a porovnat s další metodou a literaturou.
 
+\par V dnešní době, kdy je svět přesycen obrázky v digitální podobě, není vůbec snadné nalézt obrázek zobrazující požadovaný obsah. Naneštěstí počítače nedokáží vnímat obraz jako lidé, vnímají totiž obrazy jako sérii binárních informací. Přitom počítače a jejich práce s obrazy by se dala využít v mnoha oborech jako je lékařství nebo doprava. Na základě toho vyplouvá na povrch problém jak spravovat digitální obrázky a efektivně mezi nimi vyhledávat. Prostřednictvím klíčových slov přiřazených k obrázkům se dá problém vyhledávání zjednodušit. Přiřazení klíčových slov probíhá pomocí procesu automatické anotace obrázků. Klíčová slova přiřazená k obrázku by měla vyjadřovat jeho obsah (například les, strom). Při reálném použití můžeme ovšem narazit na problém při zadávání abstraktních slov, například šťastná rodina.  
+
+\par Pro automatickou anotaci obrázků se používá strojové učení. Můžeme ji rozdělit na dvě části. V první části získáme klíčové příznaky ve druhé už je samotná anotace, tedy přidělení klíčových slov. Abychom tento postup mohli provést v praxi, musíme nejdřív klasifikátor natrénovat pomocí trénovací množiny. Trénovací množina je množina obrázků, která již má ke každému obrázku přidána metadata s klíčovými slovy připravenými od lidí. Vybrané obrázky v trénovací množině by měly být různorodé, aby anotace probíhala správně. Pojem automatická anotace obrázků je jednoduše řečeno proces, při kterém jsou k obrázku automaticky přiřazena metada, která obsahují klíčová slova. 
+
+\par Práce se bude zabývat nízkoúrovňovými příznaky konkrétně barvou a texturou. Ovšem v případě kdy požijeme barevný příznak ochudíme se o informaci o textuře obrázku, prozměnu když použijeme texturový příznak (který pracuje s šedotónovým obrázkem) zanedbáme informaci o barvě. Jako možnost zpřesnění klasifikátoru by se tedy dalo použít jejich zkombinování. Nabízí se několik řešení \cite{DiplomovaBrno}:   
+
+\begin{description}
+\item[Vyhodnotit a klasifikovat příznaky odděleně] 
+a pak výslednou klasifikaci spojit z několika částí (například Joint Equal Contribution (JEC) \cite{JEC} ). Výhodou tohoto přístupu je zachování vlastností obou původních příznaků. Nevýhodou je náročnější výpočet a úspěšnost přístupu závisí na způsobu kombinace obou informací.
+
+\item[Vytvoření společného příznaku] 
+například rozšíření Patterns of Oriented Edge Magnitudes (POEM) na všechny barvené kanály. Musí se však dbát na to, že informace o barvě a textuře se mohou ovlinovat i protichůdně. 
+\end{description} 
+
+\par Cílem práce je navrhnout a implementovat software umožňující automatickou anotaci obrázků za použití nízkoúrovňových příznaků, konkrétně barvy a textury a jejich kombinací. Metody budeme zkoušet na standardních datech IAPRTC12 a ESP, následně výsledky porovnáme mezi sebou a s literaturou a pokusíme se o jejich vylepšení.
 
 \chapter{JEC Joint Equal Contribution}
 Tato metoda je založena na hypotéze, že podobné obrázky mají podobná klíčová slova. Pomocí metody hledání nejbližších sousedů (dále jen KNN) je nalezeno K nejpodobnějších obrázků. Přičemž klíčová slova od jednotlivých sousedů jsou posuzována odlišně a to právě na základě toho o kolik se s testovaným obrázkem liší. Metoda je postavena na dvou typech příznaků - barevných a texturových. 
 \cite{JEC}
 
 \section{Příznaky}
-\par Barva a textura jsou považovány za dva nejdůležitější nízkoúrovňové příznaky pro obrázkovou reprezentaci. Nejběžnější barevné deskriptory jsou barevné histogramy, které jsou často využívány pro porovnávání a indexování obrázků, zejména z důvodu jejich efektivnosti a snadného výpočtu. K vytvoření texturových příznaků se používají Haarovy a Gaborovy wavelety a to především z důvodu, že jsou efektivní při vytváření řídkých a zároveň diskriminačních obrázkových rysů. Je-li žádoucí omezit vliv a předpoklady jednotlivých funkci a maximilizovat množství získaných informací, že využijeme několik jednoduchých a snadných výpočetních funkcí. 
+\par Barva a textura jsou považovány za dva nejdůležitější nízkoúrovňové příznaky pro obrázkovou reprezentaci. Nejběžnější barevné deskriptory jsou barevné histogramy, které jsou často využívány pro porovnávání a indexování obrázků, zejména z důvodu jejich efektivnosti a snadného výpočtu. K vytvoření texturových příznaků se používají Haarovy a Gaborovy wavelety a to především z důvodu, že jsou efektivní při vytváření řídkých a zároveň diskriminativných obrázkových rysů. Je-li žádoucí omezit vliv a předpoklady jednotlivých funkci a maximilizovat množství získaných informací, že využijeme několik jednoduchých a snadných výpočetních funkcí. 
 
 \subsection{Barva}
 U digitálního obrazu je barva reprezentovaná n-rozměrným vektorem. Jeho velikost a význam jednotlivých složek (tzv. barevných kanálů) zavisí na příslušném barevném prostoru. Počet bitů použitých k uložení buď celého vektoru nebo jeho jednotlivých složek se nazývá barevná hloubka (totožně bitová hloubka). Obvykle se můžeme setkat s hodnotami 8, 12, 14 a 16 bitů na kanál. 
@@ -125,14 +138,14 @@ V použité metodě jsou získány vlastnosti z obrázků ve třech rozdílných
 
 Pro RGB, HSV i LAB je použita barevná hloubka 16 bitů na kanál histogramu v jejich příslušném barevném prostoru. 
 
-\begin{figure}[ht]
+\begin{figure}[H]
 		\centering
 		\includegraphics[height=100px]{./img/img_histogram.jpg}	
 		\includegraphics[height=100px]{./img/bgr_histogram.png}	
 		\caption{RGB histogram - zastoupení jednotlivých složek v obrázku}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 		\centering
 		\includegraphics[height=100px]{./img/img_histogram.jpg}
 		\includegraphics[height=100px]{./img/bgr_r.jpg}
@@ -141,7 +154,7 @@ Pro RGB, HSV i LAB je použita barevná hloubka 16 bitů na kanál histogramu v 
 		\caption{Barevný prostor RGB a jeho jednotlivé složky v pořadí R, G, B}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 		\centering
 		\includegraphics[height=100px]{./img/img_histogram.jpg}
 		\includegraphics[height=100px]{./img/lab_l.jpg}
@@ -150,7 +163,7 @@ Pro RGB, HSV i LAB je použita barevná hloubka 16 bitů na kanál histogramu v 
 		\caption{Barevný prostor LAB a jeho jednotlivé složky v pořadí L, A, B}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 		\centering
 		\includegraphics[height=100px]{./img/img_histogram.jpg}
 		\includegraphics[height=100px]{./img/hsv_h.jpg}
@@ -163,24 +176,24 @@ Pro RGB, HSV i LAB je použita barevná hloubka 16 bitů na kanál histogramu v 
 Jako reprezentace textur a detekci hran budou použity Gabor a Haar wavelety. 
 
 \subsubsection{Gabor}
-Gabor filtr je lineární filtr používaný pro analýzu textury, což znamená, že v podstatě analyzuje, zda existuje nějaký specifický frekvenční obsah v obraze ve specifických směrech v lokalizované oblasti kolem oblasti analýzy. Frekvence a orientace reprezentující Gabor filtr je podobná lidskému vnímání a jsou zvláště vhodné pro reprezentaci textury a detekci hran. V prostoru je 2D Gaborův filtr funkcí gausova jádra modulovaného sinusouvou rovinou vlnou.
+Gaborův filtr je lineární filtr používaný pro analýzu textury, což znamená, že v podstatě analyzuje, zda existuje nějaký specifický frekvenční obsah v obraze ve specifických směrech v lokalizované oblasti kolem oblasti analýzy. Frekvence a orientace reprezentující Gaborovi filtry je podobná lidskému vnímání a jsou zvláště vhodné pro reprezentaci textury a detekci hran. V prostoru je 2D Gaborův filtr funkcí gausova jádra modulovaného sinusouvou rovinnou vlnou jak můžeme vidět v rovnici \ref{gabor_complex}.
 
 \begin{figure}[ht]
 		\centering
 		\includegraphics[height=200px]{./img/gabor.png}
-		\caption{Gábor vlnka je tvořena kombinací dvou cosinových funkcí, s rozdílnou frekvencí pro každou osu, a následně jsou vynásobeny dvourozměrnou Gaussovou funkcí \cite{Gabor}.} 					
+		\caption{Gáborova vlnka je tvořena kombinací dvou cosinových funkcí, s rozdílnou frekvencí pro každou osu, a následně jsou vynásobeny dvourozměrnou Gaussovou funkcí \cite{Gabor}.} 					
 \end{figure}
 
 \begin{align}
    \label{gabor_complex}  g(x, y; \lambda, \theta, \psi, \sigma,  \gamma) = exp \Bigg( - \frac{{x^2 + \gamma^2 y^2}}{2 \sigma^2} \Bigg) exp \Bigg(i \bigg(2\pi \frac{x}{\lambda} + \psi \bigg)\Bigg)  
 \end{align}
 
-Gabor filtry jsou aplikovány na obrázky stejnou cestou jako běžné filtry. Základ tvorí maska (přesnější termín je konvoluční jádro), která reprezentuje filtr. Maskou je myšleno pole (obyvykle 2D protože se jedná o 2D obrázky) pixelů ve kterém každý pixel má přiřazenou hodnotu (váhu). Toto pole je přesunuto na každý pixel obrazu a je provedena konvoluční operace.
+Gáborovi filtry jsou aplikovány na obrázky stejnou cestou jako běžné filtry. Základ tvorí maska (přesnější termín je konvoluční jádro), která reprezentuje filtr. Maskou je myšleno pole (obyvykle 2D protože se jedná o 2D obrázky) pixelů ve kterém každý pixel má přiřazenou hodnotu (váhu). Toto pole je přesunuto na každý pixel obrazu a je provedena konvoluční operace.
 Když je na obrázek aplikován gabor filtr, poskytuje nejvyšší odezvu na hranach a místech, kde se textura mění. 
 
-Gabor filtr reaguje na hrany a změny textury. Když se řekne, že filtr odpovídá na konkrétní funkci, myslí se tím že filtr má rozlišovací hodnotu v prostorové poloze této funkce (když se bude zabývat aplikací konolučních jader v prostoru - směru. Stejně platí i pro jinou oblast, jako frequence)
+Gaboův filtr reaguje na hrany a změny textury. Když se řekne, že filtr odpovídá na konkrétní funkci, myslí se tím že filtr má rozlišovací hodnotu v prostorové poloze této funkce (když se bude zabývat aplikací konolučních jader v prostoru - směru. Stejně platí i pro jinou oblast, jako frequence)
 
-U Gabor filtru máme několik parametrů, které ho ovlivňují. 
+U Gaborova filtru máme několik parametrů, které ho ovlivňují. 
 \paragraph{ksize} určuje velikost Gabor jádra. Když je ksize (a, b) je získáno jádro velikostí $a \times b$ pixelů. Jako u mnoha jiných konvolučních jader je preferován rozměr čtverce o lichých hranách (jen kvůli jednotnosti). Pří různých ksize se velikost konvolučního jádra mění. To také znamená, že konvoluční jádro je měřítko invariantní, protože zmenšení velikosti jádra je analogické k zmenšení velikosti obrazu. 
 
 \paragraph{sigma} označuje standartní odchylka Gaussovi funkce použita v gaborově filtru. Tento parametr kontroluje šířku šířku Gausovi obalu použité v gabor jádře.
@@ -209,10 +222,61 @@ Parametry & Přesnost (\%) & Úplnost (\%) & Počet nenulových slov \\ \hline
 \hline
 \end{tabular}
 
-\subsection{Haar}
-Haar wavelet generují konvoluční blok s Haar filtry na třech rozdílných orientacíh (horizontální, diagonální a veritkální). Použité na obrázky různých velikostí.  
+\subsubsection{Haar}
+\par Haarova vlnka je nejjednodušší vlnka, jejiž výhodou je především rychlý výpočet. Vlnka je realizována dvěma jednotkovými skoky, z čehož vzniknou dva obdelníkové pulzy s předchodem od kladného k zápornému. \cite{DiplomovaBrnoHaar}
+% Ačkoliv je Jakkoliv je dokonale lokalizována v časové oblasti, její spektrum není ukončené (hrany obdélníku). 
+\begin{figure}[H]
+    \centering
+    %\def\svgwidth{\columnwidth}
+    \def\svgwidth{200px}
+    \import{img/}{haar_wavelet.pdf_tex} 
+    \caption{Haarova vlnka.}
+    %\input{soucet_vektoru.pdf_tex}
+\end{figure} 
  
-\subsection{Barevný POEM}
+
+\begin{displaymath} 
+	\label{asd2} 
+		    \psi(x) = \left\{ \begin{array}{r@{\quad}c}
+    		1, & 0 \geq x \geq \frac{1}{2} \\
+    		-1, & \frac{1}{2} \geq x \geq 1 \\ 
+    		0, & jinde \\  \end{array} \right. 
+\end{displaymath} 
+ 
+Haarovi vlnové filtr reprezentují obrázek jako množinu oblastí a získavají průměrnou intenzitu z nejbližších sousedních oblastí. Jsou schopny extrahovat charakteristiky daných vlastností obrázku jako jsou například hrany nebo změny v textuře.  Při zpracovávání průměrné intenzity oblastí je snížena citlivost na šum a změny jasu. Velká množina haarovích filtrů se skládá z filtrů s různým počtem obdelníkových oblastí a s různými orientacemi vzhledek k vyzdvyžení různorodých texturových informací obrázku. Haarův vlnový filtr nabízí jednoduché a efektivní získávání informací z obrázků.
+Základní Haarový vlnový filtr bere v potaz přilehlé obdelníkové oblasti v dané části obrázku a počítá rozdíl intenzit mezi nimi. 
+ 
+Haarova vlnka generuje konvoluční blok s Haar filtry na třech rozdílných orientacíh (horizontální, diagonální a veritkální). Použité na obrázky různých velikostí.  
+ 
+\chapter{POEM}
+POEM (Patterns of Oriented Edge Magnitudes). Vstupem algoritmu se předpokládá šedotónový obrázek o rozměrech  $m \times n$. Jelikož většinou je vložený barevný obrázek, musí být po načtení převeden na šedotónový. \cite{SrovnaniDeskriptoru}
+
+\subsection{Výpočet gradientu a magnitudy}
+Nejprve je potřeba vypočítat gradient. Gradient je obecně směr růstu. Výpočet může probíhat různými způsoby. Jednou z možností je použít masku, kterou aplikujeme na vstupní obrázek. Podle některých studii jsou nejlepší jednoduché masky jako je např. $[1, 0, -1]$ a $[1, 0, -1]^{\,t}$. Okraje obrázku se buď vypouštějí nebo se dají doplnit (opět existuje více způsobů). Výstupem jsou dva obrázky o rozměrech $m \times n$. \\
+Na výstup se dá pohlížet také jako na vektory, kdy každý bod původního obrázku je reprezentován právě 2D vektorem. Analogicky pokud si vektory rozložíme na x a y složku dostaneme dva obrázky. Jeden, který reprezentuje obrázek po použití x-ového filtru, a druhý který reprezentuje obrázek po použití y-filtru. Přičemž použití y filtru by nám mělo zvýraznit hrany v y směru (svislé) a x zvýrazní hrany v x směru (vodorovné). \\
+
+Magnituda je velikost směru růstu, lze si ji představit jako velikost směru růstu pro každý pixel (počítá se tedy pro každý pixel).  Z toho vyplývá, že ji můžeme spočítat jako velikost 2D vektorů, které jsme dostaly při výpočtu gradientu. Zjednodušeně magnituda představuje velikost vektoru gradientu. \\
+
+\subsection{Diskretizace směru gradientu}
+Pokud se na gradienty bude pohlížet jako na 2D vektory je možné určit nejen jejich velikost (magnitudu) ale i jejich směr. Při výpočtu lze použít znaménkovou reprezentaci $0 - \pi$ nebo neznaménkovou reprezentaci $0 - 2\pi$. \\
+V praxi je kružnice rovnoměrně rozdělena na několik dílů (dle počtu požadovaných směrů). Počet dílů  je označen písmenem $d$. Pro $d = 3$ znaménkovou reprezentaci to tedy bude $\left(0 - \frac{2}{3}\pi \right)$, $\left(\frac{2}{3}\pi - \frac{4}{3}\pi \right)$ a $\left(\frac{4}{3}\pi - 2\pi \right)$. Je připraveno $d$ matic (pro každý směr jedna) a podle toho kam vektor směřuje, je umístěna jeho magnituda na souřadnice kde se nachází v původní matici. 
+
+\subsection{Výpočet lokálního histogramu orientace gradientů z okolí}
+U každého směru  se vemou jednotlivé pixely s jejich okolím a zprůměrují se jejich hodnoty. Toto okolí se nazývá cell. \\
+
+\subsection{Zakódování příznaků pomocí LBP}
+LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. Oproti tomu POEM je možné aplikovat na větší okolí. Toto okolí se nazývá block, zpravidla se jedná o kruhové okolí s poloměrem L/2 (L představuje velikost blocku). Pro stanovení intenzit okolních hodnot je možné použít bilineární interpolaci. Pro zvýšení stability v téměř konstantní oblasti lze k centrálnímu pixelu přičítat malou konstantu $\tau$. 
+
+Následující matice představuje block pro střední pixel s hodnotou intenzity 4, označený písmenem $c$ (centrální). Algoritmus následně prochází všechny okolní pixely, označené písmenem  $x$. Hodnota daného pixelu je označena jako $p(x)$ a výsledek tohoto porovnání je označen $s(x)$.
+
+\subsection{Konstrukce globálního histogramu}
+Obrázky získané z LBP jsou rozdeleny pravidelnou čtvercovou mřížkou. Pro každou vzniklou oblast je vypočten lokální histogram. Vzniklé histogramy jsou zřetězeny. Díky tomu jsou získány tři histogramy pro každý směr jeden, které jsou opět zřetězeny. \\
+Rozdělení obrázků a určování lokálních histogramů se dělá za účelem zachování informace o prostorovém rozložení jednotlivých příznaků.
+
+\subsubsection{Uniformní vzory}
+Jelikož histogram, který bude vytvořen je velmi dlouhý, je možné ho zkrátit vybíráním pouze tz. uniformních vzorů. Některé binární vzory se totiž na běžných obrázcích vyskytují častěji a to až, dle experimentů z 90 \%. Jsou to právě výše zmíněné uniformní vzory. Uniformní vzory jsou hodnoty čísla (čísla z pohledu binární reprezentace), kdy dochází k maximálně dvěma přechodům z 0 na 1 a nebo opačně. Například 00011110 je uniformní, oproti tomu 01101111 není. Těchto vzorů je 58, všechny ostatní vzory jsou reprezentovány jediným vzorem. Takto je délka jednoho lokálního histogramu zredukována z 256 na 59 binů.
+
+\section{Barevný POEM}
 \subsubsection{Výpočet gradientu a magnitudy}
 Výpočet gradientu probíhá obdobně jako u nebarevného obrázku. Pro každou ze tří složek jsou získány dvě matice filtrované maskami. Celkem bude $3 \times 2$ matic. Na matice se dá pohlížet jako na 2 vektory o 3 složkách. Vektory jsou sloučeny pomocí součtu vektoru do jednoho 3 složkového vektoru. Magnituda je opět velikost vektoru tentokrát, ale v prostoru. \\
 \\
@@ -319,11 +383,11 @@ Tento algoritmus pro přenos klíčových slov je poněkud odlišný od algoritm
 V souhrnu použitá metoda je složenina ze dvou složenin a to obrázkové vzdálenosti (JEC) a výše popsaným algoritmem na přenášení klíčových slov.
 
 \chapter{Testovací databáze}
-Pro natrénování a následné testování byla použita data z databází ČTK, ESP a IAPRC. Kolekce obrázků na natrénování musí být pečlivě vybrána aby zahrnovala co možná největši okruh z různých témat.
+Pro natrénování a následné testování byla použita data z databází IAPRC a ESP. Kolekce obrázků na natrénování musí být pečlivě vybrána aby zahrnovala co možná největši okruh z různých témat.
 
 \section{iaprtc12}
-Data iaprtc12 obsahují 20 000 obrázků ve formátu jpg s celkovým počtem 291 klíčových slov. Ke každému obrázku jsou přiložena metadata ve formátu XML, která obsahují informace o obrázku v různých jazycích. Kromě angličtiny je tam i například španělština nebo němčina. V metadatatech ovšem nenajdeme klíčová slova tak jak bychom si je představovali, ale v různých tagách nalezneme například titulek obrázku, který může vypadat například The Plaza de Armas, a v tagu description je například  a woman and a child are walking over the square. Klíčová slova musela být z těchto dat získána Spolu s  databází jsme zíkali klíčová slova byla extrahována\\
-K jednomu obrázku je v průměru přiřazeno 5.7 klíčových slov. Pro trénovaní bylo použito 17664 obrázků, na následné testování jich bylo použito 1960. 
+Sada iaprtc12 je kolekce obrázků přírodních scén která zahrnují různé sporty a akce, fotografie lidí, zvířat, měst, krajin a mnoho jiných aspektů součastného života. Data obsahují \num{20 000} obrázků ve formátu \textit{jpg} s celkovým počtem \num{291} klíčových slov. Ke každému obrázku jsou přiložena metadata ve formátu \textit{XML}, která obsahují informace o obrázku v různých jazycích. Kromě angličtiny je tam i například španělština nebo němčina. V metadatatech ovšem nenajdeme klíčová slova tak jak bychom si je představovali, ale v různých tagách nalezneme například titulek obrázku, který může vypadat například The Plaza de Armas, a v tagu description je například  a woman and a child are walking over the square. Spolu s databází jsme zíkali i klíčová slova která byla z přiložených xml extrahována.\\
+K jednomu obrázku je v průměru přiřazeno \num{5.7} klíčových slov. Pro trénovaní bylo použito \num{17 664} obrázků, na následné testování jich bylo použito \num{1960}. 
 
 
 \begin{figure}[h]
@@ -332,44 +396,47 @@ K jednomu obrázku je v průměru přiřazeno 5.7 klíčových slov. Pro trénov
 		\caption{Ukázka obrázku s klíčovými slovy: front lake man mountain rock sky summit}
 \end{figure}
 
-\section{ČTK}
-Data od ČTK obsahují 3 383 obrázků. Ke každému obrázku jsou přidána metadata ve formátu XML, která obsahují klíčová slova a další informace o obrázku. 
-
 \section{ESP}
-Data od ESP obsahují 67 796 obrázků ve formátu jpg. Ke každému obrázku je přiřazen soubor ve formátu desc, který obsahuje anglické anotace.
+\par Sada ESP obsahuje širokou škálů snímku s anotacemi, ze kterých byla použita jen malá část. Konkrétně \num{18 689} obrázků na trénování a \num{2061} na testování. Ke každému obrázku je přiřazen soubor ve formátu \textit{desc}, který obsahuje anglické anotace.
+
+\par Obrázky získaly svá klíčová slova pomocí ESP game, což je hra, která funguje pouze online. V principu spojí dva hráče, kteří nemají možnost spolu komunikovat. Následně je oběma hráčům zobrazen stejný obrázek, který musí popsat co nejvíce různými výrazy v angličtině. V případě, že se hráči shodnou, počítač předpokládá že mu poskytli pravdivou informaci o tom co se na obrázků nachází. Tak si tuto anotaci uloží do databáze a hráči získají body.
 
 
-
-
+%Výhodou této sady je, že řeší problém kolektivnýho významu mezi anotátory což vede k anotaci s méně individuální předpojatostí.
+%Výhodou této sady je že lidská anotace odráží kolektivní sémantiku dohodu mezi anotátory což vede k anotaci s méně individuální %předpojatostí
 
 \chapter{Návrh systému}
 Systém byl navržen jako modulový a to z důvodu snadné obměny některé z častí, což je výhodné zejména pokud bychom potřebovali například spočítat vzdálenosti vektorů podle jiného algoritmu. 
 
-\begin{figure}[h]
-		\centering
-		\includegraphics[width=253px]{./img/graf.png}	
-		\caption{Návrh systému}
+\begin{figure}[ht]
+    \centering
+    \def\svgwidth{\columnwidth}
+    \import{img/}{navrh_systemu.pdf_tex} 
+    \caption{Navrh systému.}
+    %\input{soucet_vektoru.pdf_tex}
 \end{figure}
 
 
-\chapter{Použité programové prostředky}
+\chapter{Implementace}
+\section{Použité programové prostředky}
 Program byl navržen na operační systému Linux. Jako programovací jazyk byl zvolen Python a to z důvodu jeho jednoduchého použití, což je na prototyp, jako je tento velice výhodné na časovou náročnost. Program využívá knihovnu OpenCV 3.1. 
   
-\section{OpenCV}
+\subsection{OpenCV}
 OpenCV (Open source computer vision) je knihovna vydávána pod licencí BSD a je volně k dispozici jak pro akademické účely, tak pro komerční použití. Je vhodná pro použití v C++, C, Python a Javě. Podporuje operační systémy Windows, Linux, Mac OS, iOS a Android.
 \\
 Knihovna byla navrhnuta pro výpočetní efektivitu v oblasti počítačového vidění a zpracování obrazu se zaměřením na zpracování obrazu v reálném čase. Z důvodu optimalizace byla napsána v C/C++. 
 \\
 Knihovnu OpenCV je možné stáhnout na adrese: http://opencv.org/
 
-\section{Scikit}
-Scikit-image je sbírka algoritmů pro zpracování obrazu. Je k dispozici zdarma a bez omezení.
-\citep{Scikit}
+\subsection{Scikit}
+Scikit-image je vědecká knihovna algoritmů pro zpracování obrazu. Je k dispozici zdarma a bez omezení s licencí BSD. Poskytuje dobře zdokumentované API v programovacím jazyce Python a je vyvíjen aktivním mezinárodním týmem spolupracovníků.
+\cite{Scikit}
 http://scikit-image.org/docs/dev/install.html
 
 \chapter{Vyhodnocení výsledků}
-Zpracování výsledků probíhá jako porovnání anotací přidělených člověkem s anotacemi přidělenymi klasifikátorem. Označme si $w_{auto}$ jako počet obrázků, kterým bylo dané slovo přiřazeno klasifikátorem, $w_{human}$ počet obrázků, kterým bylo dané slovo přiřazeno člověkem a $w_{corrrectly}$ jako počet obrázků, kterým bylo slovo přiřazené správně. U klasifikátorů se počítá precision (přesnost) a recall (úplnost) pro každé slovo v testovací sadě.\\
-Recall \eqref{recall} je počet obrázků správně anotovaných s daným slovem děleno počtem obrázků, kterým bylo toto slovo přiděleno v anotaci člověkem. Precision \eqref{precision} je počet správně anotovaných obrázků s tímto slovem děleno celkovým počtem anotovaných obrázků s tímto slovem (správně nebo ne). \cite{Result_A_A}
+\par Zpracování výsledků probíhá jako porovnání anotací přidělených člověkem s anotacemi přidělenymi klasifikátorem. $w_{auto}$ představuje počet obrázků, kterým bylo dané slovo přiřazeno klasifikátorem, $w_{human}$ počet obrázků, kterým bylo dané slovo přiřazeno člověkem a $w_{corrrectly}$ počet obrázků, kterým bylo slovo přiřazené správně. U klasifikátorů se počítá precision (přesnost) a recall (úplnost) pro každé slovo v testovací sadě.
+
+\par Recall \eqref{recall} je počet obrázků správně anotovaných s daným slovem děleno počtem obrázků, kterým bylo toto slovo přiděleno v anotaci člověkem. Precision \eqref{precision} je počet správně anotovaných obrázků s tímto slovem děleno celkovým počtem anotovaných obrázků s tímto slovem (správně nebo ne). \cite{Result_A_A}
 \begin{align}
    \label{recall} Rec = \frac{w_c}{w_h}
 \end{align}
@@ -379,51 +446,50 @@ Recall \eqref{recall} je počet obrázků správně anotovaných s daným slovem
 
 \section{Srovnání výsledků}
 
-
-\begin{tabular}{l | c c c|c c c|c c c}
-		          	& \multicolumn{3}{|c|}{IAPRTC12} & \multicolumn{3}{ c|}{ESP} & \multicolumn{3}{ c}{ČTK}  \\ 
-Metoda          		& $P_{\%}$ & $U_{\%}$ & N & $P_{\%}$ & $U_{\%}$ & N & $P_{\%}$ & $U_{\%}$ & N   \\
+\begin{center}
+\begin{tabular}{l | c c c|c c c}
+		          	& \multicolumn{3}{c|}{IAPRTC12} & \multicolumn{3}{ c}{ESP} \\ 
+Metoda          		& $P_{\%}$ & $U_{\%}$ & N & $P_{\%}$ & $U_{\%}$ & N \\
 \hline
-RGB						& 14.1 & 9 & 167 & 0 & 0 & 0 & 0 & 0 & 0   \\
-LAB					  	& 12.7 & 7.5 & 148 & 0 & 0 & 0 & 0 & 0 & 0  \\
-HSV            			& 16.7 & 10.9 & 181 & 0 & 0 & 0 & 0 & 0 & 0  \\
-RGB, LAB, HSV      		& 17.4 & 11.1 & 178 & 0 & 0 & 0 & 0 & 0 & 0 \\
-Gabor					& 8.1 & 4.7 & 126 & 0 & 0 & 0 & 0 & 0 & 0 \\
-POEM		     		& 21.5 & 12.8 & 189 & 0 & 0 & 0 & 0 & 0 & 0 \\
-RGB, LAB, HSV, POEM		& 21.8 & 13.8 & 187 & 0 & 0 & 0 & 0 & 0 & 0 \\
-Barevný POEM			& 21 & 12.4 & 184 & 0 & 0 & 0 & 0 & 0 & 0  \\
+RGB						& 14.1 & 9 & 167 & 0 & 0 & 0\\
+LAB					  	& 12.7 & 7.5 & 148 & 0 & 0 & 0 \\
+HSV            			& 16.7 & 10.9 & 181 & 0 & 0 & 0 \\
+RGB, LAB, HSV      		& 17.4 & 11.1 & 178 & 0 & 0 & 0 \\
+Gabor					& 8.1 & 4.7 & 126 & 0 & 0 & 0 \\
+GaborQ					& 6.9 & 4.8 & 133 & 0 & 0 & 0 \\
+POEM		     		& 21.5 & 12.8 & 189 & 0 & 0 & 0 \\
+RGB, LAB, HSV, POEM		& 21.8 & 13.8 & 187 & 0 & 0 & 0 \\
+Barevný POEM			& 21 & 12.4 & 184 & 0 & 0 & 0 \\
 \hline
 \hline
-JEC						& 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\ 
+JEC						& 0 & 0 & 0 & 0 & 0 & 0 \\ 
 \end{tabular}
-\captionof{table}{Výsledky získané v rámci práce.}
-
+\captionof{table}{Výsledky získané v rámci práce. P značí přesnost, U úplnost a N počet nenulových klíčových slov.}
+\end{center}
 
 \begin{center}
-	\begin{tabular}{l | c c c|c c c|c c c}
-		          	& \multicolumn{3}{|c|}{IAPRTC12} & \multicolumn{3}{ c|}{ESP} & \multicolumn{3}{ c}{ČTK}  \\ 
-	Metoda          		& $P_{\%}$ & $U_{\%}$ & N & $P_{\%}$ & $U_{\%}$ & N & $P_{\%}$ & $U_{\%}$ & N   \\
+	\begin{tabular}{l | c c c|c c c}
+		          	& \multicolumn{3}{ c|}{IAPRTC12} & \multicolumn{3}{ c }{ESP} \\ 
+	Metoda          		& $P_{\%}$ & $U_{\%}$ & N & $P_{\%}$ & $U_{\%}$ & N  \\
 	\hline
-	RGB						& 24 & 24 & 233 & 20 & 22 & 212 & 0 & 0 & 0   \\
-	LAB					  	& 24 & 25 & 232 & 20 & 22 & 221 & 0 & 0 & 0  \\
-	HSV            			& 20 & 20 & 215 & 18 & 20 & 212 & 0 & 0 & 0  \\
-	Haar					& 20 & 11 & 176 & 21 & 18 & 205 & 0 & 0 & 0 \\
-	HaarQ					& 19 & 16 & 189 & 18 & 19 & 207 & 0 & 0 & 0 \\
-	Gabor					& 15 & 15 & 183 & 15 & 16 & 186 & 0 & 0 & 0 \\
-	GaborQ					& 8 & 9 & 137 & 14 & 15 & 193 & 0 & 0 & 0 \\
+	RGB						& 20 & 13 & 189 & 21 & 17 & 221 \\
+	LAB					  	& 22 & 14 & 194 & 20 & 17 & 221 \\
+	HSV            			& 18 & 12 & 190 & 18 & 15 & 217  \\
+	Haar					& 17 & 8 & 161 & 21 & 14 & 210  \\
+	HaarQ					& 16 & 10 & 173 & 19 & 14 & 210 \\
+	Gabor					& 14 & 9 & 169 & 16 & 12 & 199 \\
+	GaborQ					& 8 & 6 & 137 & 14 & 11 & 205 \\
 	\hline
 	\hline
-	JEC						& 28 & 29 & 250 & 22 & 25 & 224 & 0 & 0 & 0  \\ 
+	JEC						& 25 & 16 & 196 & 23 & 19 & 227 \\ 
 	\end{tabular}
-	\captionof{table}{Výsledky z literatury.}
+	\captionof{table}{Výsledky z literatury \cite{JEC2}.}
 \end{center}
 \chapter{Závěr}
 V teoretické části byly popsány nízkoúrovňové příznaky barva a textura. Byla rozebrána metoda JEC, která bude v bakalářské práci implementována. Seznámili jsme se s knihovnou OpenCV, prostudovali obrázky a přiložená metadata od ČTK, ESP a iaprtc12. 
-
-\chapter{Uživatelská dokumentace}
-popsani jak vypada zdrojovej soubor kterej to zere, nejdriv cesta k souboru a pak jeho klicovy slova
+ Výsledkem bakalářské práce je aplikace která umožňuje
  
-že je potřeba aspoň těch 16 Gb RAM 
+ Aplikace splňuje základní požadavky stanované nicméně je zde široký prostro pro zlepšení
 % 
 % PRO ANGLICKOU SAZBU JE NUTNÉ ZMĚNIT
 % CITAČNÍ STYL!
@@ -432,5 +498,10 @@ popsani jak vypada zdrojovej soubor kterej to zere, nejdriv cesta k souboru a pa
 {\raggedright\small
 \bibliography{literatura}
 }
+
+\chapter{Uživatelská dokumentace}
+popsani jak vypada zdrojovej soubor kterej to zere, nejdriv cesta k souboru a pak jeho klicovy slova
+ 
+že je potřeba aspoň těch 16 Gb RAM 
 
 \end{document}

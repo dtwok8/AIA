@@ -80,28 +80,33 @@ def count_vector(phase, deep):
     """
     Nasklada vektory za sebe
     """
+
+    array_histograms_magnitude = np.zeros(shape=(deep*len(phase)), dtype=np.int)
+
+    #0-360
+    #print np.amin(phase)
+    #print np.amax(phase)
+    #print phase[0].shape
+    #print phase[0].shape
     
-    vector = np.append(phase[0], [phase[1], phase[2],phase[3], phase[4], phase[5], phase[6], phase[7], phase[8], phase[9], phase[10], phase[11]])
-    return vector
-
-    array_histograms_magnitude = np.zeros(shape=(deep*len(magnitudes)), dtype=np.int)
-
-    for i in range(len(magnitudes)): 
-        for x in range(len(magnitudes[i])):
-            for y in range(len(magnitudes[i][x])):
-                value = magnitudes[i].item(x,y) 
-                index = ((i*deep))+int((value/deep)) # (i*deep) potrebuju se posunout na i-ty filtrovany obrazek
+    for i in range(len(phase)): 
+        for x in range(len(phase[i])):
+            for y in range(len(phase[i][x])):
+                value = (phase[i].item(x,y)-2*math.pi)/(2*math.pi - 0) 
+                if(value >= 16): # max by to melo byt 16 rovnych, protoze to je 2pi
+                    value = value - 1 #tedy 15
+                index = ((i*deep))+int(value) # (i*deep) potrebuju se posunout na i-ty filtrovany obrazek
                 array_histograms_magnitude[index]=array_histograms_magnitude[index]+1
     return array_histograms_magnitude
 
 def count_phase(filtered_img_real, filtered_img_imag):
-    print len(filtered_img_imag)
-    print len(filtered_img_real)
-    print filtered_img_imag[0].shape
+    #print len(filtered_img_imag)
+    #print len(filtered_img_real)
+    #print filtered_img_imag[0].shape
     phase = []
 
     for i in range(len(filtered_img_real)):
-        phase = cv2.phase(filtered_img_real[i], filtered_img_imag[i], angleInDegrees=False)
+        phase.append(cv2.phase(filtered_img_real[i], filtered_img_imag[i], angleInDegrees=False))
         #angleInDegrees - when true, the input angles are measured in degrees, otherwise, they are measured in radians.
         
     return phase

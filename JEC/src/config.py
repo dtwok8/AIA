@@ -21,14 +21,14 @@ COUNT_KEYWORDS = 5
 #nastaveni priznaku
 #KL - divergence cv2.HISTCMP_KL_DIV
 #L1 v2.NORM_L1
-RGB = False
+RGB = True
 RGB_DISTANCE = cv2.NORM_L1 # hele tohle neni uplne dobrej napad mas tam totiz dve metody compare a norm
-LAB = False
+LAB = True
 LAB_DISTANCE = cv2.HISTCMP_KL_DIV 
-HSV = False
+HSV = True
 HSV_DISTANCE = cv2.NORM_L1
 GABOR = False
-GABORQ = True
+GABORQ = False
 
 POEM = False
 

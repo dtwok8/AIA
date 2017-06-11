@@ -50,7 +50,10 @@ def load_pictures(listImages, outputFile, information):
  
 def load_features(picture):
     """
-        Projde celou mnozinu a zavola na vsechny obrazky metody na vypocet histogramu.
+        Zavola prislusne funkce pro spocitani priznaku dle configu.
+        
+        Keyword arguments:
+            picture -- obrazek pro ktery se priznaky pocitaji. 
     """
     img = cv2.imread(picture.name)  
     

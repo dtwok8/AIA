@@ -20,9 +20,20 @@ import label_transfer
 
 
 def count_distance(train_data, test_image):
+    """
+        Projde vsechny obrazky z trenovaci sady a spocita vzdalenost s testovanym obrazkem.
+        Nejprve spocte vzdalenost soucasne zjistuje nejvetsi a nejmensi hodnotu pro dany deskritor, coz bude pouzito u skalovani.
+        Zavola si metodu pro spocteni celkove jec vzdalenosti. 
+        A nakonec ulozi sousedy serazene podle vzdalenosti k testovanemu obrazku.
+        
+        Keyword arguments:
+            train_data -- Trenovaci sada. 
+            test_image -- Testovany obrazek.
+            
+    """    
+    
     print test_image.name
-    print test_image.keywords
-    #potrebujeme zjistit rozdahy kvuli skalovatelnosti, sice je to neprehledne ale usetrime si dalsi tri cykly
+    #potrebujeme zjistit rozsahy kvuli skalovatelnosti, sice je to neprehledne ale usetrime si dalsi tri cykly
     rgb_min=float("inf")
     rgb_max=float("-inf")
     lab_min=float("inf")
@@ -79,12 +90,6 @@ def count_distance(train_data, test_image):
                 gabor_max = pom_neighbor.gabor_distance 
                 
         if(config.GABORQ):
-            if(picture.gaborq.shape != test_image.gaborq.shape):
-                print "divny"
-                continue
-            
-            print picture.gaborq.shape, test_image.gaborq.shape
-            print picture.name
             pom_neighbor.gaborq_distance = cv2.norm(picture.gaborq, test_image.gaborq, cv2.NORM_L1)
             
             if(pom_neighbor.gaborq_distance < gaborq_min):
@@ -135,6 +140,15 @@ def count_distance(train_data, test_image):
     item.nereast_neighbors = keywords_prepare_sort[0:config.COUNT_NEIGHBORS]
 
 def count_n():
+    """
+        Spocita N pro JEC.
+        
+        Keyword arguments:
+            train_data -- Trenovaci sada. 
+            test_image -- Testovany obrazek.
+            
+    """    
+    
     n = 0
     if(config.RGB):
         n = n +1
@@ -167,7 +181,16 @@ def count_n():
 
 #spocita JEC pro tri parametry rgb, hsv, lab, ty to musíš naškálovat od 0 o 1 takže asi ten jec můžeš počítat stejně až budeš mít všechny ty výsledky
 def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min, gaborq_max, gaborq_min, poem_max, poem_min, color_poem_max, color_poem_min, haar_max, haar_min, haarq_max, haarq_min):
-    #print ( rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min)
+    """
+        Naskaluje vzdalenosti a spocita JEC pro prislusny obrazek.
+        
+        Keyword arguments:
+            pom_nei -- Pomocna promena sousedu.
+            *_max -- Maximalni hodnta pro tento priznak.
+            *_min -- Minimalni hodnota pro tento priznak.
+            test_image -- Testovany obrazek.
+            
+    """    
     n = count_n()
 
     for neighbor in pom_nei:
@@ -237,25 +260,22 @@ def getKey(item):
 train_data = class_pictures.importDataFromFile(config.DATAFILE_TRAIN)
 test_data = class_pictures.importDataFromFile(config.DATAFILE_TEST)
 
-#train_data2 = class_pictures.importDataFromFile(config.DATAFILE_TRAIN2)
+train_data2 = class_pictures.importDataFromFile(config.DATAFILE_TRAIN2)
 #
-#for data in train_data2:
-#    train_data.append(data)
+for data in train_data2:
+    train_data.append(data)
 
 
 ######### spocitani vzdalenosti
 for item in test_data:
     count_distance(train_data, item)
     #print item.neighbors[0].jec
-    print "--------dalsi test_image --------"
 
 print "----------------"
 
 
 
 label_transfer.label_transfer_main(train_data, test_data)
-
-exit()
 
 
 

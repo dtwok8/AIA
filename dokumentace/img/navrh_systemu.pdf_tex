@@ -52,15 +52,15 @@
     \put(0.13138389,1.08925734){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Load data}}}%
     \put(0.13087957,0.72530657){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Knn classifier}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{navrh_systemu.pdf}}%
-    \put(0.03811061,1.03701827){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Gabor}}}%
+    \put(0.03031232,1.03389893){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Gabor}}}%
     \put(0.32619893,0.72662622){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
-    \put(0.16932876,1.03786701){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Haar}}}%
-    \put(0.29046446,1.03720644){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Poem}}}%
+    \put(0.16153046,1.03474769){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Haar}}}%
+    \put(0.2779872,1.03564678){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Poem}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{navrh_systemu.pdf}}%
-    \put(0.38214519,1.02054177){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{...}}}%
+    \put(0.38526449,1.02678041){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{...}}}%
     \put(0.15111475,0.84561868){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{navrh_systemu.pdf}}%
-    \put(0.67869841,0.87575156){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Save features}}}%
+    \put(0.68337738,0.87887085){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Save features}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{navrh_systemu.pdf}}%
     \put(0.12265525,0.39457461){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Label trasfer}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{navrh_systemu.pdf}}%

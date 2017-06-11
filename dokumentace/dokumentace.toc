@@ -13,49 +13,53 @@
 \contentsline {subsection}{\numberline {2.1.2}Textura}{12}{subsection.2.1.2}
 \contentsline {subsubsection}{Gabor}{12}{section*.10}
 \contentsline {paragraph}{ksize}{13}{section*.12}
-\contentsline {paragraph}{sigma}{13}{section*.13}
-\contentsline {paragraph}{theta}{13}{section*.14}
+\contentsline {paragraph}{sigma}{14}{section*.13}
+\contentsline {paragraph}{theta}{14}{section*.14}
 \contentsline {paragraph}{lambda}{14}{section*.15}
 \contentsline {paragraph}{gamma}{14}{section*.16}
 \contentsline {paragraph}{psi}{14}{section*.17}
 \contentsline {subsubsection}{Haar}{14}{section*.18}
-\contentsline {section}{\numberline {2.2}Vzd\IeC {\'a}lenosti}{15}{section.2.2}
+\contentsline {section}{\numberline {2.2}Vzd\IeC {\'a}lenosti}{16}{section.2.2}
 \contentsline {section}{\numberline {2.3}Kombinace vzd\IeC {\'a}lenost\IeC {\'\i }}{16}{section.2.3}
-\contentsline {section}{\numberline {2.4}P\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov}{16}{section.2.4}
+\contentsline {section}{\numberline {2.4}P\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov}{17}{section.2.4}
 \contentsline {chapter}{\numberline {3}POEM}{18}{chapter.3}
 \contentsline {subsection}{\numberline {3.0.1}V\IeC {\'y}po\IeC {\v c}et gradientu a magnitudy}{18}{subsection.3.0.1}
 \contentsline {subsection}{\numberline {3.0.2}Diskretizace sm\IeC {\v e}ru gradientu}{18}{subsection.3.0.2}
 \contentsline {subsection}{\numberline {3.0.3}V\IeC {\'y}po\IeC {\v c}et lok\IeC {\'a}ln\IeC {\'\i }ho histogramu orientace gradient\IeC {\r u} z okol\IeC {\'\i }}{19}{subsection.3.0.3}
 \contentsline {subsection}{\numberline {3.0.4}Zak\IeC {\'o}dov\IeC {\'a}n\IeC {\'\i } p\IeC {\v r}\IeC {\'\i }znak\IeC {\r u} pomoc\IeC {\'\i } LBP}{19}{subsection.3.0.4}
-\contentsline {subsection}{\numberline {3.0.5}Konstrukce glob\IeC {\'a}ln\IeC {\'\i }ho histogramu}{19}{subsection.3.0.5}
-\contentsline {subsubsection}{Uniformn\IeC {\'\i } vzory}{19}{section*.20}
-\contentsline {section}{\numberline {3.1}Barevn\IeC {\'y} POEM}{20}{section.3.1}
-\contentsline {subsubsection}{V\IeC {\'y}po\IeC {\v c}et gradientu a magnitudy}{20}{section*.21}
-\contentsline {subsubsection}{Diskretizace sm\IeC {\v e}ru gradientu}{20}{section*.23}
-\contentsline {subsubsection}{V\IeC {\'y}po\IeC {\v c}et lok\IeC {\'a}ln\IeC {\'\i }ho histogramu}{20}{section*.25}
-\contentsline {subsubsection}{Zak\IeC {\'o}dov\IeC {\'a}n\IeC {\'\i } p\IeC {\v r}\IeC {\'\i }znak\IeC {\r u} pomoc\IeC {\'\i } LBP}{20}{section*.26}
-\contentsline {subsubsection}{Konstrukce glob\IeC {\'a}ln\IeC {\'\i }ho histogramu}{21}{section*.28}
-\contentsline {chapter}{\numberline {4}Testovac\IeC {\'\i } datab\IeC {\'a}ze}{24}{chapter.4}
-\contentsline {section}{\numberline {4.1}iaprtc12}{24}{section.4.1}
-\contentsline {section}{\numberline {4.2}ESP}{24}{section.4.2}
-\contentsline {chapter}{\numberline {5}N\IeC {\'a}vrh syst\IeC {\'e}mu}{26}{chapter.5}
-\contentsline {chapter}{\numberline {6}Implementace}{27}{chapter.6}
-\contentsline {section}{\numberline {6.1}Pou\IeC {\v z}it\IeC {\'e} programov\IeC {\'e} prost\IeC {\v r}edky}{27}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}OpenCV}{27}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Scikit}{27}{subsection.6.1.2}
-\contentsline {section}{\numberline {6.2}Modulov\IeC {\'e} jednotky programu}{28}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Config}{28}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Load data}{28}{subsection.6.2.2}
-\contentsline {subsubsection}{Extrakce p\IeC {\v r}\IeC {\'\i }znak\IeC {\r u}}{28}{section*.32}
-\contentsline {subsection}{\numberline {6.2.3}Knn classifier}{28}{subsection.6.2.3}
-\contentsline {subsection}{\numberline {6.2.4}Label transfer}{28}{subsection.6.2.4}
-\contentsline {subsection}{\numberline {6.2.5}Evaluator}{28}{subsection.6.2.5}
-\contentsline {chapter}{\numberline {7}Vyhodnocen\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{29}{chapter.7}
-\contentsline {section}{\numberline {7.1}Srovn\IeC {\'a}n\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{29}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}Gabor - porovn\IeC {\'a}n\IeC {\'\i } parametr\IeC {\r u}}{29}{subsection.7.1.1}
-\contentsline {subsection}{\numberline {7.1.2}Kone\IeC {\v c}n\IeC {\'e} v\IeC {\'y}sledky a srovn\IeC {\'a}n\IeC {\'\i } s literaturou}{30}{subsection.7.1.2}
-\contentsline {chapter}{\numberline {8}Z\IeC {\'a}v\IeC {\v e}r}{31}{chapter.8}
-\contentsline {chapter}{Literatura}{32}{chapter*.33}
-\contentsline {chapter}{\numberline {9}U\IeC {\v z}ivatelsk\IeC {\'a} dokumentace}{33}{chapter.9}
-\contentsline {subsubsection}{Spu\IeC {\v s}t\IeC {\v e}n\IeC {\'\i } programu}{33}{section*.34}
-\contentsline {subsubsection}{V\IeC {\'y}stupy programu}{33}{section*.35}
+\contentsline {subsection}{\numberline {3.0.5}Konstrukce glob\IeC {\'a}ln\IeC {\'\i }ho histogramu}{20}{subsection.3.0.5}
+\contentsline {subsubsection}{Uniformn\IeC {\'\i } vzory}{20}{section*.23}
+\contentsline {section}{\numberline {3.1}Barevn\IeC {\'y} POEM}{21}{section.3.1}
+\contentsline {subsubsection}{V\IeC {\'y}po\IeC {\v c}et gradientu a magnitudy}{21}{section*.24}
+\contentsline {subsubsection}{Diskretizace sm\IeC {\v e}ru gradientu}{22}{section*.26}
+\contentsline {subsubsection}{V\IeC {\'y}po\IeC {\v c}et lok\IeC {\'a}ln\IeC {\'\i }ho histogramu}{23}{section*.28}
+\contentsline {subsubsection}{Zak\IeC {\'o}dov\IeC {\'a}n\IeC {\'\i } p\IeC {\v r}\IeC {\'\i }znak\IeC {\r u} pomoc\IeC {\'\i } LBP}{23}{section*.29}
+\contentsline {subsubsection}{Konstrukce glob\IeC {\'a}ln\IeC {\'\i }ho histogramu}{24}{section*.31}
+\contentsline {chapter}{\numberline {4}P\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov za pomoc\IeC {\'\i } pr\IeC {\'a}hu}{25}{chapter.4}
+\contentsline {chapter}{\numberline {5}Testovac\IeC {\'\i } datab\IeC {\'a}ze}{26}{chapter.5}
+\contentsline {section}{\numberline {5.1}iaprtc12}{26}{section.5.1}
+\contentsline {section}{\numberline {5.2}ESP}{26}{section.5.2}
+\contentsline {chapter}{\numberline {6}N\IeC {\'a}vrh syst\IeC {\'e}mu}{28}{chapter.6}
+\contentsline {chapter}{\numberline {7}Implementace}{29}{chapter.7}
+\contentsline {section}{\numberline {7.1}Pou\IeC {\v z}it\IeC {\'e} programov\IeC {\'e} prost\IeC {\v r}edky}{29}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}OpenCV}{29}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Scikit}{29}{subsection.7.1.2}
+\contentsline {section}{\numberline {7.2}Modulov\IeC {\'e} jednotky programu}{30}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Config}{30}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Load data}{30}{subsection.7.2.2}
+\contentsline {subsubsection}{Extrakce p\IeC {\v r}\IeC {\'\i }znak\IeC {\r u}}{31}{section*.35}
+\contentsline {subsection}{\numberline {7.2.3}Knn classifier}{31}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {7.2.4}Label transfer}{31}{subsection.7.2.4}
+\contentsline {subsection}{\numberline {7.2.5}Evaluator}{31}{subsection.7.2.5}
+\contentsline {chapter}{\numberline {8}Vyhodnocen\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{32}{chapter.8}
+\contentsline {section}{\numberline {8.1}Srovn\IeC {\'a}n\IeC {\'\i } v\IeC {\'y}sledk\IeC {\r u}}{32}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Gabor - porovn\IeC {\'a}n\IeC {\'\i } parametr\IeC {\r u}}{33}{subsection.8.1.1}
+\contentsline {subsection}{\numberline {8.1.2}Haar - porovn\IeC {\'a}n\IeC {\'\i } parametr\IeC {\r u}m}{33}{subsection.8.1.2}
+\contentsline {subsection}{\numberline {8.1.3}P\IeC {\v r}i\IeC {\v r}azov\IeC {\'a}n\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov pomoc\IeC {\'\i } pr\IeC {\'a}hu}{33}{subsection.8.1.3}
+\contentsline {subsection}{\numberline {8.1.4}Kone\IeC {\v c}n\IeC {\'e} v\IeC {\'y}sledky a srovn\IeC {\'a}n\IeC {\'\i } s literaturou}{34}{subsection.8.1.4}
+\contentsline {chapter}{\numberline {9}Z\IeC {\'a}v\IeC {\v e}r}{35}{chapter.9}
+\contentsline {chapter}{\numberline {10}Pou\IeC {\v z}it\IeC {\'e} zkratky}{36}{chapter.10}
+\contentsline {chapter}{Literatura}{37}{chapter*.36}
+\contentsline {chapter}{\numberline {A}U\IeC {\v z}ivatelsk\IeC {\'a} dokumentace}{38}{appendix.A}
+\contentsline {subsubsection}{Spu\IeC {\v s}t\IeC {\v e}n\IeC {\'\i } programu}{39}{section*.37}
+\contentsline {subsubsection}{V\IeC {\'y}stupy programu}{39}{section*.38}

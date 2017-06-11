@@ -15,3 +15,45 @@ informace o barvě a textuře se mohou oblivňovat protichůdně
 vutbrno 117319 10 stranka
 
 Data od ČTK obsahují 3 383 obrázků. Ke každému obrázku jsou přidána metadata ve formátu XML, která obsahují klíčová slova a další informace o obrázku. 
+
+Diplomová brno Haar
+https://www.vutbr.cz/www_base/zav_prace_soubor_verejne.php?file_id=9515
+
+Jedná se o nejjednodušší možnou vlnku, realizovanou dvěma
+jednotkovými skoky – výsledkem jsou dva obdélníkové pulzy s amplitudou mezi
+1 a přechodem od kladného k zápornému v 1/2. Navrhl ji maďarský matematik
+Alfred Haar již v roce 1909. Jakkoliv je dokonale lokalizována v časové oblasti,
+její spektrum není ukončené (hrany obdélníku). Další nevýhodu implikuje
+nespojitost, není derivovatelná. Je však ortogonální. Jak bude uvedeno
+o odstavec dále, jde o speciální případ vlnky Daubechiesové. Vzhledem
+k symetrii transformace mezi časovou a frekvenční oblastí má také „dvojníka“ –
+vlnku, dokonale lokalizovanou ve spektrální oblasti a neukončenou v oblasti
+časové.
+
+ABSTRAKT
+Cílem této práce, je Zaměřil jsem se na
+Práce představuje algoritmus
+Data jsem zpracovával pomocí těchto a těch nástorjl
+V práci jsme vytvořili systém, který
+vytvořené řešení poskytuje ty a ty možnosti
+provedeným výzkumem jsem zjistili že
+
+Přínosem této práce je
+Hlavním zjištěním je 
+Hlavním výsledkem je
+Na základě zjištěných údajů je možné
+vyýsledky této práce umožňují
+
+
+Bakalářská práce se zabívá automatickou anotací obrázků (AIA) Cílem této úlohy práce detailně popisuje V rámci práce byl vytvořen program  Implementované metody byly otestovány na několika standartní datasetech a výsledky srovnýny s literaturou			Text abstraktu (česky). 
+V práci jsou teoreticky poprásny metody tyto metody byly implementovány
+Jako součást práce byla vyvynuta aplikace
+Popisuje postupy získání duležitých bodů a metody jejich popisu
+Blíže se věnuje
+Tato metoda je dále použita v praktické části  práce jako základ pro aplikaci
+
+účelem práce je 
+výsledek práce ma sloužit
+tento dokument popisuje
+
+Obsahuje krátkou anotaci (cca 10 řádek) v češtině. Budete ji potřebovat i při vyplňování údajů o bakalářské práci ve STAGu. Český i anglický abstrakt by měly být na stejné stránce a měly by si obsahem co možná nejvíce odpovídat (samozřejmě není možný doslovný překlad!).

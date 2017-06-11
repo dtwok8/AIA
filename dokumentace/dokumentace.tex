@@ -33,7 +33,7 @@
 %
 \abstracttexten{The text of the abstract (in English). It contains the English translation of the thesis title and a short description of the thesis.}
 
-\abstracttextcz{Text abstraktu (česky). Obsahuje krátkou anotaci (cca 10 řádek) v češtině. Budete ji potřebovat i při vyplňování údajů o bakalářské práci ve STAGu. Český i anglický abstrakt by měly být na stejné stránce a měly by si obsahem co možná nejvíce odpovídat (samozřejmě není možný doslovný překlad!).
+\abstracttextcz{Bakalářská práce se zabývá automatickou anotací obrázků (AIA). Cílem práce je prověřit funkčnost vybraných metod z literatury a pokusit se o jejich vylepšení. Práce je zaměřena na metodu Joint Equal Contribution (JEC), kde bylo pozměněno přenášení klíčových slov. Dále byla vytvořena varianta rozšíření Patterns of Oriented Edge Magnitudes (POEM) na všechny barevné kanály. Metody jsou v teoretické části rozebrány a následně byly implementovány. V konečné fázy byly dosažené výsledky porovnány s literaturou. Testování probíhalo na datasetech iaprtc12 a ESP.
 }
 
 % Na titulní stranu a do textu prohlášení se automaticky vkládá 
@@ -78,6 +78,9 @@
 
 %hezke cisla v textu%
 \usepackage{siunitx}
+
+%seznam u zkratek%
+\usepackage{scrextend}
 
 %vicesloupcova sazba%
 \usepackage{multicol}
@@ -182,9 +185,9 @@ Tato metoda je založena na hypotéze, že podobné obrázky mají podobná klí
 \par Jako reprezentace textur a detekci hran budou použity Gaborovi a Haarovi vlnky (v originále Gabor a Haar wavelet). 
 
 \subsubsection{Gabor}
-Gaborův filtr je lineární filtr používaný pro analýzu textury, což znamená, že v podstatě analyzuje, zda existuje nějaký specifický frekvenční obsah v obraze ve specifických směrech v lokalizované oblasti kolem oblasti analýzy. Frekvence a orientace reprezentující Gaborovi filtry je podobná lidskému vnímání a jsou zvláště vhodné pro reprezentaci textury a detekci hran. V prostoru je 2D Gaborův filtr funkcí gausova jádra modulovaného sinusouvou rovinnou vlnou jak můžeme vidět v rovnici \ref{gabor_complex}.
+\par Gaborův filtr je lineární filtr používaný pro analýzu textury, což znamená, že v podstatě zkoumá, zda existuje nějaký specifický frekvenční obsah v obraze ve specifických směrech v lokalizované oblasti kolem oblasti analýzy. Frekvence a orientace reprezentující Gaborovi filtry je podobná lidskému vnímání a proto je jejich použití zvláště vhodné při reprezentaci textury a detekci hran. V prostoru je 2D Gaborův filtr funkcí gausova jádra modulovaného sinusouvou rovinnou vlnou jak můžeme vidět v rovnici \ref{gabor_complex}.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 		\centering
 		\includegraphics[height=200px]{./img/gabor.png}
 		\caption{Gáborova vlnka je tvořena kombinací dvou cosinových funkcí, s rozdílnou frekvencí pro každou osu, a následně jsou vynásobeny dvourozměrnou Gaussovou funkcí \cite{Gabor}.} 					
@@ -194,10 +197,9 @@ Gaborův filtr je lineární filtr používaný pro analýzu textury, což zname
    \label{gabor_complex}  g(x, y; \lambda, \theta, \psi, \sigma,  \gamma) = exp \Bigg( - \frac{{x^2 + \gamma^2 y^2}}{2 \sigma^2} \Bigg) exp \Bigg(i \bigg(2\pi \frac{x}{\lambda} + \psi \bigg)\Bigg)  
 \end{align}
 
-Gáborovi filtry jsou aplikovány na obrázky stejnou cestou jako běžné filtry. Základ tvorí maska (přesnější termín je konvoluční jádro), která reprezentuje filtr. Maskou je myšleno pole (obyvykle 2D protože se jedná o 2D obrázky) pixelů ve kterém každý pixel má přiřazenou hodnotu (váhu). Toto pole je přesunuto na každý pixel obrazu a je provedena konvoluční operace.
-Když je na obrázek aplikován gabor filtr, poskytuje nejvyšší odezvu na hranach a místech, kde se textura mění. 
+\par Gáborovi filtry jsou aplikovány na obrázky stejnou cestou jako běžné filtry. Základ tvoří maska (přesnější termín je konvoluční jádro), která reprezentuje filtr. Maskou je myšleno pole (obyvykle 2D protože se jedná o 2D obrázky) pixelů ve kterém každý pixel má přiřazenou hodnotu (váhu). Toto pole je přesunuto na každý pixel obrazu a je provedena konvoluční operace. Když je na obrázek aplikován gaborův filtr, poskytuje nejvyšší odezvu na hranach a místech, kde se textura mění. \cite{Gabor_wordpress}
 
-Gaboův filtr reaguje na hrany a změny textury. Když se řekne, že filtr odpovídá na konkrétní funkci, myslí se tím že filtr má rozlišovací hodnotu v prostorové poloze této funkce (když se bude zabývat aplikací konolučních jader v prostoru - směru. Stejně platí i pro jinou oblast, jako frequence)
+\par Gaborův filtr reaguje na hrany a změny textury. Když se řekne, že filtr odpovídá na konkrétní funkci, myslí se tím že filtr má rozlišovací hodnotu v prostorové poloze této funkce (když se bude zabývat aplikací konolučních jader v prostoru - směru. Stejně platí i pro jinou oblast, jako frequence)
 
 U Gaborova filtru máme několik parametrů, které ho ovlivňují. 
 \paragraph{ksize} určuje velikost Gabor jádra. Když je ksize (a, b) je získáno jádro velikostí $a \times b$ pixelů. Jako u mnoha jiných konvolučních jader je preferován rozměr čtverce o lichých hranách (jen kvůli jednotnosti). Pří různých ksize se velikost konvolučního jádra mění. To také znamená, že konvoluční jádro je měřítko invariantní, protože zmenšení velikosti jádra je analogické k zmenšení velikosti obrazu. 
@@ -217,30 +219,32 @@ U Gaborova filtru máme několik parametrů, které ho ovlivňují.
 
 
 \subsubsection{Haar}
-\par Haarova vlnka je nejjednodušší vlnka, jejiž výhodou je především rychlý výpočet. Vlnka je realizována dvěma jednotkovými skoky, z čehož vzniknou dva obdelníkové pulzy s předchodem od kladného k zápornému. \cite{DiplomovaBrnoHaar}
-% Ačkoliv je Jakkoliv je dokonale lokalizována v časové oblasti, její spektrum není ukončené (hrany obdélníku). 
+\par Haarova vlnka je nejjednodušší vlnka, jejiž výhodou je především rychlý výpočet. Vlnka je realizována dvěma jednotkovými skoky, z čehož vzniknou dva obdelníkové pulzy s předchodem od kladného k zápornému. 
+
 \begin{figure}[H]
     \centering
     %\def\svgwidth{\columnwidth}
     \def\svgwidth{200px}
     \import{img/}{haar_wavelet.pdf_tex} 
-    \caption{Haarova vlnka.}
+    \caption{Haarova vlnka. Převzato z \cite{HaarWiky}}
     %\input{soucet_vektoru.pdf_tex}
 \end{figure} 
- 
 
+Předpis Haarovi vlnky: 
 \begin{displaymath} 
-	\label{asd2} 
+	\label{haar} 
 		    \psi(x) = \left\{ \begin{array}{r@{\quad}c}
     		1, & 0 \geq x \geq \frac{1}{2} \\
     		-1, & \frac{1}{2} \geq x \geq 1 \\ 
     		0, & jinde \\  \end{array} \right. 
 \end{displaymath} 
+\vspace{1cm}
  
-Haarovi vlnové filtr reprezentují obrázek jako množinu oblastí a získavají průměrnou intenzitu z nejbližších sousedních oblastí. Jsou schopny extrahovat charakteristiky daných vlastností obrázku jako jsou například hrany nebo změny v textuře.  Při zpracovávání průměrné intenzity oblastí je snížena citlivost na šum a změny jasu. Velká množina haarovích filtrů se skládá z filtrů s různým počtem obdelníkových oblastí a s různými orientacemi vzhledek k vyzdvyžení různorodých texturových informací obrázku. Haarův vlnový filtr nabízí jednoduché a efektivní získávání informací z obrázků.
-Základní Haarový vlnový filtr bere v potaz přilehlé obdelníkové oblasti v dané části obrázku a počítá rozdíl intenzit mezi nimi. 
+\par Haarovi vlnové filtry reprezentují obrázek jako množinu oblastí a získavají průměrnou intenzitu z nejbližších sousedních oblastí. Jsou schopny extrahovat charakteristiky daných vlastností obrázku jako jsou například hrany nebo změny v textuře.  Při zpracovávání průměrné intenzity oblastí je snížena citlivost na šum a změny jasu. Velká množina haarovích filtrů se skládá z filtrů s různým počtem obdelníkových oblastí a s různými orientacemi vzhledem k vyzdvyžení různorodých texturových informací obrázku. Haarův vlnový filtr nabízí jednoduché a efektivní získávání informací z obrázků.
+\par Základní Haarový vlnový filtr bere v potaz přilehlé obdelníkové oblasti v dané části obrázku a počítá rozdíl intenzit mezi nimi. 
  
-Haarova vlnka generuje konvoluční blok s Haar filtry na třech rozdílných orientacíh (horizontální, diagonální a veritkální). Použité na obrázky různých velikostí.  
+\par Podle \citep{JEC} bude Haarova vlnka generovat konvoluční blok s Haarovými filtry na třech rozdílných orientacíh (horizontální, diagonální a veritkální). Použité na obrázky různých velikostí.  
+% tohle se mi moc nelíbí chápu jak se to myslí ze to proste bude odpovídat(reagovat) na ty tři orientace 
  
 \definecolor{ashgrey}{rgb}{0.7,0.75,0.71} 
 
@@ -277,10 +281,10 @@ Haarova vlnka generuje konvoluční blok s Haar filtry na třech rozdílných or
 	\end{center} 	
 \end{multicols}
 
-\section{Vzdálenosti}
-vzdálenost vs podobnost
+Výsledný příznak je možné vytvořit dvěma způsoby. První možností je výslednou matici, z každého velikosti i orientace, převést na 16 binový vektor. Tímto vyjde 12 šestnácti binových vektorů pro jeden obrázek, které jsou v konečné fázi zřetězeny. Dalsí možností je udělat z výsledné matice sumu, výsledným vektorem bude v tomto případě 12 prvkový vektor sum. 
 
- K určení příslušné vzdálenosti se můžeme setkat se čtyřmi měřítky vzdálenosti pro histogramy a rozdělení Kullaback-Leibler divergence KL - divergence, $\chi^2$ statistika, L1 - vzdálenost a L2 - vzdálenost. Na RGB a HSV je nejlépší použít L1 zatímco pro LAB je nejvhodnější KL - divergence. 
+\section{Vzdálenosti}
+\par K určení příslušné vzdálenosti se můžeme setkat se čtyřmi měřítky vzdálenosti pro histogramy a rozdělení Kullaback-Leibler divergence KL - divergence, $\chi^2$ statistika, L1 - vzdálenost a L2 - vzdálenost. Na RGB a HSV je nejlépší použít L1 zatímco pro LAB je nejvhodnější KL - divergence. 
 
 Problém s KL - divergencí nastává pouze tehdy, když se histogramy nebudou shodovat v nulách. Jeden předpoklad pro fungování tohoto vzorce je totiž že když je $Q(i) = 0$ tak zároveň musí být i $P(i) = 0$. \\
 
@@ -309,14 +313,14 @@ Označme si $I_i$ jako $i$-tý obrázek a řekněme, že máme $N$ jeho přízna
 \end{align}
 
 \section{Přenesení klíčových slov}
-Pro přenesení klíčových slov používáme metodu, kdy přeneseme $n$ klíčových slov k dotazovanému obrázku $\tilde{I}$ od K nejbližších sousedů z trénovací sady. Mějme $I_{i}, i = 1, ..., K$ ,těchto K nejbližší sousedů seřadíme podle vzrůstající vzdálenosti (tzn. že $I_{1} $ je nejvíce podobný obrázek). Počet klíčových slov k danému $I_{i}$ je označen jako $|I_{i}|$. Dále jsou popsány jednotlivé kroky alogoritmu na přenesení klíčových slov.
+Pro přenesení klíčových slov je použita metoda, kdy je přeneseno $n$ klíčových slov k dotazovanému obrázku $\tilde{I}$ od K nejbližších sousedů z trénovací sady. Je nadefinováno $I_{i}, i = 1, ..., K$ ,těchto K nejbližší sousedů je seřazeno podle vzrůstající vzdálenosti (tzn. že $I_{1} $ je nejvíce podobný obrázek). Počet klíčových slov k danému $I_{i}$ je označen jako $|I_{i}|$. Dále jsou popsány jednotlivé kroky alogoritmu na přenesení klíčových slov.
 \begin{enumerate}
-	\item Seřadíme klíčová slova z $I_{1}$ podle jejich frekvence výskytu v trénovací sadě.
-	\item Ze všech $|I_{1}|$ klíčových slov z $I_{1}$ přeneseme $n$ nejvýše umístěná klíčová slova do dotazovaného $\tilde{I}$. Když $|I_{1}| < n$ pokračujte na krok 3. 
-	\item Seřadíme klíčová slova sousedů od $I_{2}$ do $I_{K}$ podle dvou faktorů
+	\item Klíčová slova z $I_{1}$ jsou seřazeno podle jejich frekvence výskytu v trénovací sadě.
+	\item Ze všech $|I_{1}|$ klíčových slov z $I_{1}$ je přeneseno $n$ nejvýše umístěná klíčová slova do dotazovaného $\tilde{I}$. Když $|I_{1}| < n$ algoritmus pokračuje na krok 3. 
+	\item Klíčová slova sousedů od $I_{2}$ do $I_{K}$ jsou seřazena podle dvou faktorů
 	\begin{enumerate}
 		\item výskytu v trénovací sadě s klíčovými slovy přenesených v kroku 2
-		\item místní frekvence (tj. jak často se vyskytují jako klíčová slova u obrázků $I_{2}$ až $I_{K}$). Vybereme nejvíce vyskytující $n-|I_{1}|$ klíčových slov převedených do $\tilde{I}$.
+		\item místní frekvence (tj. jak často se vyskytují jako klíčová slova u obrázků $I_{2}$ až $I_{K}$). Jsou vybrána nejvíce vyskytující $n-|I_{1}|$ klíčových slov převedených do $\tilde{I}$.
 	\end{enumerate}
 \end{enumerate}
 
@@ -336,16 +340,46 @@ Magnituda je velikost směru růstu, lze si ji představit jako velikost směru 
 Pokud se na gradienty bude pohlížet jako na 2D vektory je možné určit nejen jejich velikost (magnitudu) ale i jejich směr. Při výpočtu lze použít znaménkovou reprezentaci $0 - \pi$ nebo neznaménkovou reprezentaci $0 - 2\pi$. \\
 V praxi je kružnice rovnoměrně rozdělena na několik dílů (dle počtu požadovaných směrů). Počet dílů  je označen písmenem $d$. Pro $d = 3$ znaménkovou reprezentaci to tedy bude $\left(0 - \frac{2}{3}\pi \right)$, $\left(\frac{2}{3}\pi - \frac{4}{3}\pi \right)$ a $\left(\frac{4}{3}\pi - 2\pi \right)$. Je připraveno $d$ matic (pro každý směr jedna) a podle toho kam vektor směřuje, je umístěna jeho magnituda na souřadnice kde se nachází v původní matici. 
 
+\begin{figure}[H]
+    \centering    
+    \def\svgwidth{230pt}
+	\import{img/}{2D_kruznice.pdf_tex}    
+    %\input{image.pdf_tex}
+    \caption{Diskretizace směru gradientu. Každá barva představuje jeden směr šedá: $\left(0 - \frac{2}{3}\pi \right)$ , zelená:$\left(\frac{2}{3}\pi - \frac{4}{3}\pi \right)$ a žlutá: $\left(\frac{4}{3}\pi - 2\pi \right)$. Vektor $[ -2, -5 ]$ směřuje do třetího směru, proto uložíme jeho magnitudu do třetí matice. }
+    \label{fig: 2D_graf}
+\end{figure}
+
 \subsection{Výpočet lokálního histogramu orientace gradientů z okolí}
-U každého směru  se vemou jednotlivé pixely s jejich okolím a zprůměrují se jejich hodnoty. Toto okolí se nazývá cell. \\
+U každého směru  se vezmou jednotlivé pixely s jejich okolím a zprůměrují se jejich hodnoty. Toto okolí se nazývá cell. \\
 
 \subsection{Zakódování příznaků pomocí LBP}
-LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. Oproti tomu POEM je možné aplikovat na větší okolí. Toto okolí se nazývá block, zpravidla se jedná o kruhové okolí s poloměrem L/2 (L představuje velikost blocku). Pro stanovení intenzit okolních hodnot je možné použít bilineární interpolaci. Pro zvýšení stability v téměř konstantní oblasti lze k centrálnímu pixelu přičítat malou konstantu $\tau$. 
+\par LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. Oproti tomu POEM je možné aplikovat na větší okolí. Toto okolí se nazývá block, zpravidla se jedná o kruhové okolí s poloměrem L/2 (L představuje velikost blocku). Pro stanovení intenzit okolních hodnot je možné použít bilineární interpolaci. Pro zvýšení stability v téměř konstantní oblasti lze k centrálnímu pixelu přičítat malou konstantu $\tau$. 
 
-Následující matice představuje block pro střední pixel s hodnotou intenzity 4, označený písmenem $c$ (centrální). Algoritmus následně prochází všechny okolní pixely, označené písmenem  $x$. Hodnota daného pixelu je označena jako $p(x)$ a výsledek tohoto porovnání je označen $s(x)$.
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=253px]{./img/znazorneni_lbp.png}	
+		\caption{Znázornění blocku Převzato z \cite{SrovnaniDeskriptoru}}
+\end{figure}
+
+\par Výpočet LBP probíhá podle následujícího vzorce, kde je pixel pro který se hodnoty počítají označen písmenem $c$ (centrální). Algoritmus následně prochází všechny okolní pixely, označené písmenem  $x$. Hodnota daného pixelu je označena jako $p(x)$ a výsledek tohoto porovnání je označen $s(x)$.
+
+\begin{displaymath} 
+	\label{asd2} 
+		    s(x) = \left\{ \begin{array}{r@{\quad}c}
+    		1, & p(x) \geq h(c) \\
+    		0, & p(x) < h(c) \\ \end{array} \right. 
+\end{displaymath}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=150pt]{./img/lbp1_tau.jpg}
+	\includegraphics[width=150pt]{./img/lbp2_tau.jpg}
+	\includegraphics[width=150pt]{./img/lbp3_tau.jpg}
+	\caption{Obrázky po aplikaci LBP s použitím $\tau$. Každý obrázek představuje jeden směr.}
+\end{figure}
 
 \subsection{Konstrukce globálního histogramu}
-Obrázky získané z LBP jsou rozdeleny pravidelnou čtvercovou mřížkou. Pro každou vzniklou oblast je vypočten lokální histogram. Vzniklé histogramy jsou zřetězeny. Díky tomu jsou získány tři histogramy pro každý směr jeden, které jsou opět zřetězeny. \\
+\par Obrázky získané z LBP jsou rozdeleny pravidelnou čtvercovou mřížkou. Pro každou vzniklou oblast je vypočten lokální histogram. Vzniklé histogramy jsou zřetězeny. Díky tomu jsou získány tři histogramy pro každý směr jeden, které jsou opět zřetězeny. \\
 Rozdělení obrázků a určování lokálních histogramů se dělá za účelem zachování informace o prostorovém rozložení jednotlivých příznaků.
 
 \subsubsection{Uniformní vzory}
@@ -367,7 +401,7 @@ Pomocí součtu vektorů je získán jeden třísložkový vektor:
    \label{soucet_vektrou} \vec{u} + \vec{v} = (u_1 + v_1, u_2 + v_2, u_3 + v_3 )
 \end{align} 
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \def\svgwidth{\columnwidth}
     \import{img/}{soucet_vektoru.pdf_tex} 
@@ -382,7 +416,7 @@ Při neznaménkové reprezentaci a počtu směrů $d = 3$, jsou následující i
 \\
 Pro výpočet diskretizace směru při neznaménkové reprezentaci je $y$ složka rozdělena na kladnou a zápornou část. To hraje velkou roli, pokud je $y$ složka vektoru záporná. V tom případě je nutné nebrat úhel $\alpha$, ale jeho doplněk ($ 180 - \alpha$).
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \def\svgwidth{\columnwidth}
     \import{img/}{3D_kruznice.pdf_tex} 
@@ -396,11 +430,11 @@ U každého směru  se vezmou jednotlivé pixely s jejich okolím a zprůměruj�
 \subsubsection{Zakódování příznaků pomocí LBP}
 LBP operátor je aplikován na okolí každého pixelu o velikost $3 \times 3$. Oproti tomu POEM je možné aplikovat na větší okolí. Toto okolí se nazývá block, zpravidla se jedná o kruhové okolí s poloměrem L/2 (L představuje velikost blocku). Pro stanovení intenzit okolních hodnot je možné použít bilineární interpolaci. Pro zvýšení stability v téměř konstantní oblasti lze k centrálnímu pixelu přičítat malou konstantu $\tau$.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=150pt]{./img/lbp1_tau.jpg}
-	\includegraphics[width=150pt]{./img/lbp2_tau.jpg}
-	\includegraphics[width=150pt]{./img/lbp3_tau.jpg}
+	\includegraphics[width=150pt]{./img/lbp_3_1.jpg}
+	\includegraphics[width=150pt]{./img/lbp_3_2.jpg}
+	\includegraphics[width=150pt]{./img/lbp_3_3.jpg}
 	\caption{Obrázky po aplikaci LBP s použitím $\tau$. Každý obrázek představuje jeden směr.}
 \end{figure}
 
@@ -412,7 +446,18 @@ Jelikož histogram, který bude vytvořen je velmi dlouhý, je možné ho zkrát
  
 
  
+\chapter{Přenesení klíčových slov za pomocí práhu}
+\par Pro přenesení klíčových slov lze použít algoritmus kdy přeneseme pouze ta klíčová slova, která svými výskyty přesahují předepsaný práh. Je definováno $total\_keywords$ počet všech klíčových slov i s jejich redundantními výskyty, $frequence\_keyword$ jako počet výskytů daného slova v k nejbližších sousedech a $count\_keywords$ jako počet jedinečných klíčových slov (bez redundantních výskytů).  
 
+\par Práh \eqref{prah} je vyčíslen jako jedna děleno (počet všech klíčových slov i s jejich redundantními výskyty - 1). Následuje výpočet váhy pro dané klíčové slovo \eqref{vaha_klicoveho_slova}, které probíhá jako počet výskytů daného slova děleno počet všech klíčových slov i s jejich redundantními výskyty. Pokud je tato hodnota vyšší než práh, je klíčové slovo přeneseno.
+
+\begin{align}
+   \label{prah} th = \frac{1}{count\_keywords-1}
+\end{align}
+
+\begin{align}
+   \label{vaha_klicoveho_slova} vaha = frequence\_keyword / total\_keywords
+\end{align}
 
 
 \chapter{Testovací databáze}
@@ -465,7 +510,9 @@ Systém byl navržen jako modulový a to z důvodu snadné obměny některé z �
 
 \chapter{Implementace}
 \section{Použité programové prostředky}
-\par Program byl navržen na operační systém Linux. Jako programovací jazyk byl zvolen Python a to z důvodu jeho jednoduchého použití, což je na prototyp, jako je tento velice výhodné na časovou náročnost. Pro spuštění programu je třeba mít nainstalovaný python (2.7.12) s NumPy verze 9, knihovnu openCV verzi 3.1 a vědeckou knihovnu scipy verze 0.17.0. Vzhledem k náročnosti programu je pro spuštění programu nutné mít v počítači  alespoň 16 GB RAM paměti a to především z důvodů ukládání mezi výsledků pomocí modulu \textit{pickle}, což je modul pro serializaci objektů. Následující postupy jsou uvedeny pro operační systém Linux, a tak se mohou od postupu na jiném operačním systému lišit.   
+\par Program byl navržen na operační systém Linux. Jako programovací jazyk byl zvolen Python a to z důvodu jeho jednoduchého použití, což je na prototyp, jako je tento velice výhodné na časovou náročnost. 
+
+\par Pro spuštění programu je třeba mít nainstalovaný python ve verzi 2.7.12 s NumPy verze 9, knihovnu openCV verzi 3.1 a vědeckou knihovnu scipy verze 0.17.0. Vzhledem k náročnosti programu je pro jeho spuštění nutné mít v počítači alespoň 16 GB RAM paměti a to především z důvodů ukládání mezivýsledků pomocí modulu \textit{pickle}, což je modul pro serializaci objektů. Následující postupy jsou uvedeny pro operační systém Linux, a tak se mohou od postupu na jiném operačním systému lišit.   
   
   
 \subsection{OpenCV}
@@ -476,47 +523,51 @@ Systém byl navržen jako modulový a to z důvodu snadné obměny některé z �
 \par Knihovna OpenCV je dostupná na adrese: http://opencv.org/
 
 \subsection{Scikit}
-\par Scikit-image je vědecká knihovna algoritmů pro zpracování obrazu. Je k dispozici zdarma a bez omezení s licencí BSD. Poskytuje dobře zdokumentované API v programovacím jazyce Python a je vyvíjen aktivním mezinárodním týmem spolupracovníků.
+\par Scikit-image je vědecká knihovna algoritmů pro zpracování obrazu. Je k dispozici zdarma a bez omezení s licencí BSD. Poskytuje dobře zdokumentované API v programovacím jazyce Python a je vyvíjena aktivním mezinárodním týmem spolupracovníků.
 \cite{Scikit}
 
 \section{Modulové jednotky programu}
 \subsection{Config}
-\par Při spuštění programu je nejdříve načten konfigurační soubor, který obsahuje jeho veškerá nastavení. Pro snadné a pohodlené spuštění všech modulů je připraven skript \textit{run.py}. V opačném případě můžeme jednotlivé moduly pouštět postupně.
+\par Při spuštění programu je nejdříve načten konfigurační soubor, který obsahuje jeho veškerá nastavení. Pro snadné a pohodlné spuštění všech modulů je připraven skript \textit{run.py}. V opačném případě můžeme jednotlivé moduly pouštět postupně.
+
+\vspace{1cm}
+Parametry configu:
+\begin{itemize}
+	\item \textit{TRAIN\_LIST} - Trénovací list obrázků, který by měl obsahovat cesty k obrázkům trénovací sady a jejich klíčová slova ve formátu \textit{cesta\_k\_obrazku; klíčové\_slovo klíčové\_slovo}. Předpokládaný formát \textit{.txt}.
+	\item \textit{TEST\_LIST} - Testovací list, který by měl obsahovat cesty k obrázkům testovací sady a jejich klíčová slova ve formátu \textit{cesta\_k\_obrazku; klíčové\_slovo klíčové\_slovo}. Předpokládaný formát \textit{.txt}.
+	\item \textit{DATAFILE\_TRAIN} - Soubor do kterého budou uloženy příznakovové vektory, načtenáých obrázků. Předpokládaný formát \textit{.py}.
+	\item \textit{PICTURE\_RESULT} - Obrazky a prirazene klicova slova klasifikatorem.
+	\item \textit{PICTURE\_TEST\_KEYWORDS} - obrazky s prirazenym slovy od klasifikatoru i s se slovy prirazene clovekem.
+	\item \textit{KEYWORDS\_RESULT} - Vysledky klicovych slov, jejich presnost a uplnost.
+	\item \textit{COUNT\_NEIGHBORS} - Počet sousedů.
+	\item \textit{COUNT\_KEYWORDS} - Počet klíčových slov.
+\end{itemize}
+Dále jsou v cofingu uvedené jednotlivé metody s očekávanou hodnotou \textit{True} nebo \textit{False} v závyslosti zda se mají použít nebo ne.
 
 \subsection{Load data}
-Modul načtení dat, načte obrázky z listů uvedených v configu (\textit{TRAIN\_LIST} a \textit{TEST\_LIST}), a načte příslušné příznaky opět podle configu.
+Modul načte obrázky z listů uvedených v configu (\textit{TRAIN\_LIST} a \textit{TEST\_LIST}) a načte příslušné příznaky opět podle configu. Následné jsou celé stuktury listů testovacich nebo trenovacích obrazku uloženy do souboru, opět podle configu \textit{DATAFILE\_TRAIN} popřípadě \textit{DATAFILE\_TEST}.
+
 
 \subsubsection{Extrakce příznaků}
-Jednotlivé výpočty příznaků jsou rozděleneny do zvláštních modulů, aby byla obměna jejich výpočtu snadno nahraditelná. V každém modulu je stěžejní pouze metoda \textit{count\_} a název příslušné metody (např. \textit{count\_haarq}), která je volána právě z modulu load data.
+Jednotlivé výpočty příznaků jsou rozděleneny do zvláštních modulů, aby byla obměna jejich výpočtu snadno nahraditelná. V každém modulu je stěžejní pouze funkce \textit{count\_} a název příslušné metody (např. \textit{count\_haarq}), která je volána právě z modulu load data.
 
-Při počítání barevných histogramů byl zjištěn překvapivý poznatek. V případě kdy je histogram jako datová struktura \textit{list} a až výsledný histogram převeden do \textit{numpy array} je rychlost programu nesrovnatelně větší oproti tomu než když jsou histogramy vytvořeny rovnou jako \textit{numpy array}  
+
+Při počítání barevných histogramů byl zjištěn překvapivý poznatek. V případě kdy je histogram jako datová struktura \textit{list} a až výsledný histogram převeden do \textit{numpy array} je rychlost programu nesrovnatelně větší oproti tomu, když jsou histogramy vytvořeny rovnou jako \textit{numpy array}  
   
 \subsection{Knn classifier}
-V tomto modulu probíhá počítání vzdáleností mezi jednotlivými příznaky (vektory) a jejich normalizování na následný výpočet JEC vzdálenosti.    
+V tomto modulu probíhá počítání vzdáleností mezi jednotlivými příznaky (vektory) a jejich škálování na interval 0 až 1. Z naškálovaných výsledků je spočtena výsledná vzdálenost JEC.    
 
 \subsection{Label transfer}
-Modul přenese n nejbližších klíčových slov, podle vzdáleností.  
-
+Modul přenese n nejbližších klíčových slov, podle vzdáleností JEC. Na přenesení máme dva algoritmy. První který byl uvedený u JEC a druhý kdy se přenáší jen klíčová slova která převyšují počtem výskytů práh.   
 
 \subsection{Evaluator}
-\par Modul vyhodnotí úspěšnosti anotace. 
-\par Jako prvni získáme všechna klíčová slova a to pomocí funkce \textit{getKeywords}. Následně je pro každé klíčové slovo spočítána přenost a úplnost.
-  
-  
-  Kroky programu od načtení do vyhodnocení , jako seznam i když to už je v tom diagramu
-  extrakce příznaků
-  	seznam modul(jak se to jmenuje v pythonu) 
-  	LBP - třída zpracovavájící barevné příznaky RGB, LAB a HSV příznaky
-  	třída zpracovávající texturové příznaky GABOR 
-  
-  výstup programu
-
-
+\par Tento modul vyhodnotí úspěšnosti anotace. Jako prvni získáme všechna klíčová slova a to pomocí funkce \textit{getKeywords}. Pokračujeme získáním anotovaných dat ve funkci \textit{read\_data\_from\_file}.  Následně je pro každé klíčové slovo spočítána přenost a úplnost. Tyto hodnoty jsou popsány v sekci Vyhodnocení výsledků.
 
 \chapter{Vyhodnocení výsledků}
-\par Zpracování výsledků probíhá jako porovnání anotací přidělených člověkem s anotacemi přidělenymi klasifikátorem. $w_{auto}$ představuje počet obrázků, kterým bylo dané slovo přiřazeno klasifikátorem, $w_{human}$ počet obrázků, kterým bylo dané slovo přiřazeno člověkem a $w_{corrrectly}$ počet obrázků, kterým bylo slovo přiřazené správně. U klasifikátorů se počítá precision (přesnost) a recall (úplnost) pro každé slovo v testovací sadě.
+\par Zpracování výsledků probíhá jako porovnání anotací přidělených člověkem s anotacemi přidělenymi klasifikátorem. $w_{auto}$ představuje počet obrázků, kterým bylo dané slovo přiřazeno klasifikátorem, $w_{human}$ počet obrázků, kterým bylo dané slovo přiřazeno člověkem a $w_{corrrectly}$ počet obrázků, kterým bylo slovo přiřazené správně. U klasifikátorů se počítá precision (přesnost) a recall (úplnost) pro každé slovo v testovací sadě. Při testování se snažíme obě hodnoty co nejvíce maximalizovat.
 
-\par Recall \eqref{recall} je počet obrázků správně anotovaných s daným slovem děleno počtem obrázků, kterým bylo toto slovo přiděleno v anotaci člověkem. Precision \eqref{precision} je počet správně anotovaných obrázků s tímto slovem děleno celkovým počtem anotovaných obrázků s tímto slovem (správně nebo ne). \cite{Result_A_A}
+\par Recall \eqref{recall} je počet obrázků správně anotovaných s daným slovem děleno počtem obrázků, kterým bylo toto slovo přiděleno v anotaci člověkem. Precision \eqref{precision} je počet správně anotovaných obrázků s tímto slovem děleno celkovým počtem anotovaných obrázků s tímto slovem (správně nebo ne). 
+
 \begin{align}
    \label{recall} Rec = \frac{w_c}{w_h}
 \end{align}
@@ -524,52 +575,87 @@ Modul přenese n nejbližších klíčových slov, podle vzdáleností.
    \label{precision} Prec = \frac{w_c}{w_a}
 \end{align}
 
+\par Výsledná přesnost a úplnost se počítá jako průměr dosažených výsledků pro jednotlivá slova. V případě, že přesnost převyšuje úplnost jsou klíčová slova sice korektní, ale je jich málo. V opačném případě při převyšující úplnosti bylo získáno hodně klíčových slov, ale málo z nich je korektních. Proto je snaha získat obě čísla co nejvyšší. 
+\par Počet nenulových slov značí počet slov které byli při anotaci použity alespoň jednou. \cite{Result_A_A}
+
+
+
 \section{Srovnání výsledků}
-Přesné parametry se kterými autoři dosahovali nejlepší výsledků nebyli zjištěny, proto bylo třeba u některých příznaků je zkoušet metodou pokus omyl.
+Přesné parametry se kterými autoři dosahovali nejlepší výsledků nebyli zjištěny, proto bylo třeba je u některých příznaků zkoušet metodou pokus omyl.
 
 
 \subsection{Gabor - porovnání parametrů}
-\begin{tabular}{ |c|c|c|c| }
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c| }
 \hline
-\multicolumn{4}{ |c| }{Gabor s knihovnou scikit na datech iaprtc12} \\
-\hline
-Parametry & Přesnost (\%) & Úplnost (\%) & Počet nenulových slov \\ \hline
+Parametry & $P_{\%}$ & $R_{\%}$ & N \\ \hline
  lambda $0.25$, $0.5$, $1.0$ & \multirow{3}{*}{9.9} & \multirow{3}{*}{6.8} & \multirow{3}{*}{151} \\
  sigma $1$ & & & \\
  theta $0$, $\frac{\pi}{4}$, $\frac{\pi}{2}$, $\frac{3}{4}\pi$ & & & \\ \hline
  lambda 2, $2\sqrt{2}$, 4 & \multirow{3}{*}{8.5} & \multirow{3}{*}{5.7} & \multirow{3}{*}{143} \\
  sigma $1$ & & & \\
- theta $0$, $\frac{\pi}{4}$, $\frac{\pi}{2}$, $\frac{3}{4}\pi$ & & & \\ \hline
+ theta $0$, $\frac{\pi}{4}$, $\frac{\pi}{2}$, $\frac{3}{4}\pi$ & & & \\ 
 \hline
 \end{tabular}
+\captionof{table}{Gábor s knihovnou scikit na datech iaprtc12.}
+\end{center}
 
+\subsection{Haar - porovnání parametrům}
+\begin{center}
+	\begin{tabular}{ |c|c|c|c| }
+		\hline
+		Parametry & $P_{\%}$  & $R_{\%}$ & N \\ \hline
+		Desktiptor jako vektor $12 \times 16$ binů & 2.9 & 2.1 & 63 \\ \hline
+		Deskriptor jako vektor sum & 5.8 & 4 & 114 \\ \hline 	
+	\end{tabular}
+	\captionof{table}{Haar na datech iaprtc12.}
+\end{center}
+
+\subsection{Přiřazování klíčových slov pomocí práhu}
+\begin{center}
+\begin{tabular}{l | c c c|c c c}
+		          	& \multicolumn{3}{c|}{5 sousedů} & \multicolumn{3}{ c}{10 sousedů} \\ 
+Metoda          		& $P_{\%}$ & $R_{\%}$ & N & $P_{\%}$ & $R_{\%}$ & N \\
+\hline
+RGB						& 20.1 & 9 & 178 & 14.3 & 15.3 & 205 \\
+LAB					  	& 17.1 & 8.8 & 156 & 14.4 & 14.7 & 185 \\
+HSV            			& 21 & 11.4 & 191 & 14.9 & 18.6 & 221 \\
+RGB, LAB, HSV      		& 21.9 & 11.2 & 188 & 16.1 & 19 & 221 \\
+\hline
+\hline
+JEC						& 0 & 0 & 0 & 0 & 0 & 0 \\ 
+\end{tabular}
+\captionof{table}{Výsledky získané přiřazování klíčových slov s práhem na datech iaprtc12. P značí přesnost, R úplnost a N počet nenulových klíčových slov.}
+\end{center}
 
 \subsection{Konečné výsledky a srovnání s literaturou}
 \begin{center}
 \begin{tabular}{l | c c c|c c c}
 		          	& \multicolumn{3}{c|}{IAPRTC12} & \multicolumn{3}{ c}{ESP} \\ 
-Metoda          		& $P_{\%}$ & $U_{\%}$ & N & $P_{\%}$ & $U_{\%}$ & N \\
+Metoda          		& $P_{\%}$ & $R_{\%}$ & N & $P_{\%}$ & $R_{\%}$ & N \\
 \hline
 RGB						& 14.1 & 9 & 167 & 17 & 13.2 & 209 \\
 LAB					  	& 12.7 & 7.5 & 148 & 6.1 & 5.2 & 117 \\
 HSV            			& 16.7 & 10.9 & 181 & 18.2 & 14.8 & 211 \\
 RGB, LAB, HSV      		& 17.4 & 11.1 & 178 & 18.7 & 14.8 & 209 \\
-Gabor					& 8.1 & 4.7 & 126 & 0 & 0 & 0 \\
-GaborQ					& 6.9 & 4.8 & 133 & 0 & 0 & 0 \\
+Gabor					& 8.1 & 4.7 & 126 & 14.2 & 10.8 & 194 \\
+GaborQ					& 6.9 & 4.8 & 133 & 12.1 & 9.9 & 187 \\
+Haar					& 5.8 & 4 & 114 & 10.2 & 8.4 & 178 \\
+HaarQ					& 5.8 & 4.4 & 123 & 9.4 & 7.3 & 169 \\
 POEM		     		& 21.5 & 12.8 & 189 & 0 & 0 & 0 \\
-RGB, LAB, HSV, POEM		& 21.8 & 13.8 & 187 & 0 & 0 & 0 \\
+RGB, LAB, HSV, POEM		& 21.8 & 13.8 & 187 & 3.3 & 3.3 & 85  \\
 Barevný POEM			& 21 & 12.4 & 184 & 0 & 0 & 0 \\
 \hline
 \hline
 JEC						& 0 & 0 & 0 & 0 & 0 & 0 \\ 
 \end{tabular}
-\captionof{table}{Výsledky získané v rámci práce. P značí přesnost, U úplnost a N počet nenulových klíčových slov.}
+\captionof{table}{Výsledky získané v rámci práce. P značí přesnost, R úplnost a N počet nenulových klíčových slov.}
 \end{center}
 
 \begin{center}
 	\begin{tabular}{l | c c c|c c c}
 		          	& \multicolumn{3}{ c|}{IAPRTC12} & \multicolumn{3}{ c }{ESP} \\ 
-	Metoda          		& $P_{\%}$ & $U_{\%}$ & N & $P_{\%}$ & $U_{\%}$ & N  \\
+	Metoda          		& $P_{\%}$ & $R_{\%}$ & N & $P_{\%}$ & $R_{\%}$ & N  \\
 	\hline
 	RGB						& 20 & 13 & 189 & 21 & 17 & 221 \\
 	LAB					  	& 22 & 14 & 194 & 20 & 17 & 221 \\
@@ -585,27 +671,67 @@ JEC						& 0 & 0 & 0 & 0 & 0 & 0 \\
 	\captionof{table}{Výsledky z literatury \cite{JEC2}.}
 \end{center}
 \chapter{Závěr}
-V teoretické části byly popsány nízkoúrovňové příznaky barva a textura. Byla rozebrána metoda JEC, která bude v bakalářské práci implementována. Seznámili jsme se s knihovnou OpenCV, prostudovali obrázky a přiložená metadata od ČTK, ESP a iaprtc12. 
- Výsledkem bakalářské práce je aplikace která umožňuje
+\par V práci byla řešena automatická anotace obrázků pomocí spojování příznaků. U prvního řešení s metodou JEC byla použito vypočtení příznaků odděleně následováno spojení jejich vzdáleností do jenoho. V druhém případě bylo spojení příznaků interpretováno jako společný příznak, kdy byl POEM rozšířen na všechny barevné kannály.
+V teoretické části byly popsány a rozebrány nízkoúrovňové příznaky barva a textura. U barvy se zabývalo barevnými modely RGB, LAB a HSV. U textury to byl GABOR, HAAR a POEM. 
+
+
+Byla naimplementována přenesení klíčových slov za pomocí práhu.
+P
+V rámci práce byla prostudovana knihovna OpenCV. 
+
+V praktické části byl navržen a implementován program pro automatickou anotaci obrázků. Na základě naměřených výsledků byly naladěny optimální parametry. 
+Funkčnost programu byla otestována na datech iaprtc12 a ESP.
+
+%neni moje!!
+Na základě naměřených výsledků bylo naladěny optimální parametry
+Aplikace splňuje základní požadavky stanované nicméně je zde široký prostro pro zlepšení
+
  
- Aplikace splňuje základní požadavky stanované nicméně je zde široký prostro pro zlepšení
+ 
 % 
 % PRO ANGLICKOU SAZBU JE NUTNÉ ZMĚNIT
 % CITAČNÍ STYL!
 %
+
+\chapter{Použité zkratky}
+
+
+\begin{labeling}{zkratky}
+	\item [AIA] Automatic image anotation.	
+	\item [JEC] Joint equal contribution
+	\item [RGB] Barevný model Red, Green, Blue (červená, zelená, modrá).
+	\item [LAB] Barevný model. 
+	\item [HSV] Barevný model. 
+	\item [POEM] patterns of oriented edge magnitudes.
+	\item [LBP] Local binary pattern.
+	\item [OpenCV] Open source computer vision.
+	\item [BSD] Licence pro svobodný software, umožňující volné šíření softwaru.
+\end{labeling}
+
 \bibliographystyle{csplainnatkiv}
 {\raggedright\small
 \bibliography{literatura}
 }
 
+\appendix
 \chapter{Uživatelská dokumentace}
-\par Pro spuštění programu je třeba mít nainstalovýný python (2.7.12) s NumPy verze 9, knihovnu openCV verzi 3.1 a vědeckou knihovnu scipy verze 0.17.0. Vzhledem k náročnosti programu je pro spuštění programu mít v počítači  alespoň 16 GB RAM paměti. Následné postupy jsou uvedeny pro operační systém Linux, které se od postupu na jiném oparečním systému mohou lišit.
+\par Pro spuštění programu je třeba mít nainstalovaný python ve verzi 2.7.12 s NumPy verze 9, knihovnu openCV verzi 3.1 a vědeckou knihovnu scipy verze 0.17.0. Vzhledem k náročnosti programu je pro jeho spuštění nutné mít v počítači alespoň 16 GB RAM paměti. Následující postupy jsou uvedeny pro operační systém Linux, které se od postupu na jiném oparečním systému mohou lišit.
 
-\par instalace
 \par Veškeré nastavení aplikace probíhá pomocí souboru \textit{config.py}
 
-popsani jak vypada zdrojovej soubor kterej to zere, nejdriv cesta k souboru a pak jeho klicovy slova
- 
+\vspace{1cm} 
+Parametry configu:
+\begin{itemize}
+	\item \textit{TRAIN\_LIST} - Trénovací list obrázků, který by měl obsahovat cesty k obrázkům trénovací sady a jejich klíčová slova ve formátu \textit{cesta\_k\_obrazku; klíčové\_slovo klíčové\_slovo}. Předpokládaný formát \textit{.txt}.
+	\item \textit{TEST\_LIST} - Testovací list, který by měl obsahovat cesty k obrázkům testovací sady a jejich klíčová slova ve formátu \textit{cesta\_k\_obrazku; klíčové\_slovo klíčové\_slovo}. Předpokládaný formát \textit{.txt}.
+	\item \textit{DATAFILE\_TRAIN} - Soubor do kterého budou uloženy příznakovové vektory, načtenáých obrázků. Předpokládaný formát \textit{.py}.
+	\item \textit{PICTURE\_RESULT} - Obrazky a prirazene klicova slova klasifikatorem.
+	\item \textit{PICTURE\_TEST\_KEYWORDS} - obrazky s prirazenym slovy od klasifikatoru i s se slovy prirazene clovekem
+	\item \textit{KEYWORDS\_RESULT} - Vysledky klicovych slov, jejich presnost a uplnost
+	\item \textit{COUNT\_NEIGHBORS} - Počet sousedů.
+	\item \textit{COUNT\_KEYWORDS} - Počet klíčových slov.
+\end{itemize}
+Dále jsou v cofingu uvedené jednotlivé metody s očekávanou hodnotou \textit{True} nebo \textit{False} v závyslosti zda se mají použít nebo ne.
 
 \subsubsection{Spuštění programu}
 Program spustíme z příkazové řádky zadáním příkazu \textit{python nazevskriptu.py}. 
@@ -617,8 +743,12 @@ Program spustíme z příkazové řádky zadáním příkazu \textit{python naze
 \end{itemize}
 
 \subsubsection{Výstupy programu}
+Názvy výstupných souborů se mohou lišit v závyslosti na nastavení configu.
 \begin{itemize}
-	\item \textit{gradientX.jpg} - obrázek po použití filtru x, analogicky \textit{gradientY.jpg}
+	\item \textit{PICTURE\_RESULT} - Obrazky a prirazene klicova slova klasifikatorem.
+	\item \textit{PICTURE\_TEST\_KEYWORDS} - obrazky s prirazenym slovy od klasifikatoru i s se slovy prirazene clovekem
+	\item \textit{KEYWORDS\_RESULT} - Vysledky klicovych slov, jejich presnost a uplnost
+	\item \textit{DATAFILE\_TRAIN} - Soubor do kterého budou uloženy příznakovové vektory, načtenáých obrázků. 
 \end{itemize}
-
+	
 \end{document}

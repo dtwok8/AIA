@@ -671,20 +671,10 @@ JEC						& 0 & 0 & 0 & 0 & 0 & 0 \\
 	\captionof{table}{Výsledky z literatury \cite{JEC2}.}
 \end{center}
 \chapter{Závěr}
-\par V práci byla řešena automatická anotace obrázků pomocí spojování příznaků. U prvního řešení s metodou JEC byla použito vypočtení příznaků odděleně následováno spojení jejich vzdáleností do jenoho. V druhém případě bylo spojení příznaků interpretováno jako společný příznak, kdy byl POEM rozšířen na všechny barevné kannály.
-V teoretické části byly popsány a rozebrány nízkoúrovňové příznaky barva a textura. U barvy se zabývalo barevnými modely RGB, LAB a HSV. U textury to byl GABOR, HAAR a POEM. 
-
-
-Byla naimplementována přenesení klíčových slov za pomocí práhu.
-P
-V rámci práce byla prostudovana knihovna OpenCV. 
-
-V praktické části byl navržen a implementován program pro automatickou anotaci obrázků. Na základě naměřených výsledků byly naladěny optimální parametry. 
-Funkčnost programu byla otestována na datech iaprtc12 a ESP.
-
-%neni moje!!
-Na základě naměřených výsledků bylo naladěny optimální parametry
-Aplikace splňuje základní požadavky stanované nicméně je zde široký prostro pro zlepšení
+\par V práci byla řešena automatická anotace obrázků pomocí spojování barevných a texturových příznaků. U prvního řešení s metodou JEC byla použito vypočtení příznaků odděleně následováno spojení jejich vzdáleností do jedné.  V druhém případě bylo spojení příznaků interpretováno jako jeden společný příznak, kdy byl POEM rozšířen na všechny barevné kanály.
+\par V teoretické části byly popsány a rozebrány nízkoúrovňové příznaky barva a textura. U barvy se zabývalo barevnými modely RGB, LAB a HSV. U textury to byl GABOR, HAAR a POEM. Dála se zabývalo přenášení klíčových slov za pomocí práhu, kdy musela frekvence výskytu u sousedů převýšit stanovený práh. 
+\par V praktické byl navržen a implementován program v jazyce python pro automatickou anotaci obrázků, který využívá právě vyše zmíněné barevné prostory a reprezentace textur. Na základě naměřených výsledků byly laděny optimální parametry. V rámci práce byla prostudovaná a použita knihovna openCV. Funkčnost programu byla otestována na databázích iaprtc12 a ESP.
+\par Vylepšení programu barevného poemu. 
 
  
  
@@ -702,7 +692,7 @@ Aplikace splňuje základní požadavky stanované nicméně je zde široký pro
 	\item [RGB] Barevný model Red, Green, Blue (červená, zelená, modrá).
 	\item [LAB] Barevný model. 
 	\item [HSV] Barevný model. 
-	\item [POEM] patterns of oriented edge magnitudes.
+	\item [POEM] Patterns of oriented edge magnitudes.
 	\item [LBP] Local binary pattern.
 	\item [OpenCV] Open source computer vision.
 	\item [BSD] Licence pro svobodný software, umožňující volné šíření softwaru.

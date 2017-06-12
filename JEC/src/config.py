@@ -1,7 +1,7 @@
 import cv2
 
 #TRAIN_LIST = "../../Data/iaprtc12/iapr_train_2009_pulka_1.txt"
-TRAIN_LIST = "../../Data/ESP-ImageSet/esp_train_2009_pulka_2.txt"
+TRAIN_LIST = "../../Data/ESP-ImageSet/esp_train_2009_pulka_1.txt"
 #TEST_LIST = "../../Data/iaprtc12/iapr_test_2009.txt"
 TEST_LIST = "../../Data/ESP-ImageSet/esp_test_2009.txt"
 
@@ -24,18 +24,18 @@ COUNT_KEYWORDS = 5
 #nastaveni priznaku
 #KL - divergence cv2.HISTCMP_KL_DIV
 #L1 v2.NORM_L1
-RGB = True
+RGB = False
 RGB_DISTANCE = cv2.NORM_L1 # hele tohle neni uplne dobrej napad mas tam totiz dve metody compare a norm
-LAB = True
+LAB = False
 LAB_DISTANCE = cv2.HISTCMP_KL_DIV 
-HSV = True
+HSV = False
 HSV_DISTANCE = cv2.NORM_L1
 GABOR = False
 GABORQ = False
 
 POEM = False
 
-COLOR_POEM = False
+COLOR_POEM = True
 
 HAAR = False
 HAARQ = False

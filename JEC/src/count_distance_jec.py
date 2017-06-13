@@ -13,13 +13,32 @@ import math
 from operator import attrgetter #sorter
 
 #moje
-import class_pictures
-import class_neighbor
+import my_class.class_pictures as class_pictures
+import my_class.class_neighbor as class_neighbor
+
 import config
 import label_transfer
+import label_transfer_threshold
+
+def count_distance(H1, H2, metric):
+    
+    if(metric == "L1"):
+        distance = cv2.norm(H1, H2, cv2.NORM_L1)
+        return distance
+    
+    if(metric == "L2"):
+        distance = cv2.norm(H1, H2, cv2.NORM_L2)
+        return distance
+        
+    if(metric == "KL"):
+        distance = cv2.compareHist(H1, H2, cv2.HISTCMP_KL_DIV)
+        return distance
+    
+    print "Metrika nebyla rozpoznána! Nastavuji defaulní L1."
+    return cv2.norm(H1, H2, cv2.NORM_L1)
 
 
-def count_distance(train_data, test_image):
+def count_all_distance(train_data, test_image):
     """
         Projde vsechny obrazky z trenovaci sady a spocita vzdalenost s testovanym obrazkem.
         Nejprve spocte vzdalenost soucasne zjistuje nejvetsi a nejmensi hodnotu pro dany deskritor, coz bude pouzito u skalovani.
@@ -32,7 +51,7 @@ def count_distance(train_data, test_image):
             
     """    
     
-    print test_image.name
+    print ("distance {}").format(test_image.name)
     #potrebujeme zjistit rozsahy kvuli skalovatelnosti, sice je to neprehledne ale usetrime si dalsi tri cykly
     rgb_min=float("inf")
     rgb_max=float("-inf")
@@ -62,35 +81,35 @@ def count_distance(train_data, test_image):
         pom_neighbor = class_neighbor.Neighbor(picture)
         
         if(config.RGB):    
-            pom_neighbor.rgb_distance = cv2.norm(picture.rgb, test_image.rgb, config.RGB_DISTANCE)
+            pom_neighbor.rgb_distance = count_distance(picture.rgb, test_image.rgb, config.RGB_DISTANCE)
             if(pom_neighbor.rgb_distance < rgb_min):
                 rgb_min = pom_neighbor.rgb_distance
             if(pom_neighbor.rgb_distance > rgb_max):
                 rgb_max = pom_neighbor.rgb_distance
         
         if(config.LAB):
-            pom_neighbor.lab_distance  = cv2.compareHist(picture.lab, test_image.lab, cv2.HISTCMP_KL_DIV) #kl(picture.lab, test_image.lab)#            
+            pom_neighbor.lab_distance  = count_distance(picture.lab, test_image.lab, config.LAB_DISTANCE) #kl(picture.lab, test_image.lab)#            
             if(pom_neighbor.lab_distance < lab_min):
                 lab_min = pom_neighbor.lab_distance
             if(pom_neighbor.lab_distance > lab_max):
                 lab_max = pom_neighbor.lab_distance        
         
         if(config.HSV):
-            pom_neighbor.hsv_distance = cv2.norm(picture.hsv, test_image.hsv, config.RGB_DISTANCE)
+            pom_neighbor.hsv_distance = count_distance(picture.hsv, test_image.hsv, config.HSV_DISTANCE)
             if(pom_neighbor.hsv_distance < hsv_min):
                 hsv_min = pom_neighbor.hsv_distance
             if(pom_neighbor.hsv_distance > hsv_max):
                 hsv_max = pom_neighbor.hsv_distance
         
         if(config.GABOR):
-            pom_neighbor.gabor_distance = cv2.norm(picture.gabor, test_image.gabor, cv2.NORM_L1)
+            pom_neighbor.gabor_distance = count_distance(picture.gabor, test_image.gabor, config.GABOR_DISTANCE)
             if(pom_neighbor.gabor_distance < gabor_min):
                 gabor_min = pom_neighbor.gabor_distance
             if(pom_neighbor.gabor_distance > gabor_max):
                 gabor_max = pom_neighbor.gabor_distance 
                 
         if(config.GABORQ):
-            pom_neighbor.gaborq_distance = cv2.norm(picture.gaborq, test_image.gaborq, cv2.NORM_L1)
+            pom_neighbor.gaborq_distance = count_distance(picture.gaborq, test_image.gaborq, config.GABORQ_DISTANCE)
             
             if(pom_neighbor.gaborq_distance < gaborq_min):
                 gaborq_min = pom_neighbor.gaborq_distance
@@ -99,7 +118,7 @@ def count_distance(train_data, test_image):
                 
         if(config.POEM):            
             #pom_neighbor.poem_distance = cv2.norm(picture.poem, test_image.poem, cv2.NORM_L1)
-            pom_neighbor.poem_distance = cv2.compareHist(picture.poem.astype(np.float32), test_image.poem.astype(np.float32), cv2.HISTCMP_INTERSECT)
+            pom_neighbor.poem_distance = count_distance(picture.poem.astype(np.float32), test_image.poem.astype(np.float32), cv2.HISTCMP_INTERSECT)
             #pom_neighbor.poem_distance = cv2.compareHist(np.zeros(16, dtype=np.float32), np.zeros(16, dtype=np.float32), cv2.HISTCMP_KL_DIV)
             if(pom_neighbor.poem_distance < poem_min):
                 poem_min = pom_neighbor.poem_distance
@@ -107,21 +126,21 @@ def count_distance(train_data, test_image):
                 poem_max = pom_neighbor.poem_distance 
         
         if(config.COLOR_POEM):
-            pom_neighbor.color_poem_distance = cv2.norm(picture.color_poem, test_image.color_poem, cv2.NORM_L1)
+            pom_neighbor.color_poem_distance = count_distance(picture.color_poem, test_image.color_poem, config.COLOR_POEM_DISTANCE)
             if(pom_neighbor.color_poem_distance < color_poem_min):
                 color_poem_min = pom_neighbor.color_poem_distance
             if(pom_neighbor.color_poem_distance > color_poem_max):
                 color_poem_max = pom_neighbor.color_poem_distance     
         
         if(config.HAAR):
-            pom_neighbor.haar_distance = cv2.norm(picture.haar, test_image.haar, cv2.NORM_L1)
+            pom_neighbor.haar_distance = count_distance(picture.haar, test_image.haar, config.HAAR_DISTANCE)
             if(pom_neighbor.haar_distance < haar_min):
                 haar_min = pom_neighbor.haar_distance
             if(pom_neighbor.haar_distance > haar_max):
                 haar_max = pom_neighbor.haar_distance 
 
         if(config.HAARQ):
-            pom_neighbor.haarq_distance = cv2.norm(picture.haarq, test_image.haarq, cv2.NORM_L1)
+            pom_neighbor.haarq_distance = count_distance(picture.haarq, test_image.haarq, config.HAARQ_DISTANCE)
             if(pom_neighbor.haarq_distance < haarq_min):
                 haarq_min = pom_neighbor.haarq_distance
             if(pom_neighbor.haarq_distance > haarq_max):
@@ -178,6 +197,7 @@ def count_n():
         n = n + 1
         
     return n
+
 
 #spocita JEC pro tri parametry rgb, hsv, lab, ty to musíš naškálovat od 0 o 1 takže asi ten jec můžeš počítat stejně až budeš mít všechny ty výsledky
 def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min, gaborq_max, gaborq_min, poem_max, poem_min, color_poem_max, color_poem_min, haar_max, haar_min, haarq_max, haarq_min):
@@ -260,6 +280,7 @@ def getKey(item):
 train_data = class_pictures.importDataFromFile(config.DATAFILE_TRAIN)
 test_data = class_pictures.importDataFromFile(config.DATAFILE_TEST)
 
+#pomucka kdyz mame malo RAM
 train_data2 = class_pictures.importDataFromFile(config.DATAFILE_TRAIN2)
 #
 for data in train_data2:
@@ -268,14 +289,16 @@ for data in train_data2:
 
 ######### spocitani vzdalenosti
 for item in test_data:
-    count_distance(train_data, item)
+    count_all_distance(train_data, item)
     #print item.neighbors[0].jec
 
 print "----------------"
 
 
-
-label_transfer.label_transfer_main(train_data, test_data)
+if(config.LABEL_TRANSFER == "TH"):
+    label_transfer_threshold.label_transfer_main(train_data, test_data)
+else:
+    label_transfer.label_transfer_main(train_data, test_data)
 
 
 

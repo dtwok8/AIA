@@ -6,6 +6,7 @@ Objekt Pictures a k nemu prislusne a potrebne metody jako zapsani objektu do sou
 
 import pickle
 import numpy as np
+import sys
 
 import config
 
@@ -48,9 +49,20 @@ class Pictures:
 
 #asi budu posilat jmeno souboru jako parametr
 def exportDataToFile(listPictures, fileName):
-    # ulozim seznam do souboru, ktery je uveden jako datafile v configu
-    pickle.dump(listPictures, open(fileName, "w"))
+    try:
+        # ulozim seznam do souboru, ktery je uveden jako datafile v configu
+        pickle.dump(listPictures, open(fileName, "w"))
+    except:
+        print("Pri exportu do souboru doslo k chybe.")
+        sys.exit(1)
+        
+        
 
 def importDataFromFile(fileName):
-    data = pickle.load(open(fileName, "r"))
+    
+    try:
+        data = pickle.load(open(fileName, "r"))
+    except: 
+        print("Pri nacitani dat ze souboru {} nastala chyba. Zkontrolujte jmeno souboru a zda existuje.").format(fileName)
+        sys.exit(1)
     return data

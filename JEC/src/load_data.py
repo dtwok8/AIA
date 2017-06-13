@@ -8,11 +8,11 @@ Created on Wed Sep 21 15:02:46 2016
 
 import cv2
 import numpy as np
+import sys
 
 #moje
-import class_pictures
+import my_class.class_pictures as class_pictures
 import config
-#import gabor
 
 import deskriptors.poem as poem
 import deskriptors.color_poem as color_poem
@@ -109,8 +109,7 @@ def count_histogram(img, deep = 16):
                 histogram_list[index+(deep*i)]=histogram_list[index+(deep*i)]+1
     histogram = np.asarray(histogram_list, dtype=np.float32)  # kdyz to udelam jako list a pak to prevedu do numpy tak je to o dost rychlejsi           
     return histogram
-    
-    
+        
 load_pictures(config.TRAIN_LIST, config.DATAFILE_TRAIN, "train")
 #spocita histogrami pro testovaci mnozin
-load_pictures(config.TEST_LIST, config.DATAFILE_TEST, "test")
+#load_pictures(config.TEST_LIST, config.DATAFILE_TEST, "test")

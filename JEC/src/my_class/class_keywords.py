@@ -24,10 +24,10 @@ class Keywords:
     
 
 #asi budu posilat jmeno souboru jako parametr
-def exportDataToFile(listKeywords, fileName):
+#def exportDataToFile(listKeywords, fileName):
     # ulozim seznam do souboru, ktery je uveden jako datafile v configu
-    pickle.dump(listPictures, open(fileName, "w"))
+#    pickle.dump(listPictures, open(fileName, "w"))
 
-def importDataFromFile(fileName):
-    data = pickle.load(open(fileName, "r"))
-    return data
+#def importDataFromFile(fileName):
+#    data = pickle.load(open(fileName, "r"))
+#    return data

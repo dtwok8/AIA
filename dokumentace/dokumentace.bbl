@@ -1,20 +1,20 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Ameesh~Makadia(1961)]{JEC}
-{\sc Ameesh~Makadia}, S.~K.~V.~P.
+\bibitem[{Ameesh Makadia{,} Vladimir Pavlovic{,} Sanjiv Kumar}(1961)]{JEC}
+{\sc {Ameesh Makadia{,} Vladimir Pavlovic{,} Sanjiv Kumar}}.
 \newblock A new baseline for image annotation.
 \newblock \emph{Commun. ACM}. July 1961, 4, 7, s.~321.
 \newblock ISSN 0001-0782.
 \newblock \doi{10.1145/366622.366644}.
 \newblock Dostupn{\'{e}}~z: \url{http://doi.acm.org/10.1145/366622.366644}.
 
-\bibitem[Ameesh~Makadia()]{JEC2}
-{\sc Ameesh~Makadia}, S.~K.~V.~P.
+\bibitem[{Ameesh Makadia{,} Vladimir Pavlovic{,} Sanjiv Kumar}()]{JEC2}
+{\sc {Ameesh Makadia{,} Vladimir Pavlovic{,} Sanjiv Kumar}}.
 \newblock Baselines for Image Anotation.
 
 \bibitem[Cruse(1961)]{Gabor}
@@ -32,9 +32,14 @@
 \newblock Dostupn{\'{e}}~z:
   \url{https://www.vutbr.cz/www_base/zav_prace_soubor_verejne.php?file_id=117319}.
 
-\bibitem[Java SE Documentation - Graphics()]{Scikit}
-\emph{Class Graphics2D} [online]. Oracle, 2016. [cit.~2016/03/09]. Java {SE}
-  Documentation.
+\bibitem[Java SE Documentation - Graphics({\natexlab{a}})]{HaarWiky}
+\emph{Haar wavelet} [online]. Oracle, 2016{\natexlab{a}}. [cit.~2016/03/09].
+  Java {SE} Documentation.
+\newblock Dostupn{\'{e}}~z: \url{https://en.wikipedia.org/wiki/Haar_wavelet}.
+
+\bibitem[Java SE Documentation - Graphics({\natexlab{b}})]{Scikit}
+\emph{Class Graphics2D} [online]. Oracle, 2016{\natexlab{b}}.
+  [cit.~2016/03/09]. Java {SE} Documentation.
 \newblock Dostupn{\'{e}}~z: \url{http://scikit-image.org/}.
 
 \bibitem[Košař(2015)]{SrovnaniDeskriptoru}
@@ -44,8 +49,21 @@
 \newblock Dostupn{\'{e}}~z:
   \url{https://dspace5.zcu.cz/bitstream/11025/17883/1/A13N0110P.pdf}.
 
-\bibitem[V.~Lavrenko(1961)]{Result_A_A}
-{\sc V.~Lavrenko}, J.~J.~R.
+\bibitem[Murthy(2014)]{Gabor_wordpress}
+{\sc Murthy}, K.
+\newblock \emph{GABOR FILTERS : A PRACTICAL OVERVIEW} [online]. 2014.
+  [cit.~2017/05/12]. wordpress.
+\newblock Dostupn{\'{e}}~z:
+  \url{https://cvtuts.wordpress.com/2014/04/27/gabor-filters-a-practical-overview/}.
+
+\bibitem[Precision, Recall()]{precision_recall}
+\emph{Hierarchical classification needs a metric} [online]. 2016.
+  [cit.~2017/05/12]. idelab.
+\newblock Dostupn{\'{e}}~z:
+  \url{http://idalab.de/blog/data-science/hierarchical-metrics}.
+
+\bibitem[{V. Lavrenko{,} R.Manmatha{,} J. Jeon}(1961)]{Result_A_A}
+{\sc {V. Lavrenko{,} R.Manmatha{,} J. Jeon}}.
 \newblock A model for learning the semantics of pictures.
 \newblock \emph{Commun. ACM}. July 1961, 4, 7, s.~321.
 \newblock ISSN 0001-0782.

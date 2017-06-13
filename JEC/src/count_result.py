@@ -9,39 +9,16 @@ Created on Wed Sep 21 15:02:46 2016
 import cv2
 import numpy as np
 import pickle
+import sys
 
 #moje
-import class_neighbor
-import class_keywords
+import my_class.class_keywords as class_keywords
+import my_class.class_pictures_result as class_pictures
 import config
 import label_transfer
 
 
-class Pictures:
-    name = ""
-    keywords = []
-    our_assignment_keywords=[]
-    rgb = None
-    lab = None
-    hsv = None #np.zeros(shape=(3, 16), dtype=float32)
-    neighbors = None
-    nereast_neighbors = None
 
-
-    def __init__(self, name, keywords_by_human_in_string, keywords_by_automat_in_string):
-        self.data = []
-        self.name = name
-        
-        keywords_by_human_in_string = keywords_by_human_in_string.strip() # odstrani /n nakonci
-        self.keywords = keywords_by_human_in_string.split(" ")
-        
-        keywords_by_automat_in_string = keywords_by_automat_in_string.strip() # odstrani /n nakonci
-        self.our_assignment_keywords = keywords_by_automat_in_string.split(" ")
-     
-        
-def importDataFromFile(fileName):
-    data = pickle.load(open(fileName, "r"))
-    return data
 
 def getKeywords(train_data):
     """
@@ -136,9 +113,13 @@ def write_keyword_result_to_txt_file(list_keywords, collectively_result):
         
     soubor.close()
 
-def read_data_from_file():
-    f = open(config.PICTURE_TEST_KEYWORDS, 'r')
-
+def read_data_from_file():  
+    try:
+        f = open(config.PICTURE_ALL_KEYWORDS, 'r')
+    except: 
+        print("Pri nacitani dat do souboru nastala chyba. Zkontrolujte jmeno souboru a zda existuje.")
+        sys.exit(1)
+        
     listPictures = []
 
     for line in f: 
@@ -146,22 +127,22 @@ def read_data_from_file():
         print 'test {}'.format(split_line[0])
         img = cv2.imread(split_line[0])      
 
-        x = Pictures(split_line[0], split_line[1], split_line[2])
+        x = class_pictures.Pictures(split_line[0], split_line[1], split_line[2])
         listPictures.append(x)
     
     f.close()
     return listPictures
     
 
-train_data = importDataFromFile(config.DATAFILE_TRAIN)
+train_data = class_pictures.importDataFromFile(config.DATAFILE_TRAIN)
 test_data = read_data_from_file()
 
-for item in test_data:
-    print item.name
-    print item.keywords
-    print item.our_assignment_keywords
+#for item in test_data:
+#    print item.name
+#    print item.keywords
+#    print item.our_assignment_keywords
 
 
-list_keywords = getKeywords(train_data) #vsechny klicovy slova
+list_keywords = getKeywords(train_data) #vsechny klicovy slova z trenovacich dat
 collectively_result = count_precsion_recall(list_keywords, test_data) #zjistit jestli jsou spravne přiřazený   
 write_keyword_result_to_txt_file(list_keywords, collectively_result)

@@ -124,6 +124,7 @@
   %
   \begin{otherlanguage}{czech}
   \section*{\KIV@chapstarrule Poděkování}
+  \thispagestyle{empty}
   \medskip
   %\parbox{\textwidth}{\parindent 1.5em\noindent \KIV@abstractte}  
   \parbox{\textwidth}{\parindent 1.5em\noindent \KIV@thanktext}

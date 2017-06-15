@@ -100,8 +100,9 @@ def count_gabor(img):
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     kernels = create_kernels()
     img = img.astype(float)
-    #show_kernels(kernels, real=True)
-
+    show_kernels(kernels, real=False)
+    
+    exit()
     responses = process_image(img)
     vector_deep = 16
     filtered_img_real = []
@@ -117,6 +118,8 @@ def count_gabor(img):
     #io.imshow(responses[11][0])
     #io.show()
     
+img = cv2.imread("25.jpg")
+count_gabor(img)
 
 
 

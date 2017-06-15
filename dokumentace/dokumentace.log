@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.7)  13 JUN 2017 18:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.10.7)  15 JUN 2017 21:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -889,6 +889,14 @@ Package: multicol 2015/08/19 v1.8n multicolumn formatting (FMi)
 \colbreak@box=\box73
 \mc@col@check@num=\count149
 )
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip58
+\enit@outerparindent=\dimen177
+\enit@toks=\toks21
+\enit@inbox=\box74
+\enitdp@description=\count150
+)
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
@@ -941,16 +949,16 @@ Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
-\@linkdim=\dimen177
-\Hy@linkcounter=\count150
-\Hy@pagecounter=\count151
+\@linkdim=\dimen178
+\Hy@linkcounter=\count151
+\Hy@pagecounter=\count152
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count152
+\Hy@SavedSpaceFactor=\count153
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -962,17 +970,17 @@ Package hyperref Info: Plain pages OFF on input line 4458.
 Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
-\c@Hy@tempcnt=\count153
+\c@Hy@tempcnt=\count154
 
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
-\XeTeXLinkMargin=\dimen178
-\Fld@menulength=\count154
-\Field@Width=\dimen179
-\Fld@charsize=\dimen180
+\XeTeXLinkMargin=\dimen179
+\Fld@menulength=\count155
+\Field@Width=\dimen180
+\Fld@charsize=\dimen181
 Package hyperref Info: Hyper figures OFF on input line 6295.
 Package hyperref Info: Link nesting OFF on input line 6300.
 Package hyperref Info: Hyper index ON on input line 6303.
@@ -982,130 +990,130 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6320.
 Package hyperref Info: PDF/A mode OFF on input line 6325.
 LaTeX Info: Redefining \ref on input line 6365.
 LaTeX Info: Redefining \pageref on input line 6369.
-\Hy@abspage=\count155
-\c@Item=\count156
-\c@Hfootnote=\count157
+\Hy@abspage=\count156
+\c@Item=\count157
+\c@Hfootnote=\count158
 )
 
 Package hyperref Message: Driver: hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
-\Fld@listcount=\count158
-\c@bookmark@seq@number=\count159
+\Fld@listcount=\count159
+\c@bookmark@seq@number=\count160
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip58
+\Hy@SectionHShift=\skip59
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 98.
-Package hyperref Info: Option `unicode' set `true' on input line 98.
+Package hyperref Info: Option `colorlinks' set `true' on input line 100.
+Package hyperref Info: Option `unicode' set `true' on input line 100.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2012/11/06 v6.83m Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 98.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 100.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2016/03/03 v2.15a AMS math features
-\@mathmargin=\skip59
+\@mathmargin=\skip60
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen181
+\pmbraise@=\dimen182
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count160
+\inf@bad=\count161
 LaTeX Info: Redefining \frac on input line 199.
-\uproot@=\count161
-\leftroot@=\count162
+\uproot@=\count162
+\leftroot@=\count163
 LaTeX Info: Redefining \overline on input line 297.
-\classnum@=\count163
-\DOTSCASE@=\count164
+\classnum@=\count164
+\DOTSCASE@=\count165
 LaTeX Info: Redefining \ldots on input line 394.
 LaTeX Info: Redefining \dots on input line 397.
 LaTeX Info: Redefining \cdots on input line 518.
-\Mathstrutbox@=\box74
-\strutbox@=\box75
-\big@size=\dimen182
+\Mathstrutbox@=\box75
+\strutbox@=\box76
+\big@size=\dimen183
 LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
-\macc@depth=\count165
-\c@MaxMatrixCols=\count166
+\macc@depth=\count166
+\c@MaxMatrixCols=\count167
 \dotsspace@=\muskip17
-\c@parentequation=\count167
-\dspbrk@lvl=\count168
-\tag@help=\toks21
-\row@=\count169
-\column@=\count170
-\maxfields@=\count171
-\andhelp@=\toks22
-\eqnshift@=\dimen183
-\alignsep@=\dimen184
-\tagshift@=\dimen185
-\tagwidth@=\dimen186
-\totwidth@=\dimen187
-\lineht@=\dimen188
-\@envbody=\toks23
-\multlinegap=\skip60
-\multlinetaggap=\skip61
-\mathdisplay@stack=\toks24
+\c@parentequation=\count168
+\dspbrk@lvl=\count169
+\tag@help=\toks22
+\row@=\count170
+\column@=\count171
+\maxfields@=\count172
+\andhelp@=\toks23
+\eqnshift@=\dimen184
+\alignsep@=\dimen185
+\tagshift@=\dimen186
+\tagwidth@=\dimen187
+\totwidth@=\dimen188
+\lineht@=\dimen189
+\@envbody=\toks24
+\multlinegap=\skip61
+\multlinetaggap=\skip62
+\mathdisplay@stack=\toks25
 LaTeX Info: Redefining \[ on input line 2735.
 LaTeX Info: Redefining \] on input line 2736.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip62
-\f@ncyO@elh=\skip63
-\f@ncyO@erh=\skip64
-\f@ncyO@olh=\skip65
-\f@ncyO@orh=\skip66
-\f@ncyO@elf=\skip67
-\f@ncyO@erf=\skip68
-\f@ncyO@olf=\skip69
-\f@ncyO@orf=\skip70
+\fancy@headwidth=\skip63
+\f@ncyO@elh=\skip64
+\f@ncyO@erh=\skip65
+\f@ncyO@olh=\skip66
+\f@ncyO@orh=\skip67
+\f@ncyO@elf=\skip68
+\f@ncyO@erf=\skip69
+\f@ncyO@olf=\skip70
+\f@ncyO@orf=\skip71
 )
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count172
-\float@exts=\toks25
-\float@box=\box76
-\@float@everytoks=\toks26
-\@floatcapt=\box77
+\c@float@type=\count173
+\float@exts=\toks26
+\float@box=\box77
+\@float@everytoks=\toks27
+\@floatcapt=\box78
 )
 (/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip71
-\bibsep=\skip72
+\bibhang=\skip72
+\bibsep=\skip73
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count173
+\c@NAT@ctr=\count174
 ) (./dokumentace.aux)
 \openout1 = `dokumentace.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 114.
-LaTeX Font Info:    ... okay on input line 114.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 114.
-LaTeX Font Info:    ... okay on input line 114.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 114.
-LaTeX Font Info:    ... okay on input line 114.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 114.
-LaTeX Font Info:    ... okay on input line 114.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 114.
-LaTeX Font Info:    ... okay on input line 114.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 114.
-LaTeX Font Info:    ... okay on input line 114.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 114.
-LaTeX Font Info:    ... okay on input line 114.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 114.
-LaTeX Font Info:    ... okay on input line 114.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 114.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 116.
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -1145,17 +1153,17 @@ File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count174
-\scratchdimen=\dimen189
-\scratchbox=\box78
-\nofMPsegments=\count175
-\nofMParguments=\count176
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count177
-\MPscratchDim=\dimen190
-\MPnumerator=\count178
-\makeMPintoPDFobject=\count179
-\everyMPtoPDFconversion=\toks28
+\scratchcounter=\count175
+\scratchdimen=\dimen190
+\scratchbox=\box79
+\nofMPsegments=\count176
+\nofMParguments=\count177
+\everyMPshowfont=\toks28
+\MPscratchCnt=\count178
+\MPscratchDim=\dimen191
+\MPnumerator=\count179
+\makeMPintoPDFobject=\count180
+\everyMPtoPDFconversion=\toks29
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -1257,8 +1265,8 @@ Dictionary: translator-basic-dictionary, Language: English
 (/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
 File: siunitx-abbreviations.cfg 2016/03/01 v2.6q siunitx: Abbreviated units
 )
-\AtBeginShipoutBox=\box79
-Package hyperref Info: Link coloring ON on input line 114.
+\AtBeginShipoutBox=\box80
+Package hyperref Info: Link coloring ON on input line 116.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1266,55 +1274,55 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count180
+\c@section@level=\count181
 )
-LaTeX Info: Redefining \ref on input line 114.
-LaTeX Info: Redefining \pageref on input line 114.
-LaTeX Info: Redefining \nameref on input line 114.
+LaTeX Info: Redefining \ref on input line 116.
+LaTeX Info: Redefining \pageref on input line 116.
+LaTeX Info: Redefining \nameref on input line 116.
 
 (./dokumentace.out) (./dokumentace.out)
 \@outlinefile=\write3
 \openout3 = `dokumentace.out'.
 
-\c__siunitx_mathsf_int=\count181
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 114.
+\c__siunitx_mathsf_int=\count182
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 116.
 
 
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 114.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 116.
 
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 114
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 116
 .
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 114
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 116
 .
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 114.
+(Font)              <12> on input line 116.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 114.
+(Font)              <8> on input line 116.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 114.
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 114
+(Font)              <6> on input line 116.
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 116
 .
 
 (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-\c__siunitx_mathtt_int=\count182
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 114
+\c__siunitx_mathtt_int=\count183
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 116
 .
 
 (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
@@ -1335,18 +1343,18 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.138 \end{description}
+l.140 \end{description}
                         [1
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.142 \chapter
+l.144 \chapter
               {JEC Joint Equal Contribution} [2]
 Kapitola 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--152
+Underfull \hbox (badness 10000) in paragraph at lines 152--154
 
  []
 
@@ -1354,216 +1362,187 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.153 
+l.155 
        [3
 
-] <./img/img_histogram.jpg, id=284, 361.35pt x 481.8pt>
+] <./img/img_histogram.jpg, id=290, 361.35pt x 481.8pt>
 File: ./img/img_histogram.jpg Graphic file (type jpg)
 
 <use ./img/img_histogram.jpg>
-Package pdftex.def Info: ./img/img_histogram.jpg used on input line 156.
+Package pdftex.def Info: ./img/img_histogram.jpg used on input line 158.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 
-<./img/bgr_histogram.png, id=285, 578.16pt x 433.62pt>
+<./img/bgr_histogram.png, id=291, 578.16pt x 433.62pt>
 File: ./img/bgr_histogram.png Graphic file (type png)
 
 <use ./img/bgr_histogram.png>
-Package pdftex.def Info: ./img/bgr_histogram.png used on input line 157.
+Package pdftex.def Info: ./img/bgr_histogram.png used on input line 159.
 (pdftex.def)             Requested size: 133.82973pt x 100.37537pt.
 File: ./img/img_histogram.jpg Graphic file (type jpg)
  <use ./img/img_histogram.jpg>
-Package pdftex.def Info: ./img/img_histogram.jpg used on input line 163.
+Package pdftex.def Info: ./img/img_histogram.jpg used on input line 165.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 
-<./img/bgr_r.jpg, id=287, 361.35pt x 481.8pt>
+<./img/bgr_r.jpg, id=293, 361.35pt x 481.8pt>
 File: ./img/bgr_r.jpg Graphic file (type jpg)
  <use ./img/bgr_r.jpg>
-Package pdftex.def Info: ./img/bgr_r.jpg used on input line 164.
+Package pdftex.def Info: ./img/bgr_r.jpg used on input line 166.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 
-<./img/bgr_g.jpg, id=288, 361.35pt x 481.8pt>
+<./img/bgr_g.jpg, id=294, 361.35pt x 481.8pt>
 File: ./img/bgr_g.jpg Graphic file (type jpg)
  <use ./img/bgr_g.jpg>
-Package pdftex.def Info: ./img/bgr_g.jpg used on input line 165.
+Package pdftex.def Info: ./img/bgr_g.jpg used on input line 167.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 
-<./img/bgr_b.jpg, id=289, 361.35pt x 481.8pt>
+<./img/bgr_b.jpg, id=295, 361.35pt x 481.8pt>
 File: ./img/bgr_b.jpg Graphic file (type jpg)
  <use ./img/bgr_b.jpg>
-Package pdftex.def Info: ./img/bgr_b.jpg used on input line 166.
+Package pdftex.def Info: ./img/bgr_b.jpg used on input line 168.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 File: ./img/img_histogram.jpg Graphic file (type jpg)
 
 <use ./img/img_histogram.jpg>
-Package pdftex.def Info: ./img/img_histogram.jpg used on input line 172.
+Package pdftex.def Info: ./img/img_histogram.jpg used on input line 174.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
- <./img/lab_l.jpg, id=290, 361.35pt x 481.8pt>
+ <./img/lab_l.jpg, id=296, 361.35pt x 481.8pt>
 File: ./img/lab_l.jpg Graphic file (type jpg)
 
 <use ./img/lab_l.jpg>
-Package pdftex.def Info: ./img/lab_l.jpg used on input line 173.
+Package pdftex.def Info: ./img/lab_l.jpg used on input line 175.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
- <./img/lab_a.jpg, id=291, 361.35pt x 481.8pt>
+ <./img/lab_a.jpg, id=297, 361.35pt x 481.8pt>
 File: ./img/lab_a.jpg Graphic file (type jpg)
 
 <use ./img/lab_a.jpg>
-Package pdftex.def Info: ./img/lab_a.jpg used on input line 174.
+Package pdftex.def Info: ./img/lab_a.jpg used on input line 176.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
- <./img/lab_b.jpg, id=292, 361.35pt x 481.8pt>
+ <./img/lab_b.jpg, id=298, 361.35pt x 481.8pt>
 File: ./img/lab_b.jpg Graphic file (type jpg)
 
 <use ./img/lab_b.jpg>
-Package pdftex.def Info: ./img/lab_b.jpg used on input line 175.
+Package pdftex.def Info: ./img/lab_b.jpg used on input line 177.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 File: ./img/img_histogram.jpg Graphic file (type jpg)
  <use ./img/img_histogram.jpg>
-Package pdftex.def Info: ./img/img_histogram.jpg used on input line 181.
+Package pdftex.def Info: ./img/img_histogram.jpg used on input line 183.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 
-<./img/hsv_h.jpg, id=293, 361.35pt x 481.8pt>
+<./img/hsv_h.jpg, id=299, 361.35pt x 481.8pt>
 File: ./img/hsv_h.jpg Graphic file (type jpg)
  <use ./img/hsv_h.jpg>
-Package pdftex.def Info: ./img/hsv_h.jpg used on input line 182.
+Package pdftex.def Info: ./img/hsv_h.jpg used on input line 184.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 
-<./img/hsv_s.jpg, id=294, 361.35pt x 481.8pt>
+<./img/hsv_s.jpg, id=300, 361.35pt x 481.8pt>
 File: ./img/hsv_s.jpg Graphic file (type jpg)
  <use ./img/hsv_s.jpg>
-Package pdftex.def Info: ./img/hsv_s.jpg used on input line 183.
+Package pdftex.def Info: ./img/hsv_s.jpg used on input line 185.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 
-<./img/hsv_v.jpg, id=295, 361.35pt x 481.8pt>
+<./img/hsv_v.jpg, id=301, 361.35pt x 481.8pt>
 File: ./img/hsv_v.jpg Graphic file (type jpg)
  <use ./img/hsv_v.jpg>
-Package pdftex.def Info: ./img/hsv_v.jpg used on input line 184.
+Package pdftex.def Info: ./img/hsv_v.jpg used on input line 186.
 (pdftex.def)             Requested size: 75.27922pt x 100.37537pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.187 
+l.189 
        [4 <./img/img_histogram.jpg> <./img/bgr_histogram.png> <./img/bgr_r.jpg>
  <./img/bgr_g.jpg> <./img/bgr_b.jpg> <./img/lab_l.jpg> <./img/lab_a.jpg> <./img
-/lab_b.jpg>] <./img/gabor.png, id=307, 784.9325pt x 431.6125pt>
+/lab_b.jpg>] <./img/gabor.png, id=313, 784.9325pt x 431.6125pt>
 File: ./img/gabor.png Graphic file (type png)
 
 <use ./img/gabor.png>
-Package pdftex.def Info: ./img/gabor.png used on input line 198.
+Package pdftex.def Info: ./img/gabor.png used on input line 200.
 (pdftex.def)             Requested size: 365.08565pt x 200.75073pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.201 
+l.203 
        [5 <./img/hsv_h.jpg> <./img/hsv_s.jpg> <./img/hsv_v.jpg>]pdfTeX warning 
 (ext4): destination with the same identifier (name{page.6}) has been already us
 ed, duplicate ignored
 <to be read again> 
                    \relax 
-l.214 
+l.216 
        [6 <./img/gabor.png>]
-Overfull \hbox (12.09981pt too wide) in paragraph at lines 219--220
+Overfull \hbox (15.44382pt too wide) in paragraph at lines 221--222
  []\T1/lmr/bx/n/12 gamma[] \T1/lmr/m/n/12 ur-£uje pro-sto-rový po-m¥r stran. Ko
-n-t-ro-luju elip-si-citu gau-sovy funkce.
+n-t-ro-luju elip-si-citu Gau-sovy funkce.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
+Underfull \hbox (badness 10000) in paragraph at lines 223--224
 
  []
 
+<./img/gabor_filtry.png, id=337, 578.16pt x 433.62pt>
+File: ./img/gabor_filtry.png Graphic file (type png)
+
+<use ./img/gabor_filtry.png>
+Package pdftex.def Info: ./img/gabor_filtry.png used on input line 230.
+(pdftex.def)             Requested size: 190.7132pt x 143.02887pt.
+
+<./img/gabor_filter_imag.png, id=338, 578.16pt x 433.62pt>
+File: ./img/gabor_filter_imag.png Graphic file (type png)
+
+<use ./img/gabor_filter_imag.png>
+Package pdftex.def Info: ./img/gabor_filter_imag.png used on input line 231.
+(pdftex.def)             Requested size: 190.7132pt x 143.02887pt.
+pdfTeX warning (ext4): destination with the same identifier (name{page.7}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.238 \par Z
+             kaÅ¾dÃ©ho z dvanÃ¡cti obrÃ¡zkÅ¯ bude postaven 16 binovÃ½ histog...
+[7 <./img/gabor_filtry.png> <./img/gabor_filter_imag.png>]
 (./img/haar_wavelet.pdf_tex
-<img/haar_wavelet.pdf, id=330, page=1, 947.63588pt x 719.70639pt>
+<img/haar_wavelet.pdf, id=350, page=1, 481.8pt x 385.44pt>
 File: img/haar_wavelet.pdf Graphic file (type pdf)
 
 <use img/haar_wavelet.pdf, page 1>
 Package pdftex.def Info: img/haar_wavelet.pdf, page1 used on input line 52.
-(pdftex.def)             Requested size: 200.75073pt x 152.46062pt.
+(pdftex.def)             Requested size: 200.75073pt x 160.59567pt.
 
-<img/haar_wavelet.pdf, id=331, page=2, 947.63588pt x 719.70639pt>
+<img/haar_wavelet.pdf, id=351, page=2, 481.8pt x 385.44pt>
 File: img/haar_wavelet.pdf Graphic file (type pdf)
 
 <use img/haar_wavelet.pdf, page 2>
 Package pdftex.def Info: img/haar_wavelet.pdf, page2 used on input line 54.
-(pdftex.def)             Requested size: 200.75073pt x 152.46062pt.
+(pdftex.def)             Requested size: 200.75073pt x 160.59567pt.
 
-<img/haar_wavelet.pdf, id=332, page=3, 947.63588pt x 719.70639pt>
+<img/haar_wavelet.pdf, id=352, page=3, 481.8pt x 385.44pt>
 File: img/haar_wavelet.pdf Graphic file (type pdf)
 
 <use img/haar_wavelet.pdf, page 3>
 Package pdftex.def Info: img/haar_wavelet.pdf, page3 used on input line 56.
-(pdftex.def)             Requested size: 200.75073pt x 152.46062pt.
+(pdftex.def)             Requested size: 200.75073pt x 160.59567pt.
 
-<img/haar_wavelet.pdf, id=333, page=4, 947.63588pt x 719.70639pt>
+<img/haar_wavelet.pdf, id=353, page=4, 481.8pt x 385.44pt>
 File: img/haar_wavelet.pdf Graphic file (type pdf)
 
 <use img/haar_wavelet.pdf, page 4>
 Package pdftex.def Info: img/haar_wavelet.pdf, page4 used on input line 58.
-(pdftex.def)             Requested size: 200.75073pt x 152.46062pt.
+(pdftex.def)             Requested size: 200.75073pt x 160.59567pt.
 
-<img/haar_wavelet.pdf, id=334, page=5, 947.63588pt x 719.70639pt>
+<img/haar_wavelet.pdf, id=354, page=5, 481.8pt x 385.44pt>
 File: img/haar_wavelet.pdf Graphic file (type pdf)
 
 <use img/haar_wavelet.pdf, page 5>
 Package pdftex.def Info: img/haar_wavelet.pdf, page5 used on input line 60.
-(pdftex.def)             Requested size: 200.75073pt x 152.46062pt.
+(pdftex.def)             Requested size: 200.75073pt x 160.59567pt.
 
-<img/haar_wavelet.pdf, id=335, page=6, 947.63588pt x 719.70639pt>
+<img/haar_wavelet.pdf, id=355, page=6, 481.8pt x 385.44pt>
 File: img/haar_wavelet.pdf Graphic file (type pdf)
 
 <use img/haar_wavelet.pdf, page 6>
 Package pdftex.def Info: img/haar_wavelet.pdf, page6 used on input line 62.
-(pdftex.def)             Requested size: 200.75073pt x 152.46062pt.
-
-<img/haar_wavelet.pdf, id=336, page=7, 947.63588pt x 719.70639pt>
-File: img/haar_wavelet.pdf Graphic file (type pdf)
-
-<use img/haar_wavelet.pdf, page 7>
-Package pdftex.def Info: img/haar_wavelet.pdf, page7 used on input line 64.
-(pdftex.def)             Requested size: 200.75073pt x 152.46062pt.
-
-<img/haar_wavelet.pdf, id=337, page=8, 947.63588pt x 719.70639pt>
-File: img/haar_wavelet.pdf Graphic file (type pdf)
-
-<use img/haar_wavelet.pdf, page 8>
-Package pdftex.def Info: img/haar_wavelet.pdf, page8 used on input line 66.
-(pdftex.def)             Requested size: 200.75073pt x 152.46062pt.
-
-<img/haar_wavelet.pdf, id=338, page=9, 947.63588pt x 719.70639pt>
-File: img/haar_wavelet.pdf Graphic file (type pdf)
-
-<use img/haar_wavelet.pdf, page 9>
-Package pdftex.def Info: img/haar_wavelet.pdf, page9 used on input line 68.
-(pdftex.def)             Requested size: 200.75073pt x 152.46062pt.
-
-<img/haar_wavelet.pdf, id=339, page=10, 947.63588pt x 719.70639pt>
-File: img/haar_wavelet.pdf Graphic file (type pdf)
-
-<use img/haar_wavelet.pdf, page 10>
-Package pdftex.def Info: img/haar_wavelet.pdf, page10 used on input line 70.
-(pdftex.def)             Requested size: 200.75073pt x 152.46062pt.
-)pdfTeX warning (ext4): destination with the same identifier (name{page.7}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.242 
-       [7] [8 <./img/haar_wavelet.pdf> <./img/haar_wavelet.pdf
-
-pdfTeX warning: pdflatex (file ./img/haar_wavelet.pdf): PDF inclusion: multiple
- pdfs with page group included in a single page
-> <./img/haar_wavelet.pdf
-
-pdfTeX warning: pdflatex (file ./img/haar_wavelet.pdf): PDF inclusion: multiple
- pdfs with page group included in a single page
-> <./img/haar_wavelet.pdf
-
-pdfTeX warning: pdflatex (file ./img/haar_wavelet.pdf): PDF inclusion: multiple
- pdfs with page group included in a single page
-> <./img/haar_wavelet.pdf
-
-pdfTeX warning: pdflatex (file ./img/haar_wavelet.pdf): PDF inclusion: multiple
- pdfs with page group included in a single page
-> <./img/haar_wavelet.pdf
+(pdftex.def)             Requested size: 200.75073pt x 160.59567pt.
+) [8 <./img/haar_wavelet.pdf> <./img/haar_wavelet.pdf
 
 pdfTeX warning: pdflatex (file ./img/haar_wavelet.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
@@ -1584,157 +1563,174 @@ pdfTeX warning: pdflatex (file ./img/haar_wavelet.pdf): PDF inclusion: multiple
 pdfTeX warning: pdflatex (file ./img/haar_wavelet.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
 >]
-Underfull \hbox (badness 10000) in paragraph at lines 301--302
+Underfull \hbox (badness 10000) in paragraph at lines 272--273
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 319--320
 
  []
 
 [9]
-Overfull \hbox (8.47183pt too wide) in paragraph at lines 328--328
+Overfull \hbox (8.47183pt too wide) in paragraph at lines 346--346
 []\T1/lmr/bx/n/14.4 Originální al-go-rit-mus pro p°e-ne-sení klí-£o-vých slov
  []
 
-[10] [11]
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 358--359
+
+ []
+
+[11]
+
+LaTeX Warning: Command \' invalid in math mode on input line 371.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 371.
+
+[12]
 Kapitola 3.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 359.
+(hyperref)                than one, level fixed on input line 376.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 360--362
+Underfull \hbox (badness 10000) in paragraph at lines 377--379
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 363--364
+Underfull \hbox (badness 10000) in paragraph at lines 380--381
 
  []
 
 (./img/2D_kruznice.pdf_tex
-<img/2D_kruznice.pdf, id=390, page=1, 481.8pt x 385.44pt>
+<img/2D_kruznice.pdf, id=400, page=1, 481.8pt x 385.44pt>
 File: img/2D_kruznice.pdf Graphic file (type pdf)
 
 <use img/2D_kruznice.pdf, page 1>
 Package pdftex.def Info: img/2D_kruznice.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 230.0pt x 183.9975pt.
 
-<img/2D_kruznice.pdf, id=391, page=2, 481.8pt x 385.44pt>
+<img/2D_kruznice.pdf, id=401, page=2, 481.8pt x 385.44pt>
 File: img/2D_kruznice.pdf Graphic file (type pdf)
 
 <use img/2D_kruznice.pdf, page 2>
 Package pdftex.def Info: img/2D_kruznice.pdf, page2 used on input line 54.
 (pdftex.def)             Requested size: 230.0pt x 183.9975pt.
 
-<img/2D_kruznice.pdf, id=392, page=3, 481.8pt x 385.44pt>
+<img/2D_kruznice.pdf, id=402, page=3, 481.8pt x 385.44pt>
 File: img/2D_kruznice.pdf Graphic file (type pdf)
 
 <use img/2D_kruznice.pdf, page 3>
 Package pdftex.def Info: img/2D_kruznice.pdf, page3 used on input line 56.
 (pdftex.def)             Requested size: 230.0pt x 183.9975pt.
 
-<img/2D_kruznice.pdf, id=393, page=4, 481.8pt x 385.44pt>
+<img/2D_kruznice.pdf, id=403, page=4, 481.8pt x 385.44pt>
 File: img/2D_kruznice.pdf Graphic file (type pdf)
 
 <use img/2D_kruznice.pdf, page 4>
 Package pdftex.def Info: img/2D_kruznice.pdf, page4 used on input line 58.
 (pdftex.def)             Requested size: 230.0pt x 183.9975pt.
 
-<img/2D_kruznice.pdf, id=394, page=5, 481.8pt x 385.44pt>
+<img/2D_kruznice.pdf, id=404, page=5, 481.8pt x 385.44pt>
 File: img/2D_kruznice.pdf Graphic file (type pdf)
 
 <use img/2D_kruznice.pdf, page 5>
 Package pdftex.def Info: img/2D_kruznice.pdf, page5 used on input line 60.
 (pdftex.def)             Requested size: 230.0pt x 183.9975pt.
 
-<img/2D_kruznice.pdf, id=395, page=6, 481.8pt x 385.44pt>
+<img/2D_kruznice.pdf, id=405, page=6, 481.8pt x 385.44pt>
 File: img/2D_kruznice.pdf Graphic file (type pdf)
 
 <use img/2D_kruznice.pdf, page 6>
 Package pdftex.def Info: img/2D_kruznice.pdf, page6 used on input line 62.
 (pdftex.def)             Requested size: 230.0pt x 183.9975pt.
 
-<img/2D_kruznice.pdf, id=396, page=7, 481.8pt x 385.44pt>
+<img/2D_kruznice.pdf, id=406, page=7, 481.8pt x 385.44pt>
 File: img/2D_kruznice.pdf Graphic file (type pdf)
 
 <use img/2D_kruznice.pdf, page 7>
 Package pdftex.def Info: img/2D_kruznice.pdf, page7 used on input line 64.
 (pdftex.def)             Requested size: 230.0pt x 183.9975pt.
 
-<img/2D_kruznice.pdf, id=397, page=8, 481.8pt x 385.44pt>
+<img/2D_kruznice.pdf, id=407, page=8, 481.8pt x 385.44pt>
 File: img/2D_kruznice.pdf Graphic file (type pdf)
 
 <use img/2D_kruznice.pdf, page 8>
 Package pdftex.def Info: img/2D_kruznice.pdf, page8 used on input line 66.
 (pdftex.def)             Requested size: 230.0pt x 183.9975pt.
 
-<img/2D_kruznice.pdf, id=398, page=9, 481.8pt x 385.44pt>
+<img/2D_kruznice.pdf, id=408, page=9, 481.8pt x 385.44pt>
 File: img/2D_kruznice.pdf Graphic file (type pdf)
 
 <use img/2D_kruznice.pdf, page 9>
 Package pdftex.def Info: img/2D_kruznice.pdf, page9 used on input line 68.
 (pdftex.def)             Requested size: 230.0pt x 183.9975pt.
 
-<img/2D_kruznice.pdf, id=399, page=10, 481.8pt x 385.44pt>
+<img/2D_kruznice.pdf, id=409, page=10, 481.8pt x 385.44pt>
 File: img/2D_kruznice.pdf Graphic file (type pdf)
 
 <use img/2D_kruznice.pdf, page 10>
 Package pdftex.def Info: img/2D_kruznice.pdf, page10 used on input line 70.
 (pdftex.def)             Requested size: 230.0pt x 183.9975pt.
 
-<img/2D_kruznice.pdf, id=400, page=11, 481.8pt x 385.44pt>
+<img/2D_kruznice.pdf, id=410, page=11, 481.8pt x 385.44pt>
 File: img/2D_kruznice.pdf Graphic file (type pdf)
 
 <use img/2D_kruznice.pdf, page 11>
 Package pdftex.def Info: img/2D_kruznice.pdf, page11 used on input line 72.
 (pdftex.def)             Requested size: 230.0pt x 183.9975pt.
 
-<img/2D_kruznice.pdf, id=401, page=12, 481.8pt x 385.44pt>
+<img/2D_kruznice.pdf, id=411, page=12, 481.8pt x 385.44pt>
 File: img/2D_kruznice.pdf Graphic file (type pdf)
 
 <use img/2D_kruznice.pdf, page 12>
 Package pdftex.def Info: img/2D_kruznice.pdf, page12 used on input line 74.
 (pdftex.def)             Requested size: 230.0pt x 183.9975pt.
 
-<img/2D_kruznice.pdf, id=402, page=13, 481.8pt x 385.44pt>
+<img/2D_kruznice.pdf, id=412, page=13, 481.8pt x 385.44pt>
 File: img/2D_kruznice.pdf Graphic file (type pdf)
 
 <use img/2D_kruznice.pdf, page 13>
 Package pdftex.def Info: img/2D_kruznice.pdf, page13 used on input line 76.
 (pdftex.def)             Requested size: 230.0pt x 183.9975pt.
 
-<img/2D_kruznice.pdf, id=403, page=14, 481.8pt x 385.44pt>
+<img/2D_kruznice.pdf, id=413, page=14, 481.8pt x 385.44pt>
 File: img/2D_kruznice.pdf Graphic file (type pdf)
 
 <use img/2D_kruznice.pdf, page 14>
 Package pdftex.def Info: img/2D_kruznice.pdf, page14 used on input line 78.
 (pdftex.def)             Requested size: 230.0pt x 183.9975pt.
 
-<img/2D_kruznice.pdf, id=404, page=15, 481.8pt x 385.44pt>
+<img/2D_kruznice.pdf, id=414, page=15, 481.8pt x 385.44pt>
 File: img/2D_kruznice.pdf Graphic file (type pdf)
 
 <use img/2D_kruznice.pdf, page 15>
 Package pdftex.def Info: img/2D_kruznice.pdf, page15 used on input line 80.
 (pdftex.def)             Requested size: 230.0pt x 183.9975pt.
 
-<img/2D_kruznice.pdf, id=405, page=16, 481.8pt x 385.44pt>
+<img/2D_kruznice.pdf, id=415, page=16, 481.8pt x 385.44pt>
 File: img/2D_kruznice.pdf Graphic file (type pdf)
 
 <use img/2D_kruznice.pdf, page 16>
 Package pdftex.def Info: img/2D_kruznice.pdf, page16 used on input line 82.
 (pdftex.def)             Requested size: 230.0pt x 183.9975pt.
-) [12
+) [13
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 379--380
+Underfull \hbox (badness 10000) in paragraph at lines 396--397
 
  []
 
-<./img/znazorneni_lbp.png, id=412, 1832.8475pt x 565.11125pt>
+<./img/znazorneni_lbp.png, id=421, 1832.8475pt x 565.11125pt>
 File: ./img/znazorneni_lbp.png Graphic file (type png)
 
 <use ./img/znazorneni_lbp.png>
-Package pdftex.def Info: ./img/znazorneni_lbp.png used on input line 386.
+Package pdftex.def Info: ./img/znazorneni_lbp.png used on input line 403.
 (pdftex.def)             Requested size: 253.94968pt x 78.29585pt.
- [13 <./img/2D_kruznice.pdf> <./img/2D_kruznice.pdf
+ [14 <./img/2D_kruznice.pdf> <./img/2D_kruznice.pdf
 
 pdfTeX warning: pdflatex (file ./img/2D_kruznice.pdf): PDF inclusion: multiple 
 pdfs with page group included in a single page
@@ -1794,185 +1790,185 @@ pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./img/2D_kruznice.pdf): PDF inclusion: multiple 
 pdfs with page group included in a single page
-> <./img/znazorneni_lbp.png>] <./img/lbp1_tau.jpg, id=424, 481.8pt x 361.35pt>
+> <./img/znazorneni_lbp.png>] <./img/lbp1_tau.jpg, id=433, 481.8pt x 361.35pt>
 File: ./img/lbp1_tau.jpg Graphic file (type jpg)
 
 <use ./img/lbp1_tau.jpg>
-Package pdftex.def Info: ./img/lbp1_tau.jpg used on input line 401.
+Package pdftex.def Info: ./img/lbp1_tau.jpg used on input line 418.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
- <./img/lbp2_tau.jpg, id=425, 481.8pt x 361.35pt>
+ <./img/lbp2_tau.jpg, id=434, 481.8pt x 361.35pt>
 File: ./img/lbp2_tau.jpg Graphic file (type jpg)
 
 <use ./img/lbp2_tau.jpg>
-Package pdftex.def Info: ./img/lbp2_tau.jpg used on input line 402.
+Package pdftex.def Info: ./img/lbp2_tau.jpg used on input line 419.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
- <./img/lbp3_tau.jpg, id=426, 481.8pt x 361.35pt>
+ <./img/lbp3_tau.jpg, id=435, 481.8pt x 361.35pt>
 File: ./img/lbp3_tau.jpg Graphic file (type jpg)
 
 <use ./img/lbp3_tau.jpg>
-Package pdftex.def Info: ./img/lbp3_tau.jpg used on input line 403.
+Package pdftex.def Info: ./img/lbp3_tau.jpg used on input line 420.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 413--416
+Underfull \hbox (badness 10000) in paragraph at lines 430--433
 
  []
 
-[14 <./img/lbp1_tau.jpg> <./img/lbp2_tau.jpg> <./img/lbp3_tau.jpg>]
+[15 <./img/lbp1_tau.jpg> <./img/lbp2_tau.jpg> <./img/lbp3_tau.jpg>]
 (./img/soucet_vektoru.pdf_tex
-<img/soucet_vektoru.pdf, id=432, page=1, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=441, page=1, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 1>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=433, page=2, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=442, page=2, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 2>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page2 used on input line 54.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=434, page=3, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=443, page=3, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 3>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page3 used on input line 56.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=435, page=4, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=444, page=4, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 4>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page4 used on input line 58.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=436, page=5, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=445, page=5, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 5>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page5 used on input line 60.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=437, page=6, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=446, page=6, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 6>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page6 used on input line 62.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=438, page=7, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=447, page=7, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 7>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page7 used on input line 64.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=439, page=8, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=448, page=8, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 8>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page8 used on input line 66.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=440, page=9, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=449, page=9, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 9>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page9 used on input line 68.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=441, page=10, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=450, page=10, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 10>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page10 used on input line 70.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=442, page=11, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=451, page=11, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 11>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page11 used on input line 72.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=443, page=12, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=452, page=12, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 12>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page12 used on input line 74.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=444, page=13, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=453, page=13, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 13>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page13 used on input line 76.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=445, page=14, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=454, page=14, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 14>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page14 used on input line 78.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=446, page=15, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=455, page=15, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 15>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page15 used on input line 80.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=447, page=16, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=456, page=16, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 16>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page16 used on input line 82.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=448, page=17, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=457, page=17, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 17>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page17 used on input line 84.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=449, page=18, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=458, page=18, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 18>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page18 used on input line 86.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=450, page=19, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=459, page=19, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 19>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page19 used on input line 88.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=451, page=20, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=460, page=20, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 20>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page20 used on input line 90.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=452, page=21, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=461, page=21, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 21>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page21 used on input line 93.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/soucet_vektoru.pdf, id=453, page=22, 481.8pt x 385.44pt>
+<img/soucet_vektoru.pdf, id=462, page=22, 481.8pt x 385.44pt>
 File: img/soucet_vektoru.pdf Graphic file (type pdf)
 
 <use img/soucet_vektoru.pdf, page 22>
 Package pdftex.def Info: img/soucet_vektoru.pdf, page22 used on input line 95.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
-) [15 <./img/soucet_vektoru.pdf> <./img/soucet_vektoru.pdf
+) [16 <./img/soucet_vektoru.pdf> <./img/soucet_vektoru.pdf
 
 pdfTeX warning: pdflatex (file ./img/soucet_vektoru.pdf): PDF inclusion: multip
 le pdfs with page group included in a single page
@@ -2057,153 +2053,153 @@ le pdfs with page group included in a single page
 pdfTeX warning: pdflatex (file ./img/soucet_vektoru.pdf): PDF inclusion: multip
 le pdfs with page group included in a single page
 >] (./img/3D_kruznice.pdf_tex
-<img/3D_kruznice.pdf, id=465, page=1, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=474, page=1, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 1>
 Package pdftex.def Info: img/3D_kruznice.pdf, page1 used on input line 52.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=466, page=2, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=475, page=2, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 2>
 Package pdftex.def Info: img/3D_kruznice.pdf, page2 used on input line 54.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=467, page=3, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=476, page=3, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 3>
 Package pdftex.def Info: img/3D_kruznice.pdf, page3 used on input line 56.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=468, page=4, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=477, page=4, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 4>
 Package pdftex.def Info: img/3D_kruznice.pdf, page4 used on input line 58.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=469, page=5, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=478, page=5, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 5>
 Package pdftex.def Info: img/3D_kruznice.pdf, page5 used on input line 60.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=470, page=6, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=479, page=6, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 6>
 Package pdftex.def Info: img/3D_kruznice.pdf, page6 used on input line 62.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=471, page=7, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=480, page=7, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 7>
 Package pdftex.def Info: img/3D_kruznice.pdf, page7 used on input line 64.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=472, page=8, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=481, page=8, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 8>
 Package pdftex.def Info: img/3D_kruznice.pdf, page8 used on input line 66.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=473, page=9, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=482, page=9, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 9>
 Package pdftex.def Info: img/3D_kruznice.pdf, page9 used on input line 68.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=474, page=10, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=483, page=10, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 10>
 Package pdftex.def Info: img/3D_kruznice.pdf, page10 used on input line 70.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=475, page=11, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=484, page=11, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 11>
 Package pdftex.def Info: img/3D_kruznice.pdf, page11 used on input line 72.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=476, page=12, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=485, page=12, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 12>
 Package pdftex.def Info: img/3D_kruznice.pdf, page12 used on input line 74.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=477, page=13, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=486, page=13, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 13>
 Package pdftex.def Info: img/3D_kruznice.pdf, page13 used on input line 76.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=478, page=14, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=487, page=14, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 14>
 Package pdftex.def Info: img/3D_kruznice.pdf, page14 used on input line 78.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=479, page=15, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=488, page=15, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 15>
 Package pdftex.def Info: img/3D_kruznice.pdf, page15 used on input line 80.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=480, page=16, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=489, page=16, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 16>
 Package pdftex.def Info: img/3D_kruznice.pdf, page16 used on input line 82.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=481, page=17, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=490, page=17, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 17>
 Package pdftex.def Info: img/3D_kruznice.pdf, page17 used on input line 84.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=482, page=18, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=491, page=18, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 18>
 Package pdftex.def Info: img/3D_kruznice.pdf, page18 used on input line 86.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=483, page=19, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=492, page=19, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 19>
 Package pdftex.def Info: img/3D_kruznice.pdf, page19 used on input line 88.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=484, page=20, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=493, page=20, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 20>
 Package pdftex.def Info: img/3D_kruznice.pdf, page20 used on input line 91.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
 
-<img/3D_kruznice.pdf, id=485, page=21, 481.8pt x 385.44pt>
+<img/3D_kruznice.pdf, id=494, page=21, 481.8pt x 385.44pt>
 File: img/3D_kruznice.pdf Graphic file (type pdf)
 
 <use img/3D_kruznice.pdf, page 21>
 Package pdftex.def Info: img/3D_kruznice.pdf, page21 used on input line 93.
 (pdftex.def)             Requested size: 386.95749pt x 309.57573pt.
-) [16 <./img/3D_kruznice.pdf> <./img/3D_kruznice.pdf
+) [17 <./img/3D_kruznice.pdf> <./img/3D_kruznice.pdf
 
 pdfTeX warning: pdflatex (file ./img/3D_kruznice.pdf): PDF inclusion: multiple 
 pdfs with page group included in a single page
@@ -2283,104 +2279,95 @@ pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./img/3D_kruznice.pdf): PDF inclusion: multiple 
 pdfs with page group included in a single page
->] <./img/lbp_3_1.jpg, id=495, 481.8pt x 361.35pt>
+>] <./img/lbp_3_1.jpg, id=504, 481.8pt x 361.35pt>
 File: ./img/lbp_3_1.jpg Graphic file (type jpg)
  <use ./img/lbp_3_1.jpg>
-Package pdftex.def Info: ./img/lbp_3_1.jpg used on input line 458.
+Package pdftex.def Info: ./img/lbp_3_1.jpg used on input line 475.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
 
-<./img/lbp_3_2.jpg, id=496, 481.8pt x 361.35pt>
+<./img/lbp_3_2.jpg, id=505, 481.8pt x 361.35pt>
 File: ./img/lbp_3_2.jpg Graphic file (type jpg)
  <use ./img/lbp_3_2.jpg>
-Package pdftex.def Info: ./img/lbp_3_2.jpg used on input line 459.
+Package pdftex.def Info: ./img/lbp_3_2.jpg used on input line 476.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
 
-<./img/lbp_3_3.jpg, id=497, 481.8pt x 361.35pt>
+<./img/lbp_3_3.jpg, id=506, 481.8pt x 361.35pt>
 File: ./img/lbp_3_3.jpg Graphic file (type jpg)
  <use ./img/lbp_3_3.jpg>
-Package pdftex.def Info: ./img/lbp_3_3.jpg used on input line 460.
+Package pdftex.def Info: ./img/lbp_3_3.jpg used on input line 477.
 (pdftex.def)             Requested size: 150.0pt x 112.49704pt.
 
-[17 <./img/lbp_3_1.jpg> <./img/lbp_3_2.jpg> <./img/lbp_3_3.jpg>]
+[18 <./img/lbp_3_1.jpg> <./img/lbp_3_2.jpg> <./img/lbp_3_3.jpg>]
 Kapitola 4.
-<./img/iaprtc12.jpg, id=505, 481.8pt x 361.35pt>
+<./img/iaprtc12.jpg, id=516, 481.8pt x 361.35pt>
 File: ./img/iaprtc12.jpg Graphic file (type jpg)
  <use ./img/iaprtc12.jpg>
-Package pdftex.def Info: ./img/iaprtc12.jpg used on input line 477.
+Package pdftex.def Info: ./img/iaprtc12.jpg used on input line 494.
 (pdftex.def)             Requested size: 140.52551pt x 105.38982pt.
 
-[18
+[19
 
- <./img/iaprtc12.jpg>] <./img/esp.jpg, id=513, 200.75pt x 138.5175pt>
+ <./img/iaprtc12.jpg>] <./img/esp.jpg, id=525, 200.75pt x 138.5175pt>
 File: ./img/esp.jpg Graphic file (type jpg)
 
 <use ./img/esp.jpg>
-Package pdftex.def Info: ./img/esp.jpg used on input line 488.
+Package pdftex.def Info: ./img/esp.jpg used on input line 505.
 (pdftex.def)             Requested size: 140.52551pt x 96.96791pt.
- [19 <./img/esp.jpg>]
+ [20 <./img/esp.jpg>]
 Kapitola 5.
-<./img/recall_precision.png, id=521, 305.14pt x 372.592pt>
+<./img/recall_precision.png, id=532, 305.14pt x 372.592pt>
 File: ./img/recall_precision.png Graphic file (type png)
 
 <use ./img/recall_precision.png>
-Package pdftex.def Info: ./img/recall_precision.png used on input line 508.
-(pdftex.def)             Requested size: 205.51361pt x 250.93842pt.
+Package pdftex.def Info: ./img/recall_precision.png used on input line 525.
+(pdftex.def)             Requested size: 147.96942pt x 180.67566pt.
+ [21
 
-Overfull \hbox (17.03487pt too wide) in paragraph at lines 508--509
- [][] 
- []
-
-
-Overfull \vbox (6.62952pt too high) has occurred while \output is active []
-
-
-[20
-
- <./img/recall_precision.png>] [21]
+ <./img/recall_precision.png>] [22]
 Kapitola 6.
 (./img/navrh_systemu.pdf_tex
-<img/navrh_systemu.pdf, id=541, page=1, 490.57626pt x 558.43904pt>
+<img/navrh_systemu.pdf, id=552, page=1, 490.57626pt x 558.43904pt>
 File: img/navrh_systemu.pdf Graphic file (type pdf)
 
 <use img/navrh_systemu.pdf, page 1>
 Package pdftex.def Info: img/navrh_systemu.pdf, page1 used on input line 54.
 (pdftex.def)             Requested size: 386.95749pt x 440.49736pt.
 
-<img/navrh_systemu.pdf, id=542, page=2, 490.57626pt x 558.43904pt>
+<img/navrh_systemu.pdf, id=553, page=2, 490.57626pt x 558.43904pt>
 File: img/navrh_systemu.pdf Graphic file (type pdf)
 
 <use img/navrh_systemu.pdf, page 2>
 Package pdftex.def Info: img/navrh_systemu.pdf, page2 used on input line 59.
 (pdftex.def)             Requested size: 386.95749pt x 440.49736pt.
 
-<img/navrh_systemu.pdf, id=543, page=3, 490.57626pt x 558.43904pt>
+<img/navrh_systemu.pdf, id=554, page=3, 490.57626pt x 558.43904pt>
 File: img/navrh_systemu.pdf Graphic file (type pdf)
 
 <use img/navrh_systemu.pdf, page 3>
 Package pdftex.def Info: img/navrh_systemu.pdf, page3 used on input line 62.
 (pdftex.def)             Requested size: 386.95749pt x 440.49736pt.
 
-<img/navrh_systemu.pdf, id=544, page=4, 490.57626pt x 558.43904pt>
+<img/navrh_systemu.pdf, id=555, page=4, 490.57626pt x 558.43904pt>
 File: img/navrh_systemu.pdf Graphic file (type pdf)
 
 <use img/navrh_systemu.pdf, page 4>
 Package pdftex.def Info: img/navrh_systemu.pdf, page4 used on input line 64.
 (pdftex.def)             Requested size: 386.95749pt x 440.49736pt.
 
-<img/navrh_systemu.pdf, id=545, page=5, 490.57626pt x 558.43904pt>
+<img/navrh_systemu.pdf, id=556, page=5, 490.57626pt x 558.43904pt>
 File: img/navrh_systemu.pdf Graphic file (type pdf)
 
 <use img/navrh_systemu.pdf, page 5>
 Package pdftex.def Info: img/navrh_systemu.pdf, page5 used on input line 66.
 (pdftex.def)             Requested size: 386.95749pt x 440.49736pt.
 
-<img/navrh_systemu.pdf, id=546, page=6, 490.57626pt x 558.43904pt>
+<img/navrh_systemu.pdf, id=557, page=6, 490.57626pt x 558.43904pt>
 File: img/navrh_systemu.pdf Graphic file (type pdf)
 
 <use img/navrh_systemu.pdf, page 6>
 Package pdftex.def Info: img/navrh_systemu.pdf, page6 used on input line 68.
 (pdftex.def)             Requested size: 386.95749pt x 440.49736pt.
-) [22
+) [23
 
  <./img/navrh_systemu.pdf> <./img/navrh_systemu.pdf
 
@@ -2404,119 +2391,148 @@ pdfTeX warning: pdflatex (file ./img/navrh_systemu.pdf): PDF inclusion: multipl
 e pdfs with page group included in a single page
 >]
 Kapitola 7.
-[23
+[24
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 581.
-
- (/usr/share/texmf/tex/latex/lm/omslmr.fd
-File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 581.
-
-Overfull \hbox (20.3432pt too wide) in paragraph at lines 581--582
-\T1/lmr/m/n/12 ob-ráz-k·m tré-no-vací sady a je-jich klí-£ová slova ve for-mátu
- \T1/lmr/m/it/12 cesta_k_obrazku;
+Overfull \hbox (2.7208pt too wide) in paragraph at lines 604--605
+[]\T1/lmr/m/n/12 P°i po-£í-tání ba-rev-ných his-to-gram· byl zji²-t¥n p°e-kva-p
+ivý po-zna-tek. V p°í-
  []
 
-[24] [25] [26]
+[25] [26]
 Kapitola 8.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 639.
+(caption)                particular \caption on input line 648.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 650.
+(caption)                particular \caption on input line 662.
 See the caption package documentation for explanation.
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 667.
-See the caption package documentation for explanation.
-
-
-Overfull \hbox (1.28732pt too wide) in paragraph at lines 655--667
- [] 
- []
 
 [27
 
 ]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 683.
+(caption)                particular \caption on input line 680.
 See the caption package documentation for explanation.
+
+
+Overfull \hbox (1.28732pt too wide) in paragraph at lines 668--680
+ [] 
+ []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 707.
+(caption)                particular \caption on input line 696.
 See the caption package documentation for explanation.
 
+
+Overfull \hbox (1.28732pt too wide) in paragraph at lines 684--696
+ [] 
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 707.
+
+(/usr/share/texmf/tex/latex/lm/omslmr.fd
+File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 707.
+ [28]
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 726.
+(caption)                particular \caption on input line 767.
 See the caption package documentation for explanation.
 
-[28] <./img/esp_86743.jpg, id=589, 243.91125pt x 118.4425pt>
+[29]
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 786.
+See the caption package documentation for explanation.
+
+<./img/esp_86743.jpg, id=603, 243.91125pt x 118.4425pt>
 File: ./img/esp_86743.jpg Graphic file (type jpg)
 
 <use ./img/esp_86743.jpg>
-Package pdftex.def Info: ./img/esp_86743.jpg used on input line 732.
+Package pdftex.def Info: ./img/esp_86743.jpg used on input line 792.
 (pdftex.def)             Requested size: 140.52551pt x 68.23944pt.
- [29 <./img/esp_86743.jpg>]
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 805.
+See the caption package documentation for explanation.
+
+
+Overfull \hbox (36.58105pt too wide) in paragraph at lines 798--805
+ [] 
+ []
+
+[30 <./img/esp_86743.jpg>]
 Kapitola 9.
-[30
+[31
 
 ]
 Kapitola 10.
-(./dokumentace.bbl [31
+(./dokumentace.bbl [32
 
 ]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 13.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 14.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 19.
  (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)) [32
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 19.
+) [33
 
 ]
 P\v {r}\'{\i }loha A.
 
-Overfull \hbox (20.3432pt too wide) in paragraph at lines 782--783
+Overfull \hbox (20.3432pt too wide) in paragraph at lines 851--852
 \T1/lmr/m/n/12 ob-ráz-k·m tré-no-vací sady a je-jich klí-£ová slova ve for-mátu
  \T1/lmr/m/it/12 cesta_k_obrazku;
  []
 
 
-Overfull \hbox (4.13112pt too wide) in paragraph at lines 794--795
+Overfull \hbox (65.72418pt too wide) in paragraph at lines 856--857
+\T1/lmr/m/it/12 cesta_k_obrázku;originální_klí£ová_slova;klí£ová_slova_p°i°azen
+a_klasifikátorem 
+ []
+
+
+Overfull \hbox (4.13112pt too wide) in paragraph at lines 864--866
 \T1/lmr/m/n/12 Program spus-tíme z p°í-ka-zové °ádky za-dá-ním p°í-kazu \T1/lmr
 /m/it/12 py-thon na-zevskriptu.py\T1/lmr/m/n/12 . 
  []
 
-[33
+[34
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 811.
- [34]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 811.
+Overfull \hbox (65.72418pt too wide) in paragraph at lines 876--877
+\T1/lmr/m/it/12 cesta_k_obrázku;originální_klí£ová_slova;klí£ová_slova_p°i°azen
+a_klasifikátorem 
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 881.
+[35]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 881.
  (./dokumentace.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 811.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 811.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 881.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 881.
 Package rerunfilecheck Info: File `dokumentace.out' has not changed.
-(rerunfilecheck)             Checksum: 60B1A250063827559CF9F29C68AAF678;7505.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 811.
+(rerunfilecheck)             Checksum: 0429E77A831403A7C7DD28A0735C955A;7647.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 881.
  ) 
 Here is how much of TeX's memory you used:
- 23509 strings out of 493029
- 417157 string characters out of 6136234
- 467102 words of memory out of 5000000
- 26605 multiletter control sequences out of 15000+600000
+ 23800 strings out of 493029
+ 422013 string characters out of 6136234
+ 469444 words of memory out of 5000000
+ 26887 multiletter control sequences out of 15000+600000
  88143 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,12n,47p,10362b,922s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,12n,47p,10362b,942s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
@@ -2530,10 +2546,10 @@ are/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/t
 exmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lm
 tt10.pfb>
-Output written on dokumentace.pdf (41 pages, 1938126 bytes).
+Output written on dokumentace.pdf (42 pages, 1983709 bytes).
 PDF statistics:
- 725 PDF objects out of 1000 (max. 8388607)
- 556 compressed objects within 6 object streams
- 154 named destinations out of 1000 (max. 500000)
- 851 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 742 PDF objects out of 1000 (max. 8388607)
+ 572 compressed objects within 6 object streams
+ 157 named destinations out of 1000 (max. 500000)
+ 849 words of extra memory for PDF output out of 10000 (max. 10000000)
 

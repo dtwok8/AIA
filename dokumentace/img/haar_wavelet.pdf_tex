@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{944.09555bp}%
+    \setlength{\unitlength}{480bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,25 +48,17 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.75947567)%
+  \begin{picture}(1,0.8)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{haar_wavelet.pdf}}%
-    \put(0.04713035,0.04618516){\makebox(0,0)[rb]{\smash{-1.5}}}%
+    \put(0.04833333,0.17116667){\makebox(0,0)[rb]{\smash{-1}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{haar_wavelet.pdf}}%
-    \put(0.04713035,0.16142773){\makebox(0,0)[rb]{\smash{-1.0}}}%
+    \put(0.04833333,0.40866667){\makebox(0,0)[rb]{\smash{0}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{haar_wavelet.pdf}}%
-    \put(0.04713035,0.2766703){\makebox(0,0)[rb]{\smash{-0.5}}}%
+    \put(0.04833333,0.646){\makebox(0,0)[rb]{\smash{1}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{haar_wavelet.pdf}}%
-    \put(0.04713035,0.39191287){\makebox(0,0)[rb]{\smash{0.0}}}%
+    \put(0.28616667,0.0225){\makebox(0,0)[b]{\smash{0}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{haar_wavelet.pdf}}%
-    \put(0.04713035,0.50800282){\makebox(0,0)[rb]{\smash{0.5}}}%
+    \put(0.73433333,0.0225){\makebox(0,0)[b]{\smash{1}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{haar_wavelet.pdf}}%
-    \put(0.04713035,0.62324539){\makebox(0,0)[rb]{\smash{1.0}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=7]{haar_wavelet.pdf}}%
-    \put(0.04713035,0.73848796){\makebox(0,0)[rb]{\smash{1.5}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=8]{haar_wavelet.pdf}}%
-    \put(0.3013419,0.00042708){\makebox(0,0)[b]{\smash{0}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=9]{haar_wavelet.pdf}}%
-    \put(0.76654905,0.00042708){\makebox(0,0)[b]{\smash{1}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=10]{haar_wavelet.pdf}}%
   \end{picture}%
 \endgroup%

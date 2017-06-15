@@ -1,29 +1,15 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{9}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[{Ameesh Makadia{,} Vladimir Pavlovic{,} Sanjiv Kumar}(1961)]{JEC}
-{\sc {Ameesh Makadia{,} Vladimir Pavlovic{,} Sanjiv Kumar}}.
-\newblock A new baseline for image annotation.
-\newblock \emph{Commun. ACM}. July 1961, 4, 7, s.~321.
-\newblock ISSN 0001-0782.
-\newblock \doi{10.1145/366622.366644}.
-\newblock Dostupn{\'{e}}~z: \url{http://doi.acm.org/10.1145/366622.366644}.
-
-\bibitem[{Ameesh Makadia{,} Vladimir Pavlovic{,} Sanjiv Kumar}()]{JEC2}
-{\sc {Ameesh Makadia{,} Vladimir Pavlovic{,} Sanjiv Kumar}}.
-\newblock Baselines for Image Anotation.
-
-\bibitem[Cruse(1961)]{Gabor}
+\bibitem[Cruse(1996)]{Gabor}
 {\sc Cruse}, H.
-\newblock Neural Networks as Cybernetic Systems.
-\newblock \emph{Commun. ACM}. July 1961, 4, 7, s.~321.
-\newblock ISSN 0001-0782.
-\newblock \doi{10.1145/366622.366644}.
-\newblock Dostupn{\'{e}}~z: \url{http://doi.acm.org/10.1145/366622.366644}.
+\newblock \emph{Neural Networks as Cybernetic Systems}.
+\newblock Thieme Medical Publishers, Incorporated, 1996.
+\newblock ISBN 0865776725.
 
 \bibitem[HUTÁREK(2010)]{DiplomovaBrno}
 {\sc HUTÁREK}, B.~J.
@@ -32,22 +18,37 @@
 \newblock Dostupn{\'{e}}~z:
   \url{https://www.vutbr.cz/www_base/zav_prace_soubor_verejne.php?file_id=117319}.
 
-\bibitem[Java SE Documentation - Graphics({\natexlab{a}})]{HaarWiky}
-\emph{Haar wavelet} [online]. Oracle, 2016{\natexlab{a}}. [cit.~2016/03/09].
-  Java {SE} Documentation.
-\newblock Dostupn{\'{e}}~z: \url{https://en.wikipedia.org/wiki/Haar_wavelet}.
-
-\bibitem[Java SE Documentation - Graphics({\natexlab{b}})]{Scikit}
-\emph{Class Graphics2D} [online]. Oracle, 2016{\natexlab{b}}.
-  [cit.~2016/03/09]. Java {SE} Documentation.
-\newblock Dostupn{\'{e}}~z: \url{http://scikit-image.org/}.
-
 \bibitem[Košař(2015)]{SrovnaniDeskriptoru}
 {\sc Košař}, V.
 \newblock Srovnání deskriptorů pro reprezentaci obrazu.
 \newblock Master's thesis, Západočeská univerzita v Plzni, Plzeň, 2015.
 \newblock Dostupn{\'{e}}~z:
   \url{https://dspace5.zcu.cz/bitstream/11025/17883/1/A13N0110P.pdf}.
+
+\bibitem[Lavrenko et~al.(2004)Lavrenko, R.Manmatha,, Jeon]{Result_A_A}
+{\sc Lavrenko}, V. -- {\sc R.Manmatha} -- {\sc Jeon}, J.
+\newblock A Model for Learning the Semantics of Pictures.
+\newblock 2004, s. 553--560.
+\newblock Dostupn{\'{e}}~z:
+  \url{http://papers.nips.cc/paper/2474-a-model-for-learning-the-semantics-of-pictures.pdf}.
+
+\bibitem[Makadia et~al.(2008)Makadia, Pavlovic,, Kumar]{JEC}
+{\sc Makadia}, A. -- {\sc Pavlovic}, V. -- {\sc Kumar}, S.
+\newblock \emph{A new baseline for image annotation}.
+\newblock Springer Berlin Heidelberg, 2008.
+\newblock \doi{10.1007/978-3-540-88690-7_24}.
+\newblock Dostupn{\'{e}}~z:
+  \url{http://dx.doi.org/10.1007/978-3-540-88690-7_24}.
+\newblock ISBN 978-3-540-88690-7.
+
+\bibitem[Makadia et~al.(2010)Makadia, Pavlovic,, Kumar]{JEC2}
+{\sc Makadia}, A. -- {\sc Pavlovic}, V. -- {\sc Kumar}, S.
+\newblock Baselines for Image Annotation.
+\newblock \emph{International Journal of Computer Vision}. 2010, 90, 1,
+  s.~88--105.
+\newblock ISSN 1573-1405.
+\newblock \doi{10.1007/s11263-010-0338-6}.
+\newblock Dostupn{\'{e}}~z: \url{http://dx.doi.org/10.1007/s11263-010-0338-6}.
 
 \bibitem[Murthy(2014)]{Gabor_wordpress}
 {\sc Murthy}, K.
@@ -56,18 +57,18 @@
 \newblock Dostupn{\'{e}}~z:
   \url{https://cvtuts.wordpress.com/2014/04/27/gabor-filters-a-practical-overview/}.
 
-\bibitem[Precision, Recall()]{precision_recall}
-\emph{Hierarchical classification needs a metric} [online]. 2016.
-  [cit.~2017/05/12]. idelab.
-\newblock Dostupn{\'{e}}~z:
-  \url{http://idalab.de/blog/data-science/hierarchical-metrics}.
+\bibitem[van~der Walt et~al.(2014)van~der Walt, {S}ch\"onberger,
+  {Nunez-Iglesias}, {B}oulogne, {W}arner, {Y}ager, {G}ouillart, {Y}u,, the
+  scikit-image contributors]{Scikit}
+{\sc Walt}, S. et~al.
+\newblock \emph{scikit-image: image processing in {P}ython} [online]. 6 2014.
+  [cit.~2016/03/09].
+\newblock Dostupn{\'{e}}~z: \url{http://dx.doi.org/10.7717/peerj.453}.
 
-\bibitem[{V. Lavrenko{,} R.Manmatha{,} J. Jeon}(1961)]{Result_A_A}
-{\sc {V. Lavrenko{,} R.Manmatha{,} J. Jeon}}.
-\newblock A model for learning the semantics of pictures.
-\newblock \emph{Commun. ACM}. July 1961, 4, 7, s.~321.
-\newblock ISSN 0001-0782.
-\newblock \doi{10.1145/366622.366644}.
-\newblock Dostupn{\'{e}}~z: \url{http://doi.acm.org/10.1145/366622.366644}.
+\bibitem[Von~Ahn -- Dabbish(2004)Von~Ahn, Dabbish]{ESPvon2004labeling}
+{\sc Von~Ahn}, L. -- {\sc Dabbish}, L.
+\newblock Labeling images with a computer game.
+\newblock In \emph{Proceedings of the SIGCHI conference on Human factors in
+  computing systems}, s. 319--326. ACM, 2004.
 
 \end{thebibliography}

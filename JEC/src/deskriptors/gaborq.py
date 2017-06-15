@@ -9,7 +9,7 @@ import cv2
 from scipy import ndimage as ndi
 
 orientations = [0, math.pi/4, math.pi/2, math.pi / 4 * 3]
-wavelengths = [2.0, 2.0 * math.sqrt(2), 4.0] #[0.25, 0.5, 1.0]
+wavelengths = [0.25, 0.5, 1.0]#[2.0, 2.0 * math.sqrt(2), 4.0]
 sigma = 1
 
 def create_kernels():

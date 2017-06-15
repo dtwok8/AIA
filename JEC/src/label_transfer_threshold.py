@@ -23,6 +23,7 @@ def label_transfer(test_image):
     
     for i in range(config.COUNT_NEIGHBORS):
         for word in test_image.nereast_neighbors[i][0].picture.keywords:
+            print test_image.nereast_neighbors[i][0].picture.name
             if(word in frequence_keywords):
                 frequence_keywords[word] += 1
             else:
@@ -30,6 +31,12 @@ def label_transfer(test_image):
             #print word
             total_count_keywords += 1
     
+    if(len(frequence_keywords) == 1):
+        word = frequence_keywords.items()
+        assigned_keywords.append(word[0][0])
+        test_image.our_assignment_keywords = assigned_keywords
+        return 
+        
     th = 1.0 / (len(frequence_keywords)-1) #threshold - prah
     
     for word in frequence_keywords.items():

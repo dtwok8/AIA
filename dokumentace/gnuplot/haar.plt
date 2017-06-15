@@ -1,31 +1,51 @@
+#set terminal svg dashed
+#set output "/home/kate/NetBeansProjects/bakalarka/dokumentace/gnuplot/haar_raw.svg"
+#Set pretty PostScript output and filename
+#set terminal postscript enhanced color lw 2 "Times-Roman" 20
+# set output "haar.svg"
 set terminal svg
-set output "/home/kate/NetBeansProjects/bakalarka/dokumentace/gnuplot/haar_raw.svg"
+set output "haar.svg"
 
-set grid
-set nokey
-set view 60,120 #otoceni nahledu
+ #Set y axis limits so the plot doesn't go right to the edges of the graph
+ set yrange [-1.5:1.5]
+ #Set x axis limits so the first and last points are hidden
+ set xrange [-0.5:1.5]
 
-#plot [-3.14:3.14] sin(x), sin(x) with impulses
-#plot sin(x)
+ #No legend needed
+ set nokey
 
+ #Add lightly-colored axis lines
+ set yzeroaxis linetype 1 lc "#7f7f7f"
+ set ytics 1
+ set xzeroaxis linetype 1 lc "#7f7f7f"
+ set xtics 1
 
-set border 0
+ #set style line 1 lc rgb '#0000ff' # ls 1 pt 7 
 
+ #Plot as lines and also points
 
-#set arrow 1 from -1,0 to 1,0 filled back lw 3 lc rgb "grey"
-#set arrow 2 from 0,0,0 to 8,4,0 filled back lw 3 lc rgb "red"
-#set arrow 3 from 0,0,0 to 12,12,10 filled back lw 3 lc rgb "green"
+ set style line 2 lw 2 dashtype "-  " lc rgb '#0000ff' pt 6 ps 2 
+ set style line 6 lw 2 lt 1 lc rgb '#0000ff' pt 6 ps 2 
+ set style line 7 lw 2 lt 1 lc rgb '#0000ff' pt 7 ps 2 
 
-#set arrow 4 from 0,0,0 to 0,-3,5 filled back lw 3 lc rgb "blue"
-#set arrow 5 from 0,0,0 to 0,-4,2 filled back lw 3 lc rgb "red"
-#set arrow 6 from 0,0,0 to 0,-7,7 filled back lw 3 lc rgb "green"
+ plot "<(sed -n '2,3p' haar.dat)" with linespoints ls 6, \
+	 "<(sed -n '3,4p' haar.dat)" with linespoints ls 2, \
+	"<(sed -n '4p' haar.dat)" with linespoints ls 7, \
+	"<(sed -n '4,5p' haar.dat)" with linespoints ls 6, \
+	"<(sed -n '5,6p' haar.dat)" with linespoints ls 2, \
+	"<(sed -n '6p' haar.dat)" with linespoints ls 7, \
+	"<(sed -n '6,7p' haar.dat)" with linespoints ls 6, \
+	"<(sed -n '7,8p' haar.dat)" with linespoints ls 2, \
+	"<(sed -n '8p' haar.dat)" with linespoints ls 7, \
+	"<(sed -n '8,9p' haar.dat)" with linespoints ls 6, \
 
-haar(x) = (0 < x < 1/2) ? 1 : 0
+ #plot "<(sed -n '2,3p' haar.dat)" with lines lc rgb '#0000ff', "" with points ls 1 pt 6 lc rgb '#0060ad', \
+ #"<(sed -n '3,4p' haar.dat)" with lines lc rgb '#2e8b57', "" with points ls 1 pt 7 lc rgb '#0060ad'
 
-set ticslevel 0
-
-f(x)=x<=1 ? -(x-1)**2+1 :  x>7 ? (-48)*sin(240)+1+0.5*x : (-(x-1)**2+1)*sin(30*x)+1
-plot f(x)
+ #plot sin(x)
+ #with points:
+ #1 = color red (linestyle 1?)
+ #6 = point style 6 (render as circles in PostScript)
   
 
 

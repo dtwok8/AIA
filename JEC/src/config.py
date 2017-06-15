@@ -7,9 +7,9 @@ TEST_LIST = "../../Data/iaprtc12/iapr_test_2009.txt"
 
 
 #DATAFILE_TRAIN = "../result/datafile_train.pyc"
-DATAFILE_TRAIN = "../result/datafile_train_pulka_1.pyc"
-DATAFILE_TRAIN2 = "../result/datafile_train_pulka_2.pyc"
-DATAFILE_TEST = "../result/datafile_test.pyc"
+DATAFILE_TRAIN = "../result/iaprtc12_JEC_datafile_train_pulka_1.pyc"
+DATAFILE_TRAIN2 = "../result/iaprtc12_JEC_datafile_train_pulka_2.pyc" ##!!!!!!!!!!!!!!!!!!
+DATAFILE_TEST = "../result/iaprtc12_JEC_datafile_test.pyc"
 
 #DATEFILE_TEST_NEIGHBORS = "../result/datafile_test_neigbors.py"
 
@@ -17,11 +17,11 @@ PICTURE_RESULT = "../result/picture_result.txt" #obrazky a prirazene klicova slo
 PICTURE_ALL_KEYWORDS = "../result/test_all_keywords.txt" #obrazky s prirazenym slovy od klasifikatoru i s se slovy prirazene clovekem
 KEYWORDS_RESULT = "../result/keywords_result.txt" #vysledky klicovych slov, jejich presnost a uplnost
 
-COUNT_NEIGHBORS = 8
+COUNT_NEIGHBORS = 5
 COUNT_KEYWORDS = 5
 
 #Pri hodnote "TH" bude pouzita s prahem, pri jakokoliv jine hodnote bude nacten originalni z JEC
-LABEL_TRANSFER = "STANDARD"
+LABEL_TRANSFER = "TH"
 
 #nastaveni priznaku
 #KL - KL divergence

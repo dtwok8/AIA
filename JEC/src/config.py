@@ -7,9 +7,9 @@ TEST_LIST = "../../Data/iaprtc12/iapr_test_2009.txt"
 
 
 #DATAFILE_TRAIN = "../result/datafile_train.pyc"
-DATAFILE_TRAIN = "../result/iaprtc12_JEC_datafile_train_pulka_1.pyc"
-DATAFILE_TRAIN2 = "../result/iaprtc12_JEC_datafile_train_pulka_2.pyc" ##!!!!!!!!!!!!!!!!!!
-DATAFILE_TEST = "../result/iaprtc12_JEC_datafile_test.pyc"
+DATAFILE_TRAIN = "../result/iaprtc12_POEM_datafile_train_pulka_1.pyc"
+DATAFILE_TRAIN2 = "../result/iaprtc12_POEM_datafile_train_pulka_2.pyc" 
+DATAFILE_TEST = "../result/iaprtc12_POEM_datafile_test.pyc"
 
 #DATEFILE_TEST_NEIGHBORS = "../result/datafile_test_neigbors.py"
 
@@ -21,7 +21,7 @@ COUNT_NEIGHBORS = 5
 COUNT_KEYWORDS = 5
 
 #Pri hodnote "TH" bude pouzita s prahem, pri jakokoliv jine hodnote bude nacten originalni z JEC
-LABEL_TRANSFER = "TH"
+LABEL_TRANSFER = "STANDART"
 
 #nastaveni priznaku
 #KL - KL divergence
@@ -33,15 +33,15 @@ LAB = True
 LAB_DISTANCE = "KL" 
 HSV = True
 HSV_DISTANCE = "L1"
-GABOR = True
+GABOR = False
 GABOR_DISTANCE = "L1"
-GABORQ = True
+GABORQ = False
 GABORQ_DISTANCE = "L1"
-HAAR = True
+HAAR = False
 HAAR_DISTANCE = "L1"
-HAARQ = True
+HAARQ = False
 HAARQ_DISTANCE = "L1"
-POEM = False
+POEM = True
 POEM_DISTANCE = "L1"
 COLOR_POEM = False
 COLOR_POEM_DISTANCE = "L1"

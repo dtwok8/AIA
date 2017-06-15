@@ -33,7 +33,7 @@
 %
 \abstracttexten{The text of the abstract (in English). It contains the English translation of the thesis title and a short description of the thesis.}
 
-\abstracttextcz{Bakalářská práce se zabývá automatickou anotací obrázků (AIA). Cílem práce je prověřit funkčnost vybraných metod z literatury a pokusit se o jejich vylepšení. V práci byla vyzkoušena metoda Joint Equal Contribution (JEC) a její modifikace, kdy bylo pozměněno přenášení klíčových slov. Dále byla otestována metoda Patterns of Oriented Edge Magnitudes (POEM) a implementováno její rozšíření zahranující barvu i texturu. Metody jsou v teoretické části rozebrány a následně byly implementovány. V konečné fázy byly dosažené výsledky porovnány s literaturou. Testování probíhalo na datasetech iaprtc12 a ESP. 
+\abstracttextcz{Bakalářská práce se zabývá automatickou anotací obrázků (AIA). Cílem práce je prověřit funkčnost vybraných metod z literatury a pokusit se o jejich vylepšení. V práci byla vyzkoušena metoda Joint Equal Contribution (JEC) a její modifikace, kdy bylo pozměněno přenášení klíčových slov. Dále byla otestována metoda Patterns of Oriented Edge Magnitudes (POEM) a implementováno její rozšíření zahranující barvu i texturu. Metody jsou v teoretické části rozebrány a následně byly implementovány. V konečné fázi byly dosažené výsledky porovnány s literaturou. Testování probíhalo na datasetech iaprtc12 a ESP. 
 }
 
 % Na titulní stranu a do textu prohlášení se automaticky vkládá 
@@ -139,14 +139,14 @@ a pak výslednou klasifikaci spojit z několika částí (například Joint Equa
 Například rozšíření Patterns of Oriented Edge Magnitudes (POEM) na všechny barvené kanály. Musí se však dbát na to, že informace o barvě a textuře se mohou ovliňovat i protichůdně. 
 \end{description} 
 
-\par Cílem práce je navrhnout a implementovat software umožňující automatickou anotaci obrázků za použití nízkoúrovňových příznaků, konkrétně barvy a textury a jejich kombinací. Metody budou testovány na standardních datech IAPRTC12 a ESP. Výsledky dosažené použitím jednotlivých příznaků budou porovnány s literaturou a s nově vytvořeným deskriptorem. V konečné fázy se pokusíme o jejich vylepšení.
+\par Cílem práce je navrhnout a implementovat software umožňující automatickou anotaci obrázků za použití nízkoúrovňových příznaků, konkrétně barvy a textury a jejich kombinací. Metody budou testovány na standardních datech IAPRTC12 a ESP. Výsledky dosažené použitím jednotlivých příznaků budou porovnány s literaturou a s nově vytvořeným deskriptorem. V konečné fázi se pokusíme o jejich vylepšení.
 
 \chapter{JEC Joint Equal Contribution}
 Tato metoda je založena na hypotéze, že podobné obrázky mají podobná klíčová slova. Pomocí metody hledání nejbližších sousedů (dále jen KNN) je nalezeno K nejpodobnějších obrázků. Přičemž klíčová slova od nejbližšího souseda jsou posuzována odlišným způsobem než klíčová slova od k nejbližších sousedů mimo nejbližšího. Metoda je postavena na dvou typech příznaků - barevných a texturových. 
 \cite{JEC}
 
 \section{Příznaky}
-\par Barva a textura jsou považovány za dva nejdůležitější nízkoúrovňové příznaky pro obrázkovou reprezentaci. Nejběžnější barevné deskriptory jsou barevné histogramy, které jsou často využívány pro porovnávání a indexování obrázků, zejména z důvodu jejich efektivnosti a snadného výpočtu. K~vytvoření texturových příznaků se používají Haarovy a Gaborovy wavelety a to především z důvodu efektivity při vytváření řídkých a zároveň diskriminativních obrázkových rysů. Je-li žádoucí omezit vliv a předpoklady jednotlivých funkcí a maximilizovat množství získaných informací, je využito několik jednoduchých a snadno sestavitelných funkcí. \cite{JEC}
+\par Barva a textura jsou považovány za dva nejdůležitější nízkoúrovňové příznaky pro obrázkovou reprezentaci. Nejběžnější barevné deskriptory jsou barevné histogramy, které jsou často využívány pro porovnávání a indexování obrázků, zejména z důvodu jejich efektivnosti a snadného výpočtu. K~vytvoření texturových příznaků se používají Haarovy a Gaborovy wavelety a to především z důvodu efektivity při vytváření řídkých a zároveň diskriminativních obrázkových rysů. Při snaze omezit vliv předpokladů jednotlivých funkcí a maximalizovat množství získaných informací, je použito několik jednoduchých a snadno sestavitelných funkcí. \cite{JEC}
 
 \subsection{Barva}
 \par U digitálního obrazu je barva reprezentovaná n-rozměrným vektorem. Jeho velikost a význam jednotlivých složek (tzv. barevných kanálů) zavisí na příslušném barevném prostoru. Počet bitů použitých k uložení buď celého vektoru nebo jeho jednotlivých složek se nazývá barevná hloubka (totožně bitová hloubka). Obvykle se můžeme setkat s hodnotami 8, 12, 14 a 16 bitů na kanál. 
@@ -166,7 +166,7 @@ Tato metoda je založena na hypotéze, že podobné obrázky mají podobná klí
 		\includegraphics[height=100px]{./img/bgr_r.jpg}
 		\includegraphics[height=100px]{./img/bgr_g.jpg}
 		\includegraphics[height=100px]{./img/bgr_b.jpg}	
-		\caption{Barevný prostor RGB a jeho jednotlivé složky v pořadí R, G, B}
+		\caption{Barevný prostor RGB a jeho jednotlivé složky v pořadí R,~G,~B}
 \end{figure}
 
 \begin{figure}[H]
@@ -175,7 +175,7 @@ Tato metoda je založena na hypotéze, že podobné obrázky mají podobná klí
 		\includegraphics[height=100px]{./img/lab_l.jpg}
 		\includegraphics[height=100px]{./img/lab_a.jpg}
 		\includegraphics[height=100px]{./img/lab_b.jpg}	
-		\caption{Barevný prostor LAB a jeho jednotlivé složky v pořadí L, A, B}
+		\caption{Barevný prostor LAB a jeho jednotlivé složky v pořadí L,~A,~B}
 \end{figure}
 
 \begin{figure}[H]
@@ -184,16 +184,18 @@ Tato metoda je založena na hypotéze, že podobné obrázky mají podobná klí
 		\includegraphics[height=100px]{./img/hsv_h.jpg}
 		\includegraphics[height=100px]{./img/hsv_s.jpg}
 		\includegraphics[height=100px]{./img/hsv_v.jpg}	
-		\caption{Barevný prostor HSV a jeho jednotlivé složky v pořadí H, S, V}
+		\caption{Barevný prostor HSV a jeho jednotlivé složky v pořadí H,~S,~V}
 \end{figure}
 
-\par Pro RGB, HSV i LAB je použita barevná hloubka 16 bitů na kanál histogramu v jejich příslušném barevném prostoru. To znamená, že z každého barevného prostoru vzniknou tři šestnácti prvkové histogramy. Tyto histogramy jsou zřetězeny a následně použité jako reprezentace příslušného barevného prostoru.
+\par Pro RGB, HSV i LAB je použito 16 binů na kanál histogramu v jejich příslušném barevném prostoru. To znamená, že z každého barevného prostoru vzniknou tři šestnácti prvkové histogramy. Tyto histogramy jsou zřetězeny a následně použité jako reprezentace příslušného barevného prostoru.
+ 
+\par  Algoritmus pro výpočet histogramu jednoho kanálu je následující. Jako první bude připraven vektoru nul představující histogram. Při výpočtu histogramu algoritmus prochází postupně jednotlivé hodnoty pixelu kanálu vstupního obrázku. Tato hodnota je vydělena 16. Výsledek určuje pozici (index) hodnoty ve vektoru, která má být inkrementována.
 
 \subsection{Textura}
 \par Jako reprezentace textur budou použity Gaborovy a Haarovy vlnky (v originále Gabor a Haar wavelet). 
 
 \subsubsection{Gabor}
-\par Gaborův filtr je lineární filtr používaný pro analýzu textury, což znamená, že v podstatě zkoumá, zda existuje nějaký specifický frekvenční obsah v obraze ve specifických směrech v lokalizované oblasti kolem oblasti analýzy. Frekvence a orientace reprezentující Gaborovy filtry je podobná lidskému vnímání a proto je jejich použití zvláště vhodné při reprezentaci textury a detekci hran. V prostoru je 2D Gaborův filtr funkcí Gausova jádra modulovaného sinusouvou rovinnou vlnou. Gaboruv filtr je definován v rovnici \ref{gabor_complex}.
+\par Gaborův filtr je lineární filtr používaný pro analýzu textury, což znamená, že v podstatě zkoumá, zda existuje nějaký specifický frekvenční obsah v obraze ve specifických směrech v lokalizované oblasti kolem oblasti analýzy. Frekvence a orientace reprezentující Gaborovy filtry je podobná lidskému vnímání a proto je jejich použití zvláště vhodné při reprezentaci textury a detekci hran. V prostoru je 2D Gaborův filtr funkcí Gausova jádra modulovaného sinusouvou rovinnou vlnou. Gaboruv filtr je definován v rovnici~\ref{gabor_complex}.
 
 \begin{figure}[H]
 		\centering
@@ -229,7 +231,7 @@ U Gaborova filtru máme několik parametrů, které ovlivňují jeho vlastnosti.
 	\centering
 	\includegraphics[width=190px]{./img/gabor_filtry.png}
 	\includegraphics[width=190px]{./img/gabor_filter_imag.png}	
-	\caption{Podoba použítých Gáborových filtrů. Vlevo reálná část, vpravo imaginární část.}
+	\caption{Podoba použítých Gaborových filtrů. Vlevo reálná část, vpravo imaginární část.}
 	%\label{img:esp_coin}
 \end{figure}
 
@@ -238,7 +240,7 @@ U Gaborova filtru máme několik parametrů, které ovlivňují jeho vlastnosti.
 \par Z každého z dvanácti obrázků bude postaven 16 binový histogram skrze získané magnitudy. Vzniklé histogramy magnitud jsou zřetězeny a označeny jako příznak Gabor. 
 
 \par Druhý příznak zachycující fáze, je označen jako GaborQ. Opět je jsou prvky matice vybírány po dvojicích, jeden prvek z reálné části a jeden z části imaginární, vždy se stejnými souřadnicemi. U vzniklých vektorů je tentokrát pohlíženo na velikost úhlu, který svýrají s osou x. Jinak se dá tento úhel označit jako fáze.   
-\par Vzniklé fáze jsou převedeny na 16 binové histogrami pro každý z dvanácti obrázků a v konečné fázi zřetězeny.
+\par Vzniklé fáze jsou převedeny na 16 binové histogramy pro každý z dvanácti obrázků a v konečné fázi zřetězeny.
 
 
 \subsubsection{Haar}
@@ -468,7 +470,7 @@ Pro výpočet diskretizace směru při neznaménkové reprezentaci je $y$ složk
 \par Zbývající postup je totožný s POEMEM. U každého směru se vezmou jednotlivé pixely s jejich okolím a zprůměrují se jejich hodnoty. 
 
 \subsubsection{Zakódování příznaků pomocí LBP}
-\par LBP operátor se aplikuje na kruhové okolí s poloměrem L/2 označeném jako block. Pro zvýšení stability je k centrálními pixelu přičítána malá konstanta $\tau$ 
+\par LBP operátor se aplikuje na kruhové okolí s poloměrem L/2 označeném jako block. Pro zvýšení stability je k centrálními pixelu přičítána malá konstanta~$\tau$. 
 
 \begin{figure}[H]
 	\centering
@@ -511,7 +513,7 @@ K jednomu obrázku je v průměru přiřazeno \num{5.7} klíčových slov. Pro t
 
 
 \chapter{Evaluační metriky}
-\par Kvalitu a úspěšnost klasifikátoru udává přesnost (precision) a úplnost (recall). Přesnost udává jak moc jsou výsledky relevantní a úplnost kolik skutečně relevantní výsledků bylo přiřazeno. V případě že přesnost převyšuje úplnost, jsou klíčová slova sice korektní, ale je jich málo. V opačném případě při převyšující úplnosti bylo získáno hodně klíčových slov, ale málo z nich je korektních. Proto je snaha získat obě čísla co nejvyšší. Níže jsou uvedeny dva postupy pro výpočet přesnosti a úplnosti. V práci je použitý postup per word. \cite{Result_A_A}  
+\par Kvalitu a úspěšnost klasifikátoru udává přesnost (precision) a úplnost (recall). Přesnost udává jak moc jsou výsledky relevantní a úplnost kolik skutečně relevantní výsledků bylo přiřazeno. V případě že přesnost převyšuje úplnost, jsou klíčová slova sice korektní, ale je jich málo. V opačném případě při převyšující úplnosti bylo získáno hodně klíčových slov, ale málo z nich je korektních. Proto je snaha získat obě čísla co nejvyšší. Níže jsou uvedeny dva postupy pro výpočet přesnosti a úplnosti \cite{Result_A_A}.  V práci je použitý postup per word, stejně jako je uvedeno v článku \citep{JEC}. 
 \par Počet nenulových slov značí počet slov, která byla při anotaci použita alespoň jednou. 
 
 \section{Přesnost a úplnost pro celý klasifikátor}
@@ -603,11 +605,15 @@ Pro snadné spuštění programu je pro uživatele připraven skript \textit{run
 
 \par Při počítání barevných histogramů byl zjištěn překvapivý poznatek. V~případě kdy je histogram jako datová struktura \textit{list} a až výsledný histogram převeden do \textit{numpy array} je rychlost programu nesrovnatelně větší oproti tomu, když jsou histogramy vytvořeny rovnou jako \textit{numpy array}.  
 
+\par Za zmíňku také stojí převádění výsledných matic na vektor, kdy v případě převádění vektoru do 16 prvkové podoby výsledné číslo může dosahovat i nejvyší hodnoty je tato nejvyšší hodnota posunuta na poslední index vektoru. Toto řešení se mimo jiné zobrazuje v případě příznaku HaarQ. 
+
+\par V případě získávání příznaku z POEMU a barevného POEMU byl obrázek před výpočtem zmenšen na polovinu z důvodu rychlejšího průběhu.
+
 \par U většiny příznaků byla použita knihovna OpenCV. U Gabora byla použita knihovna scikit, která si ksize určuje podle parametrů vlny tz. tento parametr nezadáváme.
-  
+   
   
 \subsection{Knn classifier}
-\par V tomto modulu probíhá počítání vzdáleností mezi jednotlivými příznaky (vektory). Ve funkci \textit{count\_all\_distance} je v jednom běhu cyklu zjištěna jak vzdálenost mezi příznaky testovaného obrázku se všemi obrázky z trénovací sady, tak i určeno jejich maximum a minimum. Dále je volána metoda \textit{count\_jec}, která vzdálenosti za pomocí zjištěného maxima a minima přeškálujuje na interval 0 až 1. Naškálovanou hodnotu přičte do celkové sumy vzdáleností. V konečné fázy je suma vzdáleností podělena počtem příznaků. Vznikne tak výsledná vzdálenost JEC.
+\par V tomto modulu probíhá počítání vzdáleností mezi jednotlivými příznaky (vektory). Ve funkci \textit{count\_all\_distance} je v jednom běhu cyklu zjištěna jak vzdálenost mezi příznaky testovaného obrázku se všemi obrázky z trénovací sady, tak i určeno jejich maximum a minimum. Dále je volána metoda \textit{count\_jec}, která vzdálenosti za pomocí zjištěného maxima a minima přeškálujuje na interval 0 až 1. Naškálovanou hodnotu přičte do celkové sumy vzdáleností. V konečné fázi je suma vzdáleností podělena počtem příznaků. Vznikne tak výsledná vzdálenost JEC.
     
 
 \subsection{Label transfer}
@@ -615,7 +621,9 @@ Pro snadné spuštění programu je pro uživatele připraven skript \textit{run
 
 \par Při variantě kdy je přenesení provedeno pomocí originálního algoritmu pro přenesení klíčových slov, jsou předpočteny četnosti klíčových slov v trénovacích datech pomocí funkce \textit{count\_keyword\_frequency\_train\_set}, následováno předpočtením frekvence výskytu klíčových slov s ostaními klíčovými slovy ve funkci \textit{frequency\_word\_with\_other\_word\_dictionary}. Pro každý obrázek následuje funkce \textit{label\_transfer}. V této funkci se již přiřazují samotná klíčová slova od prvního souseda. Pokud je zjištěno, že od prvního souseda je dostatek klíčových slov, je funkce je ukončena. V opačném případě pokračuje do funkce \textit{add\_keywords\_from\_neighbors}, která dodá potřebná klíčová slova od dalších k nejbližších sousedů. Nakonec jsou klíčová slova uložena do souboru dle configu.
 
-\par Druhou variantou je dynamické přenesení klíčových slov pomocí prahování. Zde je rovnou spuštěna funkce \textit{label\_transfer} pro každý obrázek a jsou přenesena klíčová slova přesahující hodnotu práhu. V konečné fázy jsou klíčová slova uložena do souboru dle configu. 
+\par Druhou variantou je dynamické přenesení klíčových slov pomocí prahování. Zde je rovnou spuštěna funkce \textit{label\_transfer} pro každý obrázek a jsou přenesena klíčová slova přesahující hodnotu práhu. V konečné fázi jsou klíčová slova uložena do souboru dle configu. 
+
+\par Při přenášení klíčových slov pomocí prahování na databázi ESP při pěti nejbližších sousedech byl objeven problém při počtání prahu. V případě kdy má $K$ nejbližších sousedů pouze jedno totožné klíčové slovo, ve vzorečku pro práh by jmenovatel vyšel nula. Proto je doplněna podmínka a v této situaci je jediné klíčové slovo přeneseno i bez výpočtu prahu. 
   
 
 \subsection{Evaluator}
@@ -675,7 +683,7 @@ HSV            			& 21 & 11.4 & 191 & 17.2 & 16.4 & 213 & 14.9 & 18.6 & 221 \\
 RGB, LAB, HSV      		& 21.9 & 11.2 & 188 & 18.8 & 16.9 & 218 & 16.1 & 19 & 221 \\
 \hline
 \hline
-JEC						& 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+JEC						& 23.8 & 12.3 & 189 & 19.7 & 17.7 & 212 & 17.1 & 19.9 & 215 \\ 
 \end{tabular}
 \captionof{table}{Výsledky získané přiřazování klíčových slov s práhem na datech iaprtc12. P značí přesnost, R úplnost a N počet nenulových klíčových slov.}
 \end{center}
@@ -733,12 +741,20 @@ JEC						& 21.6 & 11.6 & 195 & 15.3 & 15.3 & 206 & 13.1 & 17.2 & 210 \\
 			\item Filtry: [1.0, 1.0], [-1.0,-1.0]; [-1.0, 1.0], [-1.0, 1.0]; [1.0, -1.0], [-1.0, 1.0]  	
 		\end{itemize}
 	\item[POEM] \hfill 
-		\begin{itemize} 
-			\item Vzdálenost: L1 	
+		\begin{itemize} 		
+			\item Vzdálenost: L1
+			\item Počet směrů: 3
+			\item Velikost cellu: 3
+			\item Velikost blocku: 8
+			\item Tau: 4 	
 		\end{itemize}
 	\item[Barevný POEM] \hfill 
 		\begin{itemize} 
-			\item Vzdálenost: L1  	
+			\item Vzdálenost: L1 
+			\item Počet směrů: 3
+			\item Velikost cellu: 3
+			\item Velikost blocku: 8
+			\item Tau: 4  	
 		\end{itemize}
 \end{description}
 
@@ -759,7 +775,7 @@ Haar					& 5.8 & 4 & 114 & 10.2 & 8.4 & 178 \\
 HaarQ					& 5.8 & 4.4 & 123 & 9.4 & 7.3 & 169 \\
 \hline
 \hline
-JEC						& 17.3 & 11.5 & 182 & 19.6 & 14.8 & 210 \\ 
+JEC						& 17.3 & 11.6 & 182 & 19.6 & 14.8 & 210 \\ 
 POEM		     		& 21.5 & 12.8 & 189 & 0 & 0 & 0 \\
 RGB, LAB, HSV, POEM		& 21.8 & 13.8 & 187 & 3.3 & 3.3 & 85  \\
 Barevný POEM			& 21 & 12.4 & 184 & 17.4 & 13 & 200 \\
@@ -800,7 +816,10 @@ Barevný POEM			& 21 & 12.4 & 184 & 17.4 & 13 & 200 \\
 		\textbf{Získání klíčových slov} & \textbf{Klíčová slova} \\ \hline
 		Originální klíčová slova & circle coin face head metal money old round silver \\ \hline
 		Přiřazena metodou JEC & man old metal coin money \\ \hline
-		Přiřazena metodou JEC s přenášením klíčových slov pomocí prahování & old money coin \\ \hline 	
+		Přiřazena metodou JEC s POEM, RGB, HSV a LAB & \\ \hline 
+		Přiřazena metodou POEM rozšířenou na všechny barevné kanály &  \\ \hline 
+		Přiřazena metodou JEC s přenášením klíčových slov pomocí prahování & old money coin \\ \hline 
+			
 	\end{tabular}
 	\captionof{table}{Klíčová slova k obrázku \ref{img:esp_coin}}
 \end{center}
@@ -834,6 +853,7 @@ Barevný POEM			& 21 & 12.4 & 184 & 17.4 & 13 & 200 \\
 	\item [KL - divergence] Kullaback-Leibler divergence.
 \end{labeling}
 
+\nocite{*}
 \bibliographystyle{csplainnatkiv}
 {\raggedright\small
 \bibliography{literatura}

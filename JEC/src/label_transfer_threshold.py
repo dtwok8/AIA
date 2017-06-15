@@ -31,7 +31,7 @@ def label_transfer(test_image):
             #print word
             total_count_keywords += 1
     
-    if(len(frequence_keywords) == 1):
+    if(len(frequence_keywords) == 1): # za predpokladu kdy ma vsech n sousedu pouze jedno klicove slovo a to stejne
         word = frequence_keywords.items()
         assigned_keywords.append(word[0][0])
         test_image.our_assignment_keywords = assigned_keywords

@@ -22,7 +22,6 @@ def getKey(item):
 
 #preneseni klicovych slov
 def label_transfer(test_image, train_keywords_dictionary, frequency_word_with_other_word_dictionary):
-    print "-------------------------------------------"
     n_keywords={}
     test_image.our_assignment_keywords=[]
    
@@ -33,10 +32,7 @@ def label_transfer(test_image, train_keywords_dictionary, frequency_word_with_ot
     
     keywords_list = n_keywords.items() # prevedeni na seznam
     keywords_list = sorted(keywords_list, key=getKey, reverse=True)
-    print keywords_list
     
-    print "---------"
-    print n_keywords
     if(len(keywords_list) == config.COUNT_KEYWORDS): #zjistit jestli od prvniho mame dostatek klicovych slov
         #test_image.our_assignment_keywords = keywords_list
         for key in keywords_list:
@@ -129,9 +125,7 @@ def frequency_word_with_other_word(train_data):
                             dictionary[key][keyword]=dictionary[key][keyword]+1
                         else:
                             dictionary[key][keyword] = 1
-            
-    for key, value in dictionary.items():
-        print (key,"-", value)
+
      
     return dictionary
  
@@ -170,13 +164,12 @@ def label_transfer_main(train_data, test_data):
     train_keywords_dictionary=count_keyword_frequency_train_set(train_data) 
     
     frequency_word_with_other_word_dictionary = frequency_word_with_other_word(train_data)
-    
-    print "--------------------------------------"
+
 
     ####prirazeni klicovych slov####
     for item in test_data:
         label_transfer(item, train_keywords_dictionary, frequency_word_with_other_word_dictionary)
-        print item.name
+        print ("label transfer {}").format(item.name)
         #print item.keywords
         #print item.our_assignment_keywords
     

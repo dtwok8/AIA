@@ -3,7 +3,7 @@ import cv2
 
 img_path = "img.jpg" 
 scales = 4
-
+###################pokusnej
 kernel_h = np.array([[1.0, 1.0], [-1.0,-1.0]])
 kernel_v = np.array([[-1.0, 1.0], [-1.0,1.0]])
 kernel_d = np.array([[1.0, -1.0], [-1.0,1.0]])
@@ -16,7 +16,8 @@ def haar_1(img_path):
     print size # prepare 4 scales ->  size * f^3 = 64
     factor = np.power((64.0 / size), 1.0/(scales - 1))
     print "resize_factor:", factor
-       
+    print img.shape  
+    
     vector = np.zeros(scales * len(kernels))
     index = 0
     for scale in range(scales):
@@ -31,6 +32,7 @@ def haar_1(img_path):
             cv2.imwrite('haar.jpg', res)
            
         img = cv2.resize(img, (0,0), fx=factor, fy=factor) 
+        print img.shape
     
     print vector
     

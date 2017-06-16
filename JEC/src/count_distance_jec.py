@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Spocita vzdalenosti mezi testovacima histogramama a testovacima histograma. Naskaluje vysledky na 0-1. Slozi dohromady jednotlive vysledky (JEC)
+Spocita vzdalenosti mezi trenovacima histogramama a testovacima histograma. Naskaluje vysledky na 0-1. Slozi dohromady jednotlive vysledky (JEC)
 Created on Wed Sep 21 15:02:46 2016
 
 @author: Katerina Kratochvilova
@@ -21,7 +21,16 @@ import label_transfer
 import label_transfer_threshold
 
 def count_distance(H1, H2, metric):
-    
+    """
+        Spocita vzdalenost podle metriky zadane parametrem. Pri nerozpoznane metrice je vracena L1.
+        
+        Keyword arguments:
+            H1 -- Prvni vektor pro ktery ma byt spoctena vzdalenost. 
+            H2 -- Druhy vektor pro ktery ma byt spoctana vzdalenost. 
+            metric - metrika.
+        Return: 
+            distance -- vzdalenost dle dane matriky, pri nerozpoznani metriky je defaultne vracena L1.
+    """   
     if(metric == "L1"):
         distance = cv2.norm(H1, H2, cv2.NORM_L1)
         return distance
@@ -165,7 +174,8 @@ def count_n():
         Keyword arguments:
             train_data -- Trenovaci sada. 
             test_image -- Testovany obrazek.
-            
+        Return:
+            n -- spocitane N (pocet priznaku)
     """    
     
     n = 0
@@ -199,7 +209,6 @@ def count_n():
     return n
 
 
-#spocita JEC pro tri parametry rgb, hsv, lab, ty to musíš naškálovat od 0 o 1 takže asi ten jec můžeš počítat stejně až budeš mít všechny ty výsledky
 def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, hsv_min, gabor_max, gabor_min, gaborq_max, gaborq_min, poem_max, poem_min, color_poem_max, color_poem_min, haar_max, haar_min, haarq_max, haarq_min):
     """
         Naskaluje vzdalenosti a spocita JEC pro prislusny obrazek.
@@ -251,23 +260,9 @@ def count_jec(pom_nei, test_image, rgb_max, rgb_min, lab_max, lab_min, hsv_max, 
         if(config.HAARQ):
             neighbor.haarq_distance_scale = (neighbor.haarq_distance - haarq_min)/(haarq_max - haarq_min)
             sum_distance = sum_distance + neighbor.haarq_distance_scale
-        #print item.hsv_distance_scale
         
         #spocteni JEC - zkombinovani priznaku
         neighbor.jec = sum_distance / n
-        #print item.jec
-        
-        if(neighbor.jec > 1):
-            print ('lab', lab_min, lab_max, neighbor.lab_distance,neighbor.lab_distance_scale)
-            print neighbor.jec
-            exit()
-            
-        if(neighbor.jec < 0):
-            print ('lab', lab_min, lab_max, neighbor.lab_distance,neighbor.lab_distance_scale)
-            print neighbor.hsv_distance
-            print neighbor.rgb_distance
-            print neighbor.jec
-            exit()
         
 
 #kvůli sortování
@@ -290,11 +285,9 @@ for data in train_data2:
 ######### spocitani vzdalenosti
 for item in test_data:
     count_all_distance(train_data, item)
-    #print item.neighbors[0].jec
-
-print "----------------"
 
 
+#zavolani label transfer
 if(config.LABEL_TRANSFER == "TH"):
     label_transfer_threshold.label_transfer_main(train_data, test_data)
 else:

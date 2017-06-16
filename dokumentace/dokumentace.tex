@@ -31,7 +31,7 @@
 % 
 % Texty abstraktů (anglicky, česky)
 %
-\abstracttexten{The text of the abstract (in English). It contains the English translation of the thesis title and a short description of the thesis.}
+\abstracttexten{This Bachelor thesis deals with automatic image annotation (AIA). Purpose is to check working of choosen functions and try to find their improvements. One of used methods is Joint Equal Contribution and it's modification where were changed trasnporting key words. One of other methods included is Patterns of Oriented Edge Magnitudes metod and implementation of it's extensions including color and texture of image. Methos are described in theoretical part and implemented later. Achieved resoults are compared to literature at final phase. Testing run on data sets iaprtc12 and ESP.}
 
 \abstracttextcz{Bakalářská práce se zabývá automatickou anotací obrázků (AIA). Cílem práce je prověřit funkčnost vybraných metod z literatury a pokusit se o jejich vylepšení. V práci byla vyzkoušena metoda Joint Equal Contribution (JEC) a její modifikace, kdy bylo pozměněno přenášení klíčových slov. Dále byla otestována metoda Patterns of Oriented Edge Magnitudes (POEM) a implementováno její rozšíření zahranující barvu i texturu. Metody jsou v teoretické části rozebrány a následně byly implementovány. V konečné fázi byly dosažené výsledky porovnány s literaturou. Testování probíhalo na datasetech iaprtc12 a ESP. 
 }
@@ -271,7 +271,17 @@ Předpis Haarovy vlnky:
 \par Haarovy vlnové filtry jsou schopny extrahovat charakteristiky daných vlastností obrázku, jako jsou například hrany nebo změny v textuře.  Při zpracovávání průměrné intenzity oblastí je snížena citlivost na šum a změny jasu. Velká množina Haarových filtrů se skládá z filtrů s různým počtem obdelníkových oblastí a s různými orientacemi vzhledem k vyzdvyžení různorodých texturových informací obrázku. Haarův vlnový filtr nabízí jednoduché a efektivní získávání informací z obrázků.
 \par Základní Haarův vlnový filtr bere v potaz přilehlé obdelníkové oblasti v dané části obrázku a počítá rozdíl intenzit mezi nimi. 
  
-\par Podle \citep{JEC} bude Haarova vlnka generovat konvoluční blok s Haarovými filtry na třech rozdílných orientacíh (horizontální, diagonální a vertikální) použité na obrázky čtyř různých velikostí.  \\
+\par Podle \citep{JEC} bude Haarova vlnka generovat konvoluční blok s Haarovými filtry na třech rozdílných orientacíh (horizontální, diagonální a vertikální) použité na obrázky čtyř různých velikostí. Různé velikosti obrázku jsou získány postupným zmenšováním podle vzorce \ref{Haar_factor_resize}. Vzorec je přízpůsoben, aby v případě nejmenšího rozměru obrázku byla velikost nejmenší ze stran 64 pixelů. 
+
+\par Je definovan \textit{factor\_resize} jako faktor změny velikosti obrázku, \textit{min\_size} jako velikost menší strany obrázku, \textit{scales} jako požadovaný počet různých velikostí obrázků. 
+
+\begin{align}
+   \label{Haar_factor_resize} factor\_resize = \Bigg(\frac{64}{min\_size}\Bigg)^{\frac{1}{scales}}   
+\end{align}
+
+\par Při velikosti vstupního obrázku $480 \times 360$ , vyjde faktor změny velikosti $0.562$. Další rozměry obrázku tedy budou $270 \times 202$, $152 \times 114 $ a $85 \times 64$.
+
+
 
 \vspace{0.5cm}
 \noindent Haarovy filtry: 
@@ -815,10 +825,12 @@ Barevný POEM			& 21 & 12.4 & 184 & 17.4 & 13 & 200 \\
 		\hline
 		\textbf{Získání klíčových slov} & \textbf{Klíčová slova} \\ \hline
 		Originální klíčová slova & circle coin face head metal money old round silver \\ \hline
-		Přiřazena metodou JEC & man old metal coin money \\ \hline
-		Přiřazena metodou JEC s POEM, RGB, HSV a LAB & \\ \hline 
-		Přiřazena metodou POEM rozšířenou na všechny barevné kanály &  \\ \hline 
-		Přiřazena metodou JEC s přenášením klíčových slov pomocí prahování & old money coin \\ \hline 
+		JEC s deskriptory RGB, HSV, LAB, Gabor, GaborQ, Haar a HaarQ & man old metal coin money \\ \hline
+		JEC s deskriptory POEM, RGB, HSV a LAB & \\ \hline 
+		POEM rozšířenou na všechny barevné kanály &  \\ \hline 
+		JEC s deskriptory RGB, HSV, LAB, Gabor, GaborQ, Haar a HaarQ s přenášením klíčových slov pomocí prahování & old money coin \\ \hline 
+		JEC s deskriptory POEM, RGB, HSV a LAB s přenášením klíčových slov pomocí prahování & \\ \hline
+		POEM rozšířenou na všechny barevné kanály s přenášením klíčových slov pomocí prahování & \\ \hline 
 			
 	\end{tabular}
 	\captionof{table}{Klíčová slova k obrázku \ref{img:esp_coin}}
@@ -877,8 +889,10 @@ Parametry configu:
 	\item \textit{KEYWORDS\_RESULT} - Cesta k souboru, který obsahuje výsledky klíčových slov, jejich přesnost a úplnost.
 	\item \textit{COUNT\_NEIGHBORS} - Počet sousedů.
 	\item \textit{COUNT\_KEYWORDS} - Počet klíčových slov.
+	\item \textit{LABEL\_TRANSFER} - Určuje způsob přiřezování klíčových slov. Při hodnotě \textit{TH} bude použíté prahování, při jakékoliv jiné hodnotě bude použit originální algoritmus metody JEC.
 \end{itemize}
-Dále jsou v cofingu uvedené jednotlivé metody s očekávanou hodnotou \textit{True} nebo \textit{False} v závislosti zda se mají použít nebo ne.
+Dále jsou v cofingu uvedené jednotlivé metody s očekávanou hodnotou \textit{True} nebo \textit{False} v závislosti zda se mají použít nebo ne a jejich parametr deskriptor\_DISTANCE (například \textit{RGB\_DISTANCE}), který určuje jaká vzdálenost pro porovnání vektorů konkrétního desktriptoru se má použít. Na výběr je z \textit{L1}, která představuje Manhattnovskou vzdálenost, \textit{L2} představující Euklidovskou vzdálenost a \textit{KL} představující Kullaback Leibler divergenci.
+
 
 \subsubsection{Spuštění programu}
 Program spustíme z příkazové řádky zadáním příkazu \textit{python nazevskriptu.py}. 

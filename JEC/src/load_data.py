@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Nacita testovaci mnozinu obrazku, a ziskává histogramy. 
+Nacita testovaci a trenovaci mnozinu obrazku, a ziskava priznaky podle configu. 
 Created on Wed Sep 21 15:02:46 2016
 
 @author: Katerina Kratochvilova
@@ -112,4 +112,4 @@ def count_histogram(img, deep = 16):
         
 load_pictures(config.TRAIN_LIST, config.DATAFILE_TRAIN, "train")
 #spocita histogrami pro testovaci mnozin
-load_pictures(config.TEST_LIST, config.DATAFILE_TEST, "test")
+#load_pictures(config.TEST_LIST, config.DATAFILE_TEST, "test")

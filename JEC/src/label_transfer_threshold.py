@@ -16,6 +16,12 @@ import config
 
 
 def label_transfer(test_image):
+    """
+        Prenese klicova slova k testovacimu obrazku za pomoc vypoctu prahu. 
+        
+        Keyword arguments:
+            test_image -- obrazek ke kteremu se maji klicova slova prenest. 
+    """ 
     assigned_keywords = [] # klicova slova, ktera budou nakonec prirazena
     total_count_keywords = 0 # celkovy pocet klicovych slov od sousedu, i s redundantnim zaznamy
     frequence_keywords = {}
@@ -48,6 +54,12 @@ def label_transfer(test_image):
     
  
 def write_img_with_keyword_to_txt_file(test_data):
+    """
+        Zapise prenesena klicova slova do souboru. 
+        
+        Keyword arguments:
+            test_data -- list testovacich data
+    """ 
     soubor = open(config.PICTURE_RESULT, 'w')
     
     for img in test_data:
@@ -57,6 +69,12 @@ def write_img_with_keyword_to_txt_file(test_data):
 
 
 def write_img_with_keyword_h_a_to_txt_file(test_data):
+    """
+        Zapise vysledek klasifikace do souboru. I s presnosti a uplnosti.
+        
+        Keyword arguments:
+            test_data -- list testovacich data
+    """
     soubor = open(config.PICTURE_ALL_KEYWORDS, 'w')
     
     for img in test_data:
@@ -75,12 +93,17 @@ def write_img_with_keyword_h_a_to_txt_file(test_data):
 
 
 def label_transfer_main(train_data, test_data):
+    """
+        Hlavni metoda prenaseni klicovych slov.
+        
+        Keyword arguments:
+            train_data -- list trenovacich dat
+            test_data -- list testovacich data
+    """
     for item in test_data:
         label_transfer(item)
-        print item.name
-        #print item.keywords
-        #print item.our_assignment_keywords
-#        exit()
+        print ("label transfer {}").format(item.name)
+
     
     
     #class_pictures.exportDataToFile(test_data, config.DATAFILE_TEST_WITH_KEYWORDS) 

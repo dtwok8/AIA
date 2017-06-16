@@ -22,6 +22,14 @@ def getKey(item):
 
 #preneseni klicovych slov
 def label_transfer(test_image, train_keywords_dictionary, frequency_word_with_other_word_dictionary):
+    """
+        Preneseni klicovych slov. Vezme klicova N (dle configu) klicovych slov od prvniho nejblizsiho souseda. Pokud klicovych slov neni dost doplni si je od zbyvajich K-1 nejbylizsich sousedu. 
+        
+        Keyword arguments:
+            test_image -- obrazek ke kteremu se maji klicova slova prenest. 
+            train_keywords_dictionary -- slovnik klicovych slov i s jejich vyskyty v trenovaci sade.  
+            frequency_word_with_other_word_dictionary - predpocitana frequence slov mezi sebou.
+    """ 
     n_keywords={}
     test_image.our_assignment_keywords=[]
    
@@ -42,8 +50,7 @@ def label_transfer(test_image, train_keywords_dictionary, frequency_word_with_ot
     if(len(keywords_list) > config.COUNT_KEYWORDS):
         #test_image.our_assignment_keywords = keywords_list[0:config.COUNT_KEYWORDS] #usekneme
         for key in keywords_list[0:config.COUNT_KEYWORDS]:
-            test_image.our_assignment_keywords.append(key[0])
-        
+            test_image.our_assignment_keywords.append(key[0]) 
         return
     
     test_image.our_assignment_keywords = keywords_list
@@ -53,6 +60,16 @@ def label_transfer(test_image, train_keywords_dictionary, frequency_word_with_ot
 #mame malo klicovych slov proto jeste musime pridat klicovy slova od sousedu
 #neni tam naimplementovana lokalni frequnce, ale pri takovem mnozstvi obrazku je mala pravdepodobnost ze se na hrane potkaji dve stejna cisla
 def add_keywords_from_neighbors(test_image, train_keywords_dictionary, frequency_word_with_other_word_dictionary, n_keywords, keywords_list):
+    """
+        Mame malo klicovych slov proto je musime doplnit klicovymi slovy od zbyvajich K-1 nejblizsich sousedu. 
+        
+        Keyword arguments:
+            test_image -- obrazek ke kteremu se maji klicova slova prenest. 
+            train_keywords_dictionary -- slovnik klicovych slov i s jejich vyskyty v trenovaci sade.  
+            frequency_word_with_other_word_dictionary - predpocitana frequence slov mezi sebou.
+            n_keywords -- slovnich prenesenych klicovych slov
+            keywords_list --list klicovych slov ktery bude prenesen.
+    """ 
     keywords_from_neigbords = {}
     keywords_from_neigbords_local_frequency = {}
     
@@ -90,8 +107,15 @@ def add_keywords_from_neighbors(test_image, train_keywords_dictionary, frequency
                 break
 
 
-#spocita cetnost slov v trenovacich datech a seradi ve slovniku 
-def count_keyword_frequency_train_set(train_data): 
+def count_keyword_frequency_train_set(train_data):
+    """
+        Spocita cetnost slov v trenovacich datech a seradi ve slovniku. 
+        
+        Keyword arguments:
+            train_data -- trenovaci data.
+        Return:
+            keywords_dictionary -- slovnik klicovych slov z trenovaci sady i s jejich frekvenci vyskytu.
+    """ 
     keywords_dictionary={}
 
     for picture in train_data:
@@ -103,8 +127,16 @@ def count_keyword_frequency_train_set(train_data):
     
     return keywords_dictionary  
 
-#spocte frequance vyskytu s ostatnimy slovy
+
 def frequency_word_with_other_word(train_data):
+    """
+        Spocte frequance vyskytu s ostatnimy slovy. 
+        
+        Keyword arguments:
+            train_data -- trenovaci data.
+        Return:
+           dictionary -- slovnik klicovych slov z trenovaci sady i s jejich frekvenci vyskytu s ostanimi slovy z trenovaci sady..
+    """ 
     dictionary ={}
     
     for picture in train_data:
@@ -129,7 +161,14 @@ def frequency_word_with_other_word(train_data):
      
     return dictionary
  
+ 
 def write_img_with_keyword_to_txt_file(test_data):
+    """
+        Zapise prenesena klicova slova do souboru. 
+        
+        Keyword arguments:
+            test_data -- list testovacich data
+    """ 
     soubor = open(config.PICTURE_RESULT, 'w')
     
     for img in test_data:
@@ -137,7 +176,14 @@ def write_img_with_keyword_to_txt_file(test_data):
         
     soubor.close()
 
+
 def write_img_with_keyword_h_a_to_txt_file(test_data):
+    """
+        Zapise vysledek klasifikace do souboru. I s presnosti a uplnosti.
+        
+        Keyword arguments:
+            test_data -- list testovacich data
+    """
     soubor = open(config.PICTURE_ALL_KEYWORDS, 'w')
     
     for img in test_data:
@@ -156,10 +202,14 @@ def write_img_with_keyword_h_a_to_txt_file(test_data):
 
 
 def label_transfer_main(train_data, test_data):
-    #for item in test_data:
-    #    print item.name
-    #    print item.keywords
-
+    """
+        Hlavni metoda prenaseni klicovych slov.
+        
+        Keyword arguments:
+            train_data -- list trenovacich dat
+            test_data -- list testovacich data
+    """
+    
     #cetnost klicovych slov v trenovacich datech
     train_keywords_dictionary=count_keyword_frequency_train_set(train_data) 
     
@@ -170,8 +220,6 @@ def label_transfer_main(train_data, test_data):
     for item in test_data:
         label_transfer(item, train_keywords_dictionary, frequency_word_with_other_word_dictionary)
         print ("label transfer {}").format(item.name)
-        #print item.keywords
-        #print item.our_assignment_keywords
     
 
     write_img_with_keyword_to_txt_file(test_data)

@@ -20,11 +20,11 @@
 \contentsline {paragraph}{gamma}{7}{section*.16}
 \contentsline {paragraph}{ps\IeC {\'\i }}{7}{section*.17}
 \contentsline {subsubsection}{Haar}{8}{section*.19}
-\contentsline {section}{\numberline {2.2}Vzd\IeC {\'a}lenosti}{9}{section.2.2}
+\contentsline {section}{\numberline {2.2}Vzd\IeC {\'a}lenosti}{10}{section.2.2}
 \contentsline {section}{\numberline {2.3}Kombinace vzd\IeC {\'a}lenost\IeC {\'\i }}{10}{section.2.3}
-\contentsline {section}{\numberline {2.4}P\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov}{10}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Origin\IeC {\'a}ln\IeC {\'\i } algoritmus pro p\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov metody JEC}{10}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Dynamick\IeC {\'e} p\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov pomoc\IeC {\'\i } prahov\IeC {\'a}n\IeC {\'\i }}{11}{subsection.2.4.2}
+\contentsline {section}{\numberline {2.4}P\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov}{11}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Origin\IeC {\'a}ln\IeC {\'\i } algoritmus pro p\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov metody JEC}{11}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Dynamick\IeC {\'e} p\IeC {\v r}enesen\IeC {\'\i } kl\IeC {\'\i }\IeC {\v c}ov\IeC {\'y}ch slov pomoc\IeC {\'\i } prahov\IeC {\'a}n\IeC {\'\i }}{12}{subsection.2.4.2}
 \contentsline {chapter}{\numberline {3}POEM}{13}{chapter.3}
 \contentsline {subsection}{\numberline {3.0.1}V\IeC {\'y}po\IeC {\v c}et gradientu a magnitudy}{13}{subsection.3.0.1}
 \contentsline {subsection}{\numberline {3.0.2}Diskretizace sm\IeC {\v e}ru gradientu}{13}{subsection.3.0.2}
@@ -67,5 +67,5 @@
 \contentsline {chapter}{\numberline {10}Pou\IeC {\v z}it\IeC {\'e} zkratky}{34}{chapter.10}
 \contentsline {chapter}{Literatura}{35}{chapter*.38}
 \contentsline {chapter}{\numberline {A}U\IeC {\v z}ivatelsk\IeC {\'a} dokumentace}{37}{appendix.A}
-\contentsline {subsubsection}{Spu\IeC {\v s}t\IeC {\v e}n\IeC {\'\i } programu}{37}{section*.39}
+\contentsline {subsubsection}{Spu\IeC {\v s}t\IeC {\v e}n\IeC {\'\i } programu}{38}{section*.39}
 \contentsline {subsubsection}{V\IeC {\'y}stupy programu}{38}{section*.40}

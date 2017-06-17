@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Poem slouzi k detekci hran. Pokud o jeho modifikaci, aby v sobe vysledny vektor obsahoval jak informaci o barve tak informaci o texture.
+Poem slouzi k detekci hran. Toto je pokus o jeho modifikaci, aby v sobe vysledny vektor obsahoval jak informaci o barve tak informaci o texture.
+Takze je obycejny POEM rozsiren na vsechny barevne kanaly.
 
 @author: Katerina Kratochvilova
 """
@@ -10,7 +11,6 @@ import numpy as np
 import math
 import sys #srgv
 
-from matplotlib import pyplot as plt
  
 DEBUG = False #vypisuje vsechny mezivystupy
 COUNT_DIRECTIONS = 3
@@ -281,6 +281,17 @@ def count_gradient_3(img):
 
 
 def compute_histogram(lbp, x = 4, y = 4):
+    """
+        Obrazek je rozdelen pravidelnou mrizkou a vypocitan histogram.
+        
+        Keyword arguments:
+            lbp -- vypocitane LBP.
+            x -- pocet casti v x ose.
+            y -- pocet casti v y ose.
+        Return arguments:
+            histogram -- vypocteny histogram.
+        
+    """
     histogram_size = 256
     histograms = np.zeros(x*y * len(lbp) * histogram_size)
     step_x = len(lbp[0]) /x
@@ -304,7 +315,19 @@ def compute_histogram(lbp, x = 4, y = 4):
     
 
 def compute_local_histogram(histogram, lbp, row_block, column_block, step_x, step_y, shift_direction, shift_block):
-    
+    """
+        Vypocteni hostogramu pro konkretni oblast.
+        
+        Keyword arguments:
+            histogram -- histogram
+            lbp -- vypoctene lbp.
+            row_block -- block v radku.
+            column_block -- block ve sloupci.
+            step_x -- Jak velky je jeden block v x ose.
+            step_y -- Jak velky je jeden block v y ose.
+            shift_direction -- pri zapisovani do histogramu o kolik se mame posunout v ramci smeru.
+            shift_block -- pri zapisovani do histogramu o kolik se mame posunout v ramci blocku.
+    """
     for x in range(step_x*row_block, step_x*(row_block+1)): #od zacatku blocku, #dokonce blocku po radcich
         #print "x: {}".format(x) 
         for y in range (step_y * column_block, step_y * (column_block+1)): # po sloupcich
@@ -317,6 +340,14 @@ def compute_local_histogram(histogram, lbp, row_block, column_block, step_x, ste
     
 
 def count_color_poem(img):
+    """
+     Hlavni metoda pro vypocet barevneho poemu.
+     
+    Keyword arguments:
+        img -- vstupni obrazek.
+    Return:
+        histogram -- vytvoreny priznak.
+    """
     #img = cv2.imread("../../../Data/iaprtc12/images/00/51.jpg", 0)
     factor = 0.5 #zmenseni obrazkuna polovinu
     img = cv2.resize(img, (0,0), fx=factor, fy=factor)  

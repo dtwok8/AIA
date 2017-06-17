@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Nacita testovaci mnozinu obrazku, a ziskává histogramy. 
-Created on Wed Sep 21 15:02:46 2016
+Vytvari deskriptor POEM, slouzi k detekci hran.
 
 @author: Katerina Kratochvilova
 """
@@ -9,9 +8,6 @@ Created on Wed Sep 21 15:02:46 2016
 import cv2
 import numpy as np
 import math
-
-
-from matplotlib import pyplot as plt
  
 DEBUG = False 
 COUNT_DIRECTIONS = 3
@@ -20,6 +16,13 @@ BLOCK_SIZE = 8 #10
 TAU = 4
  
 def write_matrix_file(matrix, file_name):
+    """
+    Zapise zaslanou matici do souboru.
+    
+    Keyword arguments:
+            matrix -- matice, ktera ma byt ulozena do souboru. 
+            file_name -- nazev souboru do ktereho se ma matice ulozit.
+    """
     soubor = open(file_name, 'w')
     for row in matrix:
         for item in row:
@@ -29,6 +32,14 @@ def write_matrix_file(matrix, file_name):
 
     
 def count_gradient(img):
+    """
+        Spocita gradienty obrazku (smery rustu), tak ze na nej pouzije masky x_kernel a y_kernel.
+    
+        Keyword arguments:
+                img -- obrazek, pro ktery se ma gradient spocitat. 
+        Return arguments:
+            gradient -- vypocteny gradient.
+    """
     ddepth = -1; #when ddepth=-1, the output image will have the same depth as the source.
 
     img = img.astype(float) #prevedeme obrazek na float, v zakladu je uint, kdyz to neudelame tak nam misto zapornych cisel vyjde v gradientech 0
@@ -52,6 +63,14 @@ def count_gradient(img):
 
     
 def count_magnitude(gradient):
+    """"
+        Spocte magnitudu, velikost smeru rustu. Magnituda = velikost vektoru.
+    
+        Keyword arguments:
+            gradient -- gradient pro ktery se ma magnituda spocitat. 
+        Return arguments:
+            magnitude -- vypoctene magnitudy.
+    """
     magnitude = cv2.magnitude(gradient[0,:,:],gradient[1,:,:])
     
     if (DEBUG):
@@ -61,6 +80,14 @@ def count_magnitude(gradient):
     return magnitude
 
 def count_phase(gradient):
+    """
+        Spocita faze (uhly) vektrou gradientu.
+    
+        Keyword arguments:
+            gradient -- gradienty pro ktery se maji uhly spocitat. 
+        Return arguments:
+            phase -- vypoctene phase.
+    """
     phase = cv2.phase(gradient[0,:,:], gradient[1,:,:], angleInDegrees=False)
     
     #angleInDegrees – when true, the input angles are measured in degrees, otherwise, they are measured in radians.
@@ -73,6 +100,13 @@ def count_phase(gradient):
 def compute_direction(count_directions, gradient, magnitude): 
     """
         Spocita uhly kam vektor smeruje a rozradi se do matic podle smeru (pocet smeru = count_directions)
+        
+        Keyword arguments:
+            count_directions -- pocet smeru.
+            gradient -- gradient.
+            magnitude -- magnitudy.
+        Return arguments:
+            directional -- 3 matice, roztridene podle fazi, obsahujici magnitudy.
     """
     
     phases = cv2.phase(gradient[0], gradient[1], angleInDegrees=False)
@@ -104,7 +138,14 @@ def compute_direction(count_directions, gradient, magnitude):
 
 def compute_aems(count_directions, cell_size, directional):
     """
+        Vypocita lokalni histogramu gradientu z okoli.
     
+        Keyword arguments:
+            count_directions -- pocet smeru. 
+            cell_size - velikost cell (okoli).
+            directional -- rozsmerovane magnitudy podle fazi.
+        Return arguments:
+            aems -- vypoctene lokalni histogramy z okoli.
     """
     # use either convolution or integral image
     kernel = np.ones((cell_size, cell_size)) 
@@ -123,6 +164,17 @@ def compute_aems(count_directions, cell_size, directional):
     
         
 def compute_lbp(directions, aems, block_size, tau):
+    """
+        LBP. 
+    
+        Keyword arguments:
+            directions -- pocet smeru. 
+            aems - vypoctene lokalni histogramy z okoli.
+            block_size -- velikost blocku.
+            tau -- konstanta, ktera se pripocitava k centralnimu, vhodne pri konstantnim okoli.
+        Return arguments:
+            lbp -- vypoctene lbp.
+    """
     bordersize = block_size / 2 + 1
     
     lbp = np.zeros(aems.shape, dtype=np.uint8)
@@ -150,6 +202,18 @@ def compute_lbp(directions, aems, block_size, tau):
 
 
 def compute_lbp_value(r, c, border_img, block_size, tau):
+    """
+        Vypocte konkretni LBP hodnotu, pro dany pixel. 
+    
+        Keyword arguments:
+            r -- row, radek (zkratka souradnice [r,c]) 
+            c -- column, sloupec.
+            border_img -- obrazek i s rameckem.
+            block_size -- velikost blocku.
+            tau -- konstanta, ktera se pripocitava k centralnimu, vhodne pri konstantnim okoli.
+        Return arguments:
+            val -- vypoctene lbp pro jeden pixel.
+    """
     radius = float(block_size) / 2
 
     val = 0
@@ -169,6 +233,17 @@ def compute_lbp_value(r, c, border_img, block_size, tau):
     return val
 
 def compute_histogram(lbp, x = 4, y = 4):
+    """
+        Obrazek je rozdelen pravidelnou mrizkou a vypocitan histogram.
+        
+        Keyword arguments:
+            lbp -- vypocitane LBP.
+            x -- pocet casti v x ose.
+            y -- pocet casti v y ose.
+        Return arguments:
+            histogram -- vypocteny histogram.
+        
+    """
     histogram_size = 256
     histograms = np.zeros(x*y * len(lbp) * histogram_size)
     step_x = len(lbp[0]) /x
@@ -190,7 +265,20 @@ def compute_histogram(lbp, x = 4, y = 4):
 
     
 
-def compute_local_histogram(histogram, lbp, row_block, column_block, step_x, step_y, shift_direction, shift_block):    
+def compute_local_histogram(histogram, lbp, row_block, column_block, step_x, step_y, shift_direction, shift_block):  
+    """
+        Vypocteni hostogramu pro konkretni oblast.
+        
+        Keyword arguments:
+            histogram -- histogram
+            lbp -- vypoctene lbp.
+            row_block -- block v radku.
+            column_block -- block ve sloupci.
+            step_x -- Jak velky je jeden block v x ose.
+            step_y -- Jak velky je jeden block v y ose.
+            shift_direction -- pri zapisovani do histogramu o kolik se mame posunout v ramci smeru.
+            shift_block -- pri zapisovani do histogramu o kolik se mame posunout v ramci blocku.
+    """
     for x in range(step_x*row_block, step_x*(row_block+1)): #od zacatku blocku, #dokonce blocku po radcich
         for y in range (step_y * column_block, step_y * (column_block+1)): # po sloupcich            
             index = shift_direction+shift_block+int(lbp[x,y])
@@ -198,6 +286,14 @@ def compute_local_histogram(histogram, lbp, row_block, column_block, step_x, ste
         
         
 def count_poem(img):
+    """
+    Hlavni metoda pro vypocet barevneho poemu.
+     
+    Keyword arguments:
+        img -- vstupni obrazek.
+    Return:
+        histogram -- vytvoreny priznak.
+    """
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     #img = cv2.imread("../../../Data/iaprtc12/images/00/51.jpg", 0)
     factor = 0.5 #zmenseni obrazkuna polovinu

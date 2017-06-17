@@ -40,15 +40,15 @@ class Pictures:
             self.our_assignment_keywords = keywords_by_automat_in_string.split(" ")
             
     
-    #nejde mi to rozchodit
-    def setKeywords(self, keywordsInString): 
-        keywordsInString = keywordsInString.strip() # odstrani /n nakonci
-        self.keywords = keywordsInString.split(" ")
-        print self.keywords
-    
 
-#asi budu posilat jmeno souboru jako parametr
 def exportDataToFile(listPictures, fileName):
+    """
+        Exportuje data do souboru.
+        
+        Keyword arguments:
+            listPictures -- Data ktere maji byt exportovana.
+            fileName -- nazev souboru do ktereho ma byt zapsano.
+    """
     try:
         # ulozim seznam do souboru, ktery je uveden jako datafile v configu
         pickle.dump(listPictures, open(fileName, "w"))
@@ -59,6 +59,15 @@ def exportDataToFile(listPictures, fileName):
         
 
 def importDataFromFile(fileName):
+    """
+        Importuje data ze souboru.
+        
+        Keyword arguments:
+            fileName -- nazev souboru ze ktereho maji byt data ziskana.
+        
+        Return:  
+            data -- data ziskana ze souboru..
+    """
     
     try:
         data = pickle.load(open(fileName, "r"))

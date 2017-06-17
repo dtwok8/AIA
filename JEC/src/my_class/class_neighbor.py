@@ -1,5 +1,5 @@
 """
-Objekt Pictures a k nemu prislusne a potrebne metody jako zapsani objektu do souboru nebo naopak export objektu ze souboru.
+Objekt Neighbor.
 
 @author: Katerina Kratochvilova
 """

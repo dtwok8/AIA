@@ -34,6 +34,15 @@ class Pictures:
      
         
 def importDataFromFile(fileName):
+    """
+        Importuje data ze souboru.
+        
+        Keyword arguments:
+            fileName -- nazev souboru ze ktereho maji byt data ziskana.
+        
+        Return:  
+            data -- data ziskana ze souboru..
+    """
     try:
         data = pickle.load(open(fileName, "r"))
     except: 

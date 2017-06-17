@@ -1,5 +1,5 @@
 """
-Objekt Keywords a k nemu prislusne a potrebne metody.
+Objekt Keywords.
 
 @author: Katerina Kratochvilova
 """
@@ -22,12 +22,3 @@ class Keywords:
     def __init__(self, keyword):
         self.keyword = keyword
     
-
-#asi budu posilat jmeno souboru jako parametr
-#def exportDataToFile(listKeywords, fileName):
-    # ulozim seznam do souboru, ktery je uveden jako datafile v configu
-#    pickle.dump(listPictures, open(fileName, "w"))
-
-#def importDataFromFile(fileName):
-#    data = pickle.load(open(fileName, "r"))
-#    return data

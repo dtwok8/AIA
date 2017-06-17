@@ -1,8 +1,12 @@
+"""
+Vytvari deskriptor haar.
+
+@author: Katerina Kratochvilova
+"""
 import numpy as np
 import cv2
 
-img_path = "img.jpg" 
-scales = 4
+scales = 4 # pocet rozmeru obrazku
 
 kernel_h = np.array([[1.0, 1.0], [-1.0,-1.0]])
 kernel_v = np.array([[-1.0, 1.0], [-1.0,1.0]])
@@ -11,6 +15,17 @@ kernels = [kernel_h, kernel_v, kernel_d]
     
 
 def count_haar(img):
+    """
+        Prevede obrazek na sedotonovy. Pouzije filtr vytvorenych z kernelu nahore. 
+        Do vektoru na prislusnou pozici ulozime prumer vysledne matice. 
+        Obrazek je nasledne zmensen podle factor. A postup se opakuje. 
+        vektor je dlouhy scales x pocet_kernels.
+        
+        Keyword arguments:
+            img -- obrazke pro ktery se haar pocita. 
+        Return:
+            vector -- vytvoreny vektor prumeru.
+    """
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     size = np.amin(img.shape)
@@ -32,16 +47,7 @@ def count_haar(img):
             
             
         img = cv2.resize(img, (0,0), fx=factor, fy=factor) 
-    
-    #print histogram
-    #print vector
-    
-    #cv2.imwrite('haar.jpg', res)
-#    io.imshow(res)
-#    io.show()
-    
-    
-    #print res
+
     return vector
 
 #img = cv2.imread("img.jpg") 

@@ -209,7 +209,7 @@ def label_transfer_main(train_data, test_data):
             train_data -- list trenovacich dat
             test_data -- list testovacich data
     """
-    
+    print "label transfer predpocitavam ... "
     #cetnost klicovych slov v trenovacich datech
     train_keywords_dictionary=count_keyword_frequency_train_set(train_data) 
     

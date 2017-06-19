@@ -124,7 +124,7 @@ def read_data_from_file():
 
     for line in f: 
         split_line = line.split(";") # rozdeli radek na cestu k obrazku a klicova slova 
-        print 'test {}'.format(split_line[0])
+        #print 'test {}'.format(split_line[0])
         img = cv2.imread(split_line[0])      
 
         x = class_pictures.Pictures(split_line[0], split_line[1], split_line[2])
@@ -135,6 +135,7 @@ def read_data_from_file():
     
 
 train_data = class_pictures.importDataFromFile(config.DATAFILE_TRAIN)
+print "predpocitavam ... "
 test_data = read_data_from_file()
 
 #for item in test_data:

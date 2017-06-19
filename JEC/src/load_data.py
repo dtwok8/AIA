@@ -32,7 +32,13 @@ def load_pictures(listImages, outputFile, information):
             information -- debug informace, aby bylo videt co program prave dela
             
     """
-    f = open(listImages, 'r')
+    
+    try:
+        f = open(listImages, 'r')
+    except: 
+        print("Pri nacitani dat ze souboru {} nastala chyba. Zkontrolujte jmeno souboru a zda existuje.").format(listImages)
+        sys.exit(1)
+    
     
     listPictures = []
     
@@ -110,6 +116,6 @@ def count_histogram(img, deep = 16):
     histogram = np.asarray(histogram_list, dtype=np.float32)  # kdyz to udelam jako list a pak to prevedu do numpy tak je to o dost rychlejsi           
     return histogram
         
-#load_pictures(config.TRAIN_LIST, config.DATAFILE_TRAIN, "train")
+load_pictures(config.TRAIN_LIST, config.DATAFILE_TRAIN, "train")
 #spocita histogrami pro testovaci mnozin
 load_pictures(config.TEST_LIST, config.DATAFILE_TEST, "test")

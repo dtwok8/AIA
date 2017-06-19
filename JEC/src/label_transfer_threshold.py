@@ -29,7 +29,7 @@ def label_transfer(test_image):
     
     for i in range(config.COUNT_NEIGHBORS):
         for word in test_image.nereast_neighbors[i][0].picture.keywords:
-            print test_image.nereast_neighbors[i][0].picture.name
+            #print test_image.nereast_neighbors[i][0].picture.name
             if(word in frequence_keywords):
                 frequence_keywords[word] += 1
             else:

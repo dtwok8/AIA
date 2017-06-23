@@ -1,0 +1,17 @@
+
+
+*******************************************************************************
+Sat Jun 10 17:36:28 2017
+
+
+FIT:    data read from 'step_data.txt' u 1:2
+        format = x:z
+        #datapoints = 15
+        residuals are weighted equally (unit weight)
+
+function used for fitting: rect(x)
+	rect(x) = abs(x)>0.5 ? a : abs(x)<0.5 ? b : b/2.0
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 1.0000000000e+01   0.00e+00  7.07e-01    1.000000e+00   1.000000e+00

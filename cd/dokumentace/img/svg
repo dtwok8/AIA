@@ -1,0 +1,2 @@
+inkscape -D -z --file=sinusovka.svg --export-pdf=image.pdf --export-latex
+

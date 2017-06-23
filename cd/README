@@ -1,0 +1,36 @@
+Kateřina Kratochvílová, A13B0364P, 2017
+Data k bakalářské práci automatická anotace obrázků
+
+Struktura obsahu CD:
+====================
+/data - obsahuje listy k datasetum iaprtc12 a ESP.
+/result - obsahuje nejdůlezitější výsledky.
+/src - obsahuje zdrojove soubory. 
+/dokumentace - text prace (zdrojový text i tisknutelnou podobu ve fomátu PDF).
+dokumentace.pdf - tisknutelná podoba textu práce. 
+
+
+Požadavky programu:
+===================
+Pro spuštění programu je třeba mít nainstalovaný Python ve verzi 2.7.12 s NumPy verze 9, knihovnu OpenCV verzi 3.1 a vědeckou knihovnu Scipy verze 0.17.0.Při spuštění na větších datasetech (myslí se tím i iaprtc12 a ESP) je doporučeno mít v počítači alespoň 16 GB RAM.
+
+Knihovna OpenCV: http://opencv.org/
+Knihovna Scikit: http://scikit-image.org/
+
+
+Spuštění programu:
+==================
+Program spustíme z příkazové řádky zadáním příkazu python nazevskriptu.py 
+python run.py - v případě spuštění všech skriptů postupně.
+python load_data.py - v případě načtení dat, získání příznaků z načtených obrázků a následné uložení do souboru uvedeného v configu.
+python count_distance_jec.py - spočítá vzdálenosti a přiřadí klíčová slova.
+python count_count_result.py - vyhodnotí úspěšnost klasifikace mimo jiné přesnost a úplnost. 
+
+
+
+Databáze z důvodu jejich velikosti nebyly na CD přidány. Ve složce data naleznete alespoň jejich listy. Datasety je možné stáhnou na:
+http://www.imageclef.org/photodata
+http://hunch.net/%7Ejl/ 
+
+
+

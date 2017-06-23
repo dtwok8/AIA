@@ -1,0 +1,1686 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="600"
+   height="480"
+   viewBox="0 0 600 480"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="3D_kruznice.svg">
+  <metadata
+     id="metadata474">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Gnuplot</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs472" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="693"
+     id="namedview470"
+     showgrid="false"
+     inkscape:zoom="1.6643969"
+     inkscape:cx="390.86525"
+     inkscape:cy="220.57061"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <title
+     id="title4">Gnuplot</title>
+  <desc
+     id="desc6">Produced by GNUPLOT 5.0 patchlevel 3 </desc>
+  <g
+     id="gnuplot_canvas">
+    <rect
+       x="0"
+       y="0"
+       width="600"
+       height="480"
+       id="rect9"
+       fill="none" />
+    <defs
+       id="defs11">
+      <circle
+         id="gpDot"
+         r="0.5"
+         stroke-width="0.5" />
+      <path
+         id="gpPt0"
+         d="M-1,0 h2 M0,-1 v2"
+         stroke-width="0.222"
+         stroke="currentColor" />
+      <path
+         id="gpPt1"
+         d="M-1,-1 L1,1 M1,-1 L-1,1"
+         stroke-width="0.222"
+         stroke="currentColor" />
+      <path
+         id="gpPt2"
+         d="M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1"
+         stroke-width="0.222"
+         stroke="currentColor" />
+      <rect
+         id="gpPt3"
+         x="-1"
+         y="-1"
+         width="2"
+         height="2"
+         stroke-width="0.222"
+         stroke="currentColor" />
+      <rect
+         id="gpPt4"
+         x="-1"
+         y="-1"
+         width="2"
+         height="2"
+         stroke-width="0.222"
+         stroke="currentColor"
+         fill="currentColor" />
+      <circle
+         id="gpPt5"
+         cx="0"
+         cy="0"
+         r="1"
+         stroke-width="0.222"
+         stroke="currentColor" />
+      <use
+         xlink:href="#gpPt5"
+         id="gpPt6"
+         stroke="none"
+         fill="currentColor" />
+      <path
+         id="gpPt7"
+         d="M0,-1.33 L-1.33,0.67 L1.33,0.67 z"
+         stroke-width="0.222"
+         stroke="currentColor" />
+      <use
+         xlink:href="#gpPt7"
+         id="gpPt8"
+         stroke="none"
+         fill="currentColor" />
+      <use
+         xlink:href="#gpPt7"
+         id="gpPt9"
+         transform="rotate(180)"
+         stroke="currentColor" />
+      <use
+         xlink:href="#gpPt9"
+         id="gpPt10"
+         stroke="none"
+         fill="currentColor" />
+      <use
+         xlink:href="#gpPt3"
+         id="gpPt11"
+         transform="rotate(45)"
+         stroke="currentColor" />
+      <use
+         xlink:href="#gpPt11"
+         id="gpPt12"
+         stroke="none"
+         fill="currentColor" />
+      <path
+         id="gpPt13"
+         d="M0,1.330 L1.265,0.411 L0.782,-1.067 L-0.782,-1.076 L-1.265,0.411 z"
+         stroke-width="0.222"
+         stroke="currentColor" />
+      <use
+         xlink:href="#gpPt13"
+         id="gpPt14"
+         stroke="none"
+         fill="currentColor" />
+      <filter
+         id="textbox"
+         filterUnits="objectBoundingBox"
+         x="0"
+         y="0"
+         height="1"
+         width="1">
+        <feFlood
+           flood-color="white"
+           flood-opacity="1"
+           result="bgnd"
+           id="feFlood30" />
+        <feComposite
+           in="SourceGraphic"
+           in2="bgnd"
+           operator="atop"
+           id="feComposite32" />
+      </filter>
+      <filter
+         id="greybox"
+         filterUnits="objectBoundingBox"
+         x="0"
+         y="0"
+         height="1"
+         width="1">
+        <feFlood
+           flood-color="lightgrey"
+           flood-opacity="1"
+           result="grey"
+           id="feFlood35" />
+        <feComposite
+           in="SourceGraphic"
+           in2="grey"
+           operator="atop"
+           id="feComposite37" />
+      </filter>
+    </defs>
+    <g
+       id="g39"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="white" />
+    <g
+       id="g41"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g43"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="black"
+       fill="none"
+       color="black" />
+    <g
+       id="g45"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         class="gridline"
+         d="M514.1,310.5 L242.7,252.3  "
+         id="path47"
+         stroke-dasharray="2,4"
+         stroke="gray" />
+    </g>
+    <g
+       id="g49"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="gray"
+       fill="none"
+       color="gray" />
+    <g
+       id="g51"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M378.3,281.4 L367.9,279.1  "
+         id="path53"
+         stroke="black" />
+    </g>
+    <g
+       id="g55"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M242.7,252.3 L253.1,254.5  "
+         id="path57"
+         stroke="black" />
+      <g
+         transform="translate(388.0,290.4)"
+         font-size="12.00"
+         id="g59"
+         text-anchor="start"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text61">
+          <tspan
+             id="tspan63"
+             font-family="Arial"> 0</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g65"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g67"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="black"
+       fill="none"
+       color="black" />
+    <g
+       id="g69"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         class="gridline"
+         d="M482.8,330.7 L211.3,272.4  "
+         id="path71"
+         stroke-dasharray="2,4"
+         stroke="gray" />
+    </g>
+    <g
+       id="g73"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="gray"
+       fill="none"
+       color="gray" />
+    <g
+       id="g75"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M347.0,301.6 L336.5,299.3  "
+         id="path77"
+         stroke="black" />
+    </g>
+    <g
+       id="g79"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M211.3,272.4 L221.8,274.7  "
+         id="path81"
+         stroke="black" />
+      <g
+         transform="translate(356.7,310.6)"
+         font-size="12.00"
+         id="g83"
+         text-anchor="start"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text85">
+          <tspan
+             id="tspan87"
+             font-family="Arial"> 2</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g89"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g91"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="black"
+       fill="none"
+       color="black" />
+    <g
+       id="g93"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         class="gridline"
+         d="M451.4,350.9 L179.9,292.6  "
+         id="path95"
+         stroke-dasharray="2,4"
+         stroke="gray" />
+    </g>
+    <g
+       id="g97"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="gray"
+       fill="none"
+       color="gray" />
+    <g
+       id="g99"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M315.6,321.8 L305.1,319.5  "
+         id="path101"
+         stroke="black" />
+    </g>
+    <g
+       id="g103"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M179.9,292.6 L190.4,294.9  "
+         id="path105"
+         stroke="black" />
+      <g
+         transform="translate(325.3,330.8)"
+         font-size="12.00"
+         id="g107"
+         text-anchor="start"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text109">
+          <tspan
+             id="tspan111"
+             font-family="Arial"> 4</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g113"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g115"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="black"
+       fill="none"
+       color="black" />
+    <g
+       id="g117"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         class="gridline"
+         d="M420.1,371.1 L148.6,312.8  "
+         id="path119"
+         stroke-dasharray="2,4"
+         stroke="gray" />
+    </g>
+    <g
+       id="g121"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="gray"
+       fill="none"
+       color="gray" />
+    <g
+       id="g123"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M284.4,341.9 L273.9,339.7  "
+         id="path125"
+         stroke="black" />
+    </g>
+    <g
+       id="g127"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M148.6,312.8 L159.1,315.1  "
+         id="path129"
+         stroke="black" />
+      <g
+         transform="translate(294.0,350.9)"
+         font-size="12.00"
+         id="g131"
+         text-anchor="start"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text133">
+          <tspan
+             id="tspan135"
+             font-family="Arial"> 6</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g137"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g139"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="black"
+       fill="none"
+       color="black" />
+    <g
+       id="g141"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         class="gridline"
+         d="M388.7,391.2 L117.2,333.0  "
+         id="path143"
+         stroke-dasharray="2,4"
+         stroke="gray" />
+    </g>
+    <g
+       id="g145"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="gray"
+       fill="none"
+       color="gray" />
+    <g
+       id="g147"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M253.0,362.1 L242.5,359.9  "
+         id="path149"
+         stroke="black" />
+    </g>
+    <g
+       id="g151"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M117.2,333.0 L127.7,335.2  "
+         id="path153"
+         stroke="black" />
+      <g
+         transform="translate(262.7,371.1)"
+         font-size="12.00"
+         id="g155"
+         text-anchor="start"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text157">
+          <tspan
+             id="tspan159"
+             font-family="Arial"> 8</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g161"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g163"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="black"
+       fill="none"
+       color="black" />
+    <g
+       id="g165"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         class="gridline"
+         d="M357.3,411.4 L85.9,353.2  "
+         id="path167"
+         stroke-dasharray="2,4"
+         stroke="gray" />
+    </g>
+    <g
+       id="g169"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="gray"
+       fill="none"
+       color="gray" />
+    <g
+       id="g171"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M221.7,382.3 L211.2,380.0  "
+         id="path173"
+         stroke="black" />
+    </g>
+    <g
+       id="g175"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M85.9,353.2 L96.3,355.4  "
+         id="path177"
+         stroke="black" />
+      <g
+         transform="translate(231.3,391.3)"
+         font-size="12.00"
+         id="g179"
+         text-anchor="start"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text181">
+          <tspan
+             id="tspan183"
+             font-family="Arial"> 10</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g185"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g187"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="black"
+       fill="none"
+       color="black" />
+    <g
+       id="g189"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         class="gridline"
+         d="M85.9,353.2 L242.7,252.3  "
+         id="path191"
+         stroke-dasharray="2,4"
+         stroke="gray" />
+    </g>
+    <g
+       id="g193"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="gray"
+       fill="none"
+       color="gray" />
+    <g
+       id="g195"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M242.7,252.3 L247.2,249.4  "
+         id="path197"
+         stroke="black" />
+    </g>
+    <g
+       id="g199"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M242.7,252.3 L238.2,255.2  "
+         id="path201"
+         stroke="black" />
+      <g
+         transform="translate(238.5,262.6)"
+         font-size="12.00"
+         id="g203"
+         text-anchor="middle"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text205">
+          <tspan
+             id="tspan207"
+             font-family="Arial">-10</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g209"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g211"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="black"
+       fill="none"
+       color="black" />
+    <g
+       id="g213"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         class="gridline"
+         d="M153.8,367.7 L310.5,266.8  "
+         id="path215"
+         stroke-dasharray="2,4"
+         stroke="gray" />
+    </g>
+    <g
+       id="g217"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="gray"
+       fill="none"
+       color="gray" />
+    <g
+       id="g219"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M310.5,266.8 L315.0,263.9  "
+         id="path221"
+         stroke="black" />
+    </g>
+    <g
+       id="g223"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M310.5,266.8 L306.0,269.7  "
+         id="path225"
+         stroke="black" />
+      <g
+         transform="translate(306.3,277.1)"
+         font-size="12.00"
+         id="g227"
+         text-anchor="middle"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text229">
+          <tspan
+             id="tspan231"
+             font-family="Arial">-5</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g233"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g235"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="black"
+       fill="none"
+       color="black" />
+    <g
+       id="g237"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         class="gridline"
+         d="M221.7,382.3 L378.3,281.4  "
+         id="path239"
+         stroke-dasharray="2,4"
+         stroke="gray" />
+    </g>
+    <g
+       id="g241"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="gray"
+       fill="none"
+       color="gray" />
+    <g
+       id="g243"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M378.3,281.4 L382.8,278.5  "
+         id="path245"
+         stroke="black" />
+    </g>
+    <g
+       id="g247"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M378.3,281.4 L373.8,284.3  "
+         id="path249"
+         stroke="black" />
+      <g
+         transform="translate(374.2,291.7)"
+         font-size="12.00"
+         id="g251"
+         text-anchor="middle"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text253">
+          <tspan
+             id="tspan255"
+             font-family="Arial"> 0</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g257"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g259"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="black"
+       fill="none"
+       color="black" />
+    <g
+       id="g261"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         class="gridline"
+         d="M289.5,396.9 L446.2,296.0  "
+         id="path263"
+         stroke-dasharray="2,4"
+         stroke="gray" />
+    </g>
+    <g
+       id="g265"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="gray"
+       fill="none"
+       color="gray" />
+    <g
+       id="g267"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M446.2,296.0 L450.7,293.1  "
+         id="path269"
+         stroke="black" />
+    </g>
+    <g
+       id="g271"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M446.2,296.0 L441.7,298.9  "
+         id="path273"
+         stroke="black" />
+      <g
+         transform="translate(442.1,306.2)"
+         font-size="12.00"
+         id="g275"
+         text-anchor="middle"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text277">
+          <tspan
+             id="tspan279"
+             font-family="Arial"> 5</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g281"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g283"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="black"
+       fill="none"
+       color="black" />
+    <g
+       id="g285"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="0.50"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         class="gridline"
+         d="M357.3,411.4 L514.1,310.5  "
+         id="path287"
+         stroke-dasharray="2,4"
+         stroke="gray" />
+    </g>
+    <g
+       id="g289"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="gray"
+       fill="none"
+       color="gray" />
+    <g
+       id="g291"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M514.1,310.5 L518.6,307.6  "
+         id="path293"
+         stroke="black" />
+    </g>
+    <g
+       id="g295"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M514.1,310.5 L509.6,313.4  "
+         id="path297"
+         stroke="black" />
+      <g
+         transform="translate(510.0,320.8)"
+         font-size="12.00"
+         id="g299"
+         text-anchor="middle"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text301">
+          <tspan
+             id="tspan303"
+             font-family="Arial"> 10</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g305"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g307"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M378.3,281.4 L387.3,281.4  "
+         id="path309"
+         stroke="black" />
+      <g
+         transform="translate(360.3,285.9)"
+         font-size="12.00"
+         id="g311"
+         text-anchor="end"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text313">
+          <tspan
+             id="tspan315"
+             font-family="Arial"> 0</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g317"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g319"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M378.3,241.0 L387.3,241.0  "
+         id="path321"
+         stroke="black" />
+      <g
+         transform="translate(360.3,245.5)"
+         font-size="12.00"
+         id="g323"
+         text-anchor="end"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text325">
+          <tspan
+             id="tspan327"
+             font-family="Arial"> 2</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g329"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g331"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M378.3,200.8 L387.3,200.8  "
+         id="path333"
+         stroke="black" />
+      <g
+         transform="translate(360.3,205.3)"
+         font-size="12.00"
+         id="g335"
+         text-anchor="end"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text337">
+          <tspan
+             id="tspan339"
+             font-family="Arial"> 4</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g341"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g343"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M378.3,160.4 L387.3,160.4  "
+         id="path345"
+         stroke="black" />
+      <g
+         transform="translate(360.3,164.9)"
+         font-size="12.00"
+         id="g347"
+         text-anchor="end"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text349">
+          <tspan
+             id="tspan351"
+             font-family="Arial"> 6</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g353"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g355"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M378.3,120.1 L387.3,120.1  "
+         id="path357"
+         stroke="black" />
+      <g
+         transform="translate(360.3,124.6)"
+         font-size="12.00"
+         id="g359"
+         text-anchor="end"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text361">
+          <tspan
+             id="tspan363"
+             font-family="Arial"> 8</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g365"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g367"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <path
+         d="M378.3,79.7 L387.3,79.7  "
+         id="path369"
+         stroke="black" />
+      <g
+         transform="translate(360.3,84.2)"
+         font-size="12.00"
+         id="g371"
+         text-anchor="end"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text373">
+          <tspan
+             id="tspan375"
+             font-family="Arial"> 10</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g377"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g379"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         d="M242.7,252.3 L514.1,310.5  "
+         id="path381"
+         stroke-dasharray="2,4"
+         stroke="black" />
+    </g>
+    <g
+       id="g383"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         d="M378.3,281.4 L378.3,79.7  "
+         id="path385"
+         stroke-dasharray="2,4"
+         stroke="black" />
+    </g>
+    <g
+       id="g387"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="gray" />
+    <g
+       id="g389"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         d="M378.3,281.4 L221.7,382.3  "
+         id="path391"
+         stroke-dasharray="2,4"
+         stroke="black" />
+      <g
+         transform="translate(336.8,95.1)"
+         font-size="12.00"
+         id="g393"
+         text-anchor="end"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text395">
+          <tspan
+             id="tspan397"
+             font-family="Arial">z</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g399"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g401"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g403"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g405"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g407"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="3.00"
+       stroke="rgb(240, 230, 140)"
+       fill="none"
+       color="black" />
+    <g
+       id="g409"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="3.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <g
+         id="g411"
+         shape-rendering="crispEdges"
+         stroke="none">
+        <polygon
+           points="428.7,201.3 432.6,203.8 437.8,186.6 424.7,198.8 428.7,201.3 "
+           id="polygon413"
+           fill="rgb(  0,   0, 255)" />
+      </g>
+      <path
+         d="M428.7,201.3 L432.6,203.8 L437.8,186.6 L424.7,198.8 L428.7,201.3 M378.3,281.4 L428.7,201.3  "
+         id="path415"
+         stroke="rgb(  0,   0, 255)" />
+    </g>
+    <g
+       id="g417"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="3.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <g
+         id="g419"
+         shape-rendering="crispEdges"
+         stroke="none">
+        <polygon
+           points="426.3,335.1 422.8,338.2 437.8,348.0 429.7,332.0 426.3,335.1 "
+           id="polygon421"
+           fill="rgb(255,   0,   0)" />
+      </g>
+      <path
+         d="M426.3,335.1 L422.8,338.2 L437.8,348.0 L429.7,332.0 L426.3,335.1 M378.3,281.4 L426.3,335.1  "
+         id="path423"
+         stroke="rgb(255,   0,   0)" />
+    </g>
+    <g
+       id="gnuplot_plot_1">
+      <title
+         id="title426">gnuplot_plot_1</title>
+      <g
+         id="g428"
+         stroke-linejoin="miter"
+         stroke-linecap="butt"
+         stroke-width="1.00"
+         stroke="rgb(255,   0,   0)"
+         fill="none"
+         color="white" />
+      <g
+         id="g430"
+         stroke-linejoin="miter"
+         stroke-linecap="butt"
+         stroke-width="1.00"
+         stroke="currentColor"
+         fill="none"
+         color="black" />
+    </g>
+    <g
+       transform="translate(259.3,397.5)"
+       font-size="12.00"
+       id="g432"
+       text-anchor="middle"
+       font-family="Arial"
+       stroke="none"
+       fill="black">
+      <text
+         id="text434">
+        <tspan
+           id="tspan436"
+           font-family="Arial">x</tspan>
+      </text>
+    </g>
+    <g
+       id="g438"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black">
+      <g
+         transform="translate(499.8,334.4)"
+         font-size="12.00"
+         id="g440"
+         text-anchor="middle"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text442">
+          <tspan
+             id="tspan444"
+             font-family="Arial">y</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g446"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+    <g
+       id="g448"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         d="M242.7,252.3 L514.1,310.5  "
+         id="path450"
+         stroke-dasharray="2,4"
+         stroke="black" />
+    </g>
+    <g
+       id="g452"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         d="M378.3,281.4 L378.3,79.7  "
+         id="path454"
+         stroke-dasharray="2,4"
+         stroke="black" />
+    </g>
+    <g
+       id="g456"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="gray" />
+    <g
+       id="g458"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="gray">
+      <path
+         d="M378.3,281.4 L221.7,382.3  "
+         id="path460"
+         stroke-dasharray="2,4"
+         stroke="black" />
+      <g
+         transform="translate(336.8,95.1)"
+         font-size="12.00"
+         id="g462"
+         text-anchor="end"
+         font-family="Arial"
+         stroke="none"
+         fill="black">
+        <text
+           id="text464">
+          <tspan
+             id="tspan466"
+             font-family="Arial">z</tspan>
+        </text>
+      </g>
+    </g>
+    <g
+       id="g468"
+       stroke-linejoin="miter"
+       stroke-linecap="butt"
+       stroke-width="1.00"
+       stroke="currentColor"
+       fill="none"
+       color="black" />
+  </g>
+  <ellipse
+     style="fill:none;stroke:#000000;stroke-width:0.95978433;stroke-miterlimit:4;stroke-dasharray:11.51741263, 11.51741263;stroke-dashoffset:0;stroke-opacity:0.49441343"
+     id="path4602"
+     cx="401.89508"
+     cy="155.90308"
+     rx="142.27492"
+     ry="160.32448"
+     transform="matrix(0.9767268,0.21448722,-0.06491768,0.99789062,0,0)" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3.2,3.2;stroke-dashoffset:0;stroke-opacity:1"
+     d="m 440.39977,181.39334 0.60082,170.03156"
+     id="path4616"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.18961149;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="path4618"
+     sodipodi:type="arc"
+     sodipodi:cx="204.77457"
+     sodipodi:cy="462.52618"
+     sodipodi:rx="33.259617"
+     sodipodi:ry="52.187153"
+     sodipodi:start="0"
+     sodipodi:end="1.5707963"
+     d="m 238.03418,462.52618 a 33.259617,52.187153 0 0 1 -33.25961,52.18716"
+     transform="matrix(0.73576078,-0.67724151,0.49266353,0.87021988,0,0)"
+     sodipodi:open="true" />
+  <g
+     id="g4698"
+     transform="matrix(0.02864154,0,0,0.02864154,392.52898,265.29902)">
+    <title
+       id="title4700">Layer 1</title>
+    <g
+       id="layer1" />
+    <g
+       id="g16523">
+      <path
+         d="m 377.22781,25.543856 79.72852,0 -48.30609,217.142974 c -9.37982,41.27121 -15.78937,66.59674 -19.22864,75.97656 12.50638,57.5296 30.64075,86.29441 54.40293,86.29441 28.13946,0 42.67825,-19.38498 43.61624,-58.15491 l 16.88366,0 c -0.93802,36.26864 -7.58206,65.5806 -19.93213,87.93585 -12.35009,22.35529 -28.53027,33.53287 -48.54058,33.53287 -16.57108,0 -28.92118,-6.72217 -37.0503,-20.16663 -8.12924,-13.44436 -16.88379,-40.95856 -26.26361,-82.54245 -32.51672,68.47272 -85.66906,102.70908 -159.45698,102.70908 -50.33843,0 -90.35898,-19.61942 -120.061786,-58.8584 C 63.3163,370.17429 48.464868,313.97348 48.464868,240.81087 c 0,-71.91199 16.258362,-127.8783 48.775085,-167.89889 32.516797,-40.020584 71.599337,-60.030893 117.247867,-60.030893 32.20401,0 58.62391,11.412115 79.25952,34.236361 20.63556,22.824265 38.92621,60.030892 54.87201,111.619932 L 377.22781,25.543857 Z M 335.95654,209.38846 C 321.26148,159.05005 304.8468,119.73293 286.71246,91.437119 268.57809,63.141327 246.84819,48.99342 221.52266,48.99342 c -57.21692,0 -85.82536,66.90942 -85.82536,200.72826 0,126.94031 27.3578,190.41046 82.07344,190.41046 47.52446,0 82.6988,-55.96625 105.52299,-167.89886 l 12.66281,-62.84482 z"
+         id="path16525"
+         inkscape:connector-curvature="0"
+         style="fill:currentColor" />
+    </g>
+  </g>
+  <path
+     style="fill:none;stroke:#000000;stroke-width:1.137;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="path4714"
+     sodipodi:type="arc"
+     sodipodi:cx="-441.30569"
+     sodipodi:cy="-326.19077"
+     sodipodi:rx="20.860762"
+     sodipodi:ry="18.157078"
+     sodipodi:start="0"
+     sodipodi:end="1.5707963"
+     sodipodi:open="true"
+     d="m -420.44493,-326.19077 a 20.860762,18.157078 0 0 1 -20.86076,18.15708"
+     transform="scale(-1,-1)" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Accanthis ADF Std';-inkscape-font-specification:'Accanthis ADF Std, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="411.56049"
+     y="171.78024"
+     id="text4385"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan4387"
+       x="411.56049"
+       y="171.78024"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">[ 4 , 9 , 8 ]</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Accanthis ADF Std';-inkscape-font-specification:'Accanthis ADF Std, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="400.15594"
+     y="366.62753"
+     id="text4385-5"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       x="400.15594"
+       y="366.62753"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
+       id="tspan4409">[ 4 , 9 , 0 ]</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Accanthis ADF Std';-inkscape-font-specification:'Accanthis ADF Std, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="428.38342"
+     y="326.79135"
+     id="text4390"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan4392"
+       x="428.38342"
+       y="326.79135"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:45px;line-height:125%;font-family:'Accanthis ADF Std';-inkscape-font-specification:'Accanthis ADF Std, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">.</tspan></text>
+</svg>

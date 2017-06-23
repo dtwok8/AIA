@@ -276,10 +276,10 @@ train_data = class_pictures.importDataFromFile(config.DATAFILE_TRAIN)
 test_data = class_pictures.importDataFromFile(config.DATAFILE_TEST)
 
 #pomucka kdyz mame malo RAM
-#train_data2 = class_pictures.importDataFromFile(config.DATAFILE_TRAIN2)
+train_data2 = class_pictures.importDataFromFile(config.DATAFILE_TRAIN2)
 #
-#for data in train_data2:
-#    train_data.append(data)
+for data in train_data2:
+    train_data.append(data)
 
 
 ######### spocitani vzdalenosti
